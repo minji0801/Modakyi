@@ -61,15 +61,15 @@ class EnterEmailViewController: UIViewController {
     }
     
     private func loginUser(withEmail email: String, password: String) {
-      Auth.auth().signIn(withEmail: email, password: password) {[weak self] _, error in
-        guard let self = self else { return }
-
-        if let error = error {
-            self.errorMessageLabel.text = error.localizedDescription
-        } else {
-            self.showMainViewController()
+        Auth.auth().signIn(withEmail: email, password: password) {[weak self] _, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                self.errorMessageLabel.text = error.localizedDescription
+            } else {
+                self.showMainViewController()
+            }
         }
-      }
     }
 }
 extension EnterEmailViewController: UITextFieldDelegate {
