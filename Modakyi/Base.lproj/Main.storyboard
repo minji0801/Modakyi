@@ -267,7 +267,7 @@
         <!--Main View Controller-->
         <scene sceneID="aLG-y1-b0H">
             <objects>
-                <tabBarController id="iAF-WD-u1r" customClass="MainViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" id="iAF-WD-u1r" customClass="MainViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XUB-Uk-XlR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
