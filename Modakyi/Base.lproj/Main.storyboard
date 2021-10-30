@@ -232,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환영합니다. 000님" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGw-Q6-CXb">
-                                <rect key="frame" x="150" y="328.5" width="114" height="60"/>
+                                <rect key="frame" x="30" y="328.5" width="354" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -253,6 +253,8 @@
                             <constraint firstItem="RGw-Q6-CXb" firstAttribute="centerX" secondItem="uNY-Vf-7Wl" secondAttribute="centerX" id="5Cx-UC-qgo"/>
                             <constraint firstItem="RGw-Q6-CXb" firstAttribute="centerY" secondItem="uNY-Vf-7Wl" secondAttribute="centerY" multiplier="4/5" id="9rO-Bd-mmc"/>
                             <constraint firstItem="bHj-r8-jUx" firstAttribute="centerX" secondItem="uNY-Vf-7Wl" secondAttribute="centerX" id="S28-Sn-m4g"/>
+                            <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="RGw-Q6-CXb" secondAttribute="trailing" constant="30" id="SHN-Mn-1z2"/>
+                            <constraint firstItem="RGw-Q6-CXb" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" constant="30" id="dXd-q0-HMs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="755-cS-jdz"/>
