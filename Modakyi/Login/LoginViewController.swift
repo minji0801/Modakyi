@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
             $0?.layer.borderWidth = 0.2
             $0?.layer.borderColor = UIColor.darkGray.cgColor
             $0?.layer.cornerRadius = 30
-          }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +117,7 @@ extension LoginViewController {
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
-            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
         

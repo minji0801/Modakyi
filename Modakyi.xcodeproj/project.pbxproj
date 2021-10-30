@@ -84,17 +84,33 @@
 				A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */,
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
+				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
+				A59FAFC5272D6E79000807A5 /* Login */,
+				A59FAFC6272D6E8F000807A5 /* Home */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
 				A59FAFB4272D5BE8000807A5 /* Info.plist */,
 				A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */,
-				A59FAFBA272D5C16000807A5 /* LoginViewController.swift */,
-				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
-				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
-				A59FAFC0272D6659000807A5 /* HomeViewController.swift */,
 			);
 			path = Modakyi;
+			sourceTree = "<group>";
+		};
+		A59FAFC5272D6E79000807A5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A59FAFBA272D5C16000807A5 /* LoginViewController.swift */,
+				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A59FAFC6272D6E8F000807A5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A59FAFC0272D6659000807A5 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		CC8FA4A7A30BCBDF6148A2DB /* Frameworks */ = {
