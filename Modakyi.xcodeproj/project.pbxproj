@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
-		A59FAFAB272D5BE7000807A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFAA272D5BE7000807A5 /* ViewController.swift */; };
 		A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAC272D5BE7000807A5 /* Main.storyboard */; };
 		A59FAFB0272D5BE8000807A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAF272D5BE8000807A5 /* Assets.xcassets */; };
 		A59FAFB3272D5BE8000807A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */; };
+		A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBA272D5C16000807A5 /* LoginViewController.swift */; };
+		A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */; };
+		A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBE272D655F000807A5 /* MainViewController.swift */; };
+		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A59FAFAA272D5BE7000807A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A59FAFAD272D5BE7000807A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A59FAFAF272D5BE8000807A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A59FAFB2272D5BE8000807A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A59FAFB4272D5BE8000807A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A59FAFBA272D5C16000807A5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
+		A59FAFBE272D655F000807A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A59FAFC0272D6659000807A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,14 @@
 			children = (
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
-				A59FAFAA272D5BE7000807A5 /* ViewController.swift */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
 				A59FAFB4272D5BE8000807A5 /* Info.plist */,
+				A59FAFBA272D5C16000807A5 /* LoginViewController.swift */,
+				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
+				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
+				A59FAFC0272D6659000807A5 /* HomeViewController.swift */,
 			);
 			path = Modakyi;
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59FAFAB272D5BE7000807A5 /* ViewController.swift in Sources */,
+				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
+				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
+				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
+				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
