@@ -7,16 +7,28 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        // Google 로그인 Delgate
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+      // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
+      return GIDSignIn.sharedInstance().handle(url)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -34,5 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        // Google 로그인 인증 후 전달된 값을 처리하는 부분
+        if let error = error {
+          print("ERROR Google Sign In \(error.localizedDescription)")
+          return
+        }
+
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+
+        Auth.auth().signIn(with: credential) { _, _ in
+            self.showMainViewController()
+        }
+    }
+    
+    private func showMainViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        mainViewController.modalPresentationStyle = .fullScreen
+        UIApplication.shared.windows.first?.rootViewController?.show(mainViewController, sender: nil)
+    }
 }
 
