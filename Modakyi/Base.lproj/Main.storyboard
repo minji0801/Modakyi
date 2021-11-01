@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -520,17 +520,105 @@
             </objects>
             <point key="canvasLocation" x="3203" y="453"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="88j-Hd-mit">
             <objects>
-                <viewController id="Q1Z-7E-txf" sceneMemberID="viewController">
+                <viewController id="Q1Z-7E-txf" customClass="SearchViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="66H-7v-7Vq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWv-ys-HvL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-BC-Jsa">
+                                        <rect key="frame" x="20" y="15" width="92" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="bh1-gS-f1U"/>
+                                    <constraint firstItem="PHG-BC-Jsa" firstAttribute="centerY" secondItem="zWv-ys-HvL" secondAttribute="centerY" id="bmr-ba-DmA"/>
+                                    <constraint firstItem="PHG-BC-Jsa" firstAttribute="leading" secondItem="zWv-ys-HvL" secondAttribute="leading" constant="20" id="icX-te-gUP"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="검색" translatesAutoresizingMaskIntoConstraints="NO" id="h1J-yJ-NTS">
+                                <rect key="frame" x="0.0" y="114" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Q1Z-7E-txf" id="xRx-Jt-aSd"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O15-Zw-5k8">
+                                <rect key="frame" x="0.0" y="185" width="414" height="628"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="Vuf-3a-Xzv">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchCollectionViewCell" id="He6-6z-klc" customClass="SearchCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDw-Mu-5sr">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8M-Tw-enQ">
+                                                    <rect key="frame" x="5" y="5" width="118" height="118"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="M8M-Tw-enQ" secondAttribute="bottom" constant="5" id="Dod-ZD-5aS"/>
+                                                <constraint firstItem="M8M-Tw-enQ" firstAttribute="top" secondItem="EDw-Mu-5sr" secondAttribute="top" constant="5" id="P6A-yg-P68"/>
+                                                <constraint firstItem="M8M-Tw-enQ" firstAttribute="leading" secondItem="EDw-Mu-5sr" secondAttribute="leading" constant="5" id="i80-jP-GCC"/>
+                                                <constraint firstAttribute="trailing" secondItem="M8M-Tw-enQ" secondAttribute="trailing" constant="5" id="ilI-u9-dqz"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="textLabel" destination="M8M-Tw-enQ" id="tnV-e0-MiY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q1Z-7E-txf" id="IAU-Lq-Da8"/>
+                                    <outlet property="delegate" destination="Q1Z-7E-txf" id="5Z1-Sk-diD"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fmf-i2-Dgy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="h1J-yJ-NTS" firstAttribute="leading" secondItem="fmf-i2-Dgy" secondAttribute="leading" id="8lJ-mg-Red"/>
+                            <constraint firstItem="fmf-i2-Dgy" firstAttribute="bottom" secondItem="O15-Zw-5k8" secondAttribute="bottom" id="9BV-Ru-zbo"/>
+                            <constraint firstItem="h1J-yJ-NTS" firstAttribute="trailing" secondItem="fmf-i2-Dgy" secondAttribute="trailing" id="9aA-qp-Dcn"/>
+                            <constraint firstItem="O15-Zw-5k8" firstAttribute="top" secondItem="h1J-yJ-NTS" secondAttribute="bottom" constant="20" id="GJo-ti-iYb"/>
+                            <constraint firstItem="O15-Zw-5k8" firstAttribute="leading" secondItem="fmf-i2-Dgy" secondAttribute="leading" id="GOs-me-J4h"/>
+                            <constraint firstItem="fmf-i2-Dgy" firstAttribute="trailing" secondItem="zWv-ys-HvL" secondAttribute="trailing" id="NdO-1o-Wk6"/>
+                            <constraint firstItem="fmf-i2-Dgy" firstAttribute="trailing" secondItem="O15-Zw-5k8" secondAttribute="trailing" id="PUy-JS-KvZ"/>
+                            <constraint firstItem="zWv-ys-HvL" firstAttribute="top" secondItem="fmf-i2-Dgy" secondAttribute="top" id="Qvy-4S-tpr"/>
+                            <constraint firstItem="h1J-yJ-NTS" firstAttribute="top" secondItem="zWv-ys-HvL" secondAttribute="bottom" constant="10" id="YQD-4L-Qf8"/>
+                            <constraint firstItem="zWv-ys-HvL" firstAttribute="leading" secondItem="fmf-i2-Dgy" secondAttribute="leading" id="j0h-i2-OxQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="search_icon" selectedImage="search_icon" id="Llu-Sg-PFu"/>
+                    <connections>
+                        <outlet property="collectionview" destination="O15-Zw-5k8" id="mMj-Zd-xgt"/>
+                        <outlet property="searchBar" destination="h1J-yJ-NTS" id="4En-4h-h54"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNH-x2-yqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

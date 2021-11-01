@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - Apple Login Configure
+
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {

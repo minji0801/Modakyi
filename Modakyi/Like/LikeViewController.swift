@@ -54,7 +54,8 @@ class LikeViewController: UIViewController {
     }
 }
 
-// MARK: UICollectionView Configure
+// MARK: - UICollectionView Configure
+
 extension LikeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.likeTexts.count
