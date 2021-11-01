@@ -418,17 +418,103 @@
             </objects>
             <point key="canvasLocation" x="3203" y="-195"/>
         </scene>
-        <!--View Controller-->
+        <!--Unused View Controller-->
         <scene sceneID="vwh-2i-xEu">
             <objects>
-                <viewController id="es8-Ul-2pZ" sceneMemberID="viewController">
+                <viewController id="es8-Ul-2pZ" customClass="UnusedViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dta-Dw-EzE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uLl-4a-jfz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="mbl-zG-fpL">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="2Xd-dz-Wlg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미사용 글귀가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-ZL-2Nm">
+                                            <rect key="frame" x="127" y="374" width="160.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XLN-ZL-2Nm" firstAttribute="centerY" secondItem="2Xd-dz-Wlg" secondAttribute="centerY" id="MGH-Ot-ZX3"/>
+                                        <constraint firstItem="XLN-ZL-2Nm" firstAttribute="centerX" secondItem="2Xd-dz-Wlg" secondAttribute="centerX" id="Mo0-B7-XRb"/>
+                                    </constraints>
+                                </view>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnusedCollectionViewCell" id="E63-4G-S8f" customClass="UnusedCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4pg-7I-v87">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-b2-jog">
+                                                    <rect key="frame" x="5" y="5" width="118" height="118"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="D1Q-b2-jog" firstAttribute="top" secondItem="4pg-7I-v87" secondAttribute="top" constant="5" id="In6-DD-w4v"/>
+                                                <constraint firstItem="D1Q-b2-jog" firstAttribute="leading" secondItem="4pg-7I-v87" secondAttribute="leading" constant="5" id="R9a-Mp-KLz"/>
+                                                <constraint firstAttribute="trailing" secondItem="D1Q-b2-jog" secondAttribute="trailing" constant="5" id="cLP-hf-d35"/>
+                                                <constraint firstAttribute="bottom" secondItem="D1Q-b2-jog" secondAttribute="bottom" constant="5" id="uFb-jI-ITr"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="textLabel" destination="D1Q-b2-jog" id="oF4-UX-WB6"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="UnusedCollectionHeaderView" id="SOp-d4-rTg" customClass="UnusedCollectionHeaderView" customModule="Modakyi" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미사용 글귀모음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVg-M9-qKD">
+                                            <rect key="frame" x="20" y="15" width="157" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dVg-M9-qKD" firstAttribute="leading" secondItem="SOp-d4-rTg" secondAttribute="leading" constant="20" id="0Ic-cv-smJ"/>
+                                        <constraint firstItem="dVg-M9-qKD" firstAttribute="centerY" secondItem="SOp-d4-rTg" secondAttribute="centerY" id="DDp-sp-N6y"/>
+                                    </constraints>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="es8-Ul-2pZ" id="mu2-ci-fWg"/>
+                                    <outlet property="delegate" destination="es8-Ul-2pZ" id="Msg-sX-o3H"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AEe-sG-b38"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uLl-4a-jfz" firstAttribute="top" secondItem="AEe-sG-b38" secondAttribute="top" id="4vj-PP-8B7"/>
+                            <constraint firstItem="AEe-sG-b38" firstAttribute="bottom" secondItem="uLl-4a-jfz" secondAttribute="bottom" id="9F2-bf-FZu"/>
+                            <constraint firstItem="AEe-sG-b38" firstAttribute="trailing" secondItem="uLl-4a-jfz" secondAttribute="trailing" id="BOY-vo-aQX"/>
+                            <constraint firstItem="uLl-4a-jfz" firstAttribute="leading" secondItem="AEe-sG-b38" secondAttribute="leading" id="Zf3-dB-EO2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="folder_icon" selectedImage="folder_icon" id="W1Y-ss-Yka"/>
+                    <connections>
+                        <outlet property="collectionview" destination="uLl-4a-jfz" id="JKM-ia-UVM"/>
+                        <outlet property="labelView" destination="2Xd-dz-Wlg" id="r7p-a9-v0i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLl-QD-B2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
