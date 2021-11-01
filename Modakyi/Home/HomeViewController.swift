@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import FirebaseAuth
+import FirebaseAuth
 import FirebaseDatabase
 
 class HomeViewController: UIViewController {
@@ -75,17 +75,17 @@ class HomeViewController: UIViewController {
 //        \(email)님
 //        """
     }
-//
-//    @IBAction func logoutButtonTapped(_ sender: UIButton) {
-//        let firebaseAuth = Auth.auth()
-//
-//        do {
-//            try firebaseAuth.signOut()
-//            self.navigationController?.popToRootViewController(animated: true)
-//        } catch let signOutError as NSError {
-//            print("ERROR: signout \(signOutError.localizedDescription)")
-//        }
-//    }
+
+    @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+
+        do {
+            try firebaseAuth.signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            print("ERROR: signout \(signOutError.localizedDescription)")
+        }
+    }
 }
 
 
@@ -116,13 +116,12 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     // 셀 클릭했을 때
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//
-//        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-//        detailViewController.id = studyStimulateTexts[indexPath.row].id
-//        self.navigationController?.pushViewController(detailViewController, animated: true)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        detailViewController.id = studyStimulateTexts[indexPath.row].id
+        self.present(detailViewController, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {

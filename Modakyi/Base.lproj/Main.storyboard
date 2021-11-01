@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -133,20 +133,96 @@
             </objects>
             <point key="canvasLocation" x="533" y="89"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Phd-k7-XVd">
             <objects>
-                <viewController id="g9b-6q-EwT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="g9b-6q-EwT" customClass="DetailViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j9s-Za-B0q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4A6-6q-KMg">
+                                <rect key="frame" x="0.0" y="354" width="414" height="44"/>
+                                <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                                <items>
+                                    <navigationItem title="글귀 탭" id="YgI-mZ-r6T">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="p9u-8E-D2S">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="g9b-6q-EwT" id="tW2-Gc-e2d"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-a8-kTB">
+                                <rect key="frame" x="0.0" y="398" width="414" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jd4-v1-Mqe">
+                                        <rect key="frame" x="15" y="15" width="384" height="384"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bmE-a8-kTB" secondAttribute="height" multiplier="1:1" id="GAS-aT-Cod"/>
+                                    <constraint firstAttribute="bottom" secondItem="jd4-v1-Mqe" secondAttribute="bottom" constant="15" id="Trz-0n-pgo"/>
+                                    <constraint firstItem="jd4-v1-Mqe" firstAttribute="leading" secondItem="bmE-a8-kTB" secondAttribute="leading" constant="15" id="b9p-eb-xkQ"/>
+                                    <constraint firstItem="jd4-v1-Mqe" firstAttribute="top" secondItem="bmE-a8-kTB" secondAttribute="top" constant="15" id="i9O-Ad-dEs"/>
+                                    <constraint firstAttribute="trailing" secondItem="jd4-v1-Mqe" secondAttribute="trailing" constant="15" id="sfa-15-o8c"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cNy-jr-ftx">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-oY-w76">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="50"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="likeButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="TlL-o3-WFk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-hy-88g">
+                                        <rect key="frame" x="362" y="0.0" width="52" height="50"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="checkmark.square" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="checkButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="ZUU-qc-tbd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cuL-iY-M0E"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="HZP-Em-ACe"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4A6-6q-KMg" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="585-rV-BkX"/>
+                            <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="cNy-jr-ftx" secondAttribute="trailing" id="5yu-rF-bnO"/>
+                            <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="bmE-a8-kTB" secondAttribute="trailing" id="CCb-ke-oRA"/>
+                            <constraint firstItem="cNy-jr-ftx" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="N2K-x8-kGb"/>
+                            <constraint firstItem="HZP-Em-ACe" firstAttribute="bottom" secondItem="cNy-jr-ftx" secondAttribute="bottom" id="VL0-MD-ner"/>
+                            <constraint firstItem="bmE-a8-kTB" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="VTG-Zj-bo4"/>
+                            <constraint firstItem="4A6-6q-KMg" firstAttribute="trailing" secondItem="HZP-Em-ACe" secondAttribute="trailing" id="dDt-E8-OjL"/>
+                            <constraint firstItem="bmE-a8-kTB" firstAttribute="top" secondItem="4A6-6q-KMg" secondAttribute="bottom" id="j5y-GQ-Goy"/>
+                            <constraint firstItem="cNy-jr-ftx" firstAttribute="top" secondItem="bmE-a8-kTB" secondAttribute="bottom" id="pev-gF-INK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waw-jY-yYh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="922"/>
+            <point key="canvasLocation" x="4452" y="88"/>
         </scene>
         <!--이메일/비밀번호 입력하기-->
         <scene sceneID="gUW-zX-ROy">
@@ -285,14 +361,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHj-r8-jUx">
-                                <rect key="frame" x="170.5" y="432.5" width="73" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="로그아웃"/>
-                                <connections>
-                                    <action selector="logoutButtonTapped:" destination="jYP-GC-LTW" eventType="touchUpInside" id="Yob-Aq-rOY"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTA-qw-81v">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
@@ -302,6 +370,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHj-r8-jUx">
+                                        <rect key="frame" x="170" y="14" width="73" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="로그아웃"/>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="jYP-GC-LTW" eventType="touchUpInside" id="Yob-Aq-rOY"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-3V-7us">
                                         <rect key="frame" x="345" y="14.5" width="49" height="31"/>
                                         <state key="normal" title="Button"/>
@@ -398,12 +475,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LTA-qw-81v" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" id="0Da-ob-f2r"/>
-                            <constraint firstItem="bHj-r8-jUx" firstAttribute="centerY" secondItem="uNY-Vf-7Wl" secondAttribute="centerY" id="0g5-t9-cm9"/>
                             <constraint firstItem="RGw-Q6-CXb" firstAttribute="centerX" secondItem="uNY-Vf-7Wl" secondAttribute="centerX" id="5Cx-UC-qgo"/>
                             <constraint firstItem="RGw-Q6-CXb" firstAttribute="centerY" secondItem="uNY-Vf-7Wl" secondAttribute="centerY" multiplier="4/5" id="9rO-Bd-mmc"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="aKb-6E-Pfd" secondAttribute="trailing" id="I9s-C0-2bc"/>
                             <constraint firstItem="LTA-qw-81v" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="KCa-BP-s06"/>
-                            <constraint firstItem="bHj-r8-jUx" firstAttribute="centerX" secondItem="uNY-Vf-7Wl" secondAttribute="centerX" id="S28-Sn-m4g"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="RGw-Q6-CXb" secondAttribute="trailing" constant="30" id="SHN-Mn-1z2"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="gdO-qn-23f" secondAttribute="trailing" constant="15" id="VcL-1W-M5Z"/>
                             <constraint firstItem="gdO-qn-23f" firstAttribute="top" secondItem="LTA-qw-81v" secondAttribute="bottom" constant="15" id="Xx5-gw-aV2"/>
@@ -452,14 +527,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="folder_icon" width="50" height="50"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="home_icon" width="50" height="50"/>
         <image name="like_icon" width="50" height="50"/>
         <image name="logo_apple" width="50" height="50"/>
         <image name="logo_google" width="50" height="50"/>
         <image name="logo_modakyi" width="128" height="128"/>
         <image name="search_icon" width="50" height="50"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
