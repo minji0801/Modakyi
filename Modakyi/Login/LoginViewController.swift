@@ -10,6 +10,7 @@ import GoogleSignIn
 import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailLoginButton: UIButton!
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var appleLoginButton: UIButton!
     
     private var currentNonce: String?
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +77,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     print ("Error Apple sign in: %@", error)
                     return
                 }
-                // User is signed in to Firebase with Apple.
-                // ...
-                ///Main 화면으로 보내기
+                
+                // Apple Login User 데이터 만들기
+                self.ref = Database.database().reference()
+                let uid = Auth.auth().currentUser?.uid
+                self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
+                self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
+                
+                // Main 화면으로 이동
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let mainViewController = storyboard.instantiateViewController(identifier: "MainViewController")
                 mainViewController.modalPresentationStyle = .fullScreen

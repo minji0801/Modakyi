@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
         
         likeButton.tag = Int(id)!
         checkButton.tag = Int(id)!
-        
+
         if likeTexts.contains(Int(id)!) {
             // isSelected로 바꾸고, 색상 핑크로
             likeButton.isSelected = true
@@ -68,7 +68,7 @@ class DetailViewController: UIViewController {
             likeButton.isSelected = false
             likeButton.tintColor = .label
         }
-        
+
         if usedTexts.contains(Int(id)!) {
             // isSelected로 바꾸기
             checkButton.isSelected = true
@@ -79,7 +79,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
