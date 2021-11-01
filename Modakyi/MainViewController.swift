@@ -19,6 +19,4 @@ class MainViewController: UITabBarController {
         
         navigationController?.navigationBar.isHidden = true
     }
-    
-    
 }
