@@ -75,7 +75,8 @@ class UnusedViewController: UIViewController {
     }
 }
 
-// MARK: UICollectionView Configure
+// MARK: - UICollectionView Configure
+
 extension UnusedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.unusedTexts.count

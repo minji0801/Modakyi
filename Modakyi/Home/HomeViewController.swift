@@ -89,7 +89,8 @@ class HomeViewController: UIViewController {
 }
 
 
-// MARK: UICollectionView Configure
+// MARK: - UICollectionView Configure
+
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return studyStimulateTexts.count
