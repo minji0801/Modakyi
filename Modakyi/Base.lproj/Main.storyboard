@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -316,17 +316,103 @@
             </objects>
             <point key="canvasLocation" x="1306" y="88"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Like View Controller-->
         <scene sceneID="53z-bg-4qd">
             <objects>
-                <viewController id="JiO-F9-fQb" customClass="MainViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JiO-F9-fQb" customClass="LikeViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x8P-7z-fau">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7to-ad-AvM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="faZ-92-LBU">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="g21-I2-ZF1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아하는 글귀가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvN-Zk-812">
+                                            <rect key="frame" x="119" y="374" width="176" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tvN-Zk-812" firstAttribute="centerY" secondItem="g21-I2-ZF1" secondAttribute="centerY" id="5s7-DB-ubA"/>
+                                        <constraint firstItem="tvN-Zk-812" firstAttribute="centerX" secondItem="g21-I2-ZF1" secondAttribute="centerX" id="KKr-bG-ZXR"/>
+                                    </constraints>
+                                </view>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LikeCollectionViewCell" id="Gnk-pG-Jiu" customClass="LikeCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w4e-WF-SMD">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAj-4q-Zo2">
+                                                    <rect key="frame" x="5" y="5" width="118" height="118"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="vAj-4q-Zo2" firstAttribute="leading" secondItem="w4e-WF-SMD" secondAttribute="leading" constant="5" id="Ceo-80-HBN"/>
+                                                <constraint firstAttribute="bottom" secondItem="vAj-4q-Zo2" secondAttribute="bottom" constant="5" id="EEH-VM-vG9"/>
+                                                <constraint firstItem="vAj-4q-Zo2" firstAttribute="top" secondItem="w4e-WF-SMD" secondAttribute="top" constant="5" id="Ffi-Ck-jLm"/>
+                                                <constraint firstAttribute="trailing" secondItem="vAj-4q-Zo2" secondAttribute="trailing" constant="5" id="vNN-Oe-7Zt"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="textLabel" destination="vAj-4q-Zo2" id="AaB-lG-HtN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LikeCollectionHeaderView" id="HyE-ip-pIh" customClass="LikeCollectionHeaderView" customModule="Modakyi" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아하는 글귀모음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIi-PQ-iGm">
+                                            <rect key="frame" x="20" y="15" width="179" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NIi-PQ-iGm" firstAttribute="centerY" secondItem="HyE-ip-pIh" secondAttribute="centerY" id="UPL-pc-oai"/>
+                                        <constraint firstItem="NIi-PQ-iGm" firstAttribute="leading" secondItem="HyE-ip-pIh" secondAttribute="leading" constant="20" id="jwg-hr-jIF"/>
+                                    </constraints>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="JiO-F9-fQb" id="Sj6-7c-V8c"/>
+                                    <outlet property="delegate" destination="JiO-F9-fQb" id="Mz2-ny-AQx"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Rme-4E-p8P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7to-ad-AvM" firstAttribute="top" secondItem="Rme-4E-p8P" secondAttribute="top" id="5AF-Ik-hce"/>
+                            <constraint firstItem="Rme-4E-p8P" firstAttribute="bottom" secondItem="7to-ad-AvM" secondAttribute="bottom" id="C7H-1z-ybn"/>
+                            <constraint firstItem="7to-ad-AvM" firstAttribute="leading" secondItem="Rme-4E-p8P" secondAttribute="leading" id="T1Y-5u-Nz8"/>
+                            <constraint firstItem="Rme-4E-p8P" firstAttribute="trailing" secondItem="7to-ad-AvM" secondAttribute="trailing" id="gph-vQ-cua"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="like_icon" selectedImage="like_icon" id="LUX-3K-gU4"/>
+                    <connections>
+                        <outlet property="collectionview" destination="7to-ad-AvM" id="eK5-eH-TJo"/>
+                        <outlet property="labelView" destination="g21-I2-ZF1" id="7Mm-xR-3i1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zH-Cc-gO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -567,6 +653,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
