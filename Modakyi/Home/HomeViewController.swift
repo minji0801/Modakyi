@@ -75,7 +75,14 @@ class HomeViewController: UIViewController {
 //        \(email)님
 //        """
     }
-
+    
+    @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        detailViewController.id = recommendTextId
+        self.present(detailViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
 

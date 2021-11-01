@@ -688,6 +688,9 @@
                                     <constraint firstItem="HX8-1J-jEt" firstAttribute="leading" secondItem="gdO-qn-23f" secondAttribute="leading" constant="15" id="Dbg-k7-dfV"/>
                                     <constraint firstAttribute="bottom" secondItem="HX8-1J-jEt" secondAttribute="bottom" constant="25" id="MGg-LZ-7Sa"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NSo-wW-1XB" appends="YES" id="7M2-Gc-T2L"/>
+                                </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-6E-Pfd">
                                 <rect key="frame" x="0.0" y="297.5" width="414" height="598.5"/>
@@ -776,6 +779,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyC-yk-amu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NSo-wW-1XB">
+                    <connections>
+                        <action selector="recommendViewTapped:" destination="jYP-GC-LTW" id="Vx6-qo-yT0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3202.898550724638" y="-839.0625"/>
         </scene>
