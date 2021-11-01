@@ -9,21 +9,21 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import FirebaseDatabase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
-    
-    
+    var ref: DatabaseReference!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Firebase 초기화
         FirebaseApp.configure()
         
         // Google 로그인 Delgate
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
+        // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
         if let _ = Auth.auth().currentUser {
             DispatchQueue.main.async {
                 self.showMainViewController()
@@ -64,6 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         Auth.auth().signIn(with: credential) { _, _ in
+            // Google Login User 데이터 만들기
+            self.ref = Database.database().reference()
+            let uid = Auth.auth().currentUser?.uid
+            self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
+            self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
+            
+            // Main 화면으로 이동
             self.showMainViewController()
         }
     }
