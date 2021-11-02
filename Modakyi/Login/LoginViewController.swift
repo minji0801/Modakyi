@@ -36,6 +36,13 @@ class LoginViewController: UIViewController {
         
         // Google Sign In
         GIDSignIn.sharedInstance().presentingViewController = self
+        
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {

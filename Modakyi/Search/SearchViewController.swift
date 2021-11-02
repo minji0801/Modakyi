@@ -22,6 +22,17 @@ class SearchViewController: UIViewController {
         readAllText()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
     // 전제 글귀 읽어오기
     func readAllText() {
         ref.child("Text").observe(.value) { snapshot in

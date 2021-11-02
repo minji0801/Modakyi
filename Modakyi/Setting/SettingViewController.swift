@@ -15,11 +15,45 @@ class SettingViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var darkmodeSwitch: UISwitch!
+    @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
+        
+        // Navigation Bar Configure
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.title = "설정"
+        
+        // Profile Image / UserName
+        let username = Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
+        let profileImg = Auth.auth().currentUser?.photoURL ?? URL(string: "")
 
+        nameLabel.text = username
+        profileImage.kf.setImage(with: profileImg, placeholder: UIImage(systemName: "person.crop.circle"))
+        profileImage.layer.cornerRadius = profileImage.bounds.width / 2
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
+    @objc func darkmodeSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            UserDefaults.standard.set("Dark", forKey: "Appearance")
+        } else {
+            UserDefaults.standard.set("Light", forKey: "Appearance")
+        }
+        self.tableview.reloadData()
+        self.viewWillAppear(true)
+    }
 }
 
 
@@ -36,6 +70,7 @@ extension SettingViewController: UITableViewDataSource {
             return noticeCell
         case 1:
             guard let darkModeCell = tableView.dequeueReusableCell(withIdentifier: "DarkModeCell", for: indexPath) as? DarkModeCell else { return UITableViewCell() }
+            darkModeCell.darkmodeSwitch.addTarget(self, action: #selector(self.darkmodeSwitchChanged(_:)), for: .valueChanged)
             return darkModeCell
         case 2:
             guard let usewayCell = tableView.dequeueReusableCell(withIdentifier: "UsewayCell", for: indexPath) as? UsewayCell else { return UITableViewCell() }
@@ -48,6 +83,36 @@ extension SettingViewController: UITableViewDataSource {
             return signOutCell
         default:
             return UITableViewCell()
+        }
+    }
+}
+
+extension SettingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2:
+            // 이용방법
+            let url = NSURL(string: "https://midi-dill-147.notion.site/3a762cd2888e40f08e392f31667020ff")
+            let safariView: SFSafariViewController = SFSafariViewController(url: url! as URL)
+            self.present(safariView, animated: true, completion: nil)
+        case 4:
+            // 로그아웃
+            let alertController = UIAlertController(title: "로그아웃", message: "정말 로그아웃하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+            let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+                do {
+                    try Auth.auth().signOut()
+                    self.navigationController?.popToRootViewController(animated: true)
+                } catch let signOutError as NSError {
+                    print("ERROR: signout \(signOutError.localizedDescription)")
+                }
+            }
+            
+            alertController.addAction(confirmAction)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        default:
+            break
         }
     }
 }

@@ -8,10 +8,13 @@
 import UIKit
 
 class DarkModeCell: UITableViewCell {
-
+    @IBOutlet weak var darkmodeSwitch: UISwitch!
+    @IBOutlet weak var tableview: UITableView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.darkmodeSwitchConfigure()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -19,5 +22,13 @@ class DarkModeCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func darkmodeSwitchConfigure() {
+        let appearance = UserDefaults.standard.string(forKey: "Appearance")
+        if self.traitCollection.userInterfaceStyle == .dark || appearance == "Dark" {
+            darkmodeSwitch.isOn = true
+        } else if self.traitCollection.userInterfaceStyle == .light || appearance == "Light" {
+            darkmodeSwitch.isOn = false
+        }
+    }
 }
