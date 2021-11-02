@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     var studyStimulateTexts: [StudyStimulateText] = []
     var recommendTextId = ""
     
-    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var recommendView: UIView!
     @IBOutlet weak var recommendLabel: UILabel!
     @IBOutlet weak var collectionview: UICollectionView!
@@ -67,20 +66,19 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         recommendView.layer.cornerRadius = 30
-
-//        let email = Auth.auth().currentUser?.email ?? "고객"
-//
-//        welcomeLabel.text = """
-//        환영합니다.
-//        \(email)님
-//        """
+        
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
-//        self.navigationController?.pushViewController(settingViewController, animated: true)
-        self.present(settingViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(settingViewController, animated: true)
     }
     
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
@@ -88,17 +86,6 @@ class HomeViewController: UIViewController {
         guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailViewController.id = recommendTextId
         self.present(detailViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction func logoutButtonTapped(_ sender: UIButton) {
-        let firebaseAuth = Auth.auth()
-
-        do {
-            try firebaseAuth.signOut()
-            self.navigationController?.popToRootViewController(animated: true)
-        } catch let signOutError as NSError {
-            print("ERROR: signout \(signOutError.localizedDescription)")
-        }
     }
 }
 
