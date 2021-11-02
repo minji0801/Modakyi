@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
+		A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E454F27310A14002D8A67 /* NoticeCell.swift */; };
+		A54E45542731188D002D8A67 /* DarkModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E45532731188D002D8A67 /* DarkModeCell.swift */; };
+		A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4555273118A5002D8A67 /* UsewayCell.swift */; };
+		A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4557273118B2002D8A67 /* VersionInfoCell.swift */; };
+		A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E455B2731191C002D8A67 /* SignOutCell.swift */; };
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
 		A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAC272D5BE7000807A5 /* Main.storyboard */; };
@@ -37,6 +43,12 @@
 		2FD333FAF9815CFB8F3F417C /* Pods-Modakyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.debug.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.debug.xcconfig"; sourceTree = "<group>"; };
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A54E454F27310A14002D8A67 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		A54E45532731188D002D8A67 /* DarkModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeCell.swift; sourceTree = "<group>"; };
+		A54E4555273118A5002D8A67 /* UsewayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsewayCell.swift; sourceTree = "<group>"; };
+		A54E4557273118B2002D8A67 /* VersionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoCell.swift; sourceTree = "<group>"; };
+		A54E455B2731191C002D8A67 /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +98,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A53C6BC92730F26400066A3F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
+				A54E454F27310A14002D8A67 /* NoticeCell.swift */,
+				A54E45532731188D002D8A67 /* DarkModeCell.swift */,
+				A54E4555273118A5002D8A67 /* UsewayCell.swift */,
+				A54E4557273118B2002D8A67 /* VersionInfoCell.swift */,
+				A54E455B2731191C002D8A67 /* SignOutCell.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		A59FAF9A272D5BE7000807A5 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +142,7 @@
 				A5EFE24E272FDDC40086EBAC /* Unused */,
 				A5EFE255272FF3450086EBAC /* Search */,
 				A5EFE244272FC3130086EBAC /* Detail */,
+				A53C6BC92730F26400066A3F /* Setting */,
 				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
 				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
@@ -333,18 +359,24 @@
 				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
+				A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
 				A5EFE250272FDDE20086EBAC /* UnusedViewController.swift in Sources */,
 				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
+				A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */,
+				A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
 				A5EFE243272FBC830086EBAC /* TextOnLabel.swift in Sources */,
 				A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */,
 				A5EFE257272FF3580086EBAC /* SearchViewController.swift in Sources */,
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
+				A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */,
+				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A5EFE254272FDDFF0086EBAC /* UnusedCollectionHeaderView.swift in Sources */,
 				A5EFE259272FF3670086EBAC /* SearchCollectionViewCell.swift in Sources */,
+				A54E45542731188D002D8A67 /* DarkModeCell.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

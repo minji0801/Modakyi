@@ -76,6 +76,13 @@ class HomeViewController: UIViewController {
 //        """
     }
     
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
+//        self.navigationController?.pushViewController(settingViewController, animated: true)
+        self.present(settingViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
