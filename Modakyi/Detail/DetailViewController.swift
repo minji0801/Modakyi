@@ -85,6 +85,10 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
