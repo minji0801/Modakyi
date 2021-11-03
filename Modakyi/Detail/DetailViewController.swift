@@ -95,13 +95,13 @@ class DetailViewController: UIViewController {
         if sender.isSelected {
             // 데이터 빼고 리로드
             likeTexts.remove(at: likeTexts.firstIndex(of: sender.tag)!)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts.sorted()])
+            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts])
             self.viewDidAppear(true)
 
         } else {
             // 데이터 넣고 리로드
             likeTexts.append(sender.tag)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts.sorted()])
+            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts])
             self.viewDidAppear(true)
         }
     }
