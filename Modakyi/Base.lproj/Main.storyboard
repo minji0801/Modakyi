@@ -141,6 +141,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nkj-5d-lMx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zW3-tJ-Jtl" appends="YES" id="Snq-VX-JIu"/>
+                                </connections>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4A6-6q-KMg">
                                 <rect key="frame" x="0.0" y="344" width="414" height="44"/>
                                 <color key="barTintColor" systemColor="systemBackgroundColor"/>
@@ -224,11 +231,15 @@
                             <constraint firstItem="4A6-6q-KMg" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="585-rV-BkX"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="cNy-jr-ftx" secondAttribute="trailing" id="5yu-rF-bnO"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="bmE-a8-kTB" secondAttribute="trailing" id="CCb-ke-oRA"/>
+                            <constraint firstItem="Nkj-5d-lMx" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="KkL-sC-N53"/>
                             <constraint firstItem="cNy-jr-ftx" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="N2K-x8-kGb"/>
+                            <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="Nkj-5d-lMx" secondAttribute="trailing" id="TcO-7C-EQv"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="bottom" secondItem="cNy-jr-ftx" secondAttribute="bottom" id="VL0-MD-ner"/>
                             <constraint firstItem="bmE-a8-kTB" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="VTG-Zj-bo4"/>
+                            <constraint firstItem="4A6-6q-KMg" firstAttribute="top" secondItem="Nkj-5d-lMx" secondAttribute="bottom" id="W99-D2-KSs"/>
                             <constraint firstItem="4A6-6q-KMg" firstAttribute="trailing" secondItem="HZP-Em-ACe" secondAttribute="trailing" id="dDt-E8-OjL"/>
                             <constraint firstItem="bmE-a8-kTB" firstAttribute="top" secondItem="4A6-6q-KMg" secondAttribute="bottom" id="j5y-GQ-Goy"/>
+                            <constraint firstItem="Nkj-5d-lMx" firstAttribute="top" secondItem="HZP-Em-ACe" secondAttribute="top" id="om8-Tb-jY0"/>
                             <constraint firstItem="cNy-jr-ftx" firstAttribute="top" secondItem="bmE-a8-kTB" secondAttribute="bottom" id="pev-gF-INK"/>
                         </constraints>
                     </view>
@@ -239,6 +250,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waw-jY-yYh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zW3-tJ-Jtl">
+                    <connections>
+                        <action selector="backgroundViewTapped:" destination="g9b-6q-EwT" id="EeC-S0-1Hl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4022" y="88"/>
         </scene>
