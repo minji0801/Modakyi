@@ -137,7 +137,7 @@ extension SearchViewController: UISearchBarDelegate {
                 let jsonData = try JSONSerialization.data(withJSONObject: searchResult)
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
-                self.studyStimulateTexts = texts.sorted { $0.id > $1.id }
+                self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
                 print("검색결과: \(self.studyStimulateTexts)")
 
                 DispatchQueue.main.async {
