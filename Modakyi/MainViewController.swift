@@ -18,5 +18,12 @@ class MainViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = true
+        
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
 }

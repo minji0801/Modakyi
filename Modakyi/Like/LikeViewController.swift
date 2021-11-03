@@ -15,11 +15,15 @@ class LikeViewController: UIViewController {
     
     let uid = Auth.auth().currentUser?.uid
     
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingImage: UIImageView!
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadingView.alpha = 1
         
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
         ref.child("User/\(uid!)/like").observe(.value) { snapshot in
@@ -31,9 +35,9 @@ class LikeViewController: UIViewController {
                     self.collectionview.reloadData()
                     
                     // 로딩뷰 천천히 없애기
-//                    UIView.animate(withDuration: 0.5) {
-//                        self.loadingView.alpha = 0
-//                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.loadingView.alpha = 0
+                    }
                 }
                 return
             }
@@ -46,9 +50,9 @@ class LikeViewController: UIViewController {
                 self.collectionview.reloadData()
                 
                 // 로딩뷰 천천히 없애기
-//                UIView.animate(withDuration: 0.5) {
-//                    self.loadingView.alpha = 0
-//                }
+                UIView.animate(withDuration: 0.5) {
+                    self.loadingView.alpha = 0
+                }
             }
         }
     }
@@ -61,6 +65,14 @@ class LikeViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
         } else {
             overrideUserInterfaceStyle = .light
+        }
+        
+        // 로딩 이미지 애니메이션
+        UIView.animate(withDuration: 0.7, delay: 0, options: .repeat) {
+            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi)
+        }
+        UIView.animate(withDuration: 0.7, delay: 0.7, options: .repeat) {
+            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi * 2)
         }
     }
 }
