@@ -13,11 +13,10 @@ class HomeViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
     var studyStimulateTexts: [StudyStimulateText] = []
     var recommendTextId = ""
+    var recommendViewHeight: CGFloat = 0
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingImage: UIImageView!
-    @IBOutlet weak var recommendView: UIView!
-    @IBOutlet weak var recommendLabel: UILabel!
     @IBOutlet weak var collectionview: UICollectionView!
     
     override func viewDidLoad() {
@@ -38,17 +37,7 @@ class HomeViewController: UIViewController {
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
 //                print("Home - studyStimulateText: \(self.studyStimulateTexts)")
                 
-                // 추천 글귀 가져와 라벨에 뿌려주기
                 self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
-                self.ref.child("Text/Text\(self.recommendTextId)").observe(.value) { snapshot in
-                    guard let value = snapshot.value as? [String: String] else { return }
-
-                    let eng = value["eng"]!
-                    let kor = value["kor"]!
-                    let who = value["who"]!
-
-                    self.recommendLabel.text = TextOnLabel(eng, kor, who)
-                }
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
@@ -68,8 +57,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        recommendView.layer.cornerRadius = 30
-        
         guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
         if appearance == "Dark" {
             overrideUserInterfaceStyle = .dark
@@ -86,7 +73,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func settingButtonTapped(_ sender: UIButton) {
+    @objc func settingButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
         self.navigationController?.pushViewController(settingViewController, animated: true)
@@ -123,6 +110,11 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         
+        header.recommendView.layer.cornerRadius = 30
+        header.updateText(self.recommendTextId)
+        self.recommendViewHeight = header.recommendView.bounds.height
+        header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)
+        
         return header
     }
 }
@@ -141,5 +133,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: self.recommendViewHeight + 150)
     }
 }
