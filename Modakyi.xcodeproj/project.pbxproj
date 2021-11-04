@@ -13,6 +13,7 @@
 		A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4555273118A5002D8A67 /* UsewayCell.swift */; };
 		A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4557273118B2002D8A67 /* VersionInfoCell.swift */; };
 		A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E455B2731191C002D8A67 /* SignOutCell.swift */; };
+		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
 		A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAC272D5BE7000807A5 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		A54E4555273118A5002D8A67 /* UsewayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsewayCell.swift; sourceTree = "<group>"; };
 		A54E4557273118B2002D8A67 /* VersionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoCell.swift; sourceTree = "<group>"; };
 		A54E455B2731191C002D8A67 /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
+		A55298CF2733920800DCB870 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
 				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
+				A55298CF2733920800DCB870 /* NetworkViewController.swift */,
 				A59FAFC5272D6E79000807A5 /* Login */,
 				A59FAFC6272D6E8F000807A5 /* Home */,
 				A5EFE247272FD8090086EBAC /* Like */,
@@ -376,6 +379,7 @@
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A5EFE254272FDDFF0086EBAC /* UnusedCollectionHeaderView.swift in Sources */,
 				A5EFE259272FF3670086EBAC /* SearchCollectionViewCell.swift in Sources */,
+				A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */,
 				A54E45542731188D002D8A67 /* DarkModeCell.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
 			);

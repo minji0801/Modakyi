@@ -133,6 +133,21 @@
             </objects>
             <point key="canvasLocation" x="533" y="89"/>
         </scene>
+        <!--Network View Controller-->
+        <scene sceneID="pdg-BE-kKD">
+            <objects>
+                <viewController storyboardIdentifier="NetworkViewController" id="KG1-eR-RfR" customClass="NetworkViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nzP-eK-r5O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="83Q-X3-0po"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNX-3s-rhY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="532" y="780"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="Phd-k7-XVd">
             <objects>
