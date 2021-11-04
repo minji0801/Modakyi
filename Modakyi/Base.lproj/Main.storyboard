@@ -706,69 +706,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTA-qw-81v">
-                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-E9-Y4R">
-                                        <rect key="frame" x="20" y="15" width="87" height="30"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-3V-7us">
-                                        <rect key="frame" x="350.5" y="11" width="53.5" height="38"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="settingButtonTapped:" destination="jYP-GC-LTW" eventType="touchUpInside" id="7jx-CR-jeu"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="B8x-kb-DOl"/>
-                                    <constraint firstItem="gFC-3V-7us" firstAttribute="centerY" secondItem="LTA-qw-81v" secondAttribute="centerY" id="G3A-xD-TaJ"/>
-                                    <constraint firstItem="BDC-E9-Y4R" firstAttribute="leading" secondItem="LTA-qw-81v" secondAttribute="leading" constant="20" id="HHC-zb-OpN"/>
-                                    <constraint firstAttribute="trailing" secondItem="gFC-3V-7us" secondAttribute="trailing" constant="10" id="Has-d4-YGE"/>
-                                    <constraint firstItem="BDC-E9-Y4R" firstAttribute="centerY" secondItem="LTA-qw-81v" secondAttribute="centerY" id="hlv-5o-Ozy"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdO-qn-23f">
-                                <rect key="frame" x="15" y="119" width="384" height="163.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-1J-jEt">
-                                        <rect key="frame" x="15" y="25" width="354" height="113.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <constraints>
-                                    <constraint firstItem="HX8-1J-jEt" firstAttribute="top" secondItem="gdO-qn-23f" secondAttribute="top" constant="25" id="1Hv-2t-6lg"/>
-                                    <constraint firstAttribute="trailing" secondItem="HX8-1J-jEt" secondAttribute="trailing" constant="15" id="Bzp-Zt-NlG"/>
-                                    <constraint firstItem="HX8-1J-jEt" firstAttribute="leading" secondItem="gdO-qn-23f" secondAttribute="leading" constant="15" id="Dbg-k7-dfV"/>
-                                    <constraint firstAttribute="bottom" secondItem="HX8-1J-jEt" secondAttribute="bottom" constant="25" id="MGg-LZ-7Sa"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="NSo-wW-1XB" appends="YES" id="7M2-Gc-T2L"/>
-                                </connections>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-6E-Pfd">
-                                <rect key="frame" x="0.0" y="297.5" width="414" height="598.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="SSy-D0-8NJ">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="headerReferenceSize" width="50" height="350"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionViewCell" id="Xbe-Yb-7Dv" customClass="HomeCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="350" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ma7-sg-9qA">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -795,11 +744,59 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HomeCollectionHeaderView" id="jFz-Wh-qSm" customClass="HomeCollectionHeaderView" customModule="Modakyi" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTA-qw-81v">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-E9-Y4R">
+                                                    <rect key="frame" x="20" y="15" width="87" height="30"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-3V-7us">
+                                                    <rect key="frame" x="350.5" y="11" width="53.5" height="38"/>
+                                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="B8x-kb-DOl"/>
+                                                <constraint firstItem="gFC-3V-7us" firstAttribute="centerY" secondItem="LTA-qw-81v" secondAttribute="centerY" id="G3A-xD-TaJ"/>
+                                                <constraint firstItem="BDC-E9-Y4R" firstAttribute="leading" secondItem="LTA-qw-81v" secondAttribute="leading" constant="20" id="HHC-zb-OpN"/>
+                                                <constraint firstAttribute="trailing" secondItem="gFC-3V-7us" secondAttribute="trailing" constant="10" id="Has-d4-YGE"/>
+                                                <constraint firstItem="BDC-E9-Y4R" firstAttribute="centerY" secondItem="LTA-qw-81v" secondAttribute="centerY" id="hlv-5o-Ozy"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdO-qn-23f">
+                                            <rect key="frame" x="18" y="80" width="378" height="163.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-1J-jEt">
+                                                    <rect key="frame" x="15" y="25" width="348" height="113.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HX8-1J-jEt" secondAttribute="trailing" constant="15" id="Pik-wd-Jud"/>
+                                                <constraint firstItem="HX8-1J-jEt" firstAttribute="leading" secondItem="gdO-qn-23f" secondAttribute="leading" constant="15" id="QQ5-VU-IFD"/>
+                                                <constraint firstAttribute="bottom" secondItem="HX8-1J-jEt" secondAttribute="bottom" constant="25" id="RVg-2i-MJx"/>
+                                                <constraint firstItem="HX8-1J-jEt" firstAttribute="top" secondItem="gdO-qn-23f" secondAttribute="top" constant="25" id="aAY-Yk-1mp"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="NSo-wW-1XB" appends="YES" id="7M2-Gc-T2L"/>
+                                            </connections>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 글귀모음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoy-ep-7z9">
-                                            <rect key="frame" x="20" y="15" width="136" height="30"/>
+                                            <rect key="frame" x="20" y="290" width="136" height="30"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -807,8 +804,19 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zoy-ep-7z9" firstAttribute="leading" secondItem="jFz-Wh-qSm" secondAttribute="leading" constant="20" id="7ju-TO-0PD"/>
-                                        <constraint firstItem="zoy-ep-7z9" firstAttribute="centerY" secondItem="jFz-Wh-qSm" secondAttribute="centerY" id="Zdu-lN-bY0"/>
+                                        <constraint firstAttribute="bottom" secondItem="zoy-ep-7z9" secondAttribute="bottom" constant="30" id="Aee-d8-alU"/>
+                                        <constraint firstItem="LTA-qw-81v" firstAttribute="top" secondItem="jFz-Wh-qSm" secondAttribute="top" id="Lmr-bd-4ns"/>
+                                        <constraint firstItem="gdO-qn-23f" firstAttribute="leading" secondItem="jFz-Wh-qSm" secondAttribute="leadingMargin" constant="10" id="SJJ-yX-hKG"/>
+                                        <constraint firstItem="gdO-qn-23f" firstAttribute="top" secondItem="LTA-qw-81v" secondAttribute="bottom" constant="20" id="X92-VV-slG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gdO-qn-23f" secondAttribute="trailing" constant="10" id="dnV-KI-YJf"/>
+                                        <constraint firstItem="LTA-qw-81v" firstAttribute="leading" secondItem="jFz-Wh-qSm" secondAttribute="leading" id="nVD-Cl-LYx"/>
+                                        <constraint firstAttribute="trailing" secondItem="LTA-qw-81v" secondAttribute="trailing" id="ogp-uA-pBJ"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="recommendLabel" destination="HX8-1J-jEt" id="m48-LK-JZL"/>
+                                        <outlet property="recommendView" destination="gdO-qn-23f" id="HWq-i3-ffx"/>
+                                        <outlet property="settingButton" destination="gFC-3V-7us" id="06T-al-7Yt"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="jYP-GC-LTW" id="WRS-ua-GE0"/>
@@ -834,19 +842,13 @@
                         <viewLayoutGuide key="safeArea" id="l0A-C3-6yt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LTA-qw-81v" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" id="0Da-ob-f2r"/>
                             <constraint firstItem="YgT-Bk-eff" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" id="2Bq-VI-ohF"/>
                             <constraint firstItem="YgT-Bk-eff" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="93t-Bk-dw4"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="aKb-6E-Pfd" secondAttribute="trailing" id="I9s-C0-2bc"/>
-                            <constraint firstItem="LTA-qw-81v" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="KCa-BP-s06"/>
-                            <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="gdO-qn-23f" secondAttribute="trailing" constant="15" id="VcL-1W-M5Z"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="YgT-Bk-eff" secondAttribute="trailing" id="WaC-qa-Owz"/>
-                            <constraint firstItem="gdO-qn-23f" firstAttribute="top" secondItem="LTA-qw-81v" secondAttribute="bottom" constant="15" id="Xx5-gw-aV2"/>
                             <constraint firstAttribute="bottom" secondItem="aKb-6E-Pfd" secondAttribute="bottom" id="YYX-H2-gZi"/>
-                            <constraint firstItem="gdO-qn-23f" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" constant="15" id="bu4-Y3-FQ6"/>
-                            <constraint firstItem="aKb-6E-Pfd" firstAttribute="top" secondItem="gdO-qn-23f" secondAttribute="bottom" constant="15" id="c1c-H8-x0S"/>
+                            <constraint firstItem="aKb-6E-Pfd" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="eMx-9m-eCe"/>
                             <constraint firstItem="aKb-6E-Pfd" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" id="ezi-2t-uNC"/>
-                            <constraint firstItem="LTA-qw-81v" firstAttribute="trailing" secondItem="l0A-C3-6yt" secondAttribute="trailing" id="hNn-7b-JRT"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="bottom" secondItem="YgT-Bk-eff" secondAttribute="bottom" id="nBK-yh-Qfs"/>
                         </constraints>
                     </view>
@@ -855,8 +857,6 @@
                         <outlet property="collectionview" destination="aKb-6E-Pfd" id="GhK-YO-tHN"/>
                         <outlet property="loadingImage" destination="ivN-S7-ekH" id="zhs-Fx-omO"/>
                         <outlet property="loadingView" destination="YgT-Bk-eff" id="C4Y-dV-xsK"/>
-                        <outlet property="recommendLabel" destination="HX8-1J-jEt" id="yGM-sk-ee0"/>
-                        <outlet property="recommendView" destination="gdO-qn-23f" id="oFb-fV-fRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyC-yk-amu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
