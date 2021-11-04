@@ -11,6 +11,7 @@ import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
 import FirebaseDatabase
+import SystemConfiguration
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailLoginButton: UIButton!
@@ -23,10 +24,23 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
-            $0?.layer.borderWidth = 0.2
-            $0?.layer.borderColor = UIColor.darkGray.cgColor
-            $0?.layer.cornerRadius = 30
+        if isInternetAvailable() {
+            [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
+                $0?.layer.borderWidth = 0.2
+                $0?.layer.borderColor = UIColor.darkGray.cgColor
+                $0?.layer.cornerRadius = 30
+            }
+            
+            // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
+            if let _ = Auth.auth().currentUser {
+                DispatchQueue.main.async {
+                    self.showMainViewController()
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.showNetworkViewController()
+            }
         }
     }
     
@@ -43,6 +57,45 @@ class LoginViewController: UIViewController {
         } else {
             overrideUserInterfaceStyle = .light
         }
+    }
+    
+    private func showMainViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        mainViewController.modalPresentationStyle = .fullScreen
+        UIApplication.shared.windows.first?.rootViewController?.show(mainViewController, sender: nil)
+    }
+    
+    private func showNetworkViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let networkViewController = storyboard.instantiateViewController(withIdentifier: "NetworkViewController")
+        networkViewController.modalPresentationStyle = .fullScreen
+        UIApplication.shared.windows.first?.rootViewController?.show(networkViewController, sender: nil)
+    }
+    
+    func isInternetAvailable() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            
+            return false
+            
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
     }
     
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
