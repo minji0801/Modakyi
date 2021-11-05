@@ -9,12 +9,12 @@ import UIKit
 import FirebaseDatabase
 
 class SearchViewController: UIViewController {
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionview: UICollectionView!
-    
     var ref: DatabaseReference! = Database.database().reference()
     var studyStimulateTexts: [StudyStimulateText] = []
     var searchTexts: [StudyStimulateText] = []
+    var searchBar: UISearchBar!
+    
+    @IBOutlet weak var collectionview: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +73,16 @@ extension SearchViewController: UICollectionViewDataSource {
         cell.updateUI(text)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchCollectionHeaderView", for: indexPath) as? SearchCollectionHeaderView else {
+            return UICollectionReusableView()
+        }
+        
+        header.searchBar.delegate = self
+        self.searchBar = header.searchBar
+        return header
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate {
@@ -113,7 +123,8 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         // 검색창 눌렀을 때
-        searchBar.showsCancelButton = true
+        searchBar.setValue("취소", forKey: "cancelButtonText")
+        searchBar.setShowsCancelButton(true, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
