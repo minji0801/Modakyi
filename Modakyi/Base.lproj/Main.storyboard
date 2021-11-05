@@ -445,6 +445,9 @@
                                     <constraint firstItem="2Bq-MG-ese" firstAttribute="centerX" secondItem="5Vi-Rc-T1f" secondAttribute="centerX" id="myP-0V-Xb0"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="JBO-II-6m1">
+                                <rect key="frame" x="188.5" y="410" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rme-4E-p8P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -456,15 +459,16 @@
                             <constraint firstItem="7to-ad-AvM" firstAttribute="leading" secondItem="Rme-4E-p8P" secondAttribute="leading" id="T1Y-5u-Nz8"/>
                             <constraint firstItem="Rme-4E-p8P" firstAttribute="bottom" secondItem="5Vi-Rc-T1f" secondAttribute="bottom" id="WKe-50-VYG"/>
                             <constraint firstItem="Rme-4E-p8P" firstAttribute="trailing" secondItem="7to-ad-AvM" secondAttribute="trailing" id="gph-vQ-cua"/>
+                            <constraint firstItem="JBO-II-6m1" firstAttribute="centerY" secondItem="Rme-4E-p8P" secondAttribute="centerY" id="hAn-YN-c9B"/>
+                            <constraint firstItem="JBO-II-6m1" firstAttribute="centerX" secondItem="Rme-4E-p8P" secondAttribute="centerX" id="rTS-72-50V"/>
                             <constraint firstItem="5Vi-Rc-T1f" firstAttribute="leading" secondItem="Rme-4E-p8P" secondAttribute="leading" id="u0m-yw-usg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="like_icon" selectedImage="like_icon" id="LUX-3K-gU4"/>
                     <connections>
                         <outlet property="collectionview" destination="7to-ad-AvM" id="eK5-eH-TJo"/>
+                        <outlet property="indicatorView" destination="JBO-II-6m1" id="MRy-Dw-38v"/>
                         <outlet property="labelView" destination="g21-I2-ZF1" id="7Mm-xR-3i1"/>
-                        <outlet property="loadingImage" destination="2Bq-MG-ese" id="iZD-lP-6Rw"/>
-                        <outlet property="loadingView" destination="5Vi-Rc-T1f" id="fYS-YR-7iV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zH-Cc-gO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -568,6 +572,9 @@
                                     <constraint firstItem="jh1-lJ-hNU" firstAttribute="centerX" secondItem="qVY-AU-XZb" secondAttribute="centerX" id="tlZ-bf-Ma3"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ri6-RY-hbQ">
+                                <rect key="frame" x="188.5" y="410" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AEe-sG-b38"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -578,16 +585,17 @@
                             <constraint firstItem="AEe-sG-b38" firstAttribute="trailing" secondItem="uLl-4a-jfz" secondAttribute="trailing" id="BOY-vo-aQX"/>
                             <constraint firstItem="qVY-AU-XZb" firstAttribute="leading" secondItem="AEe-sG-b38" secondAttribute="leading" id="Bw4-Da-PfD"/>
                             <constraint firstItem="AEe-sG-b38" firstAttribute="trailing" secondItem="qVY-AU-XZb" secondAttribute="trailing" id="Fk6-Q6-jJy"/>
+                            <constraint firstItem="ri6-RY-hbQ" firstAttribute="centerY" secondItem="AEe-sG-b38" secondAttribute="centerY" id="VQ7-QV-qZY"/>
                             <constraint firstItem="uLl-4a-jfz" firstAttribute="leading" secondItem="AEe-sG-b38" secondAttribute="leading" id="Zf3-dB-EO2"/>
                             <constraint firstItem="AEe-sG-b38" firstAttribute="top" secondItem="qVY-AU-XZb" secondAttribute="top" constant="3" id="dZk-NT-iP0"/>
+                            <constraint firstItem="ri6-RY-hbQ" firstAttribute="centerX" secondItem="AEe-sG-b38" secondAttribute="centerX" id="tPb-eC-cMQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="folder_icon" selectedImage="folder_icon" id="W1Y-ss-Yka"/>
                     <connections>
                         <outlet property="collectionview" destination="uLl-4a-jfz" id="JKM-ia-UVM"/>
+                        <outlet property="indicatorView" destination="ri6-RY-hbQ" id="lHR-R3-Gg8"/>
                         <outlet property="labelView" destination="2Xd-dz-Wlg" id="r7p-a9-v0i"/>
-                        <outlet property="loadingImage" destination="jh1-lJ-hNU" id="OQ7-ux-oX1"/>
-                        <outlet property="loadingView" destination="qVY-AU-XZb" id="5IQ-YF-H5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLl-QD-B2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -838,13 +846,18 @@
                                     <constraint firstItem="ivN-S7-ekH" firstAttribute="centerX" secondItem="YgT-Bk-eff" secondAttribute="centerX" id="y3j-XH-kaO"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ys3-tO-umi">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l0A-C3-6yt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YgT-Bk-eff" firstAttribute="leading" secondItem="l0A-C3-6yt" secondAttribute="leading" id="2Bq-VI-ohF"/>
                             <constraint firstItem="YgT-Bk-eff" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="93t-Bk-dw4"/>
+                            <constraint firstItem="ys3-tO-umi" firstAttribute="centerX" secondItem="uNY-Vf-7Wl" secondAttribute="centerX" id="Dxs-Ge-WCw"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="aKb-6E-Pfd" secondAttribute="trailing" id="I9s-C0-2bc"/>
+                            <constraint firstItem="ys3-tO-umi" firstAttribute="centerY" secondItem="uNY-Vf-7Wl" secondAttribute="centerY" id="TZH-cl-a5h"/>
                             <constraint firstItem="l0A-C3-6yt" firstAttribute="trailing" secondItem="YgT-Bk-eff" secondAttribute="trailing" id="WaC-qa-Owz"/>
                             <constraint firstAttribute="bottom" secondItem="aKb-6E-Pfd" secondAttribute="bottom" id="YYX-H2-gZi"/>
                             <constraint firstItem="aKb-6E-Pfd" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="eMx-9m-eCe"/>
@@ -855,8 +868,7 @@
                     <tabBarItem key="tabBarItem" title="" image="home_icon" selectedImage="home_icon" id="755-cS-jdz"/>
                     <connections>
                         <outlet property="collectionview" destination="aKb-6E-Pfd" id="GhK-YO-tHN"/>
-                        <outlet property="loadingImage" destination="ivN-S7-ekH" id="zhs-Fx-omO"/>
-                        <outlet property="loadingView" destination="YgT-Bk-eff" id="C4Y-dV-xsK"/>
+                        <outlet property="indicatorView" destination="ys3-tO-umi" id="yaZ-cG-D19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyC-yk-amu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
