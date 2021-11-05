@@ -15,15 +15,12 @@ class HomeViewController: UIViewController {
     var recommendTextId = ""
     var recommendViewHeight: CGFloat = 0
     
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingImage: UIImageView!
     @IBOutlet weak var collectionview: UICollectionView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 로딩화면 불러오기
-        loadingView.alpha = 1
+        self.collectionview.alpha = 0
         
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
@@ -42,9 +39,11 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
                     
-                    // 로딩뷰 천천히 없애기
+                    // Indicator 천천히 없애기
                     UIView.animate(withDuration: 0.5) {
-                        self.loadingView.alpha = 0
+                        self.indicatorView.stopAnimating()
+                        self.indicatorView.alpha = 0
+                        self.collectionview.alpha = 1
                     }
                 }
             } catch let error {
@@ -62,14 +61,6 @@ class HomeViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
         } else {
             overrideUserInterfaceStyle = .light
-        }
-        
-        // 로딩 이미지 애니메이션
-        UIView.animate(withDuration: 0.7, delay: 0, options: .repeat) {
-            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi)
-        }
-        UIView.animate(withDuration: 0.7, delay: 0.7, options: .repeat) {
-            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi * 2)
         }
     }
     

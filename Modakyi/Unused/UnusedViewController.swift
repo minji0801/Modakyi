@@ -16,15 +16,13 @@ class UnusedViewController: UIViewController {
     
     let uid = Auth.auth().currentUser?.uid
 
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingImage: UIImageView!
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadingView.alpha = 1
+        self.collectionview.alpha = 0
         
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
@@ -53,7 +51,9 @@ class UnusedViewController: UIViewController {
                     
                     // 로딩뷰 천천히 없애기
                     UIView.animate(withDuration: 0.5) {
-                        self.loadingView.alpha = 0
+                        self.indicatorView.stopAnimating()
+                        self.indicatorView.alpha = 0
+                        self.collectionview.alpha = 1
                     }
                 }
                 return
@@ -72,7 +72,9 @@ class UnusedViewController: UIViewController {
                 
                 // 로딩뷰 천천히 없애기
                 UIView.animate(withDuration: 0.5) {
-                    self.loadingView.alpha = 0
+                    self.indicatorView.stopAnimating()
+                    self.indicatorView.alpha = 0
+                    self.collectionview.alpha = 1
                 }
             }
         }
@@ -86,14 +88,6 @@ class UnusedViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
         } else {
             overrideUserInterfaceStyle = .light
-        }
-        
-        // 로딩 이미지 애니메이션
-        UIView.animate(withDuration: 0.7, delay: 0, options: .repeat) {
-            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi)
-        }
-        UIView.animate(withDuration: 0.7, delay: 0.7, options: .repeat) {
-            self.loadingImage.transform = CGAffineTransform(rotationAngle: .pi * 2)
         }
     }
 }
