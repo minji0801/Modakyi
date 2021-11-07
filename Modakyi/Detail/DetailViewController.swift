@@ -14,8 +14,8 @@ class DetailViewController: UIViewController {
     let uid = Auth.auth().currentUser?.uid
     var id = ""
     
-    var likeTexts = [Int]()
-    var usedTexts = [Int]()
+    var likeTextIDs = [Int]()
+    var usedTextIDs = [Int]()
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
@@ -38,17 +38,18 @@ class DetailViewController: UIViewController {
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
         ref.child("User/\(uid!)/like").observe(.value) { snapshot in
             if let value = snapshot.value as? [Int] {
-                self.likeTexts = value
+                self.likeTextIDs = value
             }
-            print("Detail 좋아하는 글귀 id: \(self.likeTexts)")
+            print("Detail 좋아하는 글귀 id: \(self.likeTextIDs)")
             self.viewWillAppear(true)
         }
         
         // User DB에서 현재 사용자가 사용한 글귀 데이터 읽어오기
         ref.child("User/\(uid!)/used").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [Int] else { return }
-            print("Detail 사용 글귀 id: \(value)")
-            self.usedTexts = value
+            if let value = snapshot.value as? [Int] {
+                self.usedTextIDs = value
+            }
+            print("Detail 사용 글귀 id: \(self.usedTextIDs)")
             self.viewWillAppear(true)
         }
     }
@@ -59,7 +60,7 @@ class DetailViewController: UIViewController {
         likeButton.tag = Int(id)!
         checkButton.tag = Int(id)!
 
-        if likeTexts.contains(Int(id)!) {
+        if likeTextIDs.contains(Int(id)!) {
             // isSelected로 바꾸고, 색상 핑크로
             likeButton.isSelected = true
             likeButton.tintColor = .systemPink
@@ -69,7 +70,7 @@ class DetailViewController: UIViewController {
             likeButton.tintColor = .label
         }
 
-        if usedTexts.contains(Int(id)!) {
+        if usedTextIDs.contains(Int(id)!) {
             // isSelected로 바꾸기
             checkButton.isSelected = true
         } else {
@@ -85,6 +86,11 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("DismissDetailView"), object: nil, userInfo: nil)
+    }
+    
     @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
@@ -98,14 +104,14 @@ class DetailViewController: UIViewController {
         
         if sender.isSelected {
             // 데이터 빼고 리로드
-            likeTexts.remove(at: likeTexts.firstIndex(of: sender.tag)!)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts])
+            likeTextIDs.remove(at: likeTextIDs.firstIndex(of: sender.tag)!)
+            ref.child("User/\(uid!)").updateChildValues(["like": likeTextIDs])
             self.viewDidAppear(true)
 
         } else {
             // 데이터 넣고 리로드
-            likeTexts.append(sender.tag)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTexts])
+            likeTextIDs.append(sender.tag)
+            ref.child("User/\(uid!)").updateChildValues(["like": likeTextIDs])
             self.viewDidAppear(true)
         }
     }
@@ -115,14 +121,14 @@ class DetailViewController: UIViewController {
         
         if sender.isSelected {
             // 데이터 빼고 리로드
-            usedTexts.remove(at: usedTexts.firstIndex(of: sender.tag)!)
-            ref.child("User/\(uid!)").updateChildValues(["used": usedTexts.sorted()])
+            usedTextIDs.remove(at: usedTextIDs.firstIndex(of: sender.tag)!)
+            ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
             self.viewDidAppear(true)
 
         } else {
             // 데이터 넣고 리로드
-            usedTexts.append(sender.tag)
-            ref.child("User/\(uid!)").updateChildValues(["used": usedTexts.sorted()])
+            usedTextIDs.append(sender.tag)
+            ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
             self.viewDidAppear(true)
         }
     }
