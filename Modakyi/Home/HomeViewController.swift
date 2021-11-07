@@ -11,9 +11,15 @@ import FirebaseDatabase
 
 class HomeViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+    
     var studyStimulateTexts: [StudyStimulateText] = []
+    var newTextIDs: [String] = []
+    var clickedTextIDs = [String]()
+    
     var recommendTextId = ""
     var recommendViewHeight: CGFloat = 0
+    var currentTime = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -21,6 +27,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionview.alpha = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissDetailNotification(_:)), name: NSNotification.Name("DismissDetailView"), object: nil)
         
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
@@ -36,6 +44,10 @@ class HomeViewController: UIViewController {
                 
                 self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
                 
+                // New 글귀 찾기
+                self.getCurrentTime()
+                self.newTextIDs = self.studyStimulateTexts.filter { self.timeDifference($0.time) }.map { $0.id }
+                
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
                     
@@ -49,6 +61,14 @@ class HomeViewController: UIViewController {
             } catch let error {
                 print("ERROR JSON Parsing \(error.localizedDescription)")
             }
+        }
+        
+        // User DB에서 현재 사용자가 클릭한 글귀 데이터 읽어오기
+        ref.child("User/\(uid!)/clicked").observe(.value) { snapshot in
+            if let value = snapshot.value as? [String] {
+                self.clickedTextIDs = value
+            }
+            print("Home - 클릭한 글귀 id: \(self.clickedTextIDs)")
         }
     }
     
@@ -64,6 +84,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func didDismissDetailNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.reloadData()
+        }
+    }
+    
     @objc func settingButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
@@ -75,6 +101,31 @@ class HomeViewController: UIViewController {
         guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailViewController.id = recommendTextId
         self.present(detailViewController, animated: true, completion: nil)
+    }
+    
+    // 현재 시간 구하기
+    func getCurrentTime() {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        self.currentTime = dateFormatter.string(from: now)
+    }
+    
+    // 시간 차이 구하기
+    func timeDifference(_ start: String) -> Bool {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        guard let startTime = format.date(from: start) else { return false }
+        guard let endTime = format.date(from: self.currentTime) else { return false }
+        
+        let useTime = Int(endTime.timeIntervalSince(startTime))
+        if useTime < 86400 {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
@@ -93,6 +144,7 @@ extension HomeViewController: UICollectionViewDataSource {
         
         let text = self.studyStimulateTexts[indexPath.row]
         cell.labelUpdateUI(text)
+        cell.imageUpdateUI(self.newTextIDs, self.clickedTextIDs, studyStimulateTexts.count - indexPath.row - 1)
         return cell
     }
     
@@ -113,6 +165,11 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     // 셀 클릭했을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !clickedTextIDs.contains(studyStimulateTexts[indexPath.row].id) {
+            self.clickedTextIDs.append(studyStimulateTexts[indexPath.row].id)
+            self.ref.child("User/\(self.uid!)").updateChildValues(["clicked": self.clickedTextIDs])
+        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailViewController.id = studyStimulateTexts[indexPath.row].id

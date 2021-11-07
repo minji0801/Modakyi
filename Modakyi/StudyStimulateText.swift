@@ -12,4 +12,5 @@ struct StudyStimulateText: Codable {
     let kor: String
     let eng: String
     let who: String
+    let time: String
 }
