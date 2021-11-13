@@ -20,6 +20,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         
         // Navigation Bar Configure
         self.navigationController?.navigationBar.isHidden = false
@@ -36,6 +37,7 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
         
         guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
         if appearance == "Dark" {
@@ -43,6 +45,11 @@ class SettingViewController: UIViewController {
         } else {
             overrideUserInterfaceStyle = .light
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
     }
     
     @objc func darkmodeSwitchChanged(_ sender: UISwitch) {

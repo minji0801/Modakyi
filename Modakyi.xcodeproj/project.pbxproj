@@ -14,6 +14,7 @@
 		A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4557273118B2002D8A67 /* VersionInfoCell.swift */; };
 		A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E455B2731191C002D8A67 /* SignOutCell.swift */; };
 		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
+		A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B55E7273F884300A3A814 /* NetworkCheck.swift */; };
 		A561379B2734DCDD006C16CF /* SearchCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561379A2734DCDD006C16CF /* SearchCollectionHeaderView.swift */; };
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
@@ -41,6 +42,19 @@
 		BBEE75F73738EB9868E09EE4 /* Pods_Modakyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A55B5583273F6E5F00A3A814 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2FD333FAF9815CFB8F3F417C /* Pods-Modakyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.debug.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.debug.xcconfig"; sourceTree = "<group>"; };
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +66,21 @@
 		A54E4557273118B2002D8A67 /* VersionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoCell.swift; sourceTree = "<group>"; };
 		A54E455B2731191C002D8A67 /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		A55298CF2733920800DCB870 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		A55B5573273F6E5E00A3A814 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A55B5575273F6E5E00A3A814 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A55B55B0273F7CA700A3A814 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55B8273F802C00A3A814 /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
+		A55B55B9273F802C00A3A814 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55BA273F802C00A3A814 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55BB273F802C00A3A814 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55BC273F802C00A3A814 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55BD273F802C00A3A814 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55CB273F811000A3A814 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55CC273F811000A3A814 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55CD273F811000A3A814 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55CE273F811000A3A814 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55CF273F811000A3A814 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B55E7273F884300A3A814 /* NetworkCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCheck.swift; sourceTree = "<group>"; };
 		A561379A2734DCDD006C16CF /* SearchCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +179,7 @@
 				A53C6BC92730F26400066A3F /* Setting */,
 				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
 				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
+				A55B55E7273F884300A3A814 /* NetworkCheck.swift */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
@@ -220,7 +250,21 @@
 		CC8FA4A7A30BCBDF6148A2DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A55B55CB273F811000A3A814 /* FirebaseAuth.framework */,
+				A55B55CC273F811000A3A814 /* FirebaseCore.framework */,
+				A55B55CD273F811000A3A814 /* FirebaseCoreDiagnostics.framework */,
+				A55B55CE273F811000A3A814 /* FirebaseDatabase.framework */,
+				A55B55CF273F811000A3A814 /* FirebaseInstallations.framework */,
+				A55B55B8273F802C00A3A814 /* FirebaseAnalytics.xcframework */,
+				A55B55B9273F802C00A3A814 /* FirebaseAuth.framework */,
+				A55B55BA273F802C00A3A814 /* FirebaseCore.framework */,
+				A55B55BB273F802C00A3A814 /* FirebaseCoreDiagnostics.framework */,
+				A55B55BC273F802C00A3A814 /* FirebaseDatabase.framework */,
+				A55B55BD273F802C00A3A814 /* FirebaseInstallations.framework */,
+				A55B55B0273F7CA700A3A814 /* FirebaseDatabase.framework */,
 				47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */,
+				A55B5573273F6E5E00A3A814 /* WidgetKit.framework */,
+				A55B5575273F6E5E00A3A814 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,6 +282,7 @@
 				A59FAFA1272D5BE7000807A5 /* Resources */,
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				0AD0CB1523563AC3FFE28000 /* [CP] Copy Pods Resources */,
+				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -360,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5EFE24D272FD8370086EBAC /* LikeCollectionHeaderView.swift in Sources */,
+				A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */,
 				A5EFE246272FC3340086EBAC /* DetailViewController.swift in Sources */,
 				A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */,
 				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
