@@ -15,16 +15,10 @@ class SettingViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var darkmodeSwitch: UISwitch!
     @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
-        
-        // Navigation Bar Configure
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationItem.title = "설정"
         
         // Profile Image / UserName
         let username = Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
@@ -37,7 +31,6 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         
         guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
         if appearance == "Dark" {
@@ -47,10 +40,10 @@ class SettingViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear")
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
+    
     
     @objc func darkmodeSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -73,12 +66,12 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let noticeCell = tableView.dequeueReusableCell(withIdentifier: "NoticeCell", for: indexPath) as? NoticeCell else { return UITableViewCell() }
-            return noticeCell
-        case 1:
             guard let darkModeCell = tableView.dequeueReusableCell(withIdentifier: "DarkModeCell", for: indexPath) as? DarkModeCell else { return UITableViewCell() }
             darkModeCell.darkmodeSwitch.addTarget(self, action: #selector(self.darkmodeSwitchChanged(_:)), for: .valueChanged)
             return darkModeCell
+        case 1:
+            guard let noticeCell = tableView.dequeueReusableCell(withIdentifier: "NoticeCell", for: indexPath) as? NoticeCell else { return UITableViewCell() }
+            return noticeCell
         case 2:
             guard let usewayCell = tableView.dequeueReusableCell(withIdentifier: "UsewayCell", for: indexPath) as? UsewayCell else { return UITableViewCell() }
             return usewayCell
@@ -97,6 +90,12 @@ extension SettingViewController: UITableViewDataSource {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 1:
+            // 알림
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
         case 2:
             // 이용방법
             let url = NSURL(string: "https://midi-dill-147.notion.site/3a762cd2888e40f08e392f31667020ff")
