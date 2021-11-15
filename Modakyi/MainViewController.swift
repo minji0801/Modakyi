@@ -16,14 +16,7 @@ class MainViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        AppearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
-        
-        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-        if appearance == "Dark" {
-            overrideUserInterfaceStyle = .dark
-        } else {
-            overrideUserInterfaceStyle = .light
-        }
     }
 }

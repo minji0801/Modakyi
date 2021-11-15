@@ -31,13 +31,7 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-        if appearance == "Dark" {
-            overrideUserInterfaceStyle = .dark
-        } else {
-            overrideUserInterfaceStyle = .light
-        }
+        AppearanceCheck(self)
     }
     
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
