@@ -99,15 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
             
             // Main 화면으로 이동
-            self.showMainViewController()
+            showMainVCOnRoot()
         }
-    }
-    
-    private func showMainViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-        mainViewController.modalPresentationStyle = .fullScreen
-        UIApplication.shared.windows.first?.rootViewController?.show(mainViewController, sender: nil)
     }
 }
 

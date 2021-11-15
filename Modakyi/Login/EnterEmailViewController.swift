@@ -56,16 +56,9 @@ class EnterEmailViewController: UIViewController {
                 let uid = Auth.auth().currentUser?.uid
                 self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
                 self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
-                self.showMainViewController()
+                showMainVCOnNavigation(self)
             }
         }
-    }
-    
-    private func showMainViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-        mainViewController.modalPresentationStyle = .fullScreen
-        navigationController?.show(mainViewController, sender: nil)
     }
     
     private func loginUser(withEmail email: String, password: String) {
@@ -79,7 +72,7 @@ class EnterEmailViewController: UIViewController {
                 let uid = Auth.auth().currentUser?.uid
                 self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
                 self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
-                self.showMainViewController()
+                showMainVCOnNavigation(self)
             }
         }
     }

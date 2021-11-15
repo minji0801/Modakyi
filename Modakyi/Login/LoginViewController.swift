@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
         if let _ = Auth.auth().currentUser {
             DispatchQueue.main.async {
-                self.showMainViewController()
+                showMainVCOnRoot()
             }
         }
     }
@@ -41,16 +41,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
-        
-        // Google Sign In
-        GIDSignIn.sharedInstance().presentingViewController = self
-    }
-    
-    private func showMainViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-        mainViewController.modalPresentationStyle = .fullScreen
-        UIApplication.shared.windows.first?.rootViewController?.show(mainViewController, sender: nil)
+        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
     }
     
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
@@ -102,10 +93,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
                 
                 // Main 화면으로 이동
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let mainViewController = storyboard.instantiateViewController(identifier: "MainViewController")
-                mainViewController.modalPresentationStyle = .fullScreen
-                self.navigationController?.show(mainViewController, sender: nil)
+                showMainVCOnNavigation(self)
             }
         }
     }

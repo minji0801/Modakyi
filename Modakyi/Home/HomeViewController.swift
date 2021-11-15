@@ -33,14 +33,14 @@ class HomeViewController: UIViewController {
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
             guard let value = snapshot.value as? [String: [String: String]] else { return }
-//            print("value: \(value)")
+            //            print("value: \(value)")
             
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-//                print("Home - studyStimulateText: \(self.studyStimulateTexts)")
+                //                print("Home - studyStimulateText: \(self.studyStimulateTexts)")
                 
                 self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
                 
@@ -68,10 +68,9 @@ class HomeViewController: UIViewController {
             if let value = snapshot.value as? [String] {
                 self.clickedTextIDs = value
             }
-            print("Home - 클릭한 글귀 id: \(self.clickedTextIDs)")
+            //            print("Home - 클릭한 글귀 id: \(self.clickedTextIDs)")
         }
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -85,16 +84,11 @@ class HomeViewController: UIViewController {
     }
     
     @objc func settingButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
-        self.navigationController?.pushViewController(settingViewController, animated: true)
+        pushSettingVCOnNavigation(self)
     }
     
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        detailViewController.id = recommendTextId
-        self.present(detailViewController, animated: true, completion: nil)
+        presentDetailViewController(self, self.recommendTextId)
     }
     
     // 현재 시간 구하기
@@ -164,10 +158,7 @@ extension HomeViewController: UICollectionViewDelegate {
             self.ref.child("User/\(self.uid!)").updateChildValues(["clicked": self.clickedTextIDs])
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        detailViewController.id = studyStimulateTexts[indexPath.row].id
-        self.present(detailViewController, animated: true, completion: nil)
+        presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
     }
 }
 

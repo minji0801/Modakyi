@@ -10,7 +10,6 @@ import UIKit
 
 func AppearanceCheck(_ viewController: UIViewController) {
     guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-    print("appearance: \(appearance)")
     if appearance == "Dark" {
         viewController.overrideUserInterfaceStyle = .dark
     } else {

@@ -94,10 +94,7 @@ extension LikeViewController: UICollectionViewDataSource {
 extension LikeViewController: UICollectionViewDelegate {
     // 셀 눌렀을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        detailViewController.id = String(likeTexts[indexPath.row])
-        self.present(detailViewController, animated: true, completion: nil)
+        presentDetailViewController(self, String(likeTexts[indexPath.row]))
     }
 }
 
