@@ -18,7 +18,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         readAllText()
     }
     
@@ -37,7 +36,7 @@ class SearchViewController: UIViewController {
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-//                print("Search - studyStimulateText: \(self.studyStimulateTexts)")
+                //                print("Search - studyStimulateText: \(self.studyStimulateTexts)")
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
@@ -82,10 +81,7 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UICollectionViewDelegate {
     // 셀 눌렀을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        detailViewController.id = studyStimulateTexts[indexPath.row].id
-        self.present(detailViewController, animated: true, completion: nil)
+        presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
     }
 }
 
@@ -144,7 +140,7 @@ extension SearchViewController: UISearchBarDelegate {
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
                 print("검색결과: \(self.studyStimulateTexts)")
-
+                
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
                 }

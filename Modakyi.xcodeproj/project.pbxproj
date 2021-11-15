@@ -27,6 +27,7 @@
 		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
 		A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */; };
 		A5A69B6E27423AC7009F26CC /* AppearanceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */; };
+		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
 		A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */; };
 		A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */; };
 		A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */; };
@@ -97,6 +98,7 @@
 		A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
 		A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCheck.swift; sourceTree = "<group>"; };
+		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStimulateText.swift; sourceTree = "<group>"; };
@@ -179,10 +181,8 @@
 				A5EFE255272FF3450086EBAC /* Search */,
 				A5EFE244272FC3130086EBAC /* Detail */,
 				A53C6BC92730F26400066A3F /* Setting */,
+				A5A69B7127424171009F26CC /* Method */,
 				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
-				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
-				A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */,
-				A55B55E7273F884300A3A814 /* NetworkCheck.swift */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
@@ -210,6 +210,17 @@
 				A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		A5A69B7127424171009F26CC /* Method */ = {
+			isa = PBXGroup;
+			children = (
+				A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */,
+				A55B55E7273F884300A3A814 /* NetworkCheck.swift */,
+				A5A69B6F2742416B009F26CC /* ShowViewController.swift */,
+				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
+			);
+			path = Method;
 			sourceTree = "<group>";
 		};
 		A5EFE244272FC3130086EBAC /* Detail */ = {
@@ -412,6 +423,7 @@
 				A5EFE246272FC3340086EBAC /* DetailViewController.swift in Sources */,
 				A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */,
 				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
+				A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
 				A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */,
