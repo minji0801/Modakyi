@@ -9,7 +9,6 @@ import UIKit
 
 class DarkModeCell: UITableViewCell {
     @IBOutlet weak var darkmodeSwitch: UISwitch!
-    @IBOutlet weak var tableview: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,9 +10,17 @@ import Firebase
 import GoogleSignIn
 import FirebaseDatabase
 
+import UserNotifications
+import FirebaseMessaging
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var ref: DatabaseReference!
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        return true
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -20,6 +28,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // Firebase 초기화
         FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self
+        
+        // FCM 현재 등록 토큰 확인
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
+            } else if token == token {
+                print("FCM 등록 토큰: \(token)")
+            }
+        }
+        
+        // User Notification 설정 및 사용자 동의 얻기
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { didAllow, error in
+            if didAllow {
+                print("Push 알림 권한 허용")
+            } else {
+                print("Push 알림 권한 거부: \(error.debugDescription)")
+            }
+        }
+        application.registerForRemoteNotifications()
         
         // Google 로그인 Delgate
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -48,6 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        exit(0)
+    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // Google 로그인 인증 후 전달된 값을 처리하는 부분
@@ -79,3 +111,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner, .badge, .sound]) // 알림 display 형태 지정
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        // 다시 토큰 받았는지 확인
+        guard let fcmToken = fcmToken else { return }
+        print("FCM 등록 토큰 갱신: \(fcmToken)")
+    }
+}
