@@ -5,9 +5,10 @@
 # pod install
 
 ```
-  pod 'FirebaseAnalytics'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
-  pod 'GoogleSignIn', '5.0.2'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'GoogleSignIn', '5.0.2'
   pod 'Kingfisher', '~> 7.0'
 ```
