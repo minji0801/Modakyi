@@ -39,17 +39,11 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        AppearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
         
         // Google Sign In
         GIDSignIn.sharedInstance().presentingViewController = self
-        
-        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-        if appearance == "Dark" {
-            overrideUserInterfaceStyle = .dark
-        } else {
-            overrideUserInterfaceStyle = .light
-        }
     }
     
     private func showMainViewController() {

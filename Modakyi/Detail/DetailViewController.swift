@@ -56,6 +56,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        AppearanceCheck(self)
         
         likeButton.tag = Int(id)!
         checkButton.tag = Int(id)!
@@ -76,13 +77,6 @@ class DetailViewController: UIViewController {
         } else {
             // isSelected 풀기
             checkButton.isSelected = false
-        }
-        
-        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-        if appearance == "Dark" {
-            overrideUserInterfaceStyle = .dark
-        } else {
-            overrideUserInterfaceStyle = .light
         }
     }
     
