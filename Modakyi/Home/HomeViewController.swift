@@ -49,13 +49,7 @@ class HomeViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
-                    
-                    // Indicator 천천히 없애기
-                    UIView.animate(withDuration: 0.5) {
-                        self.indicatorView.stopAnimating()
-                        self.indicatorView.alpha = 0
-                        self.collectionview.alpha = 1
-                    }
+                    SlowlyRemoveIndicator(self.indicatorView, self.collectionview)
                 }
             } catch let error {
                 print("ERROR JSON Parsing \(error.localizedDescription)")

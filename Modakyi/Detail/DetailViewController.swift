@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Detail id: \(id)")
+//        print("Detail id: \(id)")
         
         // id로 글귀 데이터 가져오기
         ref.child("Text/Text\(id)").observe(.value) { snapshot in
@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
             if let value = snapshot.value as? [Int] {
                 self.likeTextIDs = value
             }
-            print("Detail 좋아하는 글귀 id: \(self.likeTextIDs)")
+//            print("Detail 좋아하는 글귀 id: \(self.likeTextIDs)")
             self.viewWillAppear(true)
         }
         
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
             if let value = snapshot.value as? [Int] {
                 self.usedTextIDs = value
             }
-            print("Detail 사용 글귀 id: \(self.usedTextIDs)")
+//            print("Detail 사용 글귀 id: \(self.usedTextIDs)")
             self.viewWillAppear(true)
         }
     }
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        print("\(sender.tag) like button clicked!")
+//        print("\(sender.tag) like button clicked!")
         
         if sender.isSelected {
             // 데이터 빼고 리로드
@@ -111,7 +111,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func checkButtonTapped(_ sender: UIButton) {
-        print("\(sender.tag) check button clicked!")
+//        print("\(sender.tag) check button clicked!")
         
         if sender.isSelected {
             // 데이터 빼고 리로드
