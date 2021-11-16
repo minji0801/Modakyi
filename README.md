@@ -11,4 +11,5 @@
   pod 'Firebase/Messaging'
   pod 'GoogleSignIn', '5.0.2'
   pod 'Kingfisher', '~> 7.0'
+  pod 'Siren'
 ```
