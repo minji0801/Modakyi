@@ -48,13 +48,7 @@ class UnusedViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
-                    
-                    // 로딩뷰 천천히 없애기
-                    UIView.animate(withDuration: 0.5) {
-                        self.indicatorView.stopAnimating()
-                        self.indicatorView.alpha = 0
-                        self.collectionview.alpha = 1
-                    }
+                    SlowlyRemoveIndicator(self.indicatorView, self.collectionview)
                 }
                 return
             }
@@ -69,13 +63,7 @@ class UnusedViewController: UIViewController {
                     self.labelView.isHidden = true
                 }
                 self.collectionview.reloadData()
-                
-                // 로딩뷰 천천히 없애기
-                UIView.animate(withDuration: 0.5) {
-                    self.indicatorView.stopAnimating()
-                    self.indicatorView.alpha = 0
-                    self.collectionview.alpha = 1
-                }
+                SlowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
         }
     }

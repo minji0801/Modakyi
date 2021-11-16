@@ -38,7 +38,6 @@ class SettingViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @objc func darkmodeSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
             UserDefaults.standard.set("Dark", forKey: "Appearance")
@@ -50,8 +49,8 @@ class SettingViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableView Configure
+
 extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5

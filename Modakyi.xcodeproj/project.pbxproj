@@ -26,15 +26,15 @@
 		A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBE272D655F000807A5 /* MainViewController.swift */; };
 		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
 		A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */; };
-		A5A69B6E27423AC7009F26CC /* AppearanceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */; };
 		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
 		A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */; };
 		A5BF5179274365C90006EFBC /* EliceDigitalBaeum_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */; };
 		A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF516C274365C90006EFBC /* HS새마을체.ttf */; };
+		A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF517E274381A70006EFBC /* UIConfigure.swift */; };
+		A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */; };
 		A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */; };
 		A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */; };
 		A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */; };
-		A5EFE243272FBC830086EBAC /* TextOnLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE242272FBC830086EBAC /* TextOnLabel.swift */; };
 		A5EFE246272FC3340086EBAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE245272FC3340086EBAC /* DetailViewController.swift */; };
 		A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE248272FD8180086EBAC /* LikeViewController.swift */; };
 		A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE24A272FD8280086EBAC /* LikeCollectionViewCell.swift */; };
@@ -100,15 +100,15 @@
 		A59FAFC0272D6659000807A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
-		A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCheck.swift; sourceTree = "<group>"; };
 		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Bold.ttf; sourceTree = "<group>"; };
 		A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Regular.ttf; sourceTree = "<group>"; };
 		A5BF516C274365C90006EFBC /* HS새마을체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HS새마을체.ttf"; sourceTree = "<group>"; };
+		A5BF517E274381A70006EFBC /* UIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigure.swift; sourceTree = "<group>"; };
+		A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueCurrentUser.swift; sourceTree = "<group>"; };
 		A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStimulateText.swift; sourceTree = "<group>"; };
-		A5EFE242272FBC830086EBAC /* TextOnLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnLabel.swift; sourceTree = "<group>"; };
 		A5EFE245272FC3340086EBAC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A5EFE248272FD8180086EBAC /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 		A5EFE24A272FD8280086EBAC /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -222,10 +222,10 @@
 		A5A69B7127424171009F26CC /* Method */ = {
 			isa = PBXGroup;
 			children = (
-				A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */,
 				A55B55E7273F884300A3A814 /* NetworkCheck.swift */,
+				A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */,
 				A5A69B6F2742416B009F26CC /* ShowViewController.swift */,
-				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
+				A5BF517E274381A70006EFBC /* UIConfigure.swift */,
 			);
 			path = Method;
 			sourceTree = "<group>";
@@ -448,16 +448,16 @@
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
 				A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
+				A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */,
 				A5EFE250272FDDE20086EBAC /* UnusedViewController.swift in Sources */,
 				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
 				A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */,
 				A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
-				A5EFE243272FBC830086EBAC /* TextOnLabel.swift in Sources */,
-				A5A69B6E27423AC7009F26CC /* AppearanceCheck.swift in Sources */,
 				A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */,
 				A5EFE257272FF3580086EBAC /* SearchViewController.swift in Sources */,
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
+				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
 				A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,

@@ -100,12 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         Auth.auth().signIn(with: credential) { _, _ in
             // Google Login User 데이터 만들기
-            self.ref = Database.database().reference()
-            let uid = Auth.auth().currentUser?.uid
-            self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
-            self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
-            
-            // Main 화면으로 이동
+            SetValueCurrentUser()
             showMainVCOnRoot()
         }
     }

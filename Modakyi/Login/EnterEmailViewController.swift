@@ -10,8 +10,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class EnterEmailViewController: UIViewController {
-    var ref: DatabaseReference! = Database.database().reference()
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -53,9 +51,7 @@ class EnterEmailViewController: UIViewController {
                 }
             } else {
                 // 사용자 데이터 저장하고 메인으로 이동
-                let uid = Auth.auth().currentUser?.uid
-                self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
-                self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
+                SetValueCurrentUser()
                 showMainVCOnNavigation(self)
             }
         }
@@ -69,9 +65,7 @@ class EnterEmailViewController: UIViewController {
                 self.errorMessageLabel.text = error.localizedDescription
             } else {
                 // 사용자 데이터 저장하고 메인으로 이동
-                let uid = Auth.auth().currentUser?.uid
-                self.ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
-                self.ref.child("User/\(uid!)/email").setValue(Auth.auth().currentUser?.email ?? "")
+                SetValueCurrentUser()
                 showMainVCOnNavigation(self)
             }
         }
