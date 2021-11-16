@@ -28,6 +28,9 @@
 		A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */; };
 		A5A69B6E27423AC7009F26CC /* AppearanceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */; };
 		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
+		A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */; };
+		A5BF5179274365C90006EFBC /* EliceDigitalBaeum_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */; };
+		A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF516C274365C90006EFBC /* HS새마을체.ttf */; };
 		A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */; };
 		A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */; };
 		A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */; };
@@ -99,6 +102,9 @@
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
 		A5A69B6D27423AC7009F26CC /* AppearanceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCheck.swift; sourceTree = "<group>"; };
 		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Bold.ttf; sourceTree = "<group>"; };
+		A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Regular.ttf; sourceTree = "<group>"; };
+		A5BF516C274365C90006EFBC /* HS새마을체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HS새마을체.ttf"; sourceTree = "<group>"; };
 		A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStimulateText.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 				A53C6BC92730F26400066A3F /* Setting */,
 				A5A69B7127424171009F26CC /* Method */,
 				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
+				A5BF515D274365A30006EFBC /* Font */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
@@ -221,6 +228,16 @@
 				A5EFE242272FBC830086EBAC /* TextOnLabel.swift */,
 			);
 			path = Method;
+			sourceTree = "<group>";
+		};
+		A5BF515D274365A30006EFBC /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */,
+				A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */,
+				A5BF516C274365C90006EFBC /* HS새마을체.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		A5EFE244272FC3130086EBAC /* Detail */ = {
@@ -347,8 +364,11 @@
 			files = (
 				A59FAFB3272D5BE8000807A5 /* LaunchScreen.storyboard in Resources */,
 				A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */,
+				A5BF5179274365C90006EFBC /* EliceDigitalBaeum_Regular.ttf in Resources */,
 				A59FAFB0272D5BE8000807A5 /* Assets.xcassets in Resources */,
 				A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */,
+				A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */,
+				A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
