@@ -34,7 +34,7 @@ class SettingViewController: UIViewController {
         AppearanceCheck(self)
     }
     
-    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     

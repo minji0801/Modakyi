@@ -42,7 +42,7 @@ class LikeViewController: UIViewController {
                 return
             }
             
-            self.likeTexts = value
+            self.likeTexts = value.reversed()
             print("Like 좋아하는 글귀 id: \(self.likeTexts)")
             
             DispatchQueue.main.async {

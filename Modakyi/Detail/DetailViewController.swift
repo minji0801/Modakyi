@@ -89,7 +89,7 @@ class DetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func backButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
