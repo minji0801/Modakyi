@@ -108,8 +108,8 @@ extension SettingViewController: UITableViewDelegate {
                 }
             }
             
-            alertController.addAction(confirmAction)
             alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
             self.present(alertController, animated: true, completion: nil)
         default:
             break
