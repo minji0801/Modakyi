@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     var clickedTextIDs = [String]()
     
     var recommendTextId = ""
-    var recommendViewHeight: CGFloat = 0
     var currentTime = ""
     
     @IBOutlet weak var collectionview: UICollectionView!
@@ -143,9 +142,7 @@ extension HomeViewController: UICollectionViewDataSource {
         
         header.recommendView.layer.cornerRadius = 30
         header.updateText(self.recommendTextId)
-        self.recommendViewHeight = header.recommendView.bounds.height
         header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)
-        
         return header
     }
 }
@@ -166,9 +163,5 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: self.recommendViewHeight + 150)
     }
 }

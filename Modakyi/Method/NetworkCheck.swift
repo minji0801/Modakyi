@@ -32,15 +32,15 @@ final class NetworkCheck {
     public func startMonitoring() {
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
-            print("path : \(path)")
+//            print("path : \(path)")
             
             self?.isConnected = path.status == .satisfied
             self?.getConnectionType(path)
             
             if self?.isConnected == true {
-                print("연결됨!")
+//                print("연결됨!")
             } else {
-                print("연결안됨!")
+//                print("연결안됨!")
                 showNetworkViewController()
             }
         }
@@ -53,16 +53,16 @@ final class NetworkCheck {
     private func getConnectionType(_ path: NWPath) {
         if path.usesInterfaceType(.wifi) {
             connectionType = .wifi
-            print("wifi에 연결")
+//            print("wifi에 연결")
         } else if path.usesInterfaceType(.cellular) {
             connectionType = .cellular
-            print("cellular에 연결")
+//            print("cellular에 연결")
         } else if path.usesInterfaceType(.wiredEthernet) {
             connectionType = .ethernet
-            print("wiredEthernet에 연결")
+//            print("wiredEthernet에 연결")
         } else {
             connectionType = .unknown
-            print("unknown..")
+//            print("unknown..")
         }
     }
 }
