@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
-		A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E454F27310A14002D8A67 /* NoticeCell.swift */; };
-		A54E45542731188D002D8A67 /* DarkModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E45532731188D002D8A67 /* DarkModeCell.swift */; };
-		A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4555273118A5002D8A67 /* UsewayCell.swift */; };
-		A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E4557273118B2002D8A67 /* VersionInfoCell.swift */; };
-		A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E455B2731191C002D8A67 /* SignOutCell.swift */; };
 		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
 		A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B55E7273F884300A3A814 /* NetworkCheck.swift */; };
 		A561379B2734DCDD006C16CF /* SearchCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561379A2734DCDD006C16CF /* SearchCollectionHeaderView.swift */; };
@@ -65,11 +60,6 @@
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		A54E454F27310A14002D8A67 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
-		A54E45532731188D002D8A67 /* DarkModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeCell.swift; sourceTree = "<group>"; };
-		A54E4555273118A5002D8A67 /* UsewayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsewayCell.swift; sourceTree = "<group>"; };
-		A54E4557273118B2002D8A67 /* VersionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoCell.swift; sourceTree = "<group>"; };
-		A54E455B2731191C002D8A67 /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
 		A55298CF2733920800DCB870 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		A55B5573273F6E5E00A3A814 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A55B5575273F6E5E00A3A814 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -145,11 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
-				A54E454F27310A14002D8A67 /* NoticeCell.swift */,
-				A54E45532731188D002D8A67 /* DarkModeCell.swift */,
-				A54E4555273118A5002D8A67 /* UsewayCell.swift */,
-				A54E4557273118B2002D8A67 /* VersionInfoCell.swift */,
-				A54E455B2731191C002D8A67 /* SignOutCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -428,27 +413,22 @@
 				A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
-				A54E455027310A14002D8A67 /* NoticeCell.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
 				A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */,
 				A5EFE250272FDDE20086EBAC /* UnusedViewController.swift in Sources */,
 				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
-				A54E4558273118B2002D8A67 /* VersionInfoCell.swift in Sources */,
-				A54E455C2731191C002D8A67 /* SignOutCell.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
 				A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */,
 				A5EFE257272FF3580086EBAC /* SearchViewController.swift in Sources */,
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
-				A54E4556273118A5002D8A67 /* UsewayCell.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A5EFE254272FDDFF0086EBAC /* UnusedCollectionHeaderView.swift in Sources */,
 				A5EFE259272FF3670086EBAC /* SearchCollectionViewCell.swift in Sources */,
 				A561379B2734DCDD006C16CF /* SearchCollectionHeaderView.swift in Sources */,
 				A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */,
-				A54E45542731188D002D8A67 /* DarkModeCell.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -646,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

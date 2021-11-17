@@ -1132,6 +1132,7 @@
                     </view>
                     <connections>
                         <outlet property="commentsButton" destination="x8r-Kv-rmR" id="HTu-1X-PsW"/>
+                        <outlet property="currentVersionLabel" destination="xMA-QI-QLR" id="rgR-wl-cXb"/>
                         <outlet property="darkModeButton" destination="sQY-Dv-NWh" id="Bk8-nj-75l"/>
                         <outlet property="logoutButton" destination="Bb7-UD-bJh" id="QhE-Os-1Cx"/>
                         <outlet property="nameLabel" destination="0wg-xY-H11" id="gFD-aC-9fk"/>
