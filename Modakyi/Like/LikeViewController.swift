@@ -23,6 +23,8 @@ class LikeViewController: UIViewController {
         super.viewDidLoad()
         self.collectionview.alpha = 0
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.selectedLikeTabNotification(_:)), name: NSNotification.Name("LikeTabSelected"), object: nil)
+        
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
         ref.child("User/\(uid!)/like").observe(.value) { snapshot in
             guard let value = snapshot.value as? [Int] else {
@@ -56,6 +58,12 @@ class LikeViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         ResizeCells(self.collectionview)
+    }
+    
+    @objc func selectedLikeTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
     }
 }
 

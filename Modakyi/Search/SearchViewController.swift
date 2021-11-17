@@ -20,6 +20,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         readAllText()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.selectedSearchTabNotification(_:)), name: NSNotification.Name("SearchTabSelected"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +33,12 @@ class SearchViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         ResizeCells(self.collectionview)
+    }
+    
+    @objc func selectedSearchTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
     }
     
     // 전제 글귀 읽어오기
