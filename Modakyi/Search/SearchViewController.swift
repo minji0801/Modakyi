@@ -27,6 +27,12 @@ class SearchViewController: UIViewController {
         AppearanceCheck(self)
     }
     
+    // 화면 회전될 때
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        ResizeCells(self.collectionview)
+    }
+    
     // 전제 글귀 읽어오기
     func readAllText() {
         ref.child("Text").observe(.value) { snapshot in

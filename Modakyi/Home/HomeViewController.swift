@@ -70,6 +70,12 @@ class HomeViewController: UIViewController {
         AppearanceCheck(self)
     }
     
+    // 화면 회전될 때
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        ResizeCells(self.collectionview)
+    }
+    
     @objc func didDismissDetailNotification(_ notification: Notification) {
         DispatchQueue.main.async {
             self.collectionview.reloadData()

@@ -65,3 +65,18 @@ func SlowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectio
         collectionView.alpha = 1
     }
 }
+
+
+func ResizeCells(_ collectionView: UICollectionView?) {
+    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+        guard let flowLayout: UICollectionViewFlowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            layout.itemSize = CGSize.zero
+            return
+        }
+        
+        let width = ((collectionView?.bounds.width)! / 3) - 0.8
+        let itemSize = CGSize(width: width, height: width)
+        layout.itemSize = itemSize
+        layout.invalidateLayout()
+    }
+}
