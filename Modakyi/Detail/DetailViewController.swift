@@ -32,7 +32,12 @@ class DetailViewController: UIViewController {
             let eng = value["eng"]!
             let kor = value["kor"]!
             let who = value["who"]!
+            
             self.textLabel.text = TextOnLabel(eng, kor, who)
+            
+            if UIDevice.current.model == "iPad" {
+                self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 23.0)
+            }
         }
         
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기

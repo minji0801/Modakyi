@@ -57,7 +57,6 @@ func TextOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
     }
 }
 
-
 // Indicator 천천히 없애는 메소드
 func SlowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectionView: UICollectionView) {
     UIView.animate(withDuration: 0.5) {

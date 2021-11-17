@@ -18,6 +18,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let who = text.who
         
         self.textLabel.text = TextOnLabel(eng, kor, who)
+        
+        if UIDevice.current.model == "iPad" {
+            self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 13.0)
+        }
     }
     
     func imageUpdateUI(_ newTexts: [String], _ clickedTexts: [String], _ index: Int) {
