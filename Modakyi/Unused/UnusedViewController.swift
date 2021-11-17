@@ -24,6 +24,8 @@ class UnusedViewController: UIViewController {
         super.viewDidLoad()
         self.collectionview.alpha = 0
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.selectedUnusedTabNotification(_:)), name: NSNotification.Name("UnusedTabSelected"), object: nil)
+        
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
             guard let value = snapshot.value as? [String: [String: String]] else { return }
@@ -77,6 +79,12 @@ class UnusedViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         ResizeCells(self.collectionview)
+    }
+    
+    @objc func selectedUnusedTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
     }
 }
 

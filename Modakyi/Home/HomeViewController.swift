@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
         self.collectionview.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissDetailNotification(_:)), name: NSNotification.Name("DismissDetailView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.selectedHomeTabNotification(_:)), name: NSNotification.Name("HomeTabSelected"), object: nil)
         
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
@@ -82,6 +83,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func selectedHomeTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
+    }
+    
     @objc func settingButtonTapped(_ sender: UIButton) {
         pushSettingVCOnNavigation(self)
     }
@@ -114,6 +121,8 @@ class HomeViewController: UIViewController {
             return false
         }
     }
+    
+    
 }
 
 
