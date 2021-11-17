@@ -607,6 +607,22 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="g9E-zV-lw3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn5-6B-lVL">
+                                            <rect key="frame" x="130.5" y="372" width="153" height="25"/>
+                                            <fontDescription key="fontDescription" name="EliceDigitalBaeum" family="Elice DigitalBaeum" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bn5-6B-lVL" firstAttribute="centerX" secondItem="g9E-zV-lw3" secondAttribute="centerX" id="4vS-bM-U7e"/>
+                                        <constraint firstItem="Bn5-6B-lVL" firstAttribute="centerY" secondItem="g9E-zV-lw3" secondAttribute="centerY" id="6EI-5S-azE"/>
+                                    </constraints>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchCollectionViewCell" id="He6-6z-klc" customClass="SearchCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="128" height="128"/>
@@ -699,6 +715,7 @@
                     <tabBarItem key="tabBarItem" title="" image="search_icon" selectedImage="search_icon" id="Llu-Sg-PFu"/>
                     <connections>
                         <outlet property="collectionview" destination="O15-Zw-5k8" id="mMj-Zd-xgt"/>
+                        <outlet property="labelView" destination="g9E-zV-lw3" id="h9y-S6-bI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNH-x2-yqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
