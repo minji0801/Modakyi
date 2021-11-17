@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Item2</key>
-	<string>EliceDigitalBaeum_Bold.ttf</string>
-	<key>Item1</key>
-	<string>EliceDigitalBaeum_Regular.ttf</string>
-	<key>Item0</key>
-	<string>HS새마을체.ttf</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -19,6 +13,12 @@
 			</array>
 		</dict>
 	</array>
+	<key>Item0</key>
+	<string>HS새마을체.ttf</string>
+	<key>Item1</key>
+	<string>EliceDigitalBaeum_Regular.ttf</string>
+	<key>Item2</key>
+	<string>EliceDigitalBaeum_Bold.ttf</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

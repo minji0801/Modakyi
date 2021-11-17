@@ -51,6 +51,12 @@ class LikeViewController: UIViewController {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
     }
+    
+    // 화면 회전될 때
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        ResizeCells(self.collectionview)
+    }
 }
 
 // MARK: - UICollectionView Configure

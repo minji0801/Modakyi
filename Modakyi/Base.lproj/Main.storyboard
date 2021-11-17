@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -471,7 +471,7 @@
                             <constraint firstItem="JBO-II-6m1" firstAttribute="centerX" secondItem="Rme-4E-p8P" secondAttribute="centerX" id="rTS-72-50V"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="like_icon" selectedImage="like_icon" id="LUX-3K-gU4"/>
+                    <tabBarItem key="tabBarItem" title="" image="like_icon_R" landscapeImage="like_icon_C" id="LUX-3K-gU4"/>
                     <connections>
                         <outlet property="collectionview" destination="7to-ad-AvM" id="eK5-eH-TJo"/>
                         <outlet property="indicatorView" destination="JBO-II-6m1" id="MRy-Dw-38v"/>
@@ -579,7 +579,7 @@
                             <constraint firstItem="ri6-RY-hbQ" firstAttribute="centerX" secondItem="AEe-sG-b38" secondAttribute="centerX" id="tPb-eC-cMQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="folder_icon" selectedImage="folder_icon" id="W1Y-ss-Yka"/>
+                    <tabBarItem key="tabBarItem" title="" image="folder_icon_R" landscapeImage="folder_icon_C" id="W1Y-ss-Yka"/>
                     <connections>
                         <outlet property="collectionview" destination="uLl-4a-jfz" id="JKM-ia-UVM"/>
                         <outlet property="indicatorView" destination="ri6-RY-hbQ" id="lHR-R3-Gg8"/>
@@ -712,7 +712,7 @@
                             <constraint firstItem="O15-Zw-5k8" firstAttribute="top" secondItem="fmf-i2-Dgy" secondAttribute="top" id="wwF-Yt-UMB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="search_icon" selectedImage="search_icon" id="Llu-Sg-PFu"/>
+                    <tabBarItem key="tabBarItem" title="" image="search_icon_R" landscapeImage="search_icon_C" id="Llu-Sg-PFu"/>
                     <connections>
                         <outlet property="collectionview" destination="O15-Zw-5k8" id="mMj-Zd-xgt"/>
                         <outlet property="labelView" destination="g9E-zV-lw3" id="h9y-S6-bI8"/>
@@ -874,7 +874,7 @@
                             <constraint firstItem="aKb-6E-Pfd" firstAttribute="top" secondItem="l0A-C3-6yt" secondAttribute="top" id="vwN-gc-JeD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="home_icon" selectedImage="home_icon" id="755-cS-jdz"/>
+                    <tabBarItem key="tabBarItem" title="" image="home_icon_R" landscapeImage="home_icon_C" id="755-cS-jdz"/>
                     <connections>
                         <outlet property="collectionview" destination="aKb-6E-Pfd" id="GhK-YO-tHN"/>
                         <outlet property="indicatorView" destination="ys3-tO-umi" id="yaZ-cG-D19"/>
@@ -1155,20 +1155,24 @@
         <image name="circle.lefthalf.filled" catalog="system" width="128" height="121"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
-        <image name="folder_icon" width="50" height="50"/>
+        <image name="folder_icon_C" width="18" height="18"/>
+        <image name="folder_icon_R" width="25" height="25"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="home_icon" width="50" height="50"/>
+        <image name="home_icon_C" width="18" height="18"/>
+        <image name="home_icon_R" width="25" height="25"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="like_icon" width="50" height="50"/>
+        <image name="like_icon_C" width="18" height="18"/>
+        <image name="like_icon_R" width="25" height="25"/>
         <image name="logo_apple" width="50" height="50"/>
         <image name="logo_google" width="50" height="50"/>
         <image name="logo_modakyi" width="128" height="128"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
-        <image name="search_icon" width="50" height="50"/>
+        <image name="search_icon_C" width="18" height="18"/>
+        <image name="search_icon_R" width="25" height="25"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
