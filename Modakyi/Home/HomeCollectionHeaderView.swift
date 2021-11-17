@@ -24,6 +24,10 @@ class HomeCollectionHeaderView: UICollectionReusableView {
             let who = value["who"]!
 
             self.recommendLabel.text = TextOnLabel(eng, kor, who)
+            
+            if UIDevice.current.model == "iPad" {
+                self.recommendLabel.font = UIFont(name: "EliceDigitalBaeum", size: 20.0)
+            }
         }
     }
 }

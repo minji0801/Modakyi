@@ -312,7 +312,6 @@
 				A59FAFA0272D5BE7000807A5 /* Frameworks */,
 				A59FAFA1272D5BE7000807A5 /* Resources */,
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
-				0AD0CB1523563AC3FFE28000 /* [CP] Copy Pods Resources */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -375,23 +374,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0AD0CB1523563AC3FFE28000 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		30452FE48AB066C389678324 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

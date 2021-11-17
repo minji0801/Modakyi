@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-33-NJY">
-                                <rect key="frame" x="30" y="534.5" width="354" height="210"/>
+                                <rect key="frame" x="30" y="484.5" width="354" height="210"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tf-n8-Qhj">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
@@ -131,7 +131,7 @@
                             <constraint firstItem="nY8-33-NJY" firstAttribute="centerX" secondItem="N07-fi-Mqa" secondAttribute="centerX" id="Hqt-Ne-reO"/>
                             <constraint firstItem="nY8-33-NJY" firstAttribute="leading" secondItem="wvs-iR-DhM" secondAttribute="leading" constant="30" id="eF2-r3-JWK"/>
                             <constraint firstItem="18v-yo-D08" firstAttribute="centerX" secondItem="N07-fi-Mqa" secondAttribute="centerX" id="gHc-Gg-6f1"/>
-                            <constraint firstItem="nY8-33-NJY" firstAttribute="top" secondItem="18v-yo-D08" secondAttribute="bottom" constant="100" id="pWs-kP-OxT"/>
+                            <constraint firstItem="nY8-33-NJY" firstAttribute="top" secondItem="18v-yo-D08" secondAttribute="bottom" constant="50" id="pWs-kP-OxT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AOK-wl-btH"/>

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GoogleSignIn
+//import GoogleSignIn
 import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
@@ -15,7 +15,7 @@ import SystemConfiguration
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailLoginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: GIDSignInButton!
+    @IBOutlet weak var googleLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     
     private var currentNonce: String?
@@ -23,6 +23,15 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 폰트 체크 하기
+//                UIFont.familyNames.sorted().forEach{ familyName in
+//                    print("*** \(familyName) ***")
+//                    UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+//                        print("\(fontName)")
+//                    }
+//                    print("---------------------")
+//                }
+        
         [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
             $0?.layer.borderWidth = 0.2
             $0?.layer.borderColor = UIColor.darkGray.cgColor
@@ -41,11 +50,11 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
-        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
+//        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
     }
     
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func appleLoginButtonTapped(_ sender: UIButton) {
