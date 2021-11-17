@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionview: UICollectionView!
+    @IBOutlet weak var labelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +103,12 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
+    // 취소버튼 눌렀을 때
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // 취소버튼 눌렀을 때
+        if !self.labelView.isHidden {
+            self.labelView.isHidden = true
+        }
+        
         dismissKeyboard()
         searchBar.showsCancelButton = false
         
@@ -142,6 +147,11 @@ extension SearchViewController: UISearchBarDelegate {
                 print("검색결과: \(self.studyStimulateTexts)")
                 
                 DispatchQueue.main.async {
+                    if self.studyStimulateTexts.isEmpty {
+                        self.labelView.isHidden = false
+                    } else {
+                        self.labelView.isHidden = true
+                    }
                     self.collectionview.reloadData()
                 }
             } catch let error {
