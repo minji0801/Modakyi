@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     var likeTextIDs = [Int]()
     var usedTextIDs = [Int]()
     
+    @IBOutlet weak var textIdLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
 //        print("Detail id: \(id)")
+        textIdLabel.text = "글귀 \(id)"
         
         // id로 글귀 데이터 가져오기
         ref.child("Text/Text\(id)").observe(.value) { snapshot in
