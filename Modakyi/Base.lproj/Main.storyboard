@@ -369,7 +369,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hs4-O3-8ym">
-                        <barButtonItem key="rightBarButtonItem" title="다음" id="Wt0-Za-KVY">
+                        <barButtonItem key="rightBarButtonItem" title="다음" style="done" id="Wt0-Za-KVY">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="fy9-iy-nlq" id="rJu-ld-pgc"/>
                             </connections>
