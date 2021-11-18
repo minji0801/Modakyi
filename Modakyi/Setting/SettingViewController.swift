@@ -75,6 +75,10 @@ class SettingViewController: UIViewController {
     // 공지사항 버튼 클릭 시
     @IBAction func noticeButtonTapped(_ sender: UIButton) {
         // 공지사항 화면 보여주기
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController") as? NoticeViewController else { return }
+        noticeViewController.modalPresentationStyle = .fullScreen
+        self.present(noticeViewController, animated: false, completion: nil)
     }
     
     // 문의 및 의견 버튼 클릭 시

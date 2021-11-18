@@ -1146,6 +1146,94 @@
             </objects>
             <point key="canvasLocation" x="4022" y="-839"/>
         </scene>
+        <!--Notice View Controller-->
+        <scene sceneID="ZBg-u7-iET">
+            <objects>
+                <viewController storyboardIdentifier="NoticeViewController" id="qKr-ZM-8TR" customClass="NoticeViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A8J-Uc-3dY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12x-E1-ro5">
+                                <rect key="frame" x="20" y="144" width="374" height="618"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2b-jm-jAi">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn9-lg-zTu">
+                                                <rect key="frame" x="159.5" y="10" width="55.5" height="24"/>
+                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yD8-Mu-75D">
+                                                <rect key="frame" x="327.5" y="6.5" width="46.5" height="31"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="dismissButtonTapped:" destination="qKr-ZM-8TR" eventType="touchUpInside" id="ffb-jc-LWo"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yD8-Mu-75D" firstAttribute="centerY" secondItem="X2b-jm-jAi" secondAttribute="centerY" id="8X5-aj-vYg"/>
+                                            <constraint firstItem="sn9-lg-zTu" firstAttribute="centerY" secondItem="X2b-jm-jAi" secondAttribute="centerY" id="AOB-IY-2eY"/>
+                                            <constraint firstItem="sn9-lg-zTu" firstAttribute="centerX" secondItem="X2b-jm-jAi" secondAttribute="centerX" id="U93-Mq-rrm"/>
+                                            <constraint firstAttribute="trailing" secondItem="yD8-Mu-75D" secondAttribute="trailing" id="sbN-ry-ZKQ"/>
+                                            <constraint firstAttribute="height" constant="44" id="t0O-B7-GGe"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGq-Wx-DdO">
+                                        <rect key="frame" x="10" y="44" width="354" height="564"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="공지사항입니다." translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-gh-qsL">
+                                                <rect key="frame" x="20" y="20" width="314" height="524"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="6Ec-gh-qsL" firstAttribute="top" secondItem="HGq-Wx-DdO" secondAttribute="top" constant="20" id="3XY-mf-VzD"/>
+                                            <constraint firstItem="6Ec-gh-qsL" firstAttribute="leading" secondItem="HGq-Wx-DdO" secondAttribute="leading" constant="20" id="Xhk-BL-eZY"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Ec-gh-qsL" secondAttribute="bottom" constant="20" id="m4f-f4-r6M"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Ec-gh-qsL" secondAttribute="trailing" constant="20" id="wXz-FO-jNM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HGq-Wx-DdO" secondAttribute="trailing" constant="10" id="24h-Lj-0rB"/>
+                                    <constraint firstItem="HGq-Wx-DdO" firstAttribute="top" secondItem="X2b-jm-jAi" secondAttribute="bottom" id="Gmk-ht-PrX"/>
+                                    <constraint firstAttribute="trailing" secondItem="X2b-jm-jAi" secondAttribute="trailing" id="NZn-Ao-jxO"/>
+                                    <constraint firstItem="X2b-jm-jAi" firstAttribute="leading" secondItem="12x-E1-ro5" secondAttribute="leading" id="YrX-Ik-hAf"/>
+                                    <constraint firstItem="HGq-Wx-DdO" firstAttribute="leading" secondItem="12x-E1-ro5" secondAttribute="leading" constant="10" id="ZPV-uU-lEZ"/>
+                                    <constraint firstItem="X2b-jm-jAi" firstAttribute="top" secondItem="12x-E1-ro5" secondAttribute="top" id="qig-li-Qub"/>
+                                    <constraint firstAttribute="bottom" secondItem="HGq-Wx-DdO" secondAttribute="bottom" constant="10" id="zIW-wB-Qhl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="day-g1-06R"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="12x-E1-ro5" firstAttribute="top" secondItem="day-g1-06R" secondAttribute="top" constant="100" id="4lt-gN-AaF"/>
+                            <constraint firstItem="day-g1-06R" firstAttribute="trailing" secondItem="12x-E1-ro5" secondAttribute="trailing" constant="20" id="A6y-VS-2Fz"/>
+                            <constraint firstItem="day-g1-06R" firstAttribute="bottom" secondItem="12x-E1-ro5" secondAttribute="bottom" constant="100" id="EKA-Cm-0W8"/>
+                            <constraint firstItem="12x-E1-ro5" firstAttribute="leading" secondItem="day-g1-06R" secondAttribute="leading" constant="20" id="cIt-pN-e4f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noticeTextView" destination="6Ec-gh-qsL" id="XWy-Rp-sRu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-Kz-7SM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4739" y="-839"/>
+        </scene>
     </scenes>
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
@@ -1169,6 +1257,7 @@
         <image name="search_icon_C" width="18" height="18"/>
         <image name="search_icon_R" width="25" height="25"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
