@@ -91,6 +91,13 @@ class SettingViewController: UIViewController {
             let bodyString = """
                              이곳에 내용을 작성해주세요.
                              
+                             오타 발견 문의 시 아래 양식에 맞춰 작성해주세요.
+                             
+                             <예시>
+                             글귀 ID : 글귀 4 (글귀 클릭 시 상단에 표시)
+                             수정 전 : 실수해도 되.
+                             수정 후 : 실수해도 돼.
+                             
                              -------------------
                              
                              Device Model : \(self.getDeviceIdentifier())

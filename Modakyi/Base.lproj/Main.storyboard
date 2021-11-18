@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -185,10 +185,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJ2-jf-USX">
-                                        <rect key="frame" x="365" y="9.5" width="41" height="31"/>
-                                        <color key="tintColor" red="0.90588235289999997" green="0.3803921569" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="359.5" y="9.5" width="46.5" height="31"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="backButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="GX5-sD-jON"/>
                                         </connections>
@@ -233,10 +235,10 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="heart" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
                                         </state>
                                         <state key="selected" image="heart.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
                                         </state>
                                         <connections>
                                             <action selector="likeButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="TlL-o3-WFk"/>
@@ -250,10 +252,10 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="checkmark.square" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
                                         </state>
                                         <state key="selected" image="checkmark.square.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
                                         </state>
                                         <connections>
                                             <action selector="checkButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="ZUU-qc-tbd"/>
@@ -287,6 +289,7 @@
                     <connections>
                         <outlet property="checkButton" destination="nJy-hy-88g" id="osg-ou-Z5q"/>
                         <outlet property="likeButton" destination="Igv-oY-w76" id="eMC-IW-va6"/>
+                        <outlet property="textIdLabel" destination="MSG-kZ-SHD" id="JMF-iV-5sb"/>
                         <outlet property="textLabel" destination="jd4-v1-Mqe" id="ady-um-WYK"/>
                     </connections>
                 </viewController>
@@ -929,10 +932,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3i-gE-YKF">
-                                        <rect key="frame" x="8" y="6.5" width="36" height="31"/>
-                                        <color key="tintColor" red="0.90588235289999997" green="0.3803921569" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="8" y="6.5" width="39.5" height="31"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="backButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="qbt-Pa-czS"/>
                                         </connections>
@@ -1256,7 +1261,6 @@
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="search_icon_C" width="18" height="18"/>
         <image name="search_icon_R" width="25" height="25"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
