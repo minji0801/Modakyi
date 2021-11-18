@@ -71,10 +71,15 @@ class EnterEmailViewController: UIViewController {
         }
     }
 }
+
 extension EnterEmailViewController: UITextFieldDelegate {
     // 키보드 내려가게 할 때 사용할 delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
         return false
     }
     
