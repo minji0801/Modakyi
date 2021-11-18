@@ -28,6 +28,7 @@
 		A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF516C274365C90006EFBC /* HS새마을체.ttf */; };
 		A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF517E274381A70006EFBC /* UIConfigure.swift */; };
 		A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */; };
+		A5C2CC9227461B3400908A4D /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */; };
 		A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */; };
 		A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */; };
 		A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */; };
@@ -98,6 +99,7 @@
 		A5BF516C274365C90006EFBC /* HS새마을체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HS새마을체.ttf"; sourceTree = "<group>"; };
 		A5BF517E274381A70006EFBC /* UIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigure.swift; sourceTree = "<group>"; };
 		A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueCurrentUser.swift; sourceTree = "<group>"; };
+		A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A5EFE23C272FB8F00086EBAC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EFE23E272FB9050086EBAC /* HomeCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionHeaderView.swift; sourceTree = "<group>"; };
 		A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStimulateText.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				A59FAFBA272D5C16000807A5 /* LoginViewController.swift */,
 				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
+				A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
+				A5C2CC9227461B3400908A4D /* ResetPasswordViewController.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */,
