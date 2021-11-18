@@ -20,12 +20,16 @@ class HomeViewController: UIViewController {
     var recommendTextId = ""
     var currentTime = ""
     
+    private var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionview.alpha = 0
+        self.collectionview.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissDetailNotification(_:)), name: NSNotification.Name("DismissDetailView"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.selectedHomeTabNotification(_:)), name: NSNotification.Name("HomeTabSelected"), object: nil)
@@ -91,6 +95,14 @@ class HomeViewController: UIViewController {
     
     @objc func settingButtonTapped(_ sender: UIButton) {
         pushSettingVCOnNavigation(self)
+    }
+    
+    @objc func refresh() {
+        // 추천 글귀 다시 가져오기
+        self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
+        DispatchQueue.main.async {
+            self.collectionview.reloadData()
+        }
     }
     
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
@@ -165,6 +177,12 @@ extension HomeViewController: UICollectionViewDelegate {
         }
         
         presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
