@@ -10,6 +10,7 @@ import FirebaseDatabase
 
 class SearchViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
+    
     var studyStimulateTexts: [StudyStimulateText] = []
     var searchTexts: [StudyStimulateText] = []
     var searchBar: UISearchBar!
@@ -51,7 +52,6 @@ class SearchViewController: UIViewController {
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-                //                print("Search - studyStimulateText: \(self.studyStimulateTexts)")
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
@@ -66,12 +66,10 @@ class SearchViewController: UIViewController {
 // MARK: - UICollectionView Configure
 
 extension SearchViewController: UICollectionViewDataSource {
-    // 셀 몇개 표현할래?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return studyStimulateTexts.count
     }
     
-    // 셀 어떻게 표현할래?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else {
             return UICollectionViewCell()
@@ -94,14 +92,12 @@ extension SearchViewController: UICollectionViewDataSource {
 }
 
 extension SearchViewController: UICollectionViewDelegate {
-    // 셀 눌렀을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
     }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 크기 정하기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
@@ -112,8 +108,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UISearchBarDelegate {
     
+    // 키보드 내리기
     private func dismissKeyboard() {
-        // 키보드 내리기
         searchBar.resignFirstResponder()
     }
     
@@ -123,21 +119,19 @@ extension SearchViewController: UISearchBarDelegate {
             self.labelView.isHidden = true
         }
         
-        dismissKeyboard()
         searchBar.showsCancelButton = false
-        
-        // 다시 전체 글귀 보여주기
+        dismissKeyboard()
         readAllText()
     }
     
+    // 검색창 눌렀을 때
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        // 검색창 눌렀을 때
         searchBar.setValue("취소", forKey: "cancelButtonText")
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
+    // 검색버튼 눌렀을 때
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // 검색버튼 눌렀을 때
         dismissKeyboard()
         
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return }

@@ -14,12 +14,12 @@ import FirebaseDatabase
 import SystemConfiguration
 
 class LoginViewController: UIViewController {
+    private var currentNonce: String?
+    var ref: DatabaseReference!
+    
     @IBOutlet weak var emailLoginButton: UIButton!
     @IBOutlet weak var googleLoginButton: GIDSignInButton!
     @IBOutlet weak var appleLoginButton: UIButton!
-    
-    private var currentNonce: String?
-    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()

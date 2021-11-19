@@ -11,7 +11,6 @@ import Network
 
 final class NetworkCheck {
     static let shared = NetworkCheck()
-    
     private let queue = DispatchQueue.global()
     private let monitor: NWPathMonitor
     public private(set) var isConnected: Bool = false
@@ -32,7 +31,6 @@ final class NetworkCheck {
     public func startMonitoring() {
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
-//            print("path : \(path)")
             
             self?.isConnected = path.status == .satisfied
             self?.getConnectionType(path)
@@ -41,7 +39,7 @@ final class NetworkCheck {
 //                print("연결됨!")
             } else {
 //                print("연결안됨!")
-                showNetworkViewController()
+                showNetworkVCOnRoot()
             }
         }
     }
@@ -53,25 +51,12 @@ final class NetworkCheck {
     private func getConnectionType(_ path: NWPath) {
         if path.usesInterfaceType(.wifi) {
             connectionType = .wifi
-//            print("wifi에 연결")
         } else if path.usesInterfaceType(.cellular) {
             connectionType = .cellular
-//            print("cellular에 연결")
         } else if path.usesInterfaceType(.wiredEthernet) {
             connectionType = .ethernet
-//            print("wiredEthernet에 연결")
         } else {
             connectionType = .unknown
-//            print("unknown..")
         }
-    }
-}
-
-func showNetworkViewController() {
-    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-    DispatchQueue.main.async {
-        let networkViewController = storyboard.instantiateViewController(withIdentifier: "NetworkViewController")
-        networkViewController.modalPresentationStyle = .fullScreen
-        UIApplication.shared.windows.first?.rootViewController?.show(networkViewController, sender: nil)
     }
 }

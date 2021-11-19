@@ -11,10 +11,10 @@ import FirebaseDatabase
 
 class UnusedViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+    
     var studyStimulateTexts: [StudyStimulateText] = []
     var unusedTexts = [Int]()
-    
-    let uid = Auth.auth().currentUser?.uid
     
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
@@ -35,7 +35,6 @@ class UnusedViewController: UIViewController {
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-                //                print("Unused - studyStimulateText: \(self.studyStimulateTexts)")
             } catch let error {
                 print("ERROR JSON Parsing \(error.localizedDescription)")
             }
@@ -46,7 +45,6 @@ class UnusedViewController: UIViewController {
             guard let value = snapshot.value as? [Int] else {
                 // 사용한 글귀가 없으니까 전체 글귀 보여주기
                 self.unusedTexts = self.studyStimulateTexts.map { Int($0.id)! }
-                //                print("Unused 미사용 글귀 id: \(self.unusedTexts)")
                 
                 DispatchQueue.main.async {
                     self.collectionview.reloadData()
@@ -115,14 +113,12 @@ extension UnusedViewController: UICollectionViewDataSource {
 }
 
 extension UnusedViewController: UICollectionViewDelegate {
-    // 셀 클릭했을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentDetailViewController(self, String(unusedTexts[indexPath.row]))
     }
 }
 
 extension UnusedViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 크기 정하기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)

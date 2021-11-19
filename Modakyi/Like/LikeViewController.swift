@@ -11,9 +11,9 @@ import FirebaseDatabase
 
 class LikeViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
-    var likeTexts = [Int]()
-    
     let uid = Auth.auth().currentUser?.uid
+    
+    var likeTexts = [Int]()
     
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
@@ -94,14 +94,12 @@ extension LikeViewController: UICollectionViewDataSource {
 }
 
 extension LikeViewController: UICollectionViewDelegate {
-    // 셀 눌렀을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentDetailViewController(self, String(likeTexts[indexPath.row]))
     }
 }
 
 extension LikeViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 크기 정하기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
