@@ -7,15 +7,14 @@
 
 import UIKit
 import Firebase
-//import GoogleSignIn
+import GoogleSignIn
 import FirebaseDatabase
 import UserNotifications
 import FirebaseMessaging
 import Siren
 
-//, GIDSignInDelegate
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
     var ref: DatabaseReference!
     var shouldSupportAllOrientation = true
@@ -60,30 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // Google 로그인 Delgate
-//        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-//        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         NetworkCheck.shared.startMonitoring()
         return true
     }
     
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
-//        return GIDSignIn.sharedInstance().handle(url)
-//    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
+        return GIDSignIn.sharedInstance().handle(url)
+    }
     
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+        
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -95,22 +90,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         exit(0)
     }
     
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        // Google 로그인 인증 후 전달된 값을 처리하는 부분
-//        if let error = error {
-//            print("ERROR Google Sign In \(error.localizedDescription)")
-//            return
-//        }
-//
-//        guard let authentication = user.authentication else { return }
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-//
-//        Auth.auth().signIn(with: credential) { _, _ in
-//            // Google Login User 데이터 만들기
-//            SetValueCurrentUser()
-//            showMainVCOnRoot()
-//        }
-//    }
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        // Google 로그인 인증 후 전달된 값을 처리하는 부분
+        if let error = error {
+            print("ERROR Google Sign In \(error.localizedDescription)")
+            return
+        }
+
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+
+        Auth.auth().signIn(with: credential) { _, _ in
+            // Google Login User 데이터 만들기
+            SetValueCurrentUser()
+            showMainVCOnRoot()
+        }
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
