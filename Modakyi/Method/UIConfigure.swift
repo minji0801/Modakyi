@@ -66,7 +66,7 @@ func SlowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectio
     }
 }
 
-
+// CollectionView Cell의 크기를 재조정하는 메소드
 func ResizeCells(_ collectionView: UICollectionView?) {
     if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
         guard let flowLayout: UICollectionViewFlowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {

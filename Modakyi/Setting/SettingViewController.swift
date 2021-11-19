@@ -13,7 +13,7 @@ import MessageUI
 
 class SettingViewController: UIViewController {
     let uid = Auth.auth().currentUser?.uid
-
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -39,7 +39,7 @@ class SettingViewController: UIViewController {
         // Profile Image / UserName
         let username = Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
         let profileImg = Auth.auth().currentUser?.photoURL ?? URL(string: "")
-
+        
         nameLabel.text = username
         profileImage.kf.setImage(with: profileImg, placeholder: UIImage(systemName: "person.crop.circle"))
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
@@ -74,16 +74,11 @@ class SettingViewController: UIViewController {
     
     // 공지사항 버튼 클릭 시
     @IBAction func noticeButtonTapped(_ sender: UIButton) {
-        // 공지사항 화면 보여주기
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController") as? NoticeViewController else { return }
-        noticeViewController.modalPresentationStyle = .fullScreen
-        self.present(noticeViewController, animated: false, completion: nil)
+        presentNoticeViewController(self)
     }
     
     // 문의 및 의견 버튼 클릭 시
     @IBAction func commentsButtonTapped(_ sender: UIButton) {
-        // 이메일 보내는 화면으로 이동하기
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
             composeViewController.mailComposeDelegate = self
@@ -135,9 +130,7 @@ class SettingViewController: UIViewController {
     
     // 이용방법 버튼 클릭 시
     @IBAction func usewayButtonTapped(_ sender: UIButton) {
-        let url = NSURL(string: "https://midi-dill-147.notion.site/3a762cd2888e40f08e392f31667020ff")
-        let safariView: SFSafariViewController = SFSafariViewController(url: url! as URL)
-        self.present(safariView, animated: true, completion: nil)
+        presentSafariViewController(self)
     }
     
     // 로그아웃 버튼 클릭 시

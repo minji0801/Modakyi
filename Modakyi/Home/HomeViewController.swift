@@ -37,14 +37,12 @@ class HomeViewController: UIViewController {
         // Text DB에서 글귀 데이터 읽어오기
         ref.child("Text").observe(.value) { snapshot in
             guard let value = snapshot.value as? [String: [String: String]] else { return }
-            //            print("value: \(value)")
             
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
                 self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-                //                print("Home - studyStimulateText: \(self.studyStimulateTexts)")
                 
                 self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
                 
@@ -66,7 +64,6 @@ class HomeViewController: UIViewController {
             if let value = snapshot.value as? [String] {
                 self.clickedTextIDs = value
             }
-            //            print("Home - 클릭한 글귀 id: \(self.clickedTextIDs)")
         }
     }
     
@@ -133,8 +130,6 @@ class HomeViewController: UIViewController {
             return false
         }
     }
-    
-    
 }
 
 
@@ -169,7 +164,6 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
-    // 셀 클릭했을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !clickedTextIDs.contains(studyStimulateTexts[indexPath.row].id) {
             self.clickedTextIDs.append(studyStimulateTexts[indexPath.row].id)
