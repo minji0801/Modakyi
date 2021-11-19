@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GoogleSignIn
+//import GoogleSignIn
 import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     var ref: DatabaseReference!
     
     @IBOutlet weak var emailLoginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: GIDSignInButton!
+    @IBOutlet weak var googleLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     
     override func viewDidLoad() {
@@ -42,11 +42,11 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
-        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
+//        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
     }
     
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func appleLoginButtonTapped(_ sender: UIButton) {
