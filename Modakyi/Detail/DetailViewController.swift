@@ -74,8 +74,10 @@ class DetailViewController: UIViewController {
         
         if usedTextIDs.contains(Int(id)!) {
             checkButton.isSelected = true
+            checkButton.tintColor = .systemGreen
         } else {
             checkButton.isSelected = false
+            checkButton.tintColor = .label
         }
     }
     

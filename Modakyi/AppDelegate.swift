@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.presentationManager = PresentationManager(forceLanguageLocalization: .korean) // 알림 메시지 한국어로
         siren.wail()    // 업데이트 알림 동작
         
-        Thread.sleep(forTimeInterval: 0.5)
+//        Thread.sleep(forTimeInterval: 0.5)
+        sleep(1)
         
         // Firebase 초기화
         FirebaseApp.configure()

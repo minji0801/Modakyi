@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
             $0?.layer.borderWidth = 0.2
@@ -30,11 +31,14 @@ class LoginViewController: UIViewController {
             $0?.layer.cornerRadius = 30
         }
         
+        // 앱을 처음 실행했다면 바로 튜토리얼 화면으로 이동
+        if !UserDefaults.standard.bool(forKey: "Tutorial") {
+            showTutorialVCOnRoot()
+        }
+        
         // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
         if let _ = Auth.auth().currentUser {
-            DispatchQueue.main.async {
-                showMainVCOnRoot()
-            }
+            showMainVCOnRoot()
         }
     }
     

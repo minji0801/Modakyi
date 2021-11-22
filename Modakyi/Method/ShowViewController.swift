@@ -10,6 +10,20 @@ import SafariServices
 
 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
+// TutorialViewController를 RootViewController로 보여주는 메소드
+func showTutorialVCOnRoot() {
+    let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+    tutorialViewController.modalPresentationStyle = .fullScreen
+    UIApplication.shared.windows.first?.rootViewController?.show(tutorialViewController, sender: nil)
+}
+
+// LoginViewController를 RootViewController로 보여주는 메소드
+func showLoginVCOnRoot() {
+    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+    loginViewController.modalPresentationStyle = .fullScreen
+    UIApplication.shared.windows.first?.rootViewController?.show(loginViewController, sender: nil)
+}
+
 // MainViewController를 RootViewController로 보여주는 메소드
 func showMainVCOnRoot() {
     let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
@@ -44,11 +58,10 @@ func presentNoticeViewController(_ viewController: UIViewController) {
     viewController.present(noticeViewController, animated: false, completion: nil)
 }
 
-// safariViewController를 present해서 보여주는 메소드
-func presentSafariViewController(_ viewcontroller: UIViewController) {
-    let url = NSURL(string: "https://midi-dill-147.notion.site/3a762cd2888e40f08e392f31667020ff")
-    let safariView: SFSafariViewController = SFSafariViewController(url: url! as URL)
-    viewcontroller.present(safariView, animated: true, completion: nil)
+// TutorialViewController를 present해서 보여주는 메소드
+func presentTutorialViewController(_ viewController: UIViewController) {
+    let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+    viewController.present(tutorialViewController, animated: true, completion: nil)
 }
 
 // NetworkViewController를 RootViewController로 보여주는 메소드
