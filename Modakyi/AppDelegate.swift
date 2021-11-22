@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
                 print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
             } else if token == token {
-                print("FCM 등록 토큰: \(token)")
+                print("FCM 등록 토큰: \(String(describing: token))")
             }
         }
         
