@@ -66,6 +66,9 @@ class TutorialViewController: UIViewController {
         pageControl.numberOfPages = images.count
         pageControl.currentPage = 0
         
+        imageView.image = UIImage(named: images[0])
+        label.text = texts[0]
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
