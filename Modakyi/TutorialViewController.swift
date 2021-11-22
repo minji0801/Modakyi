@@ -16,7 +16,7 @@ class TutorialViewController: UIViewController {
         몸이 따뜻해지듯이,
         
         모닥이가 당신의 마음을
-        따뜻하게 어루만 주어 주길.
+        따뜻하게 어루만져 주길.
         """,
         """
         홈에서 추천 글귀와
