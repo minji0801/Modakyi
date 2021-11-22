@@ -130,7 +130,8 @@ class SettingViewController: UIViewController {
     
     // 이용방법 버튼 클릭 시
     @IBAction func usewayButtonTapped(_ sender: UIButton) {
-        presentSafariViewController(self)
+        presentTutorialViewController(self)
+        
     }
     
     // 로그아웃 버튼 클릭 시
