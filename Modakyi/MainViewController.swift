@@ -21,17 +21,19 @@ class MainViewController: UITabBarController {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 0:
-            NotificationCenter.default.post(name: NSNotification.Name("HomeTabSelected"), object: nil, userInfo: nil)
-        case 1:
-            NotificationCenter.default.post(name: NSNotification.Name("LikeTabSelected"), object: nil, userInfo: nil)
-        case 2:
-            NotificationCenter.default.post(name: NSNotification.Name("UnusedTabSelected"), object: nil, userInfo: nil)
-        case 3:
-            NotificationCenter.default.post(name: NSNotification.Name("SearchTabSelected"), object: nil, userInfo: nil)
-        default:
-            break
+        if self.selectedIndex == item.tag {
+            switch item.tag {
+            case 0:
+                NotificationCenter.default.post(name: NSNotification.Name("HomeTabSelected"), object: nil, userInfo: nil)
+            case 1:
+                NotificationCenter.default.post(name: NSNotification.Name("LikeTabSelected"), object: nil, userInfo: nil)
+            case 2:
+                NotificationCenter.default.post(name: NSNotification.Name("UnusedTabSelected"), object: nil, userInfo: nil)
+            case 3:
+                NotificationCenter.default.post(name: NSNotification.Name("SearchTabSelected"), object: nil, userInfo: nil)
+            default:
+                break
+            }
         }
     }
 }
