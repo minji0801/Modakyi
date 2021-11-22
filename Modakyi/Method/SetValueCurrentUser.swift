@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 func SetValueCurrentUser() {
-    var ref: DatabaseReference! = Database.database().reference()
+    let ref: DatabaseReference! = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     
     ref.child("User/\(uid!)/displayName").setValue(Auth.auth().currentUser?.displayName ?? "")
