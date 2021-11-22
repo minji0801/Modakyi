@@ -13,7 +13,7 @@ class TutorialViewController: UIViewController {
     let texts = [
         """
         모닥불 앞에 있으면
-        몸이 따듯해지듯이,
+        몸이 따뜻해지듯이,
         
         모닥이가 당신의 마음을
         따뜻하게 어루만 주어 주길.
@@ -115,5 +115,3 @@ class TutorialViewController: UIViewController {
         }
     }
 }
-
-// 스와이프 이벤트 추가
