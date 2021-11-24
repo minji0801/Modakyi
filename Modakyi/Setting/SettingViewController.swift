@@ -7,11 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import Kingfisher
 import SafariServices
 import MessageUI
 
 class SettingViewController: UIViewController {
+    let ref: DatabaseReference! = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -139,11 +141,23 @@ class SettingViewController: UIViewController {
         let alertController = UIAlertController(title: "로그아웃", message: "정말 로그아웃하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
-            do {
-                try Auth.auth().signOut()
-                self.navigationController?.popToRootViewController(animated: true)
-            } catch let signOutError as NSError {
-                print("ERROR: signout \(signOutError.localizedDescription)")
+            // 익명 유저이면 유저 데이터 삭제하고 로그인 화면으로 이동하기
+            if let _ = Auth.auth().currentUser?.isAnonymous {
+                self.ref.child("User/\(self.uid!)").removeValue()
+                Auth.auth().currentUser?.delete(completion: { error in
+                    if let error = error {
+                        print("ERROR: CurrentUser Delete\(error.localizedDescription) ")
+                    } else {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                })
+            } else {
+                do {
+                    try Auth.auth().signOut()
+                    self.navigationController?.popToRootViewController(animated: true)
+                } catch let signOutError as NSError {
+                    print("ERROR: signout \(signOutError.localizedDescription)")
+                }
             }
         }
         

@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
         [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
             $0?.layer.borderWidth = 0.2
             $0?.layer.borderColor = UIColor.darkGray.cgColor
-            $0?.layer.cornerRadius = 30
+            $0?.layer.cornerRadius = 28
         }
         
         // 앱을 처음 실행했다면 바로 튜토리얼 화면으로 이동
@@ -55,6 +55,30 @@ class LoginViewController: UIViewController {
     
     @IBAction func appleLoginButtonTapped(_ sender: UIButton) {
         startSignInWithAppleFlow()
+    }
+    
+    @IBAction func loginSkipButtonTapped(_ sender: UIButton) {
+        // Alert띄우기
+        let alert = UIAlertController(title: "경고", message: "계정 없이 앱을 이용하는 경우, 앱에서 로그아웃할 때 해당 데이터가 삭제됩니다. 진행하시겠습니까?", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            // 익명 데이터 생성
+            Auth.auth().signInAnonymously { authResult, error in
+                if let error = error {
+                    print ("Error Anonymously sign in: %@", error)
+                    return
+                }
+                
+                // 유저 데이터 만들고 메인으로 이동하기
+                SetValueCurrentUser()
+                showMainVCOnNavigation(self)
+                
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
