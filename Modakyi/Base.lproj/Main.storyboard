@@ -807,7 +807,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn5-6B-lVL">
-                                            <rect key="frame" x="133.5" y="374.5" width="147" height="20"/>
+                                            <rect key="frame" x="130.5" y="372" width="153" height="25"/>
                                             <fontDescription key="fontDescription" name="EliceDigitalBaeum" family="Elice DigitalBaeum" pointSize="17"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
@@ -854,7 +854,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-BC-Jsa">
-                                                    <rect key="frame" x="20" y="15" width="97.5" height="30.5"/>
+                                                    <rect key="frame" x="20" y="14.5" width="78.5" height="31.5"/>
                                                     <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1281,7 +1281,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
                                                                 <rect key="frame" x="130" y="0.0" width="130" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
                                                                 <nil key="textColor"/>
