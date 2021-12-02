@@ -14,6 +14,7 @@ class EnterEmailViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class EnterEmailViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
+        self.indicatorView.isHidden = false
+        
         // Firebase 이메일/비밀번호 인증
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -47,6 +50,7 @@ class EnterEmailViewController: UIViewController {
                     // 로그인하기
                     self.loginUser(withEmail: email, password: password)
                 default:
+                    self.indicatorView.isHidden = true
                     self.errorMessageLabel.text = error.localizedDescription
                 }
             } else {

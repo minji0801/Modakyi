@@ -11,13 +11,9 @@ import GoogleSignIn
 import FirebaseDatabase
 import UserNotifications
 import FirebaseMessaging
-import Siren
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    var window: UIWindow?
-    var ref: DatabaseReference!
-    var shouldSupportAllOrientation = true
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
@@ -25,12 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window?.makeKeyAndVisible() // 이 메소드가 반드시 선행되어야함.
-        
-        let siren = Siren.shared
-        siren.apiManager = APIManager(country: .korea)  // 기준 위치 대한민국 앱스토어로 변경
-        siren.presentationManager = PresentationManager(forceLanguageLocalization: .korean) // 알림 메시지 한국어로
-        siren.wail()    // 업데이트 알림 동작
         
         sleep(1)
         
