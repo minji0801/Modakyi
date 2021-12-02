@@ -443,6 +443,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="OcT-kc-svL">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dgm-8p-S6N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -450,6 +453,8 @@
                             <constraint firstItem="0Kt-Q5-ggS" firstAttribute="top" secondItem="dgm-8p-S6N" secondAttribute="top" constant="30" id="5aM-ff-855"/>
                             <constraint firstItem="0Kt-Q5-ggS" firstAttribute="centerX" secondItem="knF-QT-S8u" secondAttribute="centerX" id="FhP-yr-qOw"/>
                             <constraint firstItem="dgm-8p-S6N" firstAttribute="trailing" secondItem="0Kt-Q5-ggS" secondAttribute="trailing" constant="30" id="OTo-eY-tET"/>
+                            <constraint firstItem="OcT-kc-svL" firstAttribute="centerX" secondItem="knF-QT-S8u" secondAttribute="centerX" id="QB6-17-dDc"/>
+                            <constraint firstItem="OcT-kc-svL" firstAttribute="centerY" secondItem="knF-QT-S8u" secondAttribute="centerY" id="kVA-30-EIh"/>
                             <constraint firstItem="0Kt-Q5-ggS" firstAttribute="leading" secondItem="dgm-8p-S6N" secondAttribute="leading" constant="30" id="ufV-vo-LTz"/>
                         </constraints>
                     </view>
@@ -463,6 +468,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="hVQ-I0-bwu" id="p8H-dy-SIY"/>
                         <outlet property="errorMessageLabel" destination="zZ0-Pz-bTK" id="FMY-y8-iIY"/>
+                        <outlet property="indicatorView" destination="OcT-kc-svL" id="SOf-sb-bOZ"/>
                         <outlet property="nextButton" destination="Wt0-Za-KVY" id="K91-YU-ejZ"/>
                         <outlet property="passwordTextField" destination="9XG-4E-4D1" id="PaX-FV-QbT"/>
                     </connections>
@@ -1281,7 +1287,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
                                                                 <rect key="frame" x="130" y="0.0" width="130" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
                                                                 <nil key="textColor"/>
