@@ -254,14 +254,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nkj-5d-lMx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="304"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="254"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="zW3-tJ-Jtl" appends="YES" id="Snq-VX-JIu"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih5-aU-Lj1">
-                                <rect key="frame" x="0.0" y="348" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="298" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSG-kZ-SHD">
                                         <rect key="frame" x="193.5" y="13" width="27" height="24"/>
@@ -291,7 +291,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-a8-kTB">
-                                <rect key="frame" x="0.0" y="398" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="348" width="414" height="414"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어글귀  한글글귀  - 말한사람 -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jd4-v1-Mqe">
                                         <rect key="frame" x="15" y="15" width="384" height="384"/>
@@ -309,69 +309,81 @@
                                     <constraint firstAttribute="trailing" secondItem="jd4-v1-Mqe" secondAttribute="trailing" constant="15" id="sfa-15-o8c"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cNy-jr-ftx">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fB2-IS-7EU">
+                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-oY-w76">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cNy-jr-ftx">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-oY-w76">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="6pa-4P-qo3"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="heart" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
+                                                </state>
+                                                <state key="selected" image="heart.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="likeButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="TlL-o3-WFk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-hy-88g">
+                                                <rect key="frame" x="354" y="0.0" width="60" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="A1M-tE-iF3"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="checkmark.square" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.square.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="checkButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="ZUU-qc-tbd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="6pa-4P-qo3"/>
+                                            <constraint firstAttribute="height" constant="50" id="cuL-iY-M0E"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="heart" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
-                                        </state>
-                                        <state key="selected" image="heart.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="likeButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="TlL-o3-WFk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-hy-88g">
-                                        <rect key="frame" x="354" y="0.0" width="60" height="50"/>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqN-Nq-gft" customClass="GADBannerView">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="A1M-tE-iF3"/>
+                                            <constraint firstAttribute="height" constant="50" id="S5Q-uS-mPM"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="checkmark.square" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
-                                        </state>
-                                        <state key="selected" image="checkmark.square.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="checkButtonTapped:" destination="g9b-6q-EwT" eventType="touchUpInside" id="ZUU-qc-tbd"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cuL-iY-M0E"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HZP-Em-ACe"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="cNy-jr-ftx" secondAttribute="trailing" id="5yu-rF-bnO"/>
+                            <constraint firstItem="fB2-IS-7EU" firstAttribute="bottom" secondItem="HZP-Em-ACe" secondAttribute="bottom" id="6mv-07-ESx"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="bmE-a8-kTB" secondAttribute="trailing" id="CCb-ke-oRA"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="ih5-aU-Lj1" secondAttribute="trailing" id="Df2-LS-QhF"/>
+                            <constraint firstItem="fB2-IS-7EU" firstAttribute="trailing" secondItem="HZP-Em-ACe" secondAttribute="trailing" id="J6y-gD-cFx"/>
+                            <constraint firstItem="fB2-IS-7EU" firstAttribute="top" secondItem="bmE-a8-kTB" secondAttribute="bottom" id="JUQ-qU-oNf"/>
                             <constraint firstItem="ih5-aU-Lj1" firstAttribute="top" secondItem="Nkj-5d-lMx" secondAttribute="bottom" id="Jqe-9N-ThQ"/>
                             <constraint firstItem="Nkj-5d-lMx" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="KkL-sC-N53"/>
                             <constraint firstItem="ih5-aU-Lj1" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="M60-GR-5gV"/>
-                            <constraint firstItem="cNy-jr-ftx" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="N2K-x8-kGb"/>
                             <constraint firstItem="bmE-a8-kTB" firstAttribute="top" secondItem="ih5-aU-Lj1" secondAttribute="bottom" id="OWF-qx-6OD"/>
                             <constraint firstItem="HZP-Em-ACe" firstAttribute="trailing" secondItem="Nkj-5d-lMx" secondAttribute="trailing" id="TcO-7C-EQv"/>
-                            <constraint firstItem="HZP-Em-ACe" firstAttribute="bottom" secondItem="cNy-jr-ftx" secondAttribute="bottom" id="VL0-MD-ner"/>
                             <constraint firstItem="bmE-a8-kTB" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="VTG-Zj-bo4"/>
+                            <constraint firstItem="fB2-IS-7EU" firstAttribute="leading" secondItem="HZP-Em-ACe" secondAttribute="leading" id="ihf-9a-psB"/>
                             <constraint firstItem="Nkj-5d-lMx" firstAttribute="top" secondItem="HZP-Em-ACe" secondAttribute="top" id="om8-Tb-jY0"/>
-                            <constraint firstItem="cNy-jr-ftx" firstAttribute="top" secondItem="bmE-a8-kTB" secondAttribute="bottom" id="pev-gF-INK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="jqN-Nq-gft" id="3GX-IK-NBd"/>
                         <outlet property="checkButton" destination="nJy-hy-88g" id="osg-ou-Z5q"/>
                         <outlet property="likeButton" destination="Igv-oY-w76" id="eMC-IW-va6"/>
                         <outlet property="textIdLabel" destination="MSG-kZ-SHD" id="JMF-iV-5sb"/>
@@ -385,7 +397,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4022" y="88"/>
+            <point key="canvasLocation" x="4021.739130434783" y="87.723214285714278"/>
         </scene>
         <!--Enter Email View Controller-->
         <scene sceneID="gUW-zX-ROy">
