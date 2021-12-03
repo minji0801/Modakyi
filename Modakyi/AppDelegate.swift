@@ -11,6 +11,7 @@ import GoogleSignIn
 import FirebaseDatabase
 import UserNotifications
 import FirebaseMessaging
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -53,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         NetworkCheck.shared.startMonitoring()
+        
+        // Admob 광고
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
     

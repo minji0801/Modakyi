@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleMobileAds
 
 class DetailViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
@@ -21,9 +22,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Admob 광고
+        bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         textIdLabel.text = "글귀 \(id)"
         
         // id로 글귀 데이터 가져오기
