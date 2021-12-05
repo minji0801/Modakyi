@@ -27,10 +27,12 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var currentVersionLabel: UILabel!
+    @IBOutlet weak var updatedVersionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentVersionLabel.text = "현재 버전 : \(self.getAppVersion())"
+        currentVersionLabel.text = "현재 버전 : \(self.getCurrentVersion())"
+        updatedVersionLabel.text = "최신 버전 : \(self.getUpdatedVersion())"
         
         [notificationSettingButton, darkModeButton, noticeButton, commentsButton, usewayButton, logoutButton].forEach {
             $0?.layer.borderWidth = 0.3
@@ -99,7 +101,7 @@ class SettingViewController: UIViewController {
                              
                              Device Model : \(self.getDeviceIdentifier())
                              Device OS : \(UIDevice.current.systemVersion)
-                             App Version : \(self.getAppVersion())
+                             App Version : \(self.getCurrentVersion())
                              
                              -------------------
                              """
@@ -180,11 +182,22 @@ class SettingViewController: UIViewController {
         return identifier
     }
     
-    // App Version 가져오기
-    func getAppVersion() -> String {
+    // 현재 버전 가져오기
+    func getCurrentVersion() -> String {
         guard let dictionary = Bundle.main.infoDictionary,
               let version = dictionary["CFBundleShortVersionString"] as? String else { return "" }
         return version
+    }
+    
+    // 최신 버전 가져오기
+    func getUpdatedVersion() -> String {
+        guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.alswl.Modakyi"),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+              let results = json["results"] as? [[String: Any]],
+                  results.count > 0,
+            let appStoreVersion = results[0]["version"] as? String else { return "" }
+        return appStoreVersion
     }
 }
 
