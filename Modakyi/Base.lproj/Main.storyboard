@@ -1299,7 +1299,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
                                                                 <rect key="frame" x="130" y="0.0" width="130" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -1354,6 +1354,7 @@
                         <outlet property="noticeButton" destination="3lD-Ce-uHf" id="R1F-9v-snB"/>
                         <outlet property="notificationSettingButton" destination="0vU-TI-8lz" id="vzK-La-LzX"/>
                         <outlet property="profileImage" destination="Qyl-p7-QYB" id="2pG-cE-8Hr"/>
+                        <outlet property="updatedVersionLabel" destination="6QU-8D-6DK" id="rK2-RB-sWt"/>
                         <outlet property="usewayButton" destination="3eQ-ql-bW9" id="elD-hc-sy7"/>
                     </connections>
                 </viewController>
