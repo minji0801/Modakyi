@@ -20,6 +20,8 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var textIdLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var textView: UIView!
+    
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var bannerView: GADBannerView!
@@ -101,6 +103,7 @@ class DetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // 좋아요 버튼 클릭
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         if sender.isSelected {
             // 데이터 빼고 리로드
@@ -116,6 +119,35 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // 공유하기 버튼 클릭
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "공유하기", message: "해당 글귀의 텍스트나 이미지를 공유해보세요.", preferredStyle: .actionSheet)
+        let textShareAction = UIAlertAction(title: "텍스트 공유하기", style: .default) { _ in
+            var objectsToShare = [String]()
+            if let text = self.textLabel.text {
+                objectsToShare.append(text)
+            }
+            
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        
+        let imageShareAction = UIAlertAction(title: "이미지 공유하기", style: .default) { _ in
+            guard let image = self.textView.transfromToImage() else { return }
+            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(textShareAction)
+        alert.addAction(imageShareAction)
+        alert.addAction(cancleAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // 체크 버튼 클릭
     @IBAction func checkButtonTapped(_ sender: UIButton) {
         if sender.isSelected {
             // 데이터 빼고 리로드
@@ -129,5 +161,20 @@ class DetailViewController: UIViewController {
             ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
             self.viewDidAppear(true)
         }
+    }
+}
+
+// UIView를 Image로 변환하기
+extension UIView {
+    func transfromToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        if let context = UIGraphicsGetCurrentContext() {
+            layer.render(in: context)
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
+        return nil
     }
 }
