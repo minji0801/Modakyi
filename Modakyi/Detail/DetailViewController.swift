@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import GoogleMobileAds
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     var ref: DatabaseReference! = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     
@@ -28,12 +28,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Admob 광고
         bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
         textIdLabel.text = "글귀 \(id)"
+        
+        // NotificationCenter
+        NotificationCenter.default.addObserver(self, selector: #selector(self.textShareNotification(_:)), name: NSNotification.Name("TextShare"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.imageShareNotification(_:)), name: NSNotification.Name("ImageShare"), object: nil)
         
         // id로 글귀 데이터 가져오기
         ref.child("Text/Text\(id)").observe(.value) { snapshot in
@@ -119,34 +124,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    // 공유하기 버튼 클릭
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: "공유하기", message: "해당 글귀의 텍스트나 이미지를 공유해보세요.", preferredStyle: .actionSheet)
-        let textShareAction = UIAlertAction(title: "텍스트 공유하기", style: .default) { _ in
-            var objectsToShare = [String]()
-            if let text = self.textLabel.text {
-                objectsToShare.append(text)
-            }
-            
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            self.present(activityVC, animated: true, completion: nil)
-        }
-        
-        let imageShareAction = UIAlertAction(title: "이미지 공유하기", style: .default) { _ in
-            guard let image = self.textView.transfromToImage() else { return }
-            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            self.present(activityVC, animated: true, completion: nil)
-        }
-        let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-        alert.addAction(textShareAction)
-        alert.addAction(imageShareAction)
-        alert.addAction(cancleAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     // 체크 버튼 클릭
     @IBAction func checkButtonTapped(_ sender: UIButton) {
         if sender.isSelected {
@@ -160,6 +137,44 @@ class DetailViewController: UIViewController {
             usedTextIDs.append(sender.tag)
             ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
             self.viewDidAppear(true)
+        }
+    }
+    
+    // iPhone에서도 팝업창 보여주기 위한 설정 1
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "popoverSegue" {
+            let popoverViewController = segue.destination
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popoverViewController.popoverPresentationController!.delegate = self
+        }
+    }
+    
+    // iPhone에서도 팝업창 보여주기 위한 설정 2
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    // 텍스트 공유하기
+    @objc func textShareNotification(_ notification: Notification) {
+        var objectsToShare = [String]()
+        if let text = self.textLabel.text {
+            objectsToShare.append(text)
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    // 이미지 공유하기
+    @objc func imageShareNotification(_ notification: Notification) {
+        guard let image = self.textView.transfromToImage() else { return }
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
         }
     }
 }
