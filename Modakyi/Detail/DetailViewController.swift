@@ -163,6 +163,8 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
+        activityVC.popoverPresentationController?.permittedArrowDirections = .left
         DispatchQueue.main.async {
             self.present(activityVC, animated: true, completion: nil)
         }
@@ -173,6 +175,8 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         guard let image = self.textView.transfromToImage() else { return }
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
+        activityVC.popoverPresentationController?.permittedArrowDirections = .left
         DispatchQueue.main.async {
             self.present(activityVC, animated: true, completion: nil)
         }
