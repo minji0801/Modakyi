@@ -18,6 +18,8 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
     var usedTextIDs = [Int]()
     var id = ""
     
+    private var interstitial: GADInterstitialAd?    // 전면 광고 객체
+    
     @IBOutlet weak var textIdLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textView: UIView!
@@ -33,6 +35,20 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        
+        // Admob 전면 광고
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7980627220900140/4153256056",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
         
         textIdLabel.text = "글귀 \(id)"
         
@@ -101,11 +117,24 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+        // 전면 광고 띄우기
+        if self.interstitial != nil {
+            self.interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+            dismiss(animated: true, completion: nil)
+        }
     }
     
+    // x 버튼 클릭 시
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        // 전면 광고 띄우기
+        if self.interstitial != nil {
+            self.interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     // 좋아요 버튼 클릭
@@ -195,5 +224,25 @@ extension UIView {
             return UIGraphicsGetImageFromCurrentImageContext()
         }
         return nil
+    }
+}
+
+// MARK: - Admob 전면광고 Delegate
+extension DetailViewController: GADFullScreenContentDelegate {
+    
+    // present 실패 시
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    // present 성공 시
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+    
+    // 전면 광고 dismiss 시
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        dismiss(animated: true, completion: nil)
     }
 }
