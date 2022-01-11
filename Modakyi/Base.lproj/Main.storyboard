@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S07-EP-wss">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -270,7 +270,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJ2-jf-USX">
-                                        <rect key="frame" x="359.5" y="9.5" width="46.5" height="31"/>
+                                        <rect key="frame" x="360.5" y="9.5" width="45.5" height="31"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
@@ -521,7 +521,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6m-vn-0Mk">
-                                                <rect key="frame" x="253.5" y="6.5" width="46.5" height="31"/>
+                                                <rect key="frame" x="254.5" y="6.5" width="45.5" height="31"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
@@ -1074,7 +1074,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-3V-7us">
-                                                    <rect key="frame" x="350.5" y="11" width="53.5" height="38"/>
+                                                    <rect key="frame" x="348.5" y="11" width="55.5" height="38"/>
                                                     <color key="tintColor" systemColor="systemGrayColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
@@ -1211,7 +1211,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3i-gE-YKF">
-                                        <rect key="frame" x="8" y="6.5" width="39.5" height="31"/>
+                                        <rect key="frame" x="8" y="6.5" width="38" height="31"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system">
@@ -1252,10 +1252,10 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xn-o8-Y1M">
-                                <rect key="frame" x="0.0" y="283" width="414" height="579"/>
+                                <rect key="frame" x="0.0" y="283" width="414" height="479"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-i6-nJa">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="584"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-i6-nJa">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="479"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-9Z-kIH">
                                                 <rect key="frame" x="77" y="50" width="260" height="218.5"/>
@@ -1396,25 +1396,35 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="smY-s7-cLz"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Jz2-Us-KSD"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW9-fK-Q8y" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="f6N-n9-3VV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pag-Xf-T06"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NgP-DK-Pvl" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" constant="20" id="2mv-Mi-ffk"/>
                             <constraint firstItem="JFU-GL-Eyh" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="2yK-hd-GG3"/>
+                            <constraint firstItem="Pag-Xf-T06" firstAttribute="bottom" secondItem="qW9-fK-Q8y" secondAttribute="bottom" id="3Nl-uP-HSY"/>
                             <constraint firstItem="Jz2-Us-KSD" firstAttribute="width" secondItem="JFU-GL-Eyh" secondAttribute="width" id="4By-cu-HH7"/>
                             <constraint firstItem="t4d-i6-nJa" firstAttribute="width" secondItem="DLc-Zm-JdN" secondAttribute="width" id="5TK-mo-BEl"/>
+                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="top" secondItem="0Xn-o8-Y1M" secondAttribute="bottom" id="5qH-eu-T78"/>
                             <constraint firstItem="0Xn-o8-Y1M" firstAttribute="top" secondItem="NgP-DK-Pvl" secondAttribute="bottom" constant="30" id="6Kj-bm-fGD"/>
                             <constraint firstItem="0Xn-o8-Y1M" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="Cua-Bd-z0Z"/>
                             <constraint firstItem="Pag-Xf-T06" firstAttribute="top" secondItem="JFU-GL-Eyh" secondAttribute="top" id="D97-6s-yvb"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="bottom" secondItem="0Xn-o8-Y1M" secondAttribute="bottom" id="GnM-OL-gx8"/>
                             <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="0Xn-o8-Y1M" secondAttribute="trailing" id="NuU-CC-uGo"/>
                             <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="JFU-GL-Eyh" secondAttribute="trailing" id="Uap-Hb-Z1p"/>
                             <constraint firstItem="NgP-DK-Pvl" firstAttribute="top" secondItem="JFU-GL-Eyh" secondAttribute="bottom" constant="30" id="VEG-cf-qVb"/>
+                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="trailing" secondItem="Pag-Xf-T06" secondAttribute="trailing" id="Vcb-a3-BC3"/>
                             <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="NgP-DK-Pvl" secondAttribute="trailing" constant="20" id="a5A-H3-nBB"/>
+                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="oLs-hk-DhS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="qW9-fK-Q8y" id="GSY-ql-4PY"/>
                         <outlet property="commentsButton" destination="x8r-Kv-rmR" id="HTu-1X-PsW"/>
                         <outlet property="currentVersionLabel" destination="xMA-QI-QLR" id="rgR-wl-cXb"/>
                         <outlet property="darkModeButton" destination="sQY-Dv-NWh" id="Bk8-nj-75l"/>
@@ -1429,7 +1439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFi-Fp-5jm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4022" y="-839"/>
+            <point key="canvasLocation" x="4021.739130434783" y="-839.0625"/>
         </scene>
         <!--Notice View Controller-->
         <scene sceneID="ZBg-u7-iET">
@@ -1452,7 +1462,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yD8-Mu-75D">
-                                                <rect key="frame" x="327.5" y="6.5" width="46.5" height="31"/>
+                                                <rect key="frame" x="328.5" y="6.5" width="45.5" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">

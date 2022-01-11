@@ -11,6 +11,7 @@ import FirebaseDatabase
 import Kingfisher
 import SafariServices
 import MessageUI
+import GoogleMobileAds
 
 class SettingViewController: UIViewController {
     let ref: DatabaseReference! = Database.database().reference()
@@ -29,8 +30,15 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var currentVersionLabel: UILabel!
     @IBOutlet weak var updatedVersionLabel: UILabel!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Admob 광고
+        bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         currentVersionLabel.text = "현재 버전 : \(self.getCurrentVersion())"
         updatedVersionLabel.text = "최신 버전 : \(self.getUpdatedVersion())"
         
