@@ -8,8 +8,6 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-import AdSupport
-import AppTrackingTransparency
 
 class HomeViewController: UIViewController {
     var ref: DatabaseReference! = Database.database().reference()
@@ -29,10 +27,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // IDFA 가져오기
-        self.requestPermission()
-        
         self.collectionview.alpha = 0
         self.collectionview.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -135,32 +129,6 @@ class HomeViewController: UIViewController {
             return true
         } else {
             return false
-        }
-    }
-    
-    // 앱 추척 권한
-    func requestPermission() {
-        ATTrackingManager.requestTrackingAuthorization { status in
-            switch status {
-            case .authorized:
-                // Tracking authorization dialog was shown
-                // and we are authorized
-                print("Authorized")
-                
-                // Now that we are authorized we can get the IDFA
-                print("IDFA = \(ASIdentifierManager.shared().advertisingIdentifier)")
-            case .denied:
-                // Tracking authorization dialog was
-                // shown and permission is denied
-                print("Denied")
-            case .notDetermined:
-                // Tracking authorization dialog has not been shown
-                print("Not Determined")
-            case .restricted:
-                print("Restricted")
-            @unknown default:
-                print("Unknown")
-            }
         }
     }
 }

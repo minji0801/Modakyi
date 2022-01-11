@@ -614,11 +614,13 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "모닥이";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진첩에 글귀 이미지를 저장할 수 있습니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자 맞춤 서비스 제공을 위해 권한을 허용해 주세요. 애플 정책 기반 개인화된 광고 제공 목적으로만 사용됩니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -629,7 +631,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -647,11 +649,13 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "모닥이";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진첩에 글귀 이미지를 저장할 수 있습니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자 맞춤 서비스 제공을 위해 권한을 허용해 주세요. 애플 정책 기반 개인화된 광고 제공 목적으로만 사용됩니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -662,7 +666,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

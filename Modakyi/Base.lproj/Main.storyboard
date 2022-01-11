@@ -63,7 +63,7 @@
                                 </connections>
                             </pageControl>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-o1-HKN">
-                                <rect key="frame" x="144" y="792" width="126.5" height="36"/>
+                                <rect key="frame" x="143.5" y="792" width="127" height="36"/>
                                 <color key="backgroundColor" name="mainColor"/>
                                 <fontDescription key="fontDescription" name="EliceDigitalBaeum" family="Elice DigitalBaeum" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -626,7 +626,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아하는 글귀가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvN-Zk-812">
-                                            <rect key="frame" x="115.5" y="372" width="183.5" height="25"/>
+                                            <rect key="frame" x="115.5" y="372" width="183" height="25"/>
                                             <fontDescription key="fontDescription" name="EliceDigitalBaeum" family="Elice DigitalBaeum" pointSize="17"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
@@ -670,7 +670,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아하는 글귀모음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIi-PQ-iGm">
-                                            <rect key="frame" x="20" y="14.5" width="147.5" height="31.5"/>
+                                            <rect key="frame" x="20" y="14.5" width="147.5" height="31"/>
                                             <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -778,7 +778,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미사용 글귀모음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVg-M9-qKD">
-                                            <rect key="frame" x="20" y="14.5" width="129.5" height="31.5"/>
+                                            <rect key="frame" x="20" y="14.5" width="129.5" height="31"/>
                                             <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -941,7 +941,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-BC-Jsa">
-                                                    <rect key="frame" x="20" y="14.5" width="78.5" height="31.5"/>
+                                                    <rect key="frame" x="20" y="14.5" width="78.5" height="31"/>
                                                     <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1068,13 +1068,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-E9-Y4R">
-                                                    <rect key="frame" x="20" y="14.5" width="71" height="31.5"/>
+                                                    <rect key="frame" x="20" y="14.5" width="71" height="31"/>
                                                     <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-3V-7us">
-                                                    <rect key="frame" x="348.5" y="11" width="55.5" height="38"/>
+                                                    <rect key="frame" x="349" y="11" width="55" height="38"/>
                                                     <color key="tintColor" systemColor="systemGrayColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
@@ -1456,13 +1456,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn9-lg-zTu">
-                                                <rect key="frame" x="159.5" y="10" width="55.5" height="24"/>
+                                                <rect key="frame" x="159.5" y="10" width="55" height="24"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yD8-Mu-75D">
-                                                <rect key="frame" x="328.5" y="6.5" width="45.5" height="31"/>
+                                                <rect key="frame" x="328" y="6.5" width="46" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">

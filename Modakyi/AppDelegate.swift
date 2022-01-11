@@ -12,6 +12,8 @@ import FirebaseDatabase
 import UserNotifications
 import FirebaseMessaging
 import GoogleMobileAds
+import AdSupport
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -48,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
         application.registerForRemoteNotifications()
+        
+        setNotification()
         
         // Google 로그인 Delgate
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -98,6 +102,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // Google Login User 데이터 만들기
             SetValueCurrentUser()
             showMainVCOnRoot()
+        }
+    }
+    
+    // 앱 추적 권한
+    func setNotification(){
+        //Ask for notification permission
+        let n = NotificationHandler()
+        n.askNotificationPermission {
+            
+            // 다른 alert 보다 늦게 띄우기
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if #available(iOS 14, *) {
+                    ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                        switch status {
+                        case .authorized:
+                            print("Authorized")
+                            print("IDFA = \(ASIdentifierManager.shared().advertisingIdentifier)")
+                        case .denied:
+                            print("Denied")
+                        case .notDetermined:
+                            print("Not Determined")
+                        case .restricted:
+                            print("Restricted")
+                        @unknown default:
+                            print("Unknown")
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    class NotificationHandler{
+        //Permission function
+        func askNotificationPermission(completion: @escaping ()->Void){
+            
+            //Permission to send notifications
+            let center = UNUserNotificationCenter.current()
+            // Request permission to display alerts and play sounds.
+            center.requestAuthorization(options: [.alert, .badge, .sound])
+            { (granted, error) in
+                // Enable or disable features based on authorization.
+                completion()
+            }
         }
     }
 }
