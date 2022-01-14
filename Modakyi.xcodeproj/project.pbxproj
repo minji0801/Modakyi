@@ -24,6 +24,7 @@
 		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
 		A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */; };
 		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
+		A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BCF1FC27912A7700C851F4 /* RoundButton.swift */; };
 		A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */; };
 		A5BF5179274365C90006EFBC /* EliceDigitalBaeum_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */; };
 		A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF516C274365C90006EFBC /* HS새마을체.ttf */; };
@@ -97,6 +98,7 @@
 		A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
 		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		A5BCF1FC27912A7700C851F4 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Bold.ttf; sourceTree = "<group>"; };
 		A5BF5169274365C80006EFBC /* EliceDigitalBaeum_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EliceDigitalBaeum_Regular.ttf; sourceTree = "<group>"; };
 		A5BF516C274365C90006EFBC /* HS새마을체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HS새마을체.ttf"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				A5D4611B274B3D91008DBF4B /* TutorialViewController.swift */,
 				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
 				A55298CF2733920800DCB870 /* NetworkViewController.swift */,
+				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
 				A59FAFC5272D6E79000807A5 /* Login */,
 				A59FAFC6272D6E8F000807A5 /* Home */,
 				A5EFE247272FD8090086EBAC /* Like */,
@@ -182,8 +185,8 @@
 				A5EFE255272FF3450086EBAC /* Search */,
 				A5EFE244272FC3130086EBAC /* Detail */,
 				A53C6BC92730F26400066A3F /* Setting */,
-				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
 				A5A69B7127424171009F26CC /* Method */,
+				A5BCF1F92791294A00C851F4 /* Button */,
 				A5BF515D274365A30006EFBC /* Font */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
@@ -224,6 +227,14 @@
 				A5BF517E274381A70006EFBC /* UIConfigure.swift */,
 			);
 			path = Method;
+			sourceTree = "<group>";
+		};
+		A5BCF1F92791294A00C851F4 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A5BCF1FC27912A7700C851F4 /* RoundButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		A5BF515D274365A30006EFBC /* Font */ = {
@@ -310,7 +321,7 @@
 				A59FAFA1272D5BE7000807A5 /* Resources */,
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
-				A1F4DA32E6CC64AA5AA85FEB /* [CP] Copy Pods Resources */,
+				3E688EB4A15BF56F77B820C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -394,7 +405,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A1F4DA32E6CC64AA5AA85FEB /* [CP] Copy Pods Resources */ = {
+		3E688EB4A15BF56F77B820C2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,6 +452,7 @@
 				A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */,
 				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
 				A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */,
+				A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
@@ -614,7 +626,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -631,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -649,7 +661,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -666,7 +678,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
