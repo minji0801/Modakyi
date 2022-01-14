@@ -19,18 +19,10 @@ class SettingViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var notificationSettingButton: UIButton!
-    @IBOutlet weak var darkModeButton: UIButton!
-    @IBOutlet weak var noticeButton: UIButton!
-    @IBOutlet weak var commentsButton: UIButton!
-    @IBOutlet weak var usewayButton: UIButton!
-    @IBOutlet weak var logoutButton: UIButton!
-    
     @IBOutlet weak var currentVersionLabel: UILabel!
     @IBOutlet weak var updatedVersionLabel: UILabel!
-    
     @IBOutlet weak var bannerView: GADBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,14 +31,9 @@ class SettingViewController: UIViewController {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
+        // Version
         currentVersionLabel.text = "현재 버전 : \(self.getCurrentVersion())"
         updatedVersionLabel.text = "최신 버전 : \(self.getUpdatedVersion())"
-        
-        [notificationSettingButton, darkModeButton, noticeButton, commentsButton, usewayButton, logoutButton].forEach {
-            $0?.layer.borderWidth = 0.3
-            $0?.layer.cornerRadius = 10
-            $0?.layer.borderColor = UIColor.darkGray.cgColor
-        }
         
         // Profile Image / UserName
         let username = Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
@@ -62,11 +49,12 @@ class SettingViewController: UIViewController {
         AppearanceCheck(self)
     }
     
+    // 뒤로가기
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // 알림설정 버튼 클릭 시
+    // 알림설정
     @IBAction func notificationSettingButtonTapped(_ sender: UIButton) {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         if UIApplication.shared.canOpenURL(url) {
@@ -74,7 +62,7 @@ class SettingViewController: UIViewController {
         }
     }
     
-    // 다크모드 버튼 클릭 시
+    // 다크모드
     @IBAction func darckModeButtonTapped(_ sender: UIButton) {
         if self.overrideUserInterfaceStyle == .light {
             UserDefaults.standard.set("Dark", forKey: "Appearance")
@@ -84,12 +72,12 @@ class SettingViewController: UIViewController {
         self.viewWillAppear(true)
     }
     
-    // 공지사항 버튼 클릭 시
+    // 공지사항
     @IBAction func noticeButtonTapped(_ sender: UIButton) {
         presentNoticeViewController(self)
     }
     
-    // 문의 및 의견 버튼 클릭 시
+    // 문의 및 의견
     @IBAction func commentsButtonTapped(_ sender: UIButton) {
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
@@ -140,13 +128,25 @@ class SettingViewController: UIViewController {
         }
     }
     
-    // 이용방법 버튼 클릭 시
+    // 앱 평가
+    @IBAction func reviewButtonTapped(_ sender: Any) {
+        // 스토어 url 열기
+        if let url = URL(string: "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    // 이용방법
     @IBAction func usewayButtonTapped(_ sender: UIButton) {
         presentTutorialViewController(self)
         
     }
     
-    // 로그아웃 버튼 클릭 시
+    // 로그아웃
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
         let isAnonymous = Auth.auth().currentUser?.isAnonymous
         let alertController = UIAlertController(title: "로그아웃", message: "정말 로그아웃하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
