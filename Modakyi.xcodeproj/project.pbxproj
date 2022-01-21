@@ -22,7 +22,6 @@
 		A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */; };
 		A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBE272D655F000807A5 /* MainViewController.swift */; };
 		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
-		A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */; };
 		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
 		A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BCF1FC27912A7700C851F4 /* RoundButton.swift */; };
 		A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF5163274365C80006EFBC /* EliceDigitalBaeum_Bold.ttf */; };
@@ -95,7 +94,6 @@
 		A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
 		A59FAFBE272D655F000807A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A59FAFC0272D6659000807A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
 		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		A5BCF1FC27912A7700C851F4 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
 				A59FAFB4272D5BE8000807A5 /* Info.plist */,
-				A59FAFC2272D678A000807A5 /* GoogleService-Info.plist */,
 			);
 			path = Modakyi;
 			sourceTree = "<group>";
@@ -371,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A59FAFB3272D5BE8000807A5 /* LaunchScreen.storyboard in Resources */,
-				A59FAFC3272D678B000807A5 /* GoogleService-Info.plist in Resources */,
 				A5BF5179274365C90006EFBC /* EliceDigitalBaeum_Regular.ttf in Resources */,
 				A59FAFB0272D5BE8000807A5 /* Assets.xcassets in Resources */,
 				A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */,
