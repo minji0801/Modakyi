@@ -1259,16 +1259,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-i6-nJa">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="479"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-9Z-kIH">
-                                                <rect key="frame" x="77" y="20" width="260" height="260"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-9Z-kIH">
+                                                <rect key="frame" x="72" y="20" width="270" height="265"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-su-Bh7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="36"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-su-Bh7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="45"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vU-TI-8lz" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="45"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="120" id="E9F-rn-j4a"/>
+                                                                    <constraint firstAttribute="width" constant="130" id="I6j-C9-uqK"/>
+                                                                    <constraint firstAttribute="height" constant="45" id="qLj-4H-DGK"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1283,7 +1284,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQY-Dv-NWh" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="140" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="140" y="0.0" width="130" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="다크모드">
@@ -1298,11 +1299,11 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-TQ-Jqt">
-                                                        <rect key="frame" x="0.0" y="56" width="260" height="36"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-TQ-Jqt">
+                                                        <rect key="frame" x="0.0" y="55" width="270" height="45"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lD-Ce-uHf" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="공지사항">
@@ -1316,7 +1317,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8r-Kv-rmR" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="140" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="140" y="0.0" width="130" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="문의 및 의견">
@@ -1331,11 +1332,11 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="06q-xk-03f">
-                                                        <rect key="frame" x="0.0" y="112" width="260" height="36"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="06q-xk-03f">
+                                                        <rect key="frame" x="0.0" y="110" width="270" height="45"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioc-Cx-af7" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="앱 평가">
@@ -1349,7 +1350,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eQ-ql-bW9" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="140" y="0.0" width="120" height="36"/>
+                                                                <rect key="frame" x="140" y="0.0" width="130" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="이용방법">
@@ -1365,10 +1366,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r8E-3V-EQq">
-                                                        <rect key="frame" x="0.0" y="168" width="260" height="36"/>
+                                                        <rect key="frame" x="0.0" y="165" width="270" height="45"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-UD-bJh" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="로그아웃">
@@ -1384,16 +1385,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="isd-BY-ScU">
-                                                        <rect key="frame" x="0.0" y="224" width="260" height="36"/>
+                                                        <rect key="frame" x="0.0" y="220" width="270" height="45"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMA-QI-QLR">
-                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="135" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
-                                                                <rect key="frame" x="130" y="0.0" width="130" height="36"/>
+                                                                <rect key="frame" x="135" y="0.0" width="135" height="45"/>
                                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1597,7 +1598,7 @@
         <image name="text" width="24" height="24"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.90588235294117647" green="0.38039215686274508" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.90600001811981201" green="0.37999999523162842" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
