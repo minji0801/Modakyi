@@ -11,7 +11,6 @@ target 'Modakyi' do
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'GoogleSignIn', '5.0.2'
+  # pod 'Kingfisher', '~> 7.0'
   pod 'Google-Mobile-Ads-SDK'
-  pod 'SwiftLint'
-
 end

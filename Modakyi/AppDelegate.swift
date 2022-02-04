@@ -17,27 +17,21 @@ import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
-    func application(
-        _ application: UIApplication,
-        willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-    ) -> Bool {
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
         return true
     }
-
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         sleep(1)
-
+        
         // Firebase 초기화
         FirebaseApp.configure()
-
+        
         Messaging.messaging().delegate = self
-
+        
         // FCM 현재 등록 토큰 확인
         Messaging.messaging().token { token, error in
             if let error = error {
@@ -46,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("FCM 등록 토큰: \(String(describing: token))")
             }
         }
-
+        
         // User Notification 설정 및 사용자 동의 얻기
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { didAllow, error in
             if didAllow {
@@ -56,51 +50,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
         application.registerForRemoteNotifications()
-
+        
         setNotification()
-
+        
         // Google 로그인 Delgate
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-
+        
         NetworkCheck.shared.startMonitoring()
-
+        
         // Admob 광고
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
-
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-    ) -> Bool {
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
         return GIDSignIn.sharedInstance().handle(url)
     }
-
+    
     // MARK: UISceneSession Lifecycle
-
-    func application(
-        _ application: UIApplication,
-        configurationForConnecting connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions
-    ) -> UISceneConfiguration {
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(
-        _ application: UIApplication,
-        supportedInterfaceOrientationsFor window: UIWindow?
-    ) -> UIInterfaceOrientationMask {
+    
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         // 세로방향 고정
         return UIInterfaceOrientationMask.portrait
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         exit(0)
     }
-
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // Google 로그인 인증 후 전달된 값을 처리하는 부분
         if let error = error {
@@ -109,24 +96,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
 
         guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(
-            withIDToken: authentication.idToken,
-            accessToken: authentication.accessToken
-        )
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
 
         Auth.auth().signIn(with: credential) { _, _ in
             // Google Login User 데이터 만들기
-            setValueCurrentUser()
+            SetValueCurrentUser()
             showMainVCOnRoot()
         }
     }
-
+    
     // 앱 추적 권한
-    func setNotification() {
-        // Ask for notification permission
-        let notificationHandler = NotificationHandler()
-        notificationHandler.askNotificationPermission {
-
+    func setNotification(){
+        //Ask for notification permission
+        let n = NotificationHandler()
+        n.askNotificationPermission {
+            
             // 다른 alert 보다 늦게 띄우기
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if #available(iOS 14, *) {
@@ -149,15 +133,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
     }
-
-    class NotificationHandler {
-        // Permission function
-        func askNotificationPermission(completion: @escaping () -> Void) {
-
-            // Permission to send notifications
+    
+    class NotificationHandler{
+        //Permission function
+        func askNotificationPermission(completion: @escaping ()->Void){
+            
+            //Permission to send notifications
             let center = UNUserNotificationCenter.current()
             // Request permission to display alerts and play sounds.
-            center.requestAuthorization(options: [.alert, .badge, .sound]) { (_, _) in
+            center.requestAuthorization(options: [.alert, .badge, .sound])
+            { (granted, error) in
                 // Enable or disable features based on authorization.
                 completion()
             }
@@ -166,11 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification,
-        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
-    ) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.list, .banner, .badge, .sound]) // 알림 display 형태 지정
     }
 }

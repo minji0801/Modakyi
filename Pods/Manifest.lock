@@ -122,7 +122,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
-  - SwiftLint (0.46.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -131,7 +130,6 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Google-Mobile-Ads-SDK
   - GoogleSignIn (= 5.0.2)
-  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -155,7 +153,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - SwiftLint
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
@@ -178,8 +175,7 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: cdd90b7aedd30dcbfed9b408a74486fa4d078617
+PODFILE CHECKSUM: c079488d09f2e0b2aaf73ab8f678510ce3914f93
 
 COCOAPODS: 1.11.2

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // UserDefaults에 저장된 값을 통해 다크모드 확인하는 메소드
-func appearanceCheck(_ viewController: UIViewController) {
+func AppearanceCheck(_ viewController: UIViewController) {
     guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
     if appearance == "Dark" {
         viewController.overrideUserInterfaceStyle = .dark
@@ -29,7 +29,7 @@ func appearanceCheck(_ viewController: UIViewController) {
 }
 
 // Firebase를 통해서 가져온 Text 데이터를 Label에 뿌려주는 메소드
-func textOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
+func TextOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
     if who.isEmpty {
         if eng.isEmpty {
             return kor
@@ -38,7 +38,7 @@ func textOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
         } else {
             return """
             \(eng)
-
+            
             \(kor)
             """
         }
@@ -46,21 +46,21 @@ func textOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
         if eng.isEmpty {
             return """
             \(kor)
-
+            
             \(who)
             """
         } else if kor.isEmpty {
             return """
             \(eng)
-
+            
             \(who)
             """
         } else {
             return """
             \(eng)
-
+            
             \(kor)
-
+            
             \(who)
             """
         }
@@ -68,7 +68,7 @@ func textOnLabel(_ eng: String, _ kor: String, _ who: String) -> String {
 }
 
 // Indicator 천천히 없애는 메소드
-func slowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectionView: UICollectionView) {
+func SlowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectionView: UICollectionView) {
     UIView.animate(withDuration: 0.5) {
         indicatorView.stopAnimating()
         indicatorView.alpha = 0
@@ -77,13 +77,13 @@ func slowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectio
 }
 
 // CollectionView Cell의 크기를 재조정하는 메소드
-func resizeCells(_ collectionView: UICollectionView?) {
+func ResizeCells(_ collectionView: UICollectionView?) {
     if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-        guard (collectionView?.collectionViewLayout as? UICollectionViewFlowLayout) != nil else {
+        guard let _ = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
             layout.itemSize = CGSize.zero
             return
         }
-
+        
         let width = ((collectionView?.bounds.width)! / 3) - 0.8
         let itemSize = CGSize(width: width, height: width)
         layout.itemSize = itemSize
