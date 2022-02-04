@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5335C9B27AD416000C67292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5335C9A27AD416000C67292 /* GoogleService-Info.plist */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
 		A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F36B62765C32F008EE7A4 /* ShareViewController.swift */; };
@@ -63,6 +64,7 @@
 		2FD333FAF9815CFB8F3F417C /* Pods-Modakyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.debug.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.debug.xcconfig"; sourceTree = "<group>"; };
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5335C9A27AD416000C67292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
 				A59FAFB4272D5BE8000807A5 /* Info.plist */,
+				A5335C9A27AD416000C67292 /* GoogleService-Info.plist */,
 			);
 			path = Modakyi;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */,
 				A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */,
 				A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */,
+				A5335C9B27AD416000C67292 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

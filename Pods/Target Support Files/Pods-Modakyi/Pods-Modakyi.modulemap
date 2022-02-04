@@ -1,0 +1,6 @@
+framework module Pods_Modakyi {
+  umbrella header "Pods-Modakyi-umbrella.h"
+
+  export *
+  module * { export * }
+}
