@@ -40,20 +40,23 @@ func showMainVCOnNavigation(_ viewController: UIViewController) {
 
 // SettingViewController를 NavigationController에 push해서 보여주는 메소드
 func pushSettingVCOnNavigation(_ viewController: UIViewController) {
-    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else { return }
+    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
+            as? SettingViewController else { return }
     viewController.navigationController?.pushViewController(settingViewController, animated: true)
 }
 
 // DetailViewController를 present해서 보여주는 메소드
 func presentDetailViewController(_ viewController: UIViewController, _ recommendTextId: String) {
-    guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+    guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
+            as? DetailViewController else { return }
     detailViewController.id = recommendTextId
     viewController.present(detailViewController, animated: true, completion: nil)
 }
 
 // NoticeViewController를 present해서 보여주는 메소드
 func presentNoticeViewController(_ viewController: UIViewController) {
-    guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController") as? NoticeViewController else { return }
+    guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController")
+            as? NoticeViewController else { return }
     noticeViewController.modalPresentationStyle = .fullScreen
     viewController.present(noticeViewController, animated: false, completion: nil)
 }
