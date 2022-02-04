@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A5335C9B27AD416000C67292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5335C9A27AD416000C67292 /* GoogleService-Info.plist */; };
+		A5335C9F27AD506200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335C9E27AD506200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
 		A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F36B62765C32F008EE7A4 /* ShareViewController.swift */; };
@@ -125,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5335C9F27AD506200C67292 /* Kingfisher in Frameworks */,
 				BBEE75F73738EB9868E09EE4 /* Pods_Modakyi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,12 +324,16 @@
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
 				3E688EB4A15BF56F77B820C2 /* [CP] Copy Pods Resources */,
+				A5335C9C27AD45D500C67292 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Modakyi;
+			packageProductDependencies = (
+				A5335C9E27AD506200C67292 /* Kingfisher */,
+			);
 			productName = Modakyi;
 			productReference = A59FAFA3272D5BE7000807A5 /* Modakyi.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +362,9 @@
 				Base,
 			);
 			mainGroup = A59FAF9A272D5BE7000807A5;
+			packageReferences = (
+				A5335C9D27AD506200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A59FAFA4272D5BE7000807A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -421,6 +430,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A5335C9C27AD45D500C67292 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -643,7 +670,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -678,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -709,6 +736,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5335C9D27AD506200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5335C9E27AD506200C67292 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5335C9D27AD506200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A59FAF9B272D5BE7000807A5 /* Project object */;
 }
