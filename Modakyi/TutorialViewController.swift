@@ -8,7 +8,6 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
-//    let tutorial = UserDefaults.standard.bool(forKey: "Tutorial")
     let images = ["page0", "page1", "page2", "page3", "page4", "page5"]
     let texts = [
         """
@@ -50,7 +49,6 @@ class TutorialViewController: UIViewController {
         
         imageView.image = UIImage(named: images[0])
         label.text = texts[0]
-        label.textColor = .white
         
         // iPad Font
         if UIDevice.current.model == "iPad" {

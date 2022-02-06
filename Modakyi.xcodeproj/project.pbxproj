@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
-		A5335CAC27AD68C400C67292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5335CAB27AD68C400C67292 /* GoogleService-Info.plist */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
 		A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F36B62765C32F008EE7A4 /* ShareViewController.swift */; };
 		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
 		A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B55E7273F884300A3A814 /* NetworkCheck.swift */; };
 		A561379B2734DCDD006C16CF /* SearchCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A561379A2734DCDD006C16CF /* SearchCollectionHeaderView.swift */; };
+		A585645B27AFA8EA00985AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A585645A27AFA8EA00985AF2 /* GoogleService-Info.plist */; };
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
 		A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAC272D5BE7000807A5 /* Main.storyboard */; };
@@ -65,7 +65,6 @@
 		2FD333FAF9815CFB8F3F417C /* Pods-Modakyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.debug.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.debug.xcconfig"; sourceTree = "<group>"; };
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5335CAB27AD68C400C67292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		A55B55CF273F811000A3A814 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55B55E7273F884300A3A814 /* NetworkCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCheck.swift; sourceTree = "<group>"; };
 		A561379A2734DCDD006C16CF /* SearchCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionHeaderView.swift; sourceTree = "<group>"; };
+		A585645A27AFA8EA00985AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				A59FAFB1272D5BE8000807A5 /* LaunchScreen.storyboard */,
 				A59FAFAF272D5BE8000807A5 /* Assets.xcassets */,
 				A59FAFB4272D5BE8000807A5 /* Info.plist */,
-				A5335CAB27AD68C400C67292 /* GoogleService-Info.plist */,
+				A585645A27AFA8EA00985AF2 /* GoogleService-Info.plist */,
 			);
 			path = Modakyi;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 				A59FAFA1272D5BE7000807A5 /* Resources */,
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
-				3E688EB4A15BF56F77B820C2 /* [CP] Copy Pods Resources */,
+				5DD72A0B36312DB28F0F509B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -384,7 +384,7 @@
 				A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */,
 				A5BF5173274365C90006EFBC /* EliceDigitalBaeum_Bold.ttf in Resources */,
 				A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */,
-				A5335CAC27AD68C400C67292 /* GoogleService-Info.plist in Resources */,
+				A585645B27AFA8EA00985AF2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +413,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3E688EB4A15BF56F77B820C2 /* [CP] Copy Pods Resources */ = {
+		5DD72A0B36312DB28F0F509B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
