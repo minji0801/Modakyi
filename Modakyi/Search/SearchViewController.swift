@@ -15,14 +15,19 @@ class SearchViewController: UIViewController {
     var searchTexts: [StudyStimulateText] = []
     var searchBar: UISearchBar!
     
+    private var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        readAllText()
+        self.collectionview.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.selectedSearchTabNotification(_:)), name: NSNotification.Name("SearchTabSelected"), object: nil)
+        
+        readAllText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +45,11 @@ class SearchViewController: UIViewController {
         DispatchQueue.main.async {
             self.collectionview.setContentOffset(.zero, animated: true)
         }
+    }
+    
+    @objc func refresh() {
+        self.searchBar.text = ""
+        self.viewDidLoad()
     }
     
     // 전제 글귀 읽어오기
@@ -94,6 +104,12 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
