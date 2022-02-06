@@ -143,7 +143,6 @@ class SettingViewController: UIViewController {
     // 이용방법
     @IBAction func usewayButtonTapped(_ sender: UIButton) {
         presentTutorialViewController(self)
-        
     }
     
     // 로그아웃

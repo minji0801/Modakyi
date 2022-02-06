@@ -10,20 +10,6 @@ import SafariServices
 
 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
-// TutorialViewController를 RootViewController로 보여주는 메소드
-func showTutorialVCOnRoot() {
-    let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
-    tutorialViewController.modalPresentationStyle = .fullScreen
-    UIApplication.shared.windows.first?.rootViewController?.show(tutorialViewController, sender: nil)
-}
-
-// LoginViewController를 RootViewController로 보여주는 메소드
-func showLoginVCOnRoot() {
-    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-    loginViewController.modalPresentationStyle = .fullScreen
-    UIApplication.shared.windows.first?.rootViewController?.show(loginViewController, sender: nil)
-}
-
 // MainViewController를 RootViewController로 보여주는 메소드
 func showMainVCOnRoot() {
     let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
@@ -61,7 +47,8 @@ func presentNoticeViewController(_ viewController: UIViewController) {
 // TutorialViewController를 present해서 보여주는 메소드
 func presentTutorialViewController(_ viewController: UIViewController) {
     let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
-    viewController.present(tutorialViewController, animated: true, completion: nil)
+    tutorialViewController.modalPresentationStyle = .fullScreen
+    viewController.present(tutorialViewController, animated: false, completion: nil)
 }
 
 // NetworkViewController를 RootViewController로 보여주는 메소드
