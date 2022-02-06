@@ -16,6 +16,8 @@ class UnusedViewController: UIViewController {
     var studyStimulateTexts: [StudyStimulateText] = []
     var unusedTexts = [Int]()
     
+    private var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -23,6 +25,8 @@ class UnusedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionview.alpha = 0
+        self.collectionview.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.selectedUnusedTabNotification(_:)), name: NSNotification.Name("UnusedTabSelected"), object: nil)
         
@@ -84,6 +88,10 @@ class UnusedViewController: UIViewController {
             self.collectionview.setContentOffset(.zero, animated: true)
         }
     }
+    
+    @objc func refresh() {
+        self.viewDidLoad()
+    }
 }
 
 // MARK: - UICollectionView Configure
@@ -115,6 +123,12 @@ extension UnusedViewController: UICollectionViewDataSource {
 extension UnusedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentDetailViewController(self, String(unusedTexts[indexPath.row]))
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
