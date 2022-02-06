@@ -8,56 +8,38 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
-    let tutorial = UserDefaults.standard.bool(forKey: "Tutorial")
-    let images = ["page0", "page1", "page2", "page3", "page4", "page0"]
+//    let tutorial = UserDefaults.standard.bool(forKey: "Tutorial")
+    let images = ["page0", "page1", "page2", "page3", "page4", "page5"]
     let texts = [
         """
-        모닥불 앞에 있으면
-        몸이 따뜻해지듯이,
-        
-        모닥이가 당신의 마음을
-        따뜻하게 어루만져 주길.
-        """,
-        """
         홈에서 추천 글귀와
-        전체 글귀를 만날 수 있어요.
-        
-        새로 추가된 글귀에는
-        빨간 점이 표시돼요.
+        전체 글귀를 만날 수 있어요
         """,
         """
-        자세히 보고싶은 글귀는 클릭해보세요.
-        
-        글귀가 마음에 든다면 ❤️ 를,
-        다이어리나 플래너에 실제
-        사용했다면 ✅ 를 클릭하세요.
+        글귀의 좋아요, 사용여부를
+        체크하고 공유할 수 있어요
         """,
         """
-        * 페이지 설명 *
-        
-        🧡 - 좋아하는 글귀 모음
-        📁 - 실제 사용한 적 없는 글귀 모음
-        🔍 - 글귀 검색
+        좋아하는 글귀만
+        모아볼 수 있어요
         """,
         """
-        모닥이는 다크모드도 지원합니다.
-        
-        설정을 통해 위의 기능을
-        관리 및 이용하실 수 있습니다.
+        사용하지 않은 글귀만
+        모아볼 수 있어요
         """,
         """
-        모닥이와 따뜻한 하루가 되길.
-        
-        
-        
-        
+        찾고 싶은 글귀는
+        검색해보세요
+        """,
+        """
+        설정을 통해 앱을
+        관리할 수 있어요
         """
     ]
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +50,12 @@ class TutorialViewController: UIViewController {
         
         imageView.image = UIImage(named: images[0])
         label.text = texts[0]
+        label.textColor = .white
+        
+        // iPad Font
+        if UIDevice.current.model == "iPad" {
+            self.label.font = UIFont(name: "EliceDigitalBaeum", size: 40.0)
+        }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
@@ -82,10 +70,10 @@ class TutorialViewController: UIViewController {
         self.pageChange()
     }
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        // UserDefault 값 바꾸고 Loagin으로 이동
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        // UserDefault 값 바꾸고 Dismiss
         UserDefaults.standard.set(true, forKey: "Tutorial")
-        showLoginVCOnRoot()
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
@@ -110,11 +98,5 @@ class TutorialViewController: UIViewController {
     func pageChange() {
         imageView.image = UIImage(named: images[pageControl.currentPage])
         label.text = texts[pageControl.currentPage]
-        
-        if pageControl.currentPage == 5 && !self.tutorial {
-            startButton.isHidden = false
-        } else {
-            startButton.isHidden = true
-        }
     }
 }

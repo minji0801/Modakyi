@@ -31,9 +31,9 @@ class LoginViewController: UIViewController {
             $0?.layer.cornerRadius = 28
         }
         
-        // 앱을 처음 실행했다면 바로 튜토리얼 화면으로 이동
+        // 앱을 처음 실행했다면 튜토리얼 화면 띄워주기
         if !UserDefaults.standard.bool(forKey: "Tutorial") {
-            showTutorialVCOnRoot()
+            presentTutorialViewController(self)
         }
         
         // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
