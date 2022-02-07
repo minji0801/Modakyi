@@ -35,45 +35,45 @@ class TutorialViewController: UIViewController {
         관리할 수 있어요
         """
     ]
-    
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
+
         pageControl.numberOfPages = images.count
         pageControl.currentPage = 0
-        
+
         imageView.image = UIImage(named: images[0])
         label.text = texts[0]
-        
+
         // iPad Font
         if UIDevice.current.model == "iPad" {
             self.label.font = UIFont(name: "EliceDigitalBaeum", size: 40.0)
         }
-        
+
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
-        
+
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
     }
-    
+
     @IBAction func pageControlTapped(_ sender: UIPageControl) {
         self.pageChange()
     }
-    
+
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         // UserDefault 값 바꾸고 Dismiss
         UserDefaults.standard.set(true, forKey: "Tutorial")
         self.dismiss(animated: false, completion: nil)
     }
-    
+
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -92,7 +92,7 @@ class TutorialViewController: UIViewController {
             }
         }
     }
-    
+
     func pageChange() {
         imageView.image = UIImage(named: images[pageControl.currentPage])
         label.text = texts[pageControl.currentPage]
