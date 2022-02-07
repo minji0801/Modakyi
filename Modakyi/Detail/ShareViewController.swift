@@ -8,17 +8,16 @@
 import UIKit
 
 class ShareViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppearanceCheck(self)
+        appearanceCheck(self)
     }
-    
+
     @IBAction func textShareButtonTapped(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name("TextShare"), object: nil, userInfo: nil)
         dismiss(animated: true, completion: nil)

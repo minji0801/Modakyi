@@ -15,34 +15,34 @@ class EnterEmailViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.isEnabled = false
-        
+
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+
         emailTextField.becomeFirstResponder()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppearanceCheck(self)
+        appearanceCheck(self)
         navigationController?.navigationBar.isHidden = false
     }
-    
+
     @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         self.indicatorView.isHidden = false
-        
+
         // Firebase 이메일/비밀번호 인증
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        
+
         // 신규 사용자 생성
-        Auth.auth().createUser(withEmail: email, password: password) {[weak self] authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) {[weak self] _, error in
             guard let self = self else { return }
-            
+
             if let error = error {
                 let code = (error as NSError).code
                 switch code {
@@ -55,21 +55,21 @@ class EnterEmailViewController: UIViewController {
                 }
             } else {
                 // 사용자 데이터 저장하고 메인으로 이동
-                SetValueCurrentUser()
+                setValueCurrentUser()
                 showMainVCOnNavigation(self)
             }
         }
     }
-    
+
     private func loginUser(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) {[weak self] _, error in
             guard let self = self else { return }
-            
+
             if let error = error {
                 self.errorMessageLabel.text = error.localizedDescription
             } else {
                 // 사용자 데이터 저장하고 메인으로 이동
-                SetValueCurrentUser()
+                setValueCurrentUser()
                 showMainVCOnNavigation(self)
             }
         }
@@ -86,7 +86,7 @@ extension EnterEmailViewController: UITextFieldDelegate {
         }
         return false
     }
-    
+
     // 이메일과 비밀번호에 입력값이 있는지 확인해서 '다음' 버튼을 활성화 시켜주기 위한 delegate
     func textFieldDidEndEditing(_ textField: UITextField) {
         let isEmailEmpty = emailTextField.text == ""

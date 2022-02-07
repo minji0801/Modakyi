@@ -15,7 +15,7 @@ final class NetworkCheck {
     private let monitor: NWPathMonitor
     public private(set) var isConnected: Bool = false
     public private(set) var connectionType: ConnectionType = .unknown
-    
+
     // 연결타입
     enum ConnectionType {
         case wifi
@@ -23,18 +23,18 @@ final class NetworkCheck {
         case ethernet
         case unknown
     }
-    
+
     private init() {
         monitor = NWPathMonitor()
     }
-    
+
     public func startMonitoring() {
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
-            
+
             self?.isConnected = path.status == .satisfied
             self?.getConnectionType(path)
-            
+
             if self?.isConnected == true {
 //                print("연결됨!")
             } else {
@@ -43,11 +43,11 @@ final class NetworkCheck {
             }
         }
     }
-    
+
     public func stopMonitoring() {
         monitor.cancel()
     }
-    
+
     private func getConnectionType(_ path: NWPath) {
         if path.usesInterfaceType(.wifi) {
             connectionType = .wifi

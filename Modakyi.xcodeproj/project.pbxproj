@@ -324,6 +324,7 @@
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
 				5DD72A0B36312DB28F0F509B /* [CP] Copy Pods Resources */,
+				A57BA8B527B0F79B00BB647A /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -429,6 +430,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A57BA8B527B0F79B00BB647A /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
