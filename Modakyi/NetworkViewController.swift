@@ -18,7 +18,7 @@ class NetworkViewController: UIViewController {
             preferredStyle: .alert
         )
 
-        let endAction = UIAlertAction(title: "종료", style: .destructive) { _ in
+        let endAction = UIAlertAction(title: "종료", style: .destructive) { [weak self] _ in
             // 앱 종료
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -26,7 +26,7 @@ class NetworkViewController: UIViewController {
             }
         }
 
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             // 설정앱 켜주기
             guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(url) {

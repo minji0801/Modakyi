@@ -120,7 +120,7 @@ class SettingViewController: UIViewController {
             preferredStyle: .alert
         )
 
-        let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+        let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { [weak self] _ in
             // 앱스토어로 이동하기(Mail)
             let store = "https://apps.apple.com/kr/app/mail/id1108187098"
             if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
@@ -168,7 +168,9 @@ class SettingViewController: UIViewController {
 
         let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
 
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+
             // 익명 유저이면 유저 데이터 삭제하고 로그인 화면으로 이동하기
             if isAnonymous! {
                 self.ref.child("User/\(self.uid!)").removeValue()
@@ -199,7 +201,7 @@ class SettingViewController: UIViewController {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in
+        let identifier = machineMirror.children.reduce("") { [weak self] identifier, element in
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }

@@ -45,8 +45,9 @@ class HomeViewController: UIViewController {
         )
 
         // Text DB에서 글귀 데이터 읽어오기
-        ref.child("Text").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: [String: String]] else { return }
+        ref.child("Text").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: [String: String]] else { return }
 
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
@@ -70,7 +71,9 @@ class HomeViewController: UIViewController {
         }
 
         // User DB에서 현재 사용자가 클릭한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/clicked").observe(.value) { snapshot in
+        ref.child("User/\(uid!)/clicked").observe(.value) { [weak self] snapshot in
+            guard let self = self else { return }
+
             if let value = snapshot.value as? [String] {
                 self.clickedTextIDs = value
             }

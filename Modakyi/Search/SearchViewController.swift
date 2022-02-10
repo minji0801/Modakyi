@@ -59,8 +59,9 @@ class SearchViewController: UIViewController {
 
     // 전제 글귀 읽어오기
     func readAllText() {
-        ref.child("Text").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: [String: String]] else { return }
+        ref.child("Text").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: [String: String]] else { return }
 
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
@@ -175,8 +176,9 @@ extension SearchViewController: UISearchBarDelegate {
 
         print("검색어: \(searchTerm)")
 
-        ref.child("Text").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: [String: String]] else { return }
+        ref.child("Text").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: [String: String]] else { return }
 
             let searchResult = value.filter {
                 $0.value.contains {

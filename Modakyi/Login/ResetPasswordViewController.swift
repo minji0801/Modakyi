@@ -32,7 +32,9 @@ class ResetPasswordViewController: UIViewController {
 
     @IBAction func resetPasswordButtonTapped(_ sender: UIButton) {
         let email = self.emailTextField.text ?? ""
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+            guard let self = self else { return }
+
             if error != nil {
                 let alert = UIAlertController(
                     title: "Error",

@@ -35,10 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Firebase 초기화
         FirebaseApp.configure()
 
-        Messaging.messaging().delegate = self
-
         // FCM 현재 등록 토큰 확인
-        Messaging.messaging().token { token, error in
+        Messaging.messaging().delegate = self
+        Messaging.messaging().token { [weak self] token, error in
             if let error = error {
                 print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
             } else if token == token {
@@ -46,8 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
 
-        // User Notification 설정 및 사용자 동의 얻기
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { didAllow, error in
+        // 알림 및 앱 추적 권한 요청
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+        { [weak self] didAllow, error in
             if didAllow {
                 print("Push 알림 권한 허용")
             } else {
@@ -55,16 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
         application.registerForRemoteNotifications()
-
         setNotification()
 
         // Google 로그인 Delgate
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
 
+        // 네트워크 연결 확인
         NetworkCheck.shared.startMonitoring()
 
-        // Admob 광고
+        // Admob 광고 연결
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             accessToken: authentication.accessToken
         )
 
-        Auth.auth().signIn(with: credential) { _, _ in
+        Auth.auth().signIn(with: credential) { [weak self] _, _ in
             // Google Login User 데이터 만들기
             setValueCurrentUser()
             showMainVCOnRoot()
@@ -150,14 +150,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     class NotificationHandler {
-        // Permission function
+        // User Notification 설정 및 사용자 동의 얻기
         func askNotificationPermission(completion: @escaping () -> Void) {
-
-            // Permission to send notifications
             let center = UNUserNotificationCenter.current()
-            // Request permission to display alerts and play sounds.
-            center.requestAuthorization(options: [.alert, .badge, .sound]) { (_, _) in
-                // Enable or disable features based on authorization.
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] _, _ in
                 completion()
             }
         }
