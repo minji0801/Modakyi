@@ -61,11 +61,13 @@ class LoginViewController: UIViewController {
         // Alert띄우기
         let alert = UIAlertController(
             title: "경고",
-            message: "계정 없이 앱을 이용하는 경우, 앱에서 로그아웃할 때 해당 데이터가 삭제됩니다. 진행하시겠습니까?",
+            message: "익명으로 앱을 이용하면 로그아웃 또는 앱 삭제 시 관련 데이터가 삭제될 수 있습니다.",
             preferredStyle: .alert
         )
 
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+
             // 익명 데이터 생성
             Auth.auth().signInAnonymously { _, error in
                 if let error = error {
@@ -76,7 +78,6 @@ class LoginViewController: UIViewController {
                 // 유저 데이터 만들고 메인으로 이동하기
                 setValueCurrentUser()
                 showMainVCOnNavigation(self)
-
             }
         }
 
@@ -121,7 +122,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 idToken: idTokenString, rawNonce: nonce
             )
 
-            Auth.auth().signIn(with: credential) { _, error in
+            Auth.auth().signIn(with: credential) { [weak self] _, error in
+                guard let self = self else { return }
+
                 if let error = error {
                     print("Error Apple sign in: %@", error)
                     return
@@ -170,7 +173,7 @@ extension LoginViewController {
         var remainingLength = length
 
         while remainingLength > 0 {
-            let randoms: [UInt8] = (0 ..< 16).map { _ in
+            let randoms: [UInt8] = (0 ..< 16).map { [weak self] _ in
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
                 if errorCode != errSecSuccess {

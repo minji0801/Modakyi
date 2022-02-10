@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import Network
 
 final class NetworkCheck {
@@ -24,18 +23,21 @@ final class NetworkCheck {
         case unknown
     }
 
+    // monotior 초기화
     private init() {
         monitor = NWPathMonitor()
     }
 
+    // Network Monitoring 시작
     public func startMonitoring() {
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
+            guard let self = self else { return }
 
-            self?.isConnected = path.status == .satisfied
-            self?.getConnectionType(path)
+            self.isConnected = path.status == .satisfied
+            self.getConnectionType(path)
 
-            if self?.isConnected == true {
+            if self.isConnected == true {
 //                print("연결됨!")
             } else {
 //                print("연결안됨!")
@@ -44,10 +46,12 @@ final class NetworkCheck {
         }
     }
 
+    // Network Monitoring 종료
     public func stopMonitoring() {
         monitor.cancel()
     }
 
+    // Network 연결 타입
     private func getConnectionType(_ path: NWPath) {
         if path.usesInterfaceType(.wifi) {
             connectionType = .wifi

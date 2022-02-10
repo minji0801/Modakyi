@@ -36,8 +36,9 @@ class UnusedViewController: UIViewController {
         )
 
         // Text DB에서 글귀 데이터 읽어오기
-        ref.child("Text").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: [String: String]] else { return }
+        ref.child("Text").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: [String: String]] else { return }
 
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
@@ -50,7 +51,8 @@ class UnusedViewController: UIViewController {
         }
 
         // User DB에서 현재 사용자가 사용한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/used").observe(.value) { snapshot in
+        ref.child("User/\(uid!)/used").observe(.value) { [weak self] snapshot in
+            guard let self = self else { return }
             guard let value = snapshot.value as? [Int] else {
                 // 사용한 글귀가 없으니까 전체 글귀 보여주기
                 self.unusedTexts = self.studyStimulateTexts.map { Int($0.id)! }

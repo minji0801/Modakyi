@@ -30,26 +30,7 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Admob 광고
-        bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-
-        // Admob 전면 광고
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-7980627220900140/4153256056",
-                               request: request,
-                               completionHandler: { [self] ads, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ads
-            interstitial?.fullScreenContentDelegate = self
-        }
-        )
-
+        self.showAdMobAds()
         textIdLabel.text = "글귀 \(id)"
 
         // NotificationCenter
@@ -67,8 +48,10 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         )
 
         // id로 글귀 데이터 가져오기
-        ref.child("Text/Text\(id)").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: String] else { return }
+        ref.child("Text/Text\(id)").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: String] else { return }
+
             let eng = value["eng"]!
             let kor = value["kor"]!
             let who = value["who"]!
@@ -81,7 +64,9 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         }
 
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/like").observe(.value) { snapshot in
+        ref.child("User/\(uid!)/like").observe(.value) { [weak self] snapshot in
+            guard let self = self else { return }
+
             if let value = snapshot.value as? [Int] {
                 self.likeTextIDs = value
             }
@@ -89,7 +74,9 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         }
 
         // User DB에서 현재 사용자가 사용한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/used").observe(.value) { snapshot in
+        ref.child("User/\(uid!)/used").observe(.value) { [weak self] snapshot in
+            guard let self = self else { return }
+
             if let value = snapshot.value as? [Int] {
                 self.usedTextIDs = value
             }
@@ -185,6 +172,26 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
             let popoverViewController = segue.destination
             popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
             popoverViewController.popoverPresentationController!.delegate = self
+        }
+    }
+
+    // AdMob 광고 띄우기
+    func showAdMobAds() {
+        // 배너 광고
+        bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+
+        // 전면 광고
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-7980627220900140/4153256056", request: request)
+        { [self] ads, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ads
+            interstitial?.fullScreenContentDelegate = self
         }
     }
 

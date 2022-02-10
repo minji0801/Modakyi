@@ -35,7 +35,8 @@ class LikeViewController: UIViewController {
         )
 
         // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/like").observe(.value) { snapshot in
+        ref.child("User/\(uid!)/like").observe(.value) { [weak self] snapshot in
+            guard let self = self else { return }
             guard let value = snapshot.value as? [Int] else {
                 // 좋아하는 글귀가 없으니까
                 self.likeTexts = []

@@ -16,8 +16,9 @@ class HomeCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var settingButton: UIButton!
 
     func updateText(_ recommendTextId: String) {
-        self.ref.child("Text/Text\(recommendTextId)").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String: String] else { return }
+        self.ref.child("Text/Text\(recommendTextId)").observe(.value) { [weak self] snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String: String] else { return }
 
             let eng = value["eng"]!
             let kor = value["kor"]!
