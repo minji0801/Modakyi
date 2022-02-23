@@ -381,53 +381,69 @@ func createCorrectFormula() {
 <br/>
 
 <!-- 6. 설정 -->
-## ⚙️ 설정
-### 다크 모드
-설정의 '다크 모드' 버튼으로 앱의 UI Style을 변경할 수 있다.
-
-<br/>
-
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/152300020-5cae4abe-4ab4-4473-b604-eb86e3a059d9.jpeg"></p>
-
-<br/>
-
-UserDefaults로 키가 "Dark"인 로컬저장소에서 값을 가져온 후 이와 반대로 저장한다. 앱의 기본 Appearance를 Light로 설정했기 때문에 처음에 가져오는 값은 false다.
+## 🛠 설정
+### 사용자 정보 가져오기
+모닥이의 설정화면에서는 현재 로그인한 유저의 프로필 이미지와 닉네임을 확인할 수 있다. FirebaseAuth를 이용해서 현재 로그인한 사용자의 정보를 가져와 UI Component에 뿌려준다.
 
 <br/>
 
 ```swift
-// 다크모드 버튼 클릭 시
-@IBAction func darkModeButtonTapped(_ sender: UIButton) {
-    let appearance = UserDefaults.standard.bool(forKey: "Dark")
+import FirebaseAuth
 
-    if appearance {
-        UserDefaults.standard.set(false, forKey: "Dark")
-    } else {
-        UserDefaults.standard.set(true, forKey: "Dark")
+// Profile Image / UserName
+let username = Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
+let profileImg = Auth.auth().currentUser?.photoURL ?? URL(string: "")
+
+nameLabel.text = username
+profileImage.kf.setImage(with: profileImg, placeholder: UIImage(systemName: "person.crop.circle"))
+profileImage.layer.cornerRadius = profileImage.bounds.width / 2
+```
+
+<br/>
+
+### 알림 설정
+알림 설정의 경우 원래 다른 앱과 비슷하게 스위치 버튼을 통해 켜고 끄고가 가능하도록 구현하는 게 목표였다. 하지만 앱 내에서 설정의 값을 변경시키는 게 적용되지 않았고, 우선 설정화면으로 이동하는 것으로 구현했다. 
+
+<br/>
+
+```swift
+// 알림설정
+@IBAction func notificationSettingButtonTapped(_ sender: UIButton) {
+    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+    if UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.open(url)
     }
-    self.viewWillAppear(true)
 }
 ```
 
 <br/>
 
-viewWillAppear 메서드에서 appearanceCheck 함수가 호출된다. UserDefaults로 로컬에 저장한 값을 가져와 앱의 Appearance를 변경한다. 모든 ViewController의 viewWillAppear 메서드에서 appearanceCheck 함수를 호출한다.
+### 다크 모드
+UserDefaults를 이용해서 키가 "Appearance"인 곳에 테마 모드를 저장시켜놓고, ViewController의 viewWillAppear에서 호출되는 appearanceCheck() 함수를 통해서 현재 앱에 설정되어 있는 모드를 적용시키도록 구현했다.
 
 <br/>
 
 ```swift
+// (1) 테마 설정
+@IBAction func darckModeButtonTapped(_ sender: UIButton) {
+    if self.overrideUserInterfaceStyle == .light {
+        UserDefaults.standard.set("Dark", forKey: "Appearance")
+    } else {
+        UserDefaults.standard.set("Light", forKey: "Appearance")
+    }
+    self.viewWillAppear(true)
+}
+
+// (2) view가 보여질 때마다 테마 적용
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     appearanceCheck(self)
 }
-```
 
-```swift
-// UserDefaults에 저장된 값을 통해 다크모드 확인하는 메소드
+// (3)UserDefaults에 저장된 값을 통해 테마 확인
 func appearanceCheck(_ viewController: UIViewController) {
-    let appearance = UserDefaults.standard.bool(forKey: "Dark")
-
-    if appearance {
+    guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+    if appearance == "Dark" {
         viewController.overrideUserInterfaceStyle = .dark
         if #available(iOS 13.0, *) {
             UIApplication.shared.statusBarStyle = .lightContent
@@ -447,132 +463,94 @@ func appearanceCheck(_ viewController: UIViewController) {
 
 <br/>
 
-### 사운드 설정
-기본으로 버튼 클릭 시 소리가 나도록 구현했는데, 설정의 '사운드' 버튼을 통해 소리가 나지 않도록 할 수 있다. 
+### 공지사항
+공지사항은 말 그대로 사용자에게 간단한 공지나 앱 버전 업데이트 관련 내용을 보여주기 위한 화면이다.
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/152310768-25e6b7c8-26dc-4b9e-83d4-de5d5fe38db3.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155324844-e65e89cb-715b-4d26-b59c-df71fa009a67.PNG" width="200"></p>
 
 <br/>
 
-UserDefaluts로 키가 "SoundOff"인 로컬 저장소에서 값을 가져온 후 이와 반대로 저장한다.
-
-<br/>
-
-```swift
-// 버튼 사운드 클릭 시
-@IBAction func soundButtonTapped(_ sender: UIButton) {
-    let soundOff = UserDefaults.standard.bool(forKey: "SoundOff")
-    UserDefaults.standard.set(!soundOff, forKey: "SoundOff")
-}
-```
-
-그리고 버튼을 클릭하면 로컬에 저장된 값을 가져와 AVFoundation 프레임워크로 소리를 재생한다.
+### 문의 및 의견
+MessageUI 프레임워크를 이용하여 Mail 앱을 통해 이메일을 작성하는 화면을 보여주고, 메일을 작성하여 개발자에게 보낼 수 있다. 메일 보내기에 실패한 경우 Alert 창을 띄워 사용자가 Mail 앱을 설치하거나 이메일 설정을 확인할 수 있도록 구현했다.
 
 <br/>
 
 ```swift
-import AVFoundation
+import MessageUI
 
-// 버튼이 눌릴 때마다 소리 출력
-@IBAction func buttonPressed(_ sender: Any) {
-    let soundOff = UserDefaults.standard.bool(forKey: "SoundOff")
-    if !soundOff {
-        let systemSoundID: SystemSoundID = 1104
-        AudioServicesPlaySystemSound(systemSoundID)
-    }
-}
-```
+// 문의 및 의견
+@IBAction func commentsButtonTapped(_ sender: UIButton) {
+    if MFMailComposeViewController.canSendMail() {
+        let composeViewController = MFMailComposeViewController()
+        composeViewController.mailComposeDelegate = self
 
-<br/>
+        let bodyString = """
+                         이곳에 내용을 작성해주세요.
 
-### 언어 지원
-설정의 '언어' 버튼을 통해서 앱의 언어를 변경할 수 있다. 1.3.2 버전을 기준으로 총 8개의 언어를 지원하고 있다.
+                         오타 발견 문의 시 아래 양식에 맞춰 작성해주세요.
 
-<br/>
+                         <예시>
+                         글귀 ID : 글귀 4 (글귀 클릭 시 상단에 표시)
+                         수정 전 : 실수해도 되.
+                         수정 후 : 실수해도 돼.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/152671549-b8ddf5c3-cd00-4350-a95b-cf97c7428545.jpeg"></p>
+                         -------------------
 
-<br/>
+                         Device Model : \(self.getDeviceIdentifier())
+                         Device OS : \(UIDevice.current.systemVersion)
+                         App Version : \(self.getCurrentVersion())
 
-'언어' 버튼을 클릭하면 changeLanguageFirst, changeLanguageSecond, changeLanguageThird 메서드를 호출해서 UserDefaults로 키가 "Language"인 로컬에 값을 저장한다. 하나의 메서드로 작성할 시 SwiftLint의 순환 복잡도 룰에 위반되기 때문에 메서드를 3개로 나눈 것이다.
+                         -------------------
+                         """
 
-```swift
-@IBAction func languageButtonTapped(_ sender: UIButton) {
-    ...
-    changeLanguageFirst((sender.titleLabel?.text)!)
-    changeLanguageSecond((sender.titleLabel?.text)!)
-    changeLanguageThird((sender.titleLabel?.text)!)
-    ...
-}
-```
+        composeViewController.setToRecipients(["modakyi.help@gmail.com"])
+        composeViewController.setSubject("<모닥이> 문의 및 의견")
+        composeViewController.setMessageBody(bodyString, isHTML: false)
 
-```swift
-// 언어 변경 첫번째
-func changeLanguageFirst(_ text: String) {
-    switch text {
-    case "English":
-        UserDefaults.standard.set(["en"], forKey: "Language")
-    case "简体中文":
-        UserDefaults.standard.set(["zh-Hans"], forKey: "Language")
-    case "繁體中文":
-        UserDefaults.standard.set(["zh-Hant"], forKey: "Language")
-    case "日本語":
-        UserDefaults.standard.set(["ja"], forKey: "Language")
-    case "Español":
-        UserDefaults.standard.set(["es"], forKey: "Language")
-    case "Français":
-        UserDefaults.standard.set(["fr"], forKey: "Language")
-    case "Deutsch":
-        UserDefaults.standard.set(["de"], forKey: "Language")
-    case "Русский":
-        UserDefaults.standard.set(["ru"], forKey: "Language")
-    default: break
+        self.present(composeViewController, animated: true, completion: nil)
+    } else {
+        self.alertFailureSendMail()
     }
 }
 
-// 언어 변경 두번째
-func changeLanguageSecond(_ text: String) {
-    switch text {
-    case "Português (Brasil)":
-        UserDefaults.standard.set(["pt-BR"], forKey: "Language")
-    case "Italiano":
-        UserDefaults.standard.set(["it"], forKey: "Language")
-    case "한국어":
-        UserDefaults.standard.set(["ko"], forKey: "Language")
-    case "Türkçe":
-        UserDefaults.standard.set(["tr"], forKey: "Language")
-    case "Nederlands":
-        UserDefaults.standard.set(["nl"], forKey: "Language")
-    case "ภาษาไทย":
-        UserDefaults.standard.set(["th"], forKey: "Language")
-    case "Svenska":
-        UserDefaults.standard.set(["sv"], forKey: "Language")
-    case "Dansk":
-        UserDefaults.standard.set(["da"], forKey: "Language")
-    default: break
+// 메일 보내기 실패 Alert 띄우기
+func alertFailureSendMail() {
+    let sendMailErrorAlert = UIAlertController(
+        title: "메일 전송 실패",
+        message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.",
+        preferredStyle: .alert
+    )
+    
+    let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { [weak self] _ in
+        // 앱스토어로 이동하기(Mail)
+        let store = "https://apps.apple.com/kr/app/mail/id1108187098"
+        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
+    
+    let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+    
+    sendMailErrorAlert.addAction(goAppStoreAction)
+    sendMailErrorAlert.addAction(cancleAction)
+    self.present(sendMailErrorAlert, animated: true, completion: nil)
 }
 
-// 언어 변경 세번째
-func changeLanguageThird(_ text: String) {
-    switch text {
-    case "Tiếng Việt":
-        UserDefaults.standard.set(["vi"], forKey: "Language")
-    case "Norsk Bokmål":
-        UserDefaults.standard.set(["nb"], forKey: "Language")
-    case "Polski":
-        UserDefaults.standard.set(["pl"], forKey: "Language")
-    case "Suomi":
-        UserDefaults.standard.set(["fi"], forKey: "Language")
-    case "Bahasa Indonesia":
-        UserDefaults.standard.set(["id"], forKey: "Language")
-    case "Čeština":
-        UserDefaults.standard.set(["cs"], forKey: "Language")
-    case "Українська":
-        UserDefaults.standard.set(["uk"], forKey: "Language")
-    default: break
+// MARK: - MailComposeViewController Delegate
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    // (피드백 보내기) 메일 보낸 후
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 ```
@@ -580,19 +558,19 @@ func changeLanguageThird(_ text: String) {
 <br/>
 
 ### 앱 평가
-설정의 '앱 평가' 버튼을 통해 App Store 앱페이지로 이동한다.
+'앱 평가' 버튼을 클릭하면 App Store 모닥이 앱 페이지로 이동하여 사용자가 앱을 평가할 수 있도록 구현했다.
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/152300317-e8fc9497-b8ec-4fa0-8110-100c99f1600b.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155327206-a27fa9e1-d877-460c-b3ba-03df8308386b.jpeg" width="200"></p>
 
 <br/>
 
 ```swift
-// 앱 평가 버튼 클릭 시
-@IBAction func reviewButtonTapped(_ sender: UIButton) {
+// 앱 평가
+@IBAction func reviewButtonTapped(_ sender: Any) {
     // 스토어 url 열기
-    let store = "https://apps.apple.com/kr/app/h-ours/id1605524722"
+    let store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
     if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -605,71 +583,95 @@ func changeLanguageThird(_ text: String) {
 
 <br/>
 
-### 피드백 보내기
-설정의 '피드백 보내기' 버튼을 통해서 개발자에게 피드백을 보낼 수 있다.
+### 이용방법
+설정의 '이용방법' 버튼을 클릭하면 앱을 처음 설치하고 접속했을 때 보여줬던 튜토리얼을 다시 볼 수 있다. 처음에 튜토리얼을 스킵 해서 어떻게 앱을 사용해야 할지 모르는 사용자를 위해서 구현했다.
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/152298101-6f4ae3b8-b9c4-4efd-b4c3-df52b07d0c8a.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155328018-232f98a9-48ed-4ede-9340-728da4b90874.jpeg" width="200"></p>
 
 <br/>
 
-MessageUI 프레임워크를 이용하여 Mail 앱으로 이메일 작성 화면을 보여준다.
+### 로그아웃
+로그아웃은 유저가 익명인 경우를 다뤄줘야 한다. 익명인 경우에는 로그아웃 처리가 된 후에 다시 익명으로 로그인하게 되면 이전과 다른 새로운 아이디로 가입되기 때문이다. 
+
+그래서 우선 FirebaseAuth 프레임워크를 통해 현재 사용자가 익명인지 확인한다. 익명이라면 FirebaseDatabase 프레임워크를 통해 해당 데이터베이스 경로에 있는 데이터를 삭제하고 로그인 화면으로 이동한다.
+
+익명이 아닌 사용자라면 로그아웃 처리만 하고 로그인 화면으로 이동한다. 그러면 다음에 앱에 접속했을 때 이전에 로그아웃 처리가 되었기 때문에 다시 로그인해야 한다.
 
 <br/>
 
 ```swift
-import MessageUI
+// 로그아웃
+@IBAction func logoutButtonTapped(_ sender: UIButton) {
+    let isAnonymous = Auth.auth().currentUser?.isAnonymous
+    let alertController = UIAlertController(
+        title: "로그아웃",
+        message: "정말 로그아웃하시겠습니까?",
+        preferredStyle: UIAlertController.Style.alert
+    )
 
-// 피드백 보내기 버튼 클릭 시
-@IBAction func feedbackButtonTapped(_ sender: UIButton) {
-    if MFMailComposeViewController.canSendMail() {
-        let composeViewController = MFMailComposeViewController()
-        composeViewController.mailComposeDelegate = self
+    let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
 
-        let bodyString = """
-                         Please write your feedback here.
-                         I will reply you as soon as possible.
-                         If there is an incorrect translation, please let me know and I will correct it.
-                         thank you :)
+    let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+        guard let self = self else { return }
 
-
-
-                         ----------------------------
-                         Device Model : \(self.getDeviceIdentifier())
-                         Device OS : \(UIDevice.current.systemVersion)
-                         App Version : \(self.getCurrentVersion())
-                         ----------------------------
-                         """
-
-        composeViewController.setToRecipients(["hcolonours.help@gmail.com"])
-        composeViewController.setSubject("<h:ours> Feedback")
-        composeViewController.setMessageBody(bodyString, isHTML: false)
-
-        self.present(composeViewController, animated: true, completion: nil)
-    } else {
-//            print("메일 보내기 실패")
-        let sendMailErrorAlert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        let goAppStoreAction = UIAlertAction(title: goTitle, style: .default) { [weak self] _ in
-            // 앱스토어로 이동하기(Mail)
-            let store = "https://apps.apple.com/kr/app/mail/id1108187098"
-            if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        // 익명 유저이면 유저 데이터 삭제하고 로그인 화면으로 이동하기
+        if isAnonymous! {
+            self.ref.child("User/\(self.uid!)").removeValue()
+            Auth.auth().currentUser?.delete(completion: { error in
+                if let error = error {
+                    print("ERROR: CurrentUser Delete\(error.localizedDescription) ")
                 } else {
-                    UIApplication.shared.openURL(url)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
+            })
+        } else {
+            do {
+                try Auth.auth().signOut()
+                self.navigationController?.popToRootViewController(animated: true)
+            } catch let signOutError as NSError {
+                print("ERROR: signout \(signOutError.localizedDescription)")
             }
         }
-        let cancleAction = UIAlertAction(title: cancleTitle, style: .destructive, handler: nil)
-
-        sendMailErrorAlert.addAction(goAppStoreAction)
-        sendMailErrorAlert.addAction(cancleAction)
-        self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
+
+    alertController.addAction(cancelAction)
+    alertController.addAction(confirmAction)
+    self.present(alertController, animated: true, completion: nil)
 }
 ```
 
+<br/>
+
+### 앱 버전 가져오기
+설정화면에 현재 앱의 버전과 앱스토어에 출시된 최신 버전을 표시하도록 구현했다. 현재 버전은 infoDictionary에 키값으로 접근하여 가져왔고, 최신 버전은 '모닥이' 앱의 번들 아이디를 포함한 URL을 통해 앱스토어에 출시된 '모닥이'의 정보를 JSON 형식으로 읽어온 후 가져왔다.
+
+<br/>
+
+```swift
+// Version
+currentVersionLabel.text = "현재 버전 : \(self.getCurrentVersion())"
+updatedVersionLabel.text = "최신 버전 : \(self.getUpdatedVersion())"
+        
+// 현재 버전 가져오기
+func getCurrentVersion() -> String {
+    guard let dictionary = Bundle.main.infoDictionary,
+          let version = dictionary["CFBundleShortVersionString"] as? String else { return "" }
+    return version
+}
+
+// 최신 버전 가져오기
+func getUpdatedVersion() -> String {
+    guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.alswl.Modakyi"),
+          let data = try? Data(contentsOf: url),
+          let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+          let results = json["results"] as? [[String: Any]],
+              results.count > 0,
+        let appStoreVersion = results[0]["version"] as? String else { return "" }
+    return appStoreVersion
+}
+```
 <br/>
 
 <!-- 7. 앱 추적 권한 -->
@@ -718,42 +720,32 @@ import AppTrackingTransparency
 <br/>
 
 <!-- 8. 화면 및 디자인 -->
-## 🌈화면 및 디자인
+## 🌈 화면 및 디자인
 ### Accent Color
 
-h:ours의 포인트 색상은 팬톤에서 선정한 2022년 올해의 컬러인 '베리 페리(Veri Peri)'이다.
+모닥이의 상징인 따뜻한 모닥불이 연상되는 '다홍색'을 포인트 색상으로 넣었다.
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/151350738-ec07e9ac-4de9-4388-9f47-f5584fdabc98.png"></p>
+<p align="left"><img src="https://user-images.githubusercontent.com/49383370/155312772-f11a795b-02f3-41b7-a48c-8bf855998449.png"></p>
 
 <br/>
 
 ### App Icon
-- **초기 버전**
 
-  반복되는 점들로 이루어진 원의 형태는 시계의 시점과 분점을 연상하고, 가운데에 위치한 쌍점(:)은 앱 이름(h:ours)에도 사용되었듯이 시간을 표시할 때 사용되는 부호를 의미한다.  
-<br/>
-
-<p align="center"><img width="500" src="https://user-images.githubusercontent.com/49383370/151354559-0966e195-8053-4047-afcd-e73b9e5f1609.png"></p>
-  
-- **최종 버전**
-
-  위의 두 종류 중 포인트 색상을 배경으로 한 아이콘을 채택했다.
+아이콘도 모닥이의 상징인 모닥불을 표현하기 위해서 포인트 색상으로 칠한 불 이미지로 구성했다. 모닥이를 통해서 모두의 마음이 따뜻해지길 바람을 표현한 것이다.
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/151538320-83cd6eb3-f13e-4fcd-88a4-63ec12723f7d.png"></p>
+<p align="left"><img src="https://user-images.githubusercontent.com/49383370/155313186-0e16889a-f425-4434-a019-8c734ef2ec19.png" width="100"></p>
 
 <br/>
 
 ### UI/UX
-전반적인 앱의 화면은 아래와 같다.
 
 <br/>
 
-<p align="center"><img alt="UI/UX Light Mode" src="https://user-images.githubusercontent.com/49383370/151543869-aef6a8d8-d21d-42dd-b26d-b246608767eb.png"></p>
-<p align="center"><img alt="UI/UX Dark Mode" src="https://user-images.githubusercontent.com/49383370/151543880-1c3f84cc-89cb-4e89-b6dd-fcb8e63331c6.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155319015-783e1a1c-59e6-4ac0-b1a0-6d7bb0e8c95b.png"></p>
 
 <br/>
 
