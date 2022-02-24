@@ -81,213 +81,113 @@
 
 <br/>
 
-<!-- 3. 시간 계산 -->
-## ⏰ 시간 계산
+<!-- 3. 로그인 -->
+## 📲 로그인
+앱에 접속했을 때 처음 접하는 화면이 로그인 화면이다. 현재 사용자가 있는지를 체크하고 없으면 그대로 로그인 화면을 보여주고, 현재 사용자가 있으면 메인 화면으로 이동한다.
 
-### 1. 시간 형식 변환
+로그인은 총 4종류로 모두 FirebaseAuth를 이용해서 구현했다.
 
-시간 계산에서 제일 큰 문제는 **"연산자를 클릭할 때 입력한 시간 또는 연산 결과를 올바른 시간 포맷으로 보여줘야 한다"** 는 것이다.
-
-> 예시) 
->
->     입력: 3:66 +
->     출력: 4:06
-> 
->     입력: 1:50 + 0:25
->     출력: 2:15
-
-<br/>
-<br/>
-
-그래서 입력 값을 올바른 시간 형식으로 변환하는 메서드를 만들었다. 입력한 시간의 분이 60~99 사이라면 분에 60을 빼고 시에 1을 더한다.
-
-연산 기호를 누른 후 반드시 실행되며, 연산 결과가 있다면 그 결과값에도 적용된다.
-
-> 예시) 
->
->     입력: 3:66 +
->     convertTimeFormat 메서드가 호출된다.
->     [String] 타입으로 입력한 시간을 파라미터로 받아온다. ➜ (["3", "6", "6"])
->     분(66)이 60~99 사이니까 분에 60을 빼고 시에 1을 더한 값인 406을 반환한다.
+### 1. 이메일 로그인
 
 <br/>
 
 ```swift
-// 시간 형식으로 맞춰 변환하는 함수
-func convertTimeFormat(_ value: [String]) -> String {
-    // 시간 포맷에 맞추기 (분이 60에서 99사이라면 60을 뺀 값을 분에 적고 시에 +1 해주기)
-    // 두글자 이상일 때 [6, 1] 뒤에서 두글자 가져오기
-    if value.count > 1 {
-        let lastIndex = value.lastIndex(of: value.last!)!
-        var operandMinute = Int(value[lastIndex - 1 ... lastIndex].joined())!
+@IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
+    self.indicatorView.isHidden = false
 
-        if operandMinute > 59 {
-            var operandHour = 0
+    // Firebase 이메일/비밀번호 인증
+    let email = emailTextField.text ?? ""
+    let password = passwordTextField.text ?? ""
 
-            if value.count > 2 {
-                operandHour = Int(value[0...lastIndex - 2].joined())!
-            }
-            operandHour += 1
-            operandMinute -= 60
-//                print("format => \(operandHour):\(String(format: "%02d", operandMinute))")
-            return "\(operandHour)\(String(format: "%02d", operandMinute))"
-        }
-    }
-    return value.joined()
-}
-```
+    // 신규 사용자 생성
+    Auth.auth().createUser(withEmail: email, password: password) { [weak self] _, error in
+        guard let self = self else { return }
 
-<br/>
-<br/>
-
-### 2. 뺄셈과 덧셈
-
-우선, 뺄셈은 첫번째 피연산자가 세자리 이상이고 분이 두번째 피연산자의 분보다 작으면 40을 뺀다.
-> 예시) 
->
->     입력: 1:05 - 0:30 =
->     계산: 105 - 30 - 40 = 35
->     출력: 0:35
->
-> ➜ 첫번째 피연산자(105)가 세자리이고, 분(5)이 두번째 피연산자의 분(30)보다 작기 때문에 40을 뺐다.
-
-<br/>
-
-그리고 덧셈에서는 아래와 같이 계산되는 문제가 있었다. 입력한 시간을 String에서 Int형으로 바꾸고 더했으니 그 결과가 출력된 것이다.
-> 예시)
->
->     입력: 0:58 + 0:53 = 
->     출력: 1:11 (원래 1:51)
-
-<br/>
-
-그래서 덧셈은 입력한 시간의 분이 모두 두자리이고 분의 합이 100을 넘으면 40을 더한다.
-> 예시)
->
->     입력: 0:58 + 0:53 =
->     계산: 58 + 53 + 40 = 151 
->     출력: 1:51 
->
-> ➜ 입력한 시간의 분(58과 53)이 모두 두자리고, 두 합(111)이 100을 넘기때문에 40을 더했다.
-
-<br/>
-<br/>
-
-### 3. 연산자 연속 클릭 시
-처음에는 연산자 버튼을 클릭하면 해당 연산을 바로 실행하도록 구현했는데, 그러면 연산자 버튼을 연속으로 클릭했을 때가 문제다. 그래서 operation 메서드를 만들어서 연산자 버튼이 클릭될 때마다 호출한다.
-
-> operation 메서드 
->
->     displayNumber 변수에 값이 있을 때만 연산을 수행한다.
->     (displayNumber는 입력한 시간을 숫자형태로 저장하는 String 타입 변수)
->     (즉, 2:58을 입력하면 displayNumber는 "258"이다.)
->     따라서, 연산자 버튼을 연속해서 클릭하더라도 에러가 발생하지 않는다.
-
-<br/>
-
-```swift
-// 연산 함수
-func operation(_ operation: Operation) {
-    self.isClickedOperation = true
-    self.displayNumber = convertTimeFormat(displayNumber.map { String($0) })
-
-    if self.currentOperation != .unknown {
-        // 두번째 이상으로 연산기호 눌렀을 때
-        if !self.displayNumber.isEmpty {
-            self.secondOperand = self.displayNumber
-            self.displayNumber = ""
-
-            guard let firstOperand = Int(self.firstOperand) else { return }
-            guard let secondOperand = Int(self.secondOperand) else { return }
-
-            // 연산 실시
-            switch self.currentOperation {
-            case .add:
-                // 둘다 분이 두자리고 두 합이 100이 넘으면 40 더하기
-                let firstMin = self.firstOperand.suffix(2)
-                let secondMin = self.secondOperand.suffix(2)
-
-                if firstMin.count == 2 && secondMin.count == 2 && (Int(firstMin)! + Int(secondMin)!) > 99 {
-                    self.result = "\(firstOperand + secondOperand + 40)"
-                } else {
-                    self.result = "\(firstOperand + secondOperand)"
-                }
-
-            case .subtract:
-                self.result = String(minusOperation(self.firstOperand, self.secondOperand))
-
+        if let error = error {
+            let code = (error as NSError).code
+            switch code {
+            case 17007: // 이미 가입한 계정일 때
+                // 로그인하기
+                self.loginUser(withEmail: email, password: password)
             default:
-                break
+                self.indicatorView.isHidden = true
+                self.errorMessageLabel.text = error.localizedDescription
             }
-
-            self.result = convertTimeFormat(self.result.map { String($0) })
-            self.firstOperand = self.result
-            self.outputLabel.text = updateLabel(self.result)
+        } else {
+            // 사용자 데이터 저장하고 메인으로 이동
+            setValueCurrentUser()
+            showMainVCOnNavigation(self)
         }
+    }
+}
 
-        self.currentOperation = operation
-    } else {
-        // 처음으로 연산기호 눌렀을 때
-        self.outputLabel.text = updateLabel(self.displayNumber)
-        self.firstOperand = self.displayNumber
-        self.currentOperation = operation
-        self.displayNumber = ""
+private func loginUser(withEmail email: String, password: String) {
+    Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
+        guard let self = self else { return }
+
+        if let error = error {
+            self.errorMessageLabel.text = error.localizedDescription
+        } else {
+            // 사용자 데이터 저장하고 메인으로 이동
+            setValueCurrentUser()
+            showMainVCOnNavigation(self)
+        }
     }
 }
 ```
 
 <br/>
 
-<!-- 4. 디데이 계산 -->
-## 📅 디데이 계산
+### 2. 구글 로그인
 
-디데이 계산이 은근 헷갈렸다. Calendar의 dateComponents메서드로 기준일과 종료일의 차이를 계산한다. 계산 결과가 음수면 절대값으로 변환하고 앞에 "+"를 붙이고, 계산 결과가 0이거나 양수면 1을 더한 후 앞에 "-"를 붙인다.
 
-> 예시)
->
->     기준일: 2022.2.10, 종료일: 2022.2.17
->     dateComponents 메서드의 결과가 6이라서 1을 더하고 앞에 "-"를 붙인다.
->     출력: D - 7
->
->     기준일: 2022.2.10, 종료일: 2022.2.3
->     dateComponents 메서드의 결과가 -7이라서 절대값으로 변환한 후 앞에 "+"를 붙인다.
->     출력: D + 7
+
+<br/>
+<br/>
+
+### 3. 애플 로그인
+
+
+### 4. 익명 로그인
+익명 로그인은 원래 구현하지 않았었는데, 로그인이 필요한 앱은 로그인 없이도 사용할 수 있어야한다는 애플의 지침에 맞추기 위해서 추가한 것이다.
+
+FirebaseAuth에서 익명 로그인을 지원하기에 이를 이용했다. 다만 로그아웃하면 데이터가 삭제되기 때문에 관련 Alert 창을 띄운 후 로그인을 진행하도록 구현했다.
 
 <br/>
 
 ```swift
-// 디데이 계산
-func calculationDday() -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
-    if let language = UserDefaults.standard.array(forKey: "Language")?.first as? String {
-        formatter.locale = Locale(identifier: language)
-    }
+@IBAction func loginSkipButtonTapped(_ sender: UIButton) {
+    // Alert띄우기
+    let alert = UIAlertController(
+        title: "경고",
+        message: "익명으로 앱을 이용하면 로그아웃 또는 앱 삭제 시 관련 데이터가 삭제될 수 있습니다.",
+        preferredStyle: .alert
+    )
 
-    let startDate = formatter.string(from: startDatePicker.date)
-    let endDate = formatter.string(from: endDatePicker.date)
+    let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+        guard let self = self else { return }
 
-//        print("startDate : \(startDate), endDate : \(endDate)")
+        // 익명 데이터 생성
+        Auth.auth().signInAnonymously { _, error in
+            if let error = error {
+                print("Error Anonymously sign in: %@", error)
+                return
+            }
 
-    if startDate == endDate {
-        return "- DAY"
-    } else {
-        let result = Calendar.current.dateComponents(
-            [.day],
-            from: startDatePicker.date,
-            to: endDatePicker.date
-        ).day!
-//            print("result = \(result)")
-        if result < 0 {
-            // result가 음수면 절대값씌워서 앞에 + 붙이기
-            return "+ \(result.magnitude)"
-        } else {
-            // 0이거나 양수면 1더해서 앞에 - 붙이기
-            return "- \((result + 1))"
+            // 유저 데이터 만들고 메인으로 이동하기
+            setValueCurrentUser()
+            showMainVCOnNavigation(self)
         }
     }
+
+    let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+
+    alert.addAction(cancelAction)
+    alert.addAction(confirmAction)
+    self.present(alert, animated: true, completion: nil)
 }
 ```
+
 <br/>
 
 <!-- 5. 계산 기록 -->
