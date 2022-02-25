@@ -3,19 +3,21 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/01.
-//
+//  홈 Collection View Header
 
 import UIKit
 import FirebaseDatabase
 
-class HomeCollectionHeaderView: UICollectionReusableView {
-    var ref: DatabaseReference! = Database.database().reference()
+final class HomeCollectionHeaderView: UICollectionReusableView {
+    static let identifier = "HomeCollectionHeaderView"
+    private let ref: DatabaseReference! = Database.database().reference()
 
     @IBOutlet weak var recommendView: UIView!
     @IBOutlet weak var recommendLabel: UILabel!
     @IBOutlet weak var settingButton: UIButton!
 
-    func updateText(_ recommendTextId: String) {
+    /// 글귀 업데이트
+    func updateTextLabel(_ recommendTextId: String) {
         self.ref.child("Text/Text\(recommendTextId)").observe(.value) { [weak self] snapshot in
             guard let self = self,
                   let value = snapshot.value as? [String: String] else { return }
@@ -26,6 +28,7 @@ class HomeCollectionHeaderView: UICollectionReusableView {
 
             self.recommendLabel.text = textOnLabel(eng, kor, who)
 
+            // 아이패드는 글자 크기 크게
             if UIDevice.current.model == "iPad" {
                 self.recommendLabel.font = UIFont(name: "EliceDigitalBaeum", size: 21.0)
             }
