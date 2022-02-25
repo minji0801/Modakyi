@@ -83,15 +83,22 @@
 
 <!-- 3. 로그인 -->
 ## 📲 로그인
-앱에 접속했을 때 처음 접하는 화면이 로그인 화면이다. 현재 사용자가 있는지를 체크하고 없으면 그대로 로그인 화면을 보여주고, 현재 사용자가 있으면 메인 화면으로 이동한다.
+앱에 접속했을 때 처음 접하는 화면이 로그인 화면이다. 현재 사용자가 있는지를 체크하고 없으면 그대로 로그인 화면을 보여주고, 현재 사용자가 있으면 메인 화면으로 이동한다. 로그인은 총 4종류로 모두 FirebaseAuth를 이용해서 구현했다.
 
-로그인은 총 4종류로 모두 FirebaseAuth를 이용해서 구현했다.
+<br/>
+
+<p align="center"><img alt="로그인화면" src="https://user-images.githubusercontent.com/49383370/155709987-ade9dbd3-85b0-4427-891d-e149e4e89312.PNG" width="200"></p>
+
+<br/>
 
 ### 1. 이메일 로그인
+사용자로부터 이메일과 비밀번호를 입력받아 새로운 유저정보를 생성한다. 이미 가입한 계정이라면 해당 정보로 로그인을 진행한다.
 
 <br/>
 
 ```swift
+import FirebaseAuth
+
 @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
     self.indicatorView.isHidden = false
 
@@ -139,14 +146,88 @@ private func loginUser(withEmail email: String, password: String) {
 <br/>
 
 ### 2. 구글 로그인
+GoogleSignIn 프레임워크를 이용해서 구글 로그인을 구현했다. 구글 로그인 인증이 완료되면 FirebaseAuth를 이용해서 유저 데이터를 생성하고 메인화면으로 이동한다. 
 
+```swift
+import GoogleSignIn
 
+// LoginViewController: 구글 로그인 버튼 클릭
+@IBAction func googleLoginButtonTapped(_ sender: UIButton) {
+    GIDSignIn.sharedInstance().signIn() // 로그인 진행
+}
+
+// AppDelegate: 구글 로그인 인증 후 전달된 값 처리
+func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    if let error = error {
+        print("ERROR Google Sign In \(error.localizedDescription)")
+        return
+    }
+
+    guard let authentication = user.authentication else { return }
+    let credential = GoogleAuthProvider.credential(
+        withIDToken: authentication.idToken,
+        accessToken: authentication.accessToken
+    )
+
+    Auth.auth().signIn(with: credential) { _, _ in
+        // Google Login User 데이터 만들기
+        setValueCurrentUser()
+        showMainVCOnRoot()
+    }
+}
+```
 
 <br/>
 <br/>
 
 ### 3. 애플 로그인
+애플 계정 로그인은 AuthenticationServices와 CryptoKit 프레임워크를 이용했다. 예전에 패스트캠퍼스 강의에서 실습한 로그인 프로젝트에 사용했던 코드를 참고하여 구현했다.
 
+<br/>
+
+```swift    
+import AuthenticationServices
+import CryptoKit
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idTokenString, rawNonce: nonce
+            )
+
+            Auth.auth().signIn(with: credential) { [weak self] _, error in
+                guard let self = self else { return }
+
+                if let error = error {
+                    print("Error Apple sign in: %@", error)
+                    return
+                }
+
+                // Apple Login User 데이터 만들기
+                setValueCurrentUser()
+                showMainVCOnNavigation(self)
+            }
+        }
+    }
+}
+```
 
 ### 4. 익명 로그인
 익명 로그인은 원래 구현하지 않았었는데, 로그인이 필요한 앱은 로그인 없이도 사용할 수 있어야한다는 애플의 지침에 맞추기 위해서 추가한 것이다.
