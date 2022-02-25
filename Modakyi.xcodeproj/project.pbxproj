@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99A27C89E26002DC390 /* HomeViewModel.swift */; };
+		A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
@@ -67,6 +68,7 @@
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51AA99A27C89E26002DC390 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				A5EFE248272FD8180086EBAC /* LikeViewController.swift */,
 				A5EFE24A272FD8280086EBAC /* LikeCollectionViewCell.swift */,
 				A5EFE24C272FD8370086EBAC /* LikeCollectionHeaderView.swift */,
+				A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */,
 				A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
+				A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

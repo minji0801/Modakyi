@@ -3,19 +3,20 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/01.
-//
+//  좋아하는 글귀 ViewController
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
-class LikeViewController: UIViewController {
-    var ref: DatabaseReference! = Database.database().reference()
-    let uid = Auth.auth().currentUser?.uid
+final class LikeViewController: UIViewController {
+    let viewModel = LikeViewModel() // ViewModel
 
-    var likeTexts = [Int]()
+    /// CollectionView RefreshControl
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
-    private var refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
 
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
@@ -23,87 +24,69 @@ class LikeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionview.alpha = 0
-        self.collectionview.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionview.alpha = 0
+        collectionview.refreshControl = refreshControl
+        setupNoti()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.selectedLikeTabNotification(_:)),
-            name: NSNotification.Name("LikeTabSelected"),
-            object: nil
-        )
-
-        // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/like").observe(.value) { [weak self] snapshot in
+        viewModel.getLikeTextIDs { [weak self] bool in
             guard let self = self else { return }
-            guard let value = snapshot.value as? [Int] else {
-                // 좋아하는 글귀가 없으니까
-                self.likeTexts = []
-                DispatchQueue.main.async {
-                    self.labelView.isHidden = false
-                    self.collectionview.reloadData()
-                    slowlyRemoveIndicator(self.indicatorView, self.collectionview)
-                }
-                return
-            }
-
-            self.likeTexts = value.reversed()
-            print("Like 좋아하는 글귀 id: \(self.likeTexts)")
 
             DispatchQueue.main.async {
-                self.labelView.isHidden = true
+                self.labelView.isHidden = bool
                 self.collectionview.reloadData()
                 slowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
         }
     }
 
+    /// 화면 보여질 때마다: 다크모드 체크
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
     }
 
-    // 화면 회전될 때
+    /// 화면 회전될 때: CollectionView Cell 크기 재설정
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         resizeCells(self.collectionview)
     }
 
-    @objc func selectedLikeTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionview.setContentOffset(.zero, animated: true)
-        }
-    }
-
-    @objc func refresh() {
-        self.viewDidLoad()
+    /// Notification 설정
+    private func setupNoti() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.selectedLikeTabNotification(_:)),
+            name: NSNotification.Name("LikeTabSelected"),
+            object: nil
+        )
     }
 }
 
-// MARK: - UICollectionView Configure
-
+// MARK: - CollectionView DataSource
 extension LikeViewController: UICollectionViewDataSource {
+    ///  Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.likeTexts.count
+        return viewModel.numOfLikeText
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "LikeCollectionViewCell",
+            withReuseIdentifier: LikeCollectionViewCell.identifier,
             for: indexPath
         ) as? LikeCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        // likeTest 넘겨서 각 셀에서 id 검색해서 textLabel에 글귀 뿌려주기
-        cell.labelUpdateUI(likeTexts, indexPath)
+        // 좋아하는 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
+        cell.updateTextLabel(viewModel.likeTextIDs, indexPath)
         return cell
     }
 
+    /// Header 구성
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -111,7 +94,7 @@ extension LikeViewController: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: "LikeCollectionHeaderView",
+            withReuseIdentifier: LikeCollectionHeaderView.identifier,
             for: indexPath
         ) as? LikeCollectionHeaderView else {
             return UICollectionReusableView()
@@ -121,19 +104,21 @@ extension LikeViewController: UICollectionViewDataSource {
     }
 }
 
-extension LikeViewController: UICollectionViewDelegate {
+// MARK: - CollectionView DelegateFlowLayout
+extension LikeViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 클릭: 상세 화면으로 이동
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailViewController(self, String(likeTexts[indexPath.row]))
+        presentDetailViewController(self, viewModel.likeTextId(at: indexPath.row))
     }
 
+    /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
         }
     }
-}
 
-extension LikeViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 크기
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -141,5 +126,20 @@ extension LikeViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
+    }
+}
+
+// MARK: - @objc Function
+extension LikeViewController {
+    /// 하트 탭 버튼 클릭된 후 Noti
+    @objc func selectedLikeTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
+    }
+
+    /// 새로고침
+    @objc func refresh() {
+        self.viewDidLoad()
     }
 }

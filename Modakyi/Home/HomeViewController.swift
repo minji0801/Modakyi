@@ -10,7 +10,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     let viewModel = HomeViewModel() // ViewModel
 
-    /// CollectionView Refresh Control
+    /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -55,7 +55,7 @@ final class HomeViewController: UIViewController {
     }
 
     /// Notification 설정
-    func setupNoti() {
+    private func setupNoti() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didDismissDetailNotification(_:)),
@@ -71,7 +71,7 @@ final class HomeViewController: UIViewController {
     }
 
     /// Collection View Reload
-    func reloadCollectionView() {
+    private func reloadCollectionView() {
         DispatchQueue.main.async {
             self.collectionview.reloadData()
         }
@@ -137,7 +137,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         presentDetailViewController(self, viewModel.textInfo(at: indexPath.row).id)
     }
 
-    /// 스크롤 당기기: 새로고침 -> 추천 글귀 변경
+    /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
