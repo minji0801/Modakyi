@@ -3,173 +3,112 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/10/30.
-//
+//  홈 ViewController: UI 담당
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
-class HomeViewController: UIViewController {
-    var ref: DatabaseReference! = Database.database().reference()
-    let uid = Auth.auth().currentUser?.uid
+final class HomeViewController: UIViewController {
+    let viewModel = HomeViewModel() // ViewModel
 
-    var studyStimulateTexts: [StudyStimulateText] = []
-    var newTextIDs: [String] = []
-    var clickedTextIDs = [String]()
+    /// CollectionView Refresh Control
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
-    var recommendTextId = ""
-    var currentTime = ""
-
-    private var refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
 
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionview.alpha = 0
-        self.collectionview.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionview.alpha = 0
+        collectionview.refreshControl = refreshControl
+        setupNoti()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.didDismissDetailNotification(_:)),
-            name: NSNotification.Name("DismissDetailView"),
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.selectedHomeTabNotification(_:)),
-            name: NSNotification.Name("HomeTabSelected"),
-            object: nil
-        )
-
-        // Text DB에서 글귀 데이터 읽어오기
-        ref.child("Text").observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String: [String: String]] else { return }
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: value)
-                let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-                let texts = Array(textData.values)
-                self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-
-                self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
-
-                // New 글귀 찾기
-                self.getCurrentTime()
-                self.newTextIDs = self.studyStimulateTexts.filter { self.timeDifference($0.time) }.map { $0.id }
-
-                DispatchQueue.main.async {
-                    self.collectionview.reloadData()
-                    slowlyRemoveIndicator(self.indicatorView, self.collectionview)
-                }
-            } catch let error {
-                print("ERROR JSON Parsing \(error.localizedDescription)")
-            }
-        }
-
-        // User DB에서 현재 사용자가 클릭한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/clicked").observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
-
-            if let value = snapshot.value as? [String] {
-                self.clickedTextIDs = value
+        // 데이터 가져오기(전체 글귀, 추천 글귀 아이디, 새 글귀 아이디, 클릭한 글귀 아이디)
+        viewModel.getClickedTextId()
+        viewModel.getFullText {
+            DispatchQueue.main.async {
+                self.collectionview.reloadData()
+                slowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
         }
     }
 
+    /// 화면 보여질 때마다: 다크모드 체크하기
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
     }
 
-    // 화면 회전될 때
+    /// 화면 회전될 때: Cell 크기 재설정
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        resizeCells(self.collectionview)
+        resizeCells(collectionview)
     }
 
-    @objc func didDismissDetailNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionview.reloadData()
-        }
-    }
-
-    @objc func selectedHomeTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionview.setContentOffset(.zero, animated: true)
-        }
-    }
-
-    @objc func settingButtonTapped(_ sender: UIButton) {
-        pushSettingVCOnNavigation(self)
-    }
-
-    @objc func refresh() {
-        // 추천 글귀 다시 가져오기
-        self.recommendTextId = self.studyStimulateTexts.randomElement()!.id
-        DispatchQueue.main.async {
-            self.collectionview.reloadData()
-        }
-    }
-
-    // 추천 글귀 클릭 시
+    /// 추천 글귀 클릭: 상세 화면 보여주기
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
-        presentDetailViewController(self, self.recommendTextId)
+        presentDetailViewController(self, viewModel.recommendedTextId)
     }
 
-    // 현재 시간 구하기
-    func getCurrentTime() {
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        self.currentTime = dateFormatter.string(from: now)
+    /// Notification 설정
+    func setupNoti() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDismissDetailNotification(_:)),
+            name: NSNotification.Name("DismissDetailView"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(selectedHomeTabNotification(_:)),
+            name: NSNotification.Name("HomeTabSelected"),
+            object: nil
+        )
     }
 
-    // 시간 차이 구하기
-    func timeDifference(_ start: String) -> Bool {
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        guard let startTime = format.date(from: start) else { return false }
-        guard let endTime = format.date(from: self.currentTime) else { return false }
-
-        let useTime = Int(endTime.timeIntervalSince(startTime))
-        if useTime < 86400 {
-            return true
-        } else {
-            return false
+    /// Collection View Reload
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionview.reloadData()
         }
     }
 }
 
-// MARK: - UICollectionView Configure
-
+// MARK: - CollectionView DataSource
 extension HomeViewController: UICollectionViewDataSource {
+    /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return studyStimulateTexts.count
+        return viewModel.numOfFullText
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "HomeCollectionViewCell",
+            withReuseIdentifier: HomeCollectionViewCell.identifier,
             for: indexPath
         ) as? HomeCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        let text = self.studyStimulateTexts[indexPath.row]
-        cell.labelUpdateUI(text)
-        cell.imageUpdateUI(self.newTextIDs, self.clickedTextIDs, studyStimulateTexts.count - indexPath.row - 1)
+        let text = viewModel.textInfo(at: indexPath.row)
+        cell.updateTextLabel(text)
+        // TODO: 빨간점 잘 사라지나 확인
+        cell.updateNewImage(
+            newTextIds: viewModel.newTextIDs,
+            clicekdTextIds: viewModel.clickedTextIDs,
+            textId: viewModel.numOfFullText - (indexPath.row + 1)
+        )
         return cell
     }
 
+    /// Header 구성
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -177,37 +116,35 @@ extension HomeViewController: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: "HomeCollectionHeaderView",
+            withReuseIdentifier: HomeCollectionHeaderView.identifier,
             for: indexPath
         ) as? HomeCollectionHeaderView else {
             return UICollectionReusableView()
         }
 
         header.recommendView.layer.cornerRadius = 30
-        header.updateText(self.recommendTextId)
+        header.updateTextLabel(viewModel.recommendedTextId)
         header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)
         return header
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
+// MARK: - CollectionView DelegateFlowLayout
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 클릭: 상세 화면으로 이동
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !clickedTextIDs.contains(studyStimulateTexts[indexPath.row].id) {
-            self.clickedTextIDs.append(studyStimulateTexts[indexPath.row].id)
-            self.ref.child("User/\(self.uid!)").updateChildValues(["clicked": self.clickedTextIDs])
-        }
-
-        presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
+        viewModel.updateClickedText(at: indexPath.row)
+        presentDetailViewController(self, viewModel.textInfo(at: indexPath.row).id)
     }
 
+    /// 스크롤 당기기: 새로고침 -> 추천 글귀 변경
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
         }
     }
-}
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 크기
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -215,5 +152,31 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
+    }
+}
+
+// MARK: - @objc Function
+extension HomeViewController {
+    /// 상세화면 dismiss 된 후 Noti
+    @objc func didDismissDetailNotification(_ notification: Notification) {
+        reloadCollectionView()
+    }
+
+    /// 홈 탭 버튼 클릭 된 후 Noti
+    @objc func selectedHomeTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
+    }
+
+    /// 설정 버튼 클릭: 설정화면 push
+    @objc func settingButtonTapped(_ sender: UIButton) {
+        pushSettingVCOnNavigation(self)
+    }
+
+    /// 추천 글귀 새로고침
+    @objc func refresh() {
+        viewModel.recommendedTextId = viewModel.allText.randomElement()!.id
+        reloadCollectionView()
     }
 }
