@@ -14,9 +14,9 @@ final class HomeViewModel {
     private let uid: String? = Auth.auth().currentUser?.uid
 
     lazy var allText: [StudyStimulateText] = [] // 전체 글귀
-    lazy var recommendedTextId = ""              // 추천 글귀 id
-    lazy var newTextIDs: [String] = []           // 새 글귀 id
-    lazy var clickedTextIDs = [String]()         // 클릭한 글귀 id
+    lazy var recommendedTextId = ""             // 추천 글귀 id
+    lazy var newTextIDs: [String] = []          // 새 글귀 id
+    lazy var clickedTextIDs: [String] = []      // 클릭한 글귀 id
 
     /// 전체 글귀 개수
     var numOfFullText: Int {
