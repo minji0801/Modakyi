@@ -3,20 +3,13 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/01.
-//
+//  글귀 상세 ViewController
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import GoogleMobileAds
 
-class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    var ref: DatabaseReference! = Database.database().reference()
-    let uid = Auth.auth().currentUser?.uid
-
-    var likeTextIDs = [Int]()
-    var usedTextIDs = [Int]()
-    var id = ""
+final class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    let viewModel = DetailViewModel()   // ViewModel
 
     private var interstitial: GADInterstitialAd?    // 전면 광고 객체
 
@@ -30,10 +23,75 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showAdMobAds()
-        textIdLabel.text = "글귀 \(id)"
+        setupNoti()
+        setupAdMobAds()
+        textIdLabel.text = "글귀 \(viewModel.id)"
 
-        // NotificationCenter
+        viewModel.getText { [weak self] eng, kor, who in
+            guard let self = self else { return }
+
+            self.textLabel.text = textOnLabel(eng, kor, who)
+
+            // 아이패드는 글자 크기 크게
+            if UIDevice.current.model == "iPad" {
+                self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 23.0)
+            }
+        }
+
+        viewModel.getLikeTextIDs {
+            self.viewWillAppear(true)
+        }
+
+        viewModel.getUsedTextIDs {
+            self.viewWillAppear(true)
+        }
+    }
+
+    /// 화면 보여질 때마다: 다크모드 확인, 버튼 설정
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appearanceCheck(self)
+        setupButtons()
+    }
+
+    /// 화면 사라지려할 때: Noti 보내기(변경된 부분을 바로 반영하기 위해서)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("DismissDetailView"), object: nil, userInfo: nil)
+    }
+
+    /// 뒷배경 클릭: 전면 광고 보여주기
+    @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
+        presentToAd()
+    }
+
+    /// x 버튼 클릭: 전면 광고 보여주기
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        presentToAd()
+    }
+
+    /// 좋아요 버튼 클릭: 좋아하는 글귀 업데이트 & 버튼 다시 보여주기
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            viewModel.updateLikeTextIDs(true, sender)
+        } else {
+            viewModel.updateLikeTextIDs(false, sender)
+        }
+        self.viewDidAppear(true)
+    }
+
+    /// 체크 버튼 클릭: 사용한 글귀 업데이트 & 버튼 다시 보여주기
+    @IBAction func checkButtonTapped(_ sender: UIButton) {
+        if sender.isSelected {
+            viewModel.updateUsedTextIDs(true, sender)
+        } else {
+            viewModel.updateUsedTextIDs(false, sender)
+        }
+        self.viewDidAppear(true)
+    }
+
+    /// Notification 설정
+    func setupNoti() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.textShareNotification(_:)),
@@ -46,52 +104,15 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
             name: NSNotification.Name("ImageShare"),
             object: nil
         )
-
-        // id로 글귀 데이터 가져오기
-        ref.child("Text/Text\(id)").observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String: String] else { return }
-
-            let eng = value["eng"]!
-            let kor = value["kor"]!
-            let who = value["who"]!
-
-            self.textLabel.text = textOnLabel(eng, kor, who)
-
-            if UIDevice.current.model == "iPad" {
-                self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 23.0)
-            }
-        }
-
-        // User DB에서 현재 사용자가 좋아하는 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/like").observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
-
-            if let value = snapshot.value as? [Int] {
-                self.likeTextIDs = value
-            }
-            self.viewWillAppear(true)
-        }
-
-        // User DB에서 현재 사용자가 사용한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/used").observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
-
-            if let value = snapshot.value as? [Int] {
-                self.usedTextIDs = value
-            }
-            self.viewWillAppear(true)
-        }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        appearanceCheck(self)
-
+    /// 버튼 설정
+    func setupButtons() {
+        let id = viewModel.id
         likeButton.tag = Int(id)!
         checkButton.tag = Int(id)!
 
-        if likeTextIDs.contains(Int(id)!) {
+        if viewModel.likeTextIDs.contains(Int(id)!) {
             likeButton.isSelected = true
             likeButton.tintColor = .systemPink
         } else {
@@ -99,7 +120,7 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
             likeButton.tintColor = .label
         }
 
-        if usedTextIDs.contains(Int(id)!) {
+        if viewModel.usedTextIDs.contains(Int(id)!) {
             checkButton.isSelected = true
             checkButton.tintColor = .systemGreen
         } else {
@@ -108,75 +129,9 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name("DismissDetailView"), object: nil, userInfo: nil)
-    }
+    /// AdMob 광고 설정
+    func setupAdMobAds() {
 
-    @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
-        // 전면 광고 띄우기
-        if self.interstitial != nil {
-            self.interstitial!.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
-    // x 버튼 클릭 시
-    @IBAction func backButtonTapped(_ sender: UIButton) {
-        // 전면 광고 띄우기
-        if self.interstitial != nil {
-            self.interstitial!.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
-    // 좋아요 버튼 클릭
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-        if sender.isSelected {
-            // 데이터 빼고 리로드
-            likeTextIDs.remove(at: likeTextIDs.firstIndex(of: sender.tag)!)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTextIDs])
-            self.viewDidAppear(true)
-
-        } else {
-            // 데이터 넣고 리로드
-            likeTextIDs.append(sender.tag)
-            ref.child("User/\(uid!)").updateChildValues(["like": likeTextIDs])
-            self.viewDidAppear(true)
-        }
-    }
-
-    // 체크 버튼 클릭
-    @IBAction func checkButtonTapped(_ sender: UIButton) {
-        if sender.isSelected {
-            // 데이터 빼고 리로드
-            usedTextIDs.remove(at: usedTextIDs.firstIndex(of: sender.tag)!)
-            ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
-            self.viewDidAppear(true)
-
-        } else {
-            // 데이터 넣고 리로드
-            usedTextIDs.append(sender.tag)
-            ref.child("User/\(uid!)").updateChildValues(["used": usedTextIDs.sorted()])
-            self.viewDidAppear(true)
-        }
-    }
-
-    // iPhone에서도 팝업창 보여주기 위한 설정 1
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "popoverSegue" {
-            let popoverViewController = segue.destination
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-            popoverViewController.popoverPresentationController!.delegate = self
-        }
-    }
-
-    // AdMob 광고 띄우기
-    func showAdMobAds() {
         // 배너 광고
         bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
         bannerView.rootViewController = self
@@ -184,8 +139,8 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
 
         // 전면 광고
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-7980627220900140/4153256056", request: request)
-        { [self] ads, error in
+        let adUnitID = "ca-app-pub-7980627220900140/4153256056"
+        GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [self] ads, error in
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
                 return
@@ -195,45 +150,88 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         }
     }
 
-    // iPhone에서도 팝업창 보여주기 위한 설정 2
+    /// 전면 광고 띄우기
+    func presentToAd() {
+        if self.interstitial != nil {   // 광고 있으면 보여주기
+            self.interstitial!.present(fromRootViewController: self)
+        } else {    // 광고 없으면 화면 닫기
+            print("Ad wasn't ready")
+            dismiss(animated: true, completion: nil)
+        }
+    }
+
+    /// 공유하기 화면 띄우기
+    func presentToActivityVC(items: [Any]) {
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
+        activityVC.popoverPresentationController?.permittedArrowDirections = .left
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+
+    // iPhone에서도 팝업(popover)창 보여주기 위한 설정 1
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "popoverSegue" {
+            let popoverViewController = segue.destination
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popoverViewController.popoverPresentationController!.delegate = self
+        }
+    }
+
+    // iPhone에서도 팝업(popover)창 보여주기 위한 설정 2
     func adaptivePresentationStyle(
         for controller: UIPresentationController,
         traitCollection: UITraitCollection
     ) -> UIModalPresentationStyle {
         return .none
     }
+}
 
-    // 텍스트 공유하기
+// MARK: - Admob 전면광고 Delegate
+extension DetailViewController: GADFullScreenContentDelegate {
+
+    /// present 실패
+    func ad(_ ads: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+
+    /// present 성공
+    func adDidPresentFullScreenContent(_ ads: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+
+    /// 전면 광고 dismiss: 상세화면도 닫기
+    func adDidDismissFullScreenContent(_ ads: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - @objc Function
+extension DetailViewController {
+
+    /// 텍스트 공유하기 버튼 클릭된 후 Noti
     @objc func textShareNotification(_ notification: Notification) {
         var objectsToShare = [String]()
         if let text = self.textLabel.text {
             objectsToShare.append(text)
         }
-
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
-        activityVC.popoverPresentationController?.permittedArrowDirections = .left
-        DispatchQueue.main.async {
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        presentToActivityVC(items: objectsToShare)
     }
 
-    // 이미지 공유하기
+    /// 이미지 공유하기 버튼 클릭된 후 Noti
     @objc func imageShareNotification(_ notification: Notification) {
         guard let image = self.textView.transfromToImage() else { return }
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
-        activityVC.popoverPresentationController?.permittedArrowDirections = .left
-        DispatchQueue.main.async {
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        presentToActivityVC(items: [image])
     }
 }
 
-// UIView를 Image로 변환하기
+// MARK: - Extension UIView
 extension UIView {
+
+    /// UIView를 이미지로 변환하기
     func transfromToImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer {
@@ -244,25 +242,5 @@ extension UIView {
             return UIGraphicsGetImageFromCurrentImageContext()
         }
         return nil
-    }
-}
-
-// MARK: - Admob 전면광고 Delegate
-extension DetailViewController: GADFullScreenContentDelegate {
-
-    // present 실패 시
-    func ad(_ ads: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-
-    // present 성공 시
-    func adDidPresentFullScreenContent(_ ads: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-
-    // 전면 광고 dismiss 시
-    func adDidDismissFullScreenContent(_ ads: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        dismiss(animated: true, completion: nil)
     }
 }

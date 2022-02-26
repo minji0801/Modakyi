@@ -19,6 +19,7 @@
 		A585645B27AFA8EA00985AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A585645A27AFA8EA00985AF2 /* GoogleService-Info.plist */; };
 		A5912D0827C9D45C00E2E822 /* UnusedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5912D0727C9D45C00E2E822 /* UnusedViewModel.swift */; };
 		A5912D0A27C9ECC100E2E822 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5912D0927C9ECC100E2E822 /* SearchViewModel.swift */; };
+		A5912D0C27C9F9E300E2E822 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5912D0B27C9F9E300E2E822 /* DetailViewModel.swift */; };
 		A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */; };
 		A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */; };
 		A59FAFAE272D5BE7000807A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59FAFAC272D5BE7000807A5 /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		A585645A27AFA8EA00985AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5912D0727C9D45C00E2E822 /* UnusedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnusedViewModel.swift; sourceTree = "<group>"; };
 		A5912D0927C9ECC100E2E822 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A5912D0B27C9F9E300E2E822 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		A59FAFA3272D5BE7000807A5 /* Modakyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modakyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				A5EFE245272FC3340086EBAC /* DetailViewController.swift */,
 				A54F36B62765C32F008EE7A4 /* ShareViewController.swift */,
+				A5912D0B27C9F9E300E2E822 /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
 				A5C2CC9227461B3400908A4D /* ResetPasswordViewController.swift in Sources */,
+				A5912D0C27C9F9E300E2E822 /* DetailViewModel.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */,
