@@ -3,20 +3,20 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/01.
-//
+//  미사용 글귀 ViewController
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
-class UnusedViewController: UIViewController {
-    var ref: DatabaseReference! = Database.database().reference()
-    let uid = Auth.auth().currentUser?.uid
+final class UnusedViewController: UIViewController {
+    let viewModel = UnusedViewModel()   // ViewModel
 
-    var studyStimulateTexts: [StudyStimulateText] = []
-    var unusedTexts = [Int]()
+    /// CollectionView RefershControl
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
-    private var refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
 
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
@@ -24,105 +24,85 @@ class UnusedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionview.alpha = 0
-        self.collectionview.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionview.alpha = 0
+        collectionview.refreshControl = refreshControl
+        setupNoti()
 
+        viewModel.getFullText()
+        viewModel.getUnusedTextIDs { [weak self] bool in
+            guard let self = self else { return }
+
+            if bool {   // 미사용 글귀 있음
+                DispatchQueue.main.async {
+                    if self.viewModel.unusedTextIDs.isEmpty {
+                        self.labelView.isHidden = false
+                    } else {
+                        self.labelView.isHidden = true
+                    }
+                    self.reloadCollectionView()
+                }
+            } else {    // 미사용 글귀 없음 -> 전체 글귀 보여주기
+                DispatchQueue.main.async {
+                    self.reloadCollectionView()
+                }
+            }
+        }
+    }
+
+    /// 화면 보여질 때 마다: 다크모드 확인
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appearanceCheck(self)
+    }
+
+    /// 화면 회전될 때: CollectionView Cell 크기 재조정
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        resizeCells(self.collectionview)
+    }
+
+    /// Notification 설정
+    func setupNoti() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.selectedUnusedTabNotification(_:)),
             name: NSNotification.Name("UnusedTabSelected"),
             object: nil
         )
-
-        // Text DB에서 글귀 데이터 읽어오기
-        ref.child("Text").observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String: [String: String]] else { return }
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: value)
-                let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-                let texts = Array(textData.values)
-                self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-            } catch let error {
-                print("ERROR JSON Parsing \(error.localizedDescription)")
-            }
-        }
-
-        // User DB에서 현재 사용자가 사용한 글귀 데이터 읽어오기
-        ref.child("User/\(uid!)/used").observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
-            guard let value = snapshot.value as? [Int] else {
-                // 사용한 글귀가 없으니까 전체 글귀 보여주기
-                self.unusedTexts = self.studyStimulateTexts.map { Int($0.id)! }
-
-                DispatchQueue.main.async {
-                    self.collectionview.reloadData()
-                    slowlyRemoveIndicator(self.indicatorView, self.collectionview)
-                }
-                return
-            }
-
-            self.unusedTexts = self.studyStimulateTexts.indices.filter { !(value.contains($0)) }.sorted(by: >)
-            print("Unused 미사용 글귀 id: \(self.unusedTexts)")
-
-            DispatchQueue.main.async {
-                if self.unusedTexts.isEmpty {
-                    self.labelView.isHidden = false
-                } else {
-                    self.labelView.isHidden = true
-                }
-                self.collectionview.reloadData()
-                slowlyRemoveIndicator(self.indicatorView, self.collectionview)
-            }
-        }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        appearanceCheck(self)
-    }
-
-    // 화면 회전될 때
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        resizeCells(self.collectionview)
-    }
-
-    @objc func selectedUnusedTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionview.setContentOffset(.zero, animated: true)
-        }
-    }
-
-    @objc func refresh() {
-        self.viewDidLoad()
+    /// CollectionView Reload
+    func reloadCollectionView() {
+        collectionview.reloadData()
+        slowlyRemoveIndicator(indicatorView, collectionview)
     }
 }
 
-// MARK: - UICollectionView Configure
+// MARK: - CollectionView DataSource
 extension UnusedViewController: UICollectionViewDataSource {
+    /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.unusedTexts.count
+        return viewModel.numOfUnusedText
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "UnusedCollectionViewCell",
+            withReuseIdentifier: UnusedCollectionViewCell.identifier,
             for: indexPath
         ) as? UnusedCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        // usedTest 넘겨서 각 셀에서 id 검색해서 포함하지 않으면 textLabel에 글귀 뿌려주기
-        cell.labelUpdateUI(unusedTexts.sorted(by: >), indexPath)
+        // 미사용 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
+        cell.updateTextLabel(viewModel.unusedTextIDs.sorted(by: >), indexPath)
         return cell
     }
 
+    /// Header 구성
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -130,7 +110,7 @@ extension UnusedViewController: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: "UnusedCollectionHeaderView",
+            withReuseIdentifier: UnusedCollectionHeaderView.identifier,
             for: indexPath
         ) as? UnusedCollectionHeaderView else {
             return UICollectionReusableView()
@@ -140,19 +120,21 @@ extension UnusedViewController: UICollectionViewDataSource {
     }
 }
 
-extension UnusedViewController: UICollectionViewDelegate {
+// MARK: - CollectionView DelegateFlowLayout
+extension UnusedViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 클릭: 상세 화면 보여주기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailViewController(self, String(unusedTexts[indexPath.row]))
+        presentDetailViewController(self, viewModel.unusedTextId(at: indexPath.row))
     }
 
+    /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
         }
     }
-}
 
-extension UnusedViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 크기
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -160,5 +142,20 @@ extension UnusedViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = (collectionView.bounds.width / 3) - 0.8
         return CGSize(width: width, height: width)
+    }
+}
+
+// MARK: - @objc Function
+extension UnusedViewController {
+    /// 미사용 탭 바 버튼 클릭된 후 Noti
+    @objc func selectedUnusedTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
+    }
+
+    /// 새로고침
+    @objc func refresh() {
+        self.viewDidLoad()
     }
 }

@@ -11,7 +11,7 @@ import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
 import FirebaseDatabase
-import SystemConfiguration
+//import SystemConfiguration
 
 class LoginViewController: UIViewController {
     private var currentNonce: String?
