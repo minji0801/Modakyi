@@ -35,7 +35,6 @@ func pushSettingVCOnNavigation(_ viewController: UIViewController) {
 func presentDetailViewController(_ viewController: UIViewController, _ textId: String) {
     guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
             as? DetailViewController else { return }
-//    detailViewController.id = textId
     detailViewController.viewModel.id = textId
     viewController.present(detailViewController, animated: true, completion: nil)
 }

@@ -27,7 +27,6 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    // TODO: 빨간점 잘 사라지나 확인
     /// 새로운 글귀 이미지(빨간점) 업데이트
     func updateNewImage(
         newTextIds newText: [String],
