@@ -99,7 +99,6 @@ extension HomeViewController: UICollectionViewDataSource {
 
         let text = viewModel.textInfo(at: indexPath.row)
         cell.updateTextLabel(text)
-        // TODO: 빨간점 잘 사라지나 확인
         cell.updateNewImage(
             newTextIds: viewModel.newTextIDs,
             clicekdTextIds: viewModel.clickedTextIDs,
