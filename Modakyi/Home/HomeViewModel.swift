@@ -13,19 +13,19 @@ final class HomeViewModel {
     private let ref: DatabaseReference! = Database.database().reference()
     private let uid: String? = Auth.auth().currentUser?.uid
 
-    lazy var allText: [StudyStimulateText] = [] // 전체 글귀
+    lazy var fullText: [StudyStimulateText] = [] // 전체 글귀
     lazy var recommendedTextId = ""             // 추천 글귀 id
     lazy var newTextIDs: [String] = []          // 새 글귀 id
     lazy var clickedTextIDs: [String] = []      // 클릭한 글귀 id
 
     /// 전체 글귀 개수
     var numOfFullText: Int {
-        return allText.count
+        return fullText.count
     }
 
     /// 글귀 정보 조회
     func textInfo(at index: Int) -> StudyStimulateText {
-        return allText[index]
+        return fullText[index]
     }
 
     /// 전체 글귀, 추천 글귀 아이디, 새로운 글귀 아이디 가져오기
@@ -39,9 +39,9 @@ final class HomeViewModel {
                 let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
                 let texts = Array(textData.values)
 
-                self.allText = texts.sorted { Int($0.id)! > Int($1.id)! }
-                self.recommendedTextId = self.allText.randomElement()!.id
-                self.newTextIDs = self.allText.filter { self.timeDifference(uploadTime: $0.time) }.map { $0.id }
+                self.fullText = texts.sorted { Int($0.id)! > Int($1.id)! }
+                self.recommendedTextId = self.fullText.randomElement()!.id
+                self.newTextIDs = self.fullText.filter { self.timeDifference(uploadTime: $0.time) }.map { $0.id }
                 completion()
 
             } catch let error {

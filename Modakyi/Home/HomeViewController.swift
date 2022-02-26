@@ -176,7 +176,7 @@ extension HomeViewController {
 
     /// 추천 글귀 새로고침
     @objc func refresh() {
-        viewModel.recommendedTextId = viewModel.allText.randomElement()!.id
+        viewModel.recommendedTextId = viewModel.fullText.randomElement()!.id
         reloadCollectionView()
     }
 }

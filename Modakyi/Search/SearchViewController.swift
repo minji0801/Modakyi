@@ -3,104 +3,98 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/01.
-//
+//  검색 ViewController
 
 import UIKit
 import FirebaseDatabase
 
-class SearchViewController: UIViewController {
-    var ref: DatabaseReference! = Database.database().reference()
+final class SearchViewController: UIViewController {
+    let viewModel = SearchViewModel()   // ViewModel
 
-    var studyStimulateTexts: [StudyStimulateText] = []
-    var searchTexts: [StudyStimulateText] = []
-    var searchBar: UISearchBar!
+    /// SearchBar
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
 
-    private var refreshControl = UIRefreshControl()
+        return searchBar
+    }()
+
+    /// CollectionView RefreshControl
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+
+        return refreshControl
+    }()
 
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var labelView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionview.refreshControl = self.refreshControl
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionview.refreshControl = refreshControl
+        setupNoti()
+        getFullText()
+    }
 
+    /// 화면 보여질 때마다: 다크모드 확인
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appearanceCheck(self)
+    }
+
+    /// 화면 회전될 때: Cell 크기 재설정
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        resizeCells(self.collectionview)
+    }
+
+    /// Notification 설정
+    func setupNoti() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.selectedSearchTabNotification(_:)),
             name: NSNotification.Name("SearchTabSelected"),
             object: nil
         )
-
-        readAllText()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        appearanceCheck(self)
-    }
-
-    // 화면 회전될 때
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        resizeCells(self.collectionview)
-    }
-
-    @objc func selectedSearchTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.collectionview.setContentOffset(.zero, animated: true)
-        }
-    }
-
-    @objc func refresh() {
-        self.searchBar.text = ""
-        self.viewDidLoad()
-    }
-
-    // 전제 글귀 읽어오기
-    func readAllText() {
-        ref.child("Text").observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String: [String: String]] else { return }
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: value)
-                let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-                let texts = Array(textData.values)
-                self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-
-                DispatchQueue.main.async {
-                    self.collectionview.reloadData()
-                }
-            } catch let error {
-                print("ERROR JSON Parsing \(error.localizedDescription)")
+    /// 전제 글귀 가져오기
+    func getFullText() {
+        viewModel.getFullText {
+            DispatchQueue.main.async {
+                self.collectionview.reloadData()
             }
         }
     }
 }
 
-// MARK: - UICollectionView Configure
+// MARK: - CollectionView DataSource
 extension SearchViewController: UICollectionViewDataSource {
+
+    /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return studyStimulateTexts.count
+        return viewModel.numOfFullText
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "SearchCollectionViewCell",
+            withReuseIdentifier: SearchCollectionViewCell.identifier,
             for: indexPath
         ) as? SearchCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        let text = self.studyStimulateTexts[indexPath.row]
-        cell.updateUI(text)
+        let text = viewModel.textInfo(at: indexPath.row)
+        cell.updateTextLabel(text)
         return cell
     }
 
+    /// Header 구성
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -108,31 +102,33 @@ extension SearchViewController: UICollectionViewDataSource {
     ) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: "SearchCollectionHeaderView",
+            withReuseIdentifier: SearchCollectionHeaderView.identifier,
             for: indexPath
         ) as? SearchCollectionHeaderView else {
             return UICollectionReusableView()
         }
 
-        header.searchBar.delegate = self
-        self.searchBar = header.searchBar
+        header.searchBar = searchBar
         return header
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate {
+// MARK: - CollectionView DelegateFlowLayout
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+
+    /// Cell 클릭: 상세 화면 보여주기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailViewController(self, studyStimulateTexts[indexPath.row].id)
+        presentDetailViewController(self, viewModel.textInfo(at: indexPath.row).id)
     }
 
+    /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
         }
     }
-}
 
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    /// Cell 크기
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -143,15 +139,15 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UISearch Bar Configure
+// MARK: - SearchBar Delegate
 extension SearchViewController: UISearchBarDelegate {
 
-    // 키보드 내리기
+    /// 키보드 내리기
     private func dismissKeyboard() {
         searchBar.resignFirstResponder()
     }
 
-    // 취소버튼 눌렀을 때
+    /// 취소버튼 눌렀을 때
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         if !self.labelView.isHidden {
             self.labelView.isHidden = true
@@ -159,51 +155,48 @@ extension SearchViewController: UISearchBarDelegate {
 
         searchBar.showsCancelButton = false
         dismissKeyboard()
-        readAllText()
+        getFullText()
     }
 
-    // 검색창 눌렀을 때
+    /// 검색창 눌렀을 때
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setValue("취소", forKey: "cancelButtonText")
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
-    // 검색버튼 눌렀을 때
+    /// 검색버튼 눌렀을 때
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
 
-        guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return }
+        guard let searchWord = searchBar.text, searchWord.isEmpty == false else { return }
+        print("검색어: \(searchWord)")
 
-        print("검색어: \(searchTerm)")
-
-        ref.child("Text").observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String: [String: String]] else { return }
-
-            let searchResult = value.filter {
-                $0.value.contains {
-                    $0.value.contains(searchTerm)
+        viewModel.search(searchWord) {
+            DispatchQueue.main.async {
+                if self.viewModel.fullText.isEmpty {
+                    self.labelView.isHidden = false
+                } else {
+                    self.labelView.isHidden = true
                 }
-            }
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: searchResult)
-                let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-                let texts = Array(textData.values)
-                self.studyStimulateTexts = texts.sorted { Int($0.id)! > Int($1.id)! }
-                print("검색결과: \(self.studyStimulateTexts)")
-
-                DispatchQueue.main.async {
-                    if self.studyStimulateTexts.isEmpty {
-                        self.labelView.isHidden = false
-                    } else {
-                        self.labelView.isHidden = true
-                    }
-                    self.collectionview.reloadData()
-                }
-            } catch let error {
-                print("ERROR JSON Parsing \(error.localizedDescription)")
+                self.collectionview.reloadData()
             }
         }
+    }
+}
+
+// MARK: - @objc Function
+extension SearchViewController {
+
+    /// 탭 바 버튼 클릭된 후 Noti
+    @objc func selectedSearchTabNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionview.setContentOffset(.zero, animated: true)
+        }
+    }
+
+    /// 새로고침
+    @objc func refresh() {
+        self.searchBar.text = ""
+        self.viewDidLoad()
     }
 }
