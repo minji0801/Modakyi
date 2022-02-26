@@ -32,10 +32,11 @@ func pushSettingVCOnNavigation(_ viewController: UIViewController) {
 }
 
 // DetailViewController를 present해서 보여주는 메소드
-func presentDetailViewController(_ viewController: UIViewController, _ recommendTextId: String) {
+func presentDetailViewController(_ viewController: UIViewController, _ textId: String) {
     guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
             as? DetailViewController else { return }
-    detailViewController.id = recommendTextId
+//    detailViewController.id = textId
+    detailViewController.viewModel.id = textId
     viewController.present(detailViewController, animated: true, completion: nil)
 }
 
