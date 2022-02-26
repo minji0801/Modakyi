@@ -41,13 +41,14 @@
 2. [개발 목표](#-개발-목표)
 3. [로그인](#-로그인)
 4. [글귀 관리](#-글귀-관리)
-5. [좋아하는 글귀와 미사용 글귀](#-좋아하는-글귀와-미사용-글귀)
-6. [글귀 검색](#-글귀-검색)
-7. [설정](#-설정)
-8. [화면 및 디자인](#-화면-및-디자인)
-9. [이번에 처음 다룬 것](#-이번에-처음-다룬-것)
-10. [만나러 가기](#-만나러-가기)
-11. [버전 기록](#-버전-기록)
+5. [추천 글귀와 전체 글귀](#-추천-글귀와-전체-글귀)
+6. [좋아하는 글귀와 미사용 글귀](#-좋아하는-글귀와-미사용-글귀)
+7. [글귀 검색](#-글귀-검색)
+8. [설정](#-설정)
+9. [화면 및 디자인](#-화면-및-디자인)
+10. [이번에 처음 다룬 것](#-이번에-처음-다룬-것)
+11. [만나러 가기](#-만나러-가기)
+12. [버전 기록](#-버전-기록)
 
 <br/>
 
@@ -271,89 +272,71 @@ FirebaseAuth에서 익명 로그인을 지원하기에 이를 이용했다. 다�
 
 <br/>
 
-<!-- 5. 계산 기록 -->
-## 📝 계산 기록
-등호(=) 버튼을 클릭했을 때 UserDefaults를 이용해서 계산식을 로컬에 저장한다.
+<!-- 4. 글귀 관리 -->
+## 📝 글귀 관리
+글귀는 StudyStimulateText 구조체 형태로 저장되어 사용된다.
+
+<br/>
 
 ```swift
-// = 버튼 눌렀을 때
-@IBAction func equalButtonTapped(_ sender: UIButton) {
-    symbolLabel.text = ""
-    self.operation(self.currentOperation)
-    self.isClickedEqual = true
-    self.isClickedOperation = false
-
-    // 계산 기록하기 : 계산식이 담긴 문자열(연산식 + "=" + 결과값)을 UserDefaults에 저장하기
-    // formula가 "0:00 = 0:00"이면 저장하지 않기
-    // ex) 4:16 + 1:09 + 0:37 = 6:02
-
-    self.formula += "\(updateLabel(self.secondOperand)) = \(self.outputLabel.text!)"
-
-    if self.formula != "0:00 = 0:00" {
-        var history = UserDefaults.standard.array(forKey: "History") as? [String]
-        if history == nil {
-            history = [formula]
-        } else {
-            history?.append(formula)
-        }
-        UserDefaults.standard.set(history!, forKey: "History")
-    }
-    self.formula = ""
+struct StudyStimulateText: Codable {
+    let id: String      // 글귀 아이디
+    let kor: String     // 한글
+    let eng: String     // 영어
+    let who: String     // 글귀말한 사람(출처)
+    let time: String    // 업로드 시간
 }
 ```
 
 <br/>
 
-단, 올바른 계산식을 만들기 위해서 숫자 버튼을 클릭할 때마다 isClickedOperation 변수를 확인한다. 
+실제로 Firebase RealtimeDatabase에 아래와 같은 모습으로 글귀가 저장된다. (Text+글귀 아이디)를 해당 데이터의 고유 아이디로 사용한다. 새로운 글귀는 매일 1개씩 데이터베이스에 추가하여 관리하고 있다.
 
 <br/>
 
-숫자 버튼을 눌렀을 때 이미 더하기(+)나 빼기(-)를 누른적이 있다면(isClickedOperation = true) 계산식을 만들고, 더하기(+)나 빼기(-)를 누른적은 없지만 등호(=)를 누른적이 있다면(isClickedOperation = false, isClickedEqual = true) 피연산자와 현재 연산자의 값을 초기화한다.
+<p align="center"><img alt="데이터" src="https://user-images.githubusercontent.com/49383370/155842262-955d605e-67d1-4357-8c71-5fbb3aaf8d47.png" width="400"></p>
 
 <br/>
 
-계산식을 만들기 위해 첫번째 피연산자를 가져올 때 주의해야 한다. 즉, 연산을 제일 처음하는 경우를 말하는데, 두번째 피연산자가 없을 때와 등호(=)를 누른 후 추가 연산을 할 때만 첫번째 피연산자를 가져온다.
+<!-- 5. 추천 글귀와 전체 글귀 -->
+## 🏠 추천 글귀와 전체 글귀
+모닥이의 홈 화면에서 추천 글귀와 전체 글귀를 보여준다.
 
 <br/>
 
-그리고 여기서 두번째 피연산자가 반복해서 계산식에 입력되는 문제가 있었다. 그래서 isAddedFormula 변수로 두번째 피연산자를 계산식에 넣었는지 확인한다. 더하기(+)나 빼기(-) 를 클릭하면 false로 값을 초기화한다.
+<p align="center"><img alt="홈" src="https://user-images.githubusercontent.com/49383370/155842318-8bcff010-af0a-4cc7-87f8-01c9f8bdb8fd.PNG" width="200"></p>
+
+<br/>
+
+Firebase RealitimeDatabase의 Text 경로로 접근하여 전체 글귀를 가져오고, 전체 글귀에서 랜덤한 값으로 추천 글귀 아이디를 가져온다. 그리고 업로드 시간부터 금일까지 하루가 안지났으면 새로운 글귀로 분류하여 가져온다.
+
+<br/>
 
 ```swift
-// 올바른 계산식 만들기
-func createCorrectFormula() {
-    if self.isClickedOperation {    // +나 -연산자 누른적 있으면
-        // 첫번째 연산자 가져오는 경우 : 두번째 연산자가 없을 때, = 기호 누른 후 추가로 연산할 때
-        if self.secondOperand.isEmpty || isClickedEqual {
-            formula = updateLabel(self.firstOperand)
-            switch self.currentOperation {
-            case .add:
-                formula += " + "
-            case .subtract:
-                formula += " - "
-            default:
-                break
-            }
-        } else {
-            // secondOperand를 이미 formula에 넣은 경우는 다시 넣지 않도록
-            if !self.isAddedFormula {
-                formula += updateLabel(self.secondOperand)
-                switch self.currentOperation {
-                case .add:
-                    formula += " + "
-                case .subtract:
-                    formula += " - "
-                default:
-                    break
-                }
-                self.isAddedFormula = true
-            }
-        }
-    } else {    // +나 -연산자 누른적은 없지만 =연산자 누른적 있으면
-        if self.isClickedEqual {
-            self.firstOperand = ""
-            self.secondOperand = ""
-            self.currentOperation = .unknown
-            self.isClickedEqual = false
+import FirebaseAuth
+import FirebaseDatabase
+
+private let ref: DatabaseReference! = Database.database().reference()
+private let uid: String? = Auth.auth().currentUser?.uid
+
+/// 전체 글귀, 추천 글귀 아이디, 새로운 글귀 아이디 가져오기
+func getFullText(completion: @escaping () -> Void) {
+    ref.child("Text").observe(.value) { [weak self] snapshot in
+        guard let self = self,
+              let value = snapshot.value as? [String: [String: String]] else { return }
+
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: value)
+            let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
+            let texts = Array(textData.values)
+
+            self.fullText = texts.sorted { Int($0.id)! > Int($1.id)! }
+            self.recommendedTextId = self.fullText.randomElement()!.id
+            self.newTextIDs = self.fullText.filter { self.timeDifference(uploadTime: $0.time) }.map { $0.id }
+            completion()
+
+        } catch let error {
+            print("ERROR JSON Parsing \(error.localizedDescription)")
         }
     }
 }
@@ -361,7 +344,36 @@ func createCorrectFormula() {
 
 <br/>
 
-<!-- 6. 설정 -->
+새로운 글귀의 셀에 빨간 점을 표시할건데, 만약 사용자가 이미 클릭한적이 있다면 빨간 점을 보여주지 않을 것이다. 그래서 User 경로로 접근하여 현재 사용자가 클릭한 글귀의 아이디를 가져온다.
+
+<br/>
+
+```swift
+/// 사용자가 클릭한 글귀 아이디 가져오기
+func getClickedTextId() {
+    ref.child("User/\(uid!)/clicked").observe(.value) { [weak self] snapshot in
+        guard let self = self else { return }
+
+        if let value = snapshot.value as? [String] {
+            self.clickedTextIDs = value
+        }
+    }
+}
+```
+
+<br/>
+
+<!-- 6. 좋아하는 글귀와 미사용 글귀 -->
+## ❤️ 좋아하는 글귀와 미사용 글귀
+
+<br/>
+
+<!-- 7. 글귀 검색 -->
+## 🔍 글귀 검색
+
+<br/>
+
+<!-- 8. 설정 -->
 ## 🛠 설정
 ### 사용자 정보 가져오기
 모닥이의 설정화면에서는 현재 로그인한 유저의 프로필 이미지와 닉네임을 확인할 수 있다. FirebaseAuth를 이용해서 현재 로그인한 사용자의 정보를 가져와 UI Component에 뿌려준다.
