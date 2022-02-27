@@ -9,7 +9,7 @@ import UIKit
 import GoogleMobileAds
 
 final class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    let viewModel = DetailViewModel()   // ViewModel
+    let viewModel = DetailViewModel()
 
     private var interstitial: GADInterstitialAd?    // 전면 광고 객체
 
@@ -38,11 +38,15 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
             }
         }
 
-        viewModel.getLikeTextIDs {
+        viewModel.getLikeTextIDs { [weak self ] in
+            guard let self = self else { return }
+
             self.viewWillAppear(true)
         }
 
-        viewModel.getUsedTextIDs {
+        viewModel.getUsedTextIDs { [weak self ] in
+            guard let self = self else { return }
+
             self.viewWillAppear(true)
         }
     }
@@ -166,7 +170,9 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         activityVC.popoverPresentationController?.sourceView = self.view
         activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
         activityVC.popoverPresentationController?.permittedArrowDirections = .left
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.present(activityVC, animated: true, completion: nil)
         }
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    let viewModel = HomeViewModel() // ViewModel
+    let viewModel = HomeViewModel()
 
     /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -30,7 +30,9 @@ final class HomeViewController: UIViewController {
         // 데이터 가져오기(전체 글귀, 추천 글귀 아이디, 새 글귀 아이디, 클릭한 글귀 아이디)
         viewModel.getClickedTextId()
         viewModel.getFullText {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self ] in
+                guard let self = self else { return }
+
                 self.collectionview.reloadData()
                 slowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
@@ -72,7 +74,9 @@ final class HomeViewController: UIViewController {
 
     /// Collection View Reload
     private func reloadCollectionView() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.collectionview.reloadData()
         }
     }
@@ -163,7 +167,9 @@ extension HomeViewController {
 
     /// 홈 탭 버튼 클릭 된 후 Noti
     @objc func selectedHomeTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.collectionview.setContentOffset(.zero, animated: true)
         }
     }

@@ -3,23 +3,19 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/10/30.
-//
+//  로그인 ViewController
 
 import UIKit
 import GoogleSignIn
-import FirebaseAuth
 import AuthenticationServices
-import CryptoKit
-import FirebaseDatabase
-//import SystemConfiguration
 
 class LoginViewController: UIViewController {
-    private var currentNonce: String?
-    var ref: DatabaseReference!
+    let viewModel = LoginViewModel()
 
     @IBOutlet weak var emailLoginButton: UIButton!
     @IBOutlet weak var googleLoginButton: GIDSignInButton!
     @IBOutlet weak var appleLoginButton: UIButton!
+    @IBOutlet weak var indicatorView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +33,7 @@ class LoginViewController: UIViewController {
         }
 
         // 현재 로그인한 사용자 있으면 바로 메인화면으로 이동
-        if Auth.auth().currentUser != nil {
+        if viewModel.currentUser() != nil {
             showMainVCOnRoot()
         }
     }
@@ -45,52 +41,36 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
-        navigationController?.navigationBar.isHidden = true
         GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
     }
 
+    /// 구글 로그인 버튼 클릭
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
     }
 
+    /// 애플 로그인 버튼 클릭
     @IBAction func appleLoginButtonTapped(_ sender: UIButton) {
-        startSignInWithAppleFlow()
+        viewModel.startSignInWithAppleFlow(self)
     }
 
+    /// 로그인 건너뛰기 버튼 클릭
     @IBAction func loginSkipButtonTapped(_ sender: UIButton) {
-        // Alert띄우기
-        let alert = UIAlertController(
-            title: "경고",
-            message: "익명으로 앱을 이용하면 로그아웃 또는 앱 삭제 시 관련 데이터가 삭제될 수 있습니다.",
-            preferredStyle: .alert
-        )
-
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+        let alertController = viewModel.anonymousLoginAlert(self) { [weak self] in
             guard let self = self else { return }
 
-            // 익명 데이터 생성
-            Auth.auth().signInAnonymously { _, error in
-                if let error = error {
-                    print("Error Anonymously sign in: %@", error)
-                    return
-                }
+            // 유저 데이터 만들고 메인으로 이동하기
+            setValueCurrentUser()
+            showMainVCOnNavigation(self)
 
-                // 유저 데이터 만들고 메인으로 이동하기
-                setValueCurrentUser()
-                showMainVCOnNavigation(self)
-            }
+            // Hide Indicator
+            self.viewModel.hideIndicator(self)
         }
-
-        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-
-        alert.addAction(cancelAction)
-        alert.addAction(confirmAction)
-        self.present(alert, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
 // MARK: - Apple Login Configure
-
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(
         controller: ASAuthorizationController,
@@ -105,7 +85,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
              - 동일한 요청을 짧은 시간에 여러번 보내는 릴레이 공격 방지
              - 정보 탈취 없이 안전하게 인증 정보 전달을 위한 안전장치
              */
-            guard let nonce = currentNonce else {
+            guard let nonce = viewModel.currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
             guard let appleIDToken = appleIDCredential.identityToken else {
@@ -117,87 +97,24 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 return
             }
 
-            let credential = OAuthProvider.credential(
-                withProviderID: "apple.com",
-                idToken: idTokenString, rawNonce: nonce
-            )
+            // Show Indicator
+            viewModel.showIndicator(self)
 
-            Auth.auth().signIn(with: credential) { [weak self] _, error in
+            viewModel.signInAppleUser(idTokenString, nonce) { [weak self] in
                 guard let self = self else { return }
 
-                if let error = error {
-                    print("Error Apple sign in: %@", error)
-                    return
-                }
-
-                // Apple Login User 데이터 만들기
+                // Apple Login User 데이터 만들고 메인으로 이동
                 setValueCurrentUser()
                 showMainVCOnNavigation(self)
+
+                // Hide Indicator
+                self.viewModel.hideIndicator(self)
             }
         }
     }
 }
 
-// Apple Sign in
-extension LoginViewController {
-    func startSignInWithAppleFlow() {
-        let nonce = randomNonceString()
-        currentNonce = nonce
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        request.nonce = sha256(nonce)
-
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-
-    private func sha256(_ input: String) -> String {
-        let inputData = Data(input.utf8)
-        let hashedData = SHA256.hash(data: inputData)
-        let hashString = hashedData.compactMap {
-            return String(format: "%02x", $0)
-        }.joined()
-
-        return hashString
-    }
-
-    // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
-    private func randomNonceString(length: Int = 32) -> String {
-        precondition(length > 0)
-        let charset: Array<Character> =
-        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-        var result = ""
-        var remainingLength = length
-
-        while remainingLength > 0 {
-            let randoms: [UInt8] = (0 ..< 16).map { [weak self] _ in
-                var random: UInt8 = 0
-                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-                if errorCode != errSecSuccess {
-                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-                }
-                return random
-            }
-
-            randoms.forEach { random in
-                if remainingLength == 0 {
-                    return
-                }
-
-                if random < charset.count {
-                    result.append(charset[Int(random)])
-                    remainingLength -= 1
-                }
-            }
-        }
-
-        return result
-    }
-}
-
+// MARK: - ASAuthorizationController Present Delegate
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!

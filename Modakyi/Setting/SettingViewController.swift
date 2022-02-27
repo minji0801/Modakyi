@@ -11,7 +11,7 @@ import MessageUI
 import GoogleMobileAds
 
 class SettingViewController: UIViewController {
-    let viewModel = SettingViewModel()  // ViewModel
+    let viewModel = SettingViewModel()
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

@@ -8,7 +8,7 @@
 import UIKit
 
 final class UnusedViewController: UIViewController {
-    let viewModel = UnusedViewModel()   // ViewModel
+    let viewModel = UnusedViewModel()
 
     /// CollectionView RefershControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -149,7 +149,9 @@ extension UnusedViewController: UICollectionViewDelegateFlowLayout {
 extension UnusedViewController {
     /// 미사용 탭 바 버튼 클릭된 후 Noti
     @objc func selectedUnusedTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.collectionview.setContentOffset(.zero, animated: true)
         }
     }

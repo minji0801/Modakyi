@@ -8,7 +8,7 @@
 import UIKit
 
 final class LikeViewController: UIViewController {
-    let viewModel = LikeViewModel() // ViewModel
+    let viewModel = LikeViewModel()
 
     /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -133,7 +133,9 @@ extension LikeViewController: UICollectionViewDelegateFlowLayout {
 extension LikeViewController {
     /// 하트 탭 버튼 클릭된 후 Noti
     @objc func selectedLikeTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.collectionview.setContentOffset(.zero, animated: true)
         }
     }
