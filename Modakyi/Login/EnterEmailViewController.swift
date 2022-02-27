@@ -3,13 +3,13 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/10/30.
-//
+//  이메일 로그인 ViewController
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
-class EnterEmailViewController: UIViewController {
+final class EnterEmailViewController: UIViewController {
+    let viewModel = EnterEmailViewModel()
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -26,51 +26,49 @@ class EnterEmailViewController: UIViewController {
         emailTextField.becomeFirstResponder()
     }
 
+    /// 화면 보여질 때마다: 다크모드 확인, 네비게이션 바 숨기기
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
         navigationController?.navigationBar.isHidden = false
     }
 
+    /// 다음 버튼 클릭: 로그인 또는 회원가입 진행
     @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
-        self.indicatorView.isHidden = false
+        viewModel.showIndicator(self)
 
-        // Firebase 이메일/비밀번호 인증
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
 
-        // 신규 사용자 생성
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] _, error in
+        viewModel.createUser(email, password) { [weak self] status, error in
             guard let self = self else { return }
 
-            if let error = error {
-                let code = (error as NSError).code
-                switch code {
-                case 17007: // 이미 가입한 계정일 때
-                    // 로그인하기
-                    self.loginUser(withEmail: email, password: password)
-                default:
-                    self.indicatorView.isHidden = true
-                    self.errorMessageLabel.text = error.localizedDescription
-                }
-            } else {
+            switch status {
+            case "signin":
+                self.loginUser(withEmail: email, password: password)
+            case "signup":
                 // 사용자 데이터 저장하고 메인으로 이동
                 setValueCurrentUser()
                 showMainVCOnNavigation(self)
+            case "error":
+                self.viewModel.hideIndicator(self)
+                self.errorMessageLabel.text = error?.localizedDescription
+            default: break
             }
         }
     }
 
+    /// 이메일 로그인 진행
     private func loginUser(withEmail email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
+        viewModel.loginUser(withEmail: email, password: password) { [weak self] login, error in
             guard let self = self else { return }
 
-            if let error = error {
-                self.errorMessageLabel.text = error.localizedDescription
-            } else {
-                // 사용자 데이터 저장하고 메인으로 이동
+            if login {  // 사용자 데이터 저장하고 메인으로 이동
                 setValueCurrentUser()
                 showMainVCOnNavigation(self)
+            } else {    // 에러 보여주기
+                self.viewModel.hideIndicator(self)
+                self.errorMessageLabel.text = error?.localizedDescription
             }
         }
     }

@@ -17,6 +17,7 @@ class MainViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+        navigationController?.navigationBar.isHidden = true
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

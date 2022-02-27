@@ -10,6 +10,7 @@
 		A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99A27C89E26002DC390 /* HomeViewModel.swift */; };
 		A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */; };
 		A529238927CB3C6F00DD13EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238827CB3C6F00DD13EF /* LoginViewModel.swift */; };
+		A529238B27CB654400DD13EF /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
@@ -75,6 +76,7 @@
 		A51AA99A27C89E26002DC390 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		A529238827CB3C6F00DD13EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
 				A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */,
 				A529238827CB3C6F00DD13EF /* LoginViewModel.swift */,
+				A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				A5912D0A27C9ECC100E2E822 /* SearchViewModel.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
 				A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */,
+				A529238B27CB654400DD13EF /* EnterEmailViewModel.swift in Sources */,
 				A5EFE257272FF3580086EBAC /* SearchViewController.swift in Sources */,
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
