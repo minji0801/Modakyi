@@ -3,43 +3,54 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/15.
-//  ViewController 이동 메소드 모음
+//  화면 이동 함수
 
 import UIKit
-import SafariServices
 
 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
-// MainViewController를 RootViewController로 보여주는 메소드
+/// MainViewController를 RootViewController로 보여주기
 func showMainVCOnRoot() {
-    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            as? MainViewController else { return }
     mainViewController.modalPresentationStyle = .fullScreen
     UIApplication.shared.windows.first?.rootViewController?.show(mainViewController, sender: nil)
 }
 
-// MainViewController를 NavigationController에 보여주는 메소드
+/// NetworkViewController를 RootViewController로 보여주기
+func showNetworkVCOnRoot() {
+    DispatchQueue.main.async {
+        guard let networkViewController = storyboard.instantiateViewController(withIdentifier: "NetworkViewController")
+                as? NetworkViewController else { return }
+        networkViewController.modalPresentationStyle = .fullScreen
+        UIApplication.shared.windows.first?.rootViewController?.show(networkViewController, sender: nil)
+    }
+}
+
+/// MainViewController를 NavigationController에 보여주기
 func showMainVCOnNavigation(_ viewController: UIViewController) {
-    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            as? MainViewController else { return }
     mainViewController.modalPresentationStyle = .fullScreen
     viewController.navigationController?.show(mainViewController, sender: nil)
 }
 
-// SettingViewController를 NavigationController에 push해서 보여주는 메소드
+/// SettingViewController를 NavigationController에 push하기
 func pushSettingVCOnNavigation(_ viewController: UIViewController) {
     guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
             as? SettingViewController else { return }
     viewController.navigationController?.pushViewController(settingViewController, animated: true)
 }
 
-// DetailViewController를 present해서 보여주는 메소드
+/// DetailViewController를 present하기
 func presentDetailViewController(_ viewController: UIViewController, _ textId: String) {
     guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
             as? DetailViewController else { return }
-    detailViewController.viewModel.id = textId
+    detailViewController.viewModel.id = textId  // 글귀 아이디 넘겨주기
     viewController.present(detailViewController, animated: true, completion: nil)
 }
 
-// NoticeViewController를 present해서 보여주는 메소드
+/// NoticeViewController를 present하기
 func presentNoticeViewController(_ viewController: UIViewController) {
     guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController")
             as? NoticeViewController else { return }
@@ -47,18 +58,10 @@ func presentNoticeViewController(_ viewController: UIViewController) {
     viewController.present(noticeViewController, animated: false, completion: nil)
 }
 
-// TutorialViewController를 present해서 보여주는 메소드
+/// TutorialViewController를 present하기
 func presentTutorialViewController(_ viewController: UIViewController) {
-    let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+    guard let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+            as? TutorialViewController else { return }
     tutorialViewController.modalPresentationStyle = .fullScreen
     viewController.present(tutorialViewController, animated: false, completion: nil)
-}
-
-// NetworkViewController를 RootViewController로 보여주는 메소드
-func showNetworkVCOnRoot() {
-    DispatchQueue.main.async {
-        let networkViewController = storyboard.instantiateViewController(withIdentifier: "NetworkViewController")
-        networkViewController.modalPresentationStyle = .fullScreen
-        UIApplication.shared.windows.first?.rootViewController?.show(networkViewController, sender: nil)
-    }
 }

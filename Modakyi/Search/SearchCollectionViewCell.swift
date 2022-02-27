@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCollectionViewCell: UICollectionViewCell {
+final class SearchCollectionViewCell: UICollectionViewCell {
     static let identifier = "SearchCollectionViewCell"
     @IBOutlet weak var textLabel: UILabel!
 

@@ -3,11 +3,11 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/18.
-//
+//  공지사항 ViewController
 
 import UIKit
 
-class NoticeViewController: UIViewController {
+final class NoticeViewController: UIViewController {
     @IBOutlet weak var noticeTextView: UITextView!
 
     override func viewDidLoad() {

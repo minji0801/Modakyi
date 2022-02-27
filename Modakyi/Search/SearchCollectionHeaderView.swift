@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCollectionHeaderView: UICollectionReusableView {
+final class SearchCollectionHeaderView: UICollectionReusableView {
     static let identifier = "SearchCollectionHeaderView"
     @IBOutlet weak var searchBar: UISearchBar!
 }

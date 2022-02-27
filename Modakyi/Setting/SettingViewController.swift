@@ -10,7 +10,7 @@ import Kingfisher
 import MessageUI
 import GoogleMobileAds
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
     let viewModel = SettingViewModel()
 
     @IBOutlet weak var profileImage: UIImageView!

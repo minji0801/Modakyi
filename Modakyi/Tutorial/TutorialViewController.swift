@@ -3,38 +3,12 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/22.
-//
+//  튜토리얼 ViewController
 
 import UIKit
 
-class TutorialViewController: UIViewController {
-    let images = ["page0", "page1", "page2", "page3", "page4", "page5"]
-    let texts = [
-        """
-        홈에서 추천 글귀와
-        전체 글귀를 만날 수 있어요
-        """,
-        """
-        글귀의 좋아요, 사용여부를
-        체크하고 공유할 수 있어요
-        """,
-        """
-        좋아하는 글귀만
-        모아볼 수 있어요
-        """,
-        """
-        사용하지 않은 글귀만
-        모아볼 수 있어요
-        """,
-        """
-        찾고 싶은 글귀는
-        검색해보세요
-        """,
-        """
-        설정을 통해 앱을
-        관리할 수 있어요
-        """
-    ]
+final class TutorialViewController: UIViewController {
+    let viewModel = TutorialViewModel()
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
@@ -43,18 +17,28 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        setupSwipeGesture()
 
-        pageControl.numberOfPages = images.count
+        pageControl.numberOfPages = viewModel.images.count
         pageControl.currentPage = 0
 
-        imageView.image = UIImage(named: images[0])
-        label.text = texts[0]
+        imageView.image = UIImage(named: viewModel.images[0])
+        label.text = viewModel.texts[0]
 
-        // iPad Font
+        // 아이패드는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
             self.label.font = UIFont(name: "EliceDigitalBaeum", size: 40.0)
         }
+    }
 
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        // UserDefault 값 바꾸고 Dismiss
+        UserDefaults.standard.set(true, forKey: "Tutorial")
+        self.dismiss(animated: false, completion: nil)
+    }
+
+    /// 스와이프 제스처 설정
+    func setupSwipeGesture() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
@@ -64,16 +48,16 @@ class TutorialViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
     }
 
-    @IBAction func pageControlTapped(_ sender: UIPageControl) {
-        self.pageChange()
+    /// 페이지 바뀔 때: 해당 이미지와 텍스트로 변경
+    func pageChange() {
+        imageView.image = UIImage(named: viewModel.images[pageControl.currentPage])
+        label.text = viewModel.texts[pageControl.currentPage]
     }
+}
 
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
-        // UserDefault 값 바꾸고 Dismiss
-        UserDefaults.standard.set(true, forKey: "Tutorial")
-        self.dismiss(animated: false, completion: nil)
-    }
-
+// MARK: - @objc Function
+extension TutorialViewController {
+    /// 스와이프 제스처 후
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -91,10 +75,5 @@ class TutorialViewController: UIViewController {
                 break
             }
         }
-    }
-
-    func pageChange() {
-        imageView.image = UIImage(named: images[pageControl.currentPage])
-        label.text = texts[pageControl.currentPage]
     }
 }
