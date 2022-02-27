@@ -25,7 +25,7 @@
         <scene sceneID="YBv-J6-pLL">
             <objects>
                 <navigationController id="S07-EP-wss" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQi-ui-lna">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="iQi-ui-lna">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -204,24 +204,43 @@
                                     <constraint firstItem="OSr-gX-7oY" firstAttribute="leading" secondItem="nY8-33-NJY" secondAttribute="leading" id="svY-CE-btd"/>
                                 </constraints>
                             </stackView>
+                            <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMA-qm-WgM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-wx-hrj">
+                                        <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="4w5-wx-hrj" firstAttribute="centerY" secondItem="KMA-qm-WgM" secondAttribute="centerY" id="2UH-1m-4q1"/>
+                                    <constraint firstItem="4w5-wx-hrj" firstAttribute="centerX" secondItem="KMA-qm-WgM" secondAttribute="centerX" id="sIL-yD-3WZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wvs-iR-DhM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="18v-yo-D08" firstAttribute="centerY" secondItem="N07-fi-Mqa" secondAttribute="centerY" multiplier="3/5" id="3qj-W3-QSE"/>
+                            <constraint firstAttribute="bottom" secondItem="KMA-qm-WgM" secondAttribute="bottom" id="5wp-zm-aEh"/>
                             <constraint firstItem="wvs-iR-DhM" firstAttribute="trailing" secondItem="nY8-33-NJY" secondAttribute="trailing" constant="30" id="BGc-se-bVX"/>
+                            <constraint firstItem="KMA-qm-WgM" firstAttribute="leading" secondItem="wvs-iR-DhM" secondAttribute="leading" id="Gab-bR-RmE"/>
                             <constraint firstItem="nY8-33-NJY" firstAttribute="centerX" secondItem="N07-fi-Mqa" secondAttribute="centerX" id="Hqt-Ne-reO"/>
                             <constraint firstItem="wvs-iR-DhM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nY8-33-NJY" secondAttribute="bottom" constant="10" id="K4w-xs-egA"/>
+                            <constraint firstItem="KMA-qm-WgM" firstAttribute="top" secondItem="N07-fi-Mqa" secondAttribute="top" id="bZG-Gs-WBR"/>
                             <constraint firstItem="nY8-33-NJY" firstAttribute="leading" secondItem="wvs-iR-DhM" secondAttribute="leading" constant="30" id="eF2-r3-JWK"/>
+                            <constraint firstItem="wvs-iR-DhM" firstAttribute="trailing" secondItem="KMA-qm-WgM" secondAttribute="trailing" id="erN-aE-GXw"/>
                             <constraint firstItem="18v-yo-D08" firstAttribute="centerX" secondItem="N07-fi-Mqa" secondAttribute="centerX" id="gHc-Gg-6f1"/>
                             <constraint firstItem="nY8-33-NJY" firstAttribute="top" secondItem="18v-yo-D08" secondAttribute="bottom" constant="50" id="pWs-kP-OxT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AOK-wl-btH"/>
                     <connections>
+                        <outlet property="IndicatorView" destination="KMA-qm-WgM" id="RfY-Ij-G0G"/>
                         <outlet property="appleLoginButton" destination="OSr-gX-7oY" id="lJs-GO-CXE"/>
                         <outlet property="emailLoginButton" destination="4Tf-n8-Qhj" id="JFE-ud-D8F"/>
                         <outlet property="googleLoginButton" destination="6vg-ds-UhE" id="aLv-dA-zlu"/>
+                        <outlet property="indicatorView" destination="KMA-qm-WgM" id="BYt-ZE-Jg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWP-o0-1Fx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

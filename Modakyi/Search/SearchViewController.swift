@@ -9,7 +9,7 @@ import UIKit
 import FirebaseDatabase
 
 final class SearchViewController: UIViewController {
-    let viewModel = SearchViewModel()   // ViewModel
+    let viewModel = SearchViewModel()
 
     /// SearchBar
     private lazy var searchBar: UISearchBar = {
@@ -62,7 +62,9 @@ final class SearchViewController: UIViewController {
     /// 전제 글귀 가져오기
     func getFullText() {
         viewModel.getFullText {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self ] in
+                guard let self = self else { return }
+
                 self.collectionview.reloadData()
             }
         }
@@ -172,7 +174,9 @@ extension SearchViewController: UISearchBarDelegate {
         print("검색어: \(searchWord)")
 
         viewModel.search(searchWord) {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self ] in
+                guard let self = self else { return }
+
                 if self.viewModel.fullText.isEmpty {
                     self.labelView.isHidden = false
                 } else {
@@ -189,7 +193,9 @@ extension SearchViewController {
 
     /// 탭 바 버튼 클릭된 후 Noti
     @objc func selectedSearchTabNotification(_ notification: Notification) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self ] in
+            guard let self = self else { return }
+
             self.collectionview.setContentOffset(.zero, animated: true)
         }
     }
