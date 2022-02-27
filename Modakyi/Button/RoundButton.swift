@@ -3,12 +3,12 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2022/01/14.
-//
+//  설정 버튼
 
 import UIKit
 
 @IBDesignable
-class RoundButton: UIButton {
+final class RoundButton: UIButton {
     @IBInspectable var isRound: Bool = false {
         didSet {
             if isRound {

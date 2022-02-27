@@ -3,7 +3,7 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2021/11/13.
-//
+//  네트워크 연결 확인
 
 import Foundation
 import Network
@@ -15,7 +15,7 @@ final class NetworkCheck {
     public private(set) var isConnected: Bool = false
     public private(set) var connectionType: ConnectionType = .unknown
 
-    // 연결타입
+    /// 연결타입
     enum ConnectionType {
         case wifi
         case cellular
@@ -23,12 +23,12 @@ final class NetworkCheck {
         case unknown
     }
 
-    // monotior 초기화
+    /// monotior 초기화
     private init() {
         monitor = NWPathMonitor()
     }
 
-    // Network Monitoring 시작
+    /// Network Monitoring 시작
     public func startMonitoring() {
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
@@ -38,20 +38,20 @@ final class NetworkCheck {
             self.getConnectionType(path)
 
             if self.isConnected == true {
-//                print("연결됨!")
+                print("연결됨!")
             } else {
-//                print("연결안됨!")
+                print("연결안됨!")
                 showNetworkVCOnRoot()
             }
         }
     }
 
-    // Network Monitoring 종료
+    /// Network Monitoring 종료
     public func stopMonitoring() {
         monitor.cancel()
     }
 
-    // Network 연결 타입
+    /// Network 연결 타입
     private func getConnectionType(_ path: NWPath) {
         if path.usesInterfaceType(.wifi) {
             connectionType = .wifi

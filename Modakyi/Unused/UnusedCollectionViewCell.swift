@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class UnusedCollectionViewCell: UICollectionViewCell {
+final class UnusedCollectionViewCell: UICollectionViewCell {
     static let identifier = "UnusedCollectionViewCell"
     private let ref: DatabaseReference! = Database.database().reference()
 

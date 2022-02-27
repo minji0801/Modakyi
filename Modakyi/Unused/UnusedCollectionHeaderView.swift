@@ -7,6 +7,6 @@
 
 import UIKit
 
-class UnusedCollectionHeaderView: UICollectionReusableView {
+final class UnusedCollectionHeaderView: UICollectionReusableView {
     static let identifier = "UnusedCollectionHeaderView"
 }

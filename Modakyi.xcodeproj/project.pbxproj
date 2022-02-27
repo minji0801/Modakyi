@@ -12,6 +12,7 @@
 		A529238927CB3C6F00DD13EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238827CB3C6F00DD13EF /* LoginViewModel.swift */; };
 		A529238B27CB654400DD13EF /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */; };
 		A529238F27CB739500DD13EF /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */; };
+		A529239327CBA01F00DD13EF /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529239227CBA01F00DD13EF /* TutorialViewModel.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
@@ -79,6 +80,7 @@
 		A529238827CB3C6F00DD13EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnterEmailViewModel.swift; path = Modakyi/Login/EnterEmail/EnterEmailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		A529239227CBA01F00DD13EF /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,15 @@
 			path = ResetPassword;
 			sourceTree = "<group>";
 		};
+		A529239127CBA00900DD13EF /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				A5D4611B274B3D91008DBF4B /* TutorialViewController.swift */,
+				A529239227CBA01F00DD13EF /* TutorialViewModel.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		A53C6BC92730F26400066A3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,10 +232,10 @@
 				A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */,
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
-				A5D4611B274B3D91008DBF4B /* TutorialViewController.swift */,
 				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
 				A55298CF2733920800DCB870 /* NetworkViewController.swift */,
 				A529238C27CB729600DD13EF /* Model */,
+				A529239127CBA00900DD13EF /* Tutorial */,
 				A59FAFC5272D6E79000807A5 /* Login */,
 				A59FAFC6272D6E8F000807A5 /* Home */,
 				A5EFE247272FD8090086EBAC /* Like */,
@@ -550,6 +561,7 @@
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
 				A5C2CC9227461B3400908A4D /* ResetPasswordViewController.swift in Sources */,
 				A5912D0C27C9F9E300E2E822 /* DetailViewModel.swift in Sources */,
+				A529239327CBA01F00DD13EF /* TutorialViewModel.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */,
@@ -713,7 +725,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -730,7 +742,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -748,7 +760,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -765,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
