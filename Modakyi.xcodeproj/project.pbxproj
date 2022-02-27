@@ -11,6 +11,7 @@
 		A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */; };
 		A529238927CB3C6F00DD13EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238827CB3C6F00DD13EF /* LoginViewModel.swift */; };
 		A529238B27CB654400DD13EF /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */; };
+		A529238F27CB739500DD13EF /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
@@ -76,7 +77,8 @@
 		A51AA99A27C89E26002DC390 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		A529238827CB3C6F00DD13EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
+		A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnterEmailViewModel.swift; path = Modakyi/Login/EnterEmail/EnterEmailViewModel.swift; sourceTree = SOURCE_ROOT; };
+		A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,32 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A529238C27CB729600DD13EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A529238D27CB734900DD13EF /* EnterEmail */ = {
+			isa = PBXGroup;
+			children = (
+				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
+				A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */,
+			);
+			path = EnterEmail;
+			sourceTree = "<group>";
+		};
+		A529239027CB739B00DD13EF /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */,
+				A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
 		A53C6BC92730F26400066A3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +224,7 @@
 				A5D4611B274B3D91008DBF4B /* TutorialViewController.swift */,
 				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
 				A55298CF2733920800DCB870 /* NetworkViewController.swift */,
-				A5EFE240272FBC400086EBAC /* StudyStimulateText.swift */,
+				A529238C27CB729600DD13EF /* Model */,
 				A59FAFC5272D6E79000807A5 /* Login */,
 				A59FAFC6272D6E8F000807A5 /* Home */,
 				A5EFE247272FD8090086EBAC /* Like */,
@@ -220,11 +248,10 @@
 		A59FAFC5272D6E79000807A5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A529239027CB739B00DD13EF /* ResetPassword */,
+				A529238D27CB734900DD13EF /* EnterEmail */,
 				A59FAFBA272D5C16000807A5 /* LoginViewController.swift */,
-				A59FAFBC272D624B000807A5 /* EnterEmailViewController.swift */,
-				A5C2CC9127461B3400908A4D /* ResetPasswordViewController.swift */,
 				A529238827CB3C6F00DD13EF /* LoginViewModel.swift */,
-				A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -532,6 +559,7 @@
 				A5EFE259272FF3670086EBAC /* SearchCollectionViewCell.swift in Sources */,
 				A561379B2734DCDD006C16CF /* SearchCollectionHeaderView.swift in Sources */,
 				A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */,
+				A529238F27CB739500DD13EF /* ResetPasswordViewModel.swift in Sources */,
 				A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
 				A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */,
