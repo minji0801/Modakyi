@@ -9,7 +9,7 @@ import UIKit
 import GoogleSignIn
 import AuthenticationServices
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     let viewModel = LoginViewModel()
 
     @IBOutlet weak var emailLoginButton: UIButton!
@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         appearanceCheck(self)
         GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
+        navigationController?.navigationBar.isHidden = true
     }
 
     /// 구글 로그인 버튼 클릭
