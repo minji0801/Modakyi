@@ -22,8 +22,6 @@ final class LoginViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
 
         [emailLoginButton, googleLoginButton, appleLoginButton].forEach {
-            $0?.layer.borderWidth = 0.2
-            $0?.layer.borderColor = UIColor.darkGray.cgColor
             $0?.layer.cornerRadius = 28
         }
 

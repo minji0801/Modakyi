@@ -12,10 +12,11 @@ final class RoundButton: UIButton {
     @IBInspectable var isRound: Bool = false {
         didSet {
             if isRound {
-                self.layer.borderWidth = 1
+                self.layer.borderWidth = 0.5
                 self.layer.cornerRadius = 10
-                self.layer.borderColor = UIColor.darkGray.cgColor
+                self.layer.borderColor = UIColor.systemGray.cgColor
                 self.titleLabel?.font = UIFont(name: "HSSaemaul-Regular", size: 20)
+                self.backgroundColor = .secondarySystemBackground
             }
         }
     }

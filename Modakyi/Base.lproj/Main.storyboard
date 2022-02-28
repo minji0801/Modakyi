@@ -133,11 +133,11 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="lzr-Pf-kCn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="EliceDigitalBaeum-Bd" family="Elice DigitalBaeum" pointSize="15"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="-80" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Email로 계속하기" image="mail">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="tintColor" name="PointColor"/>
+                                        <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="이메일로 로그인" image="mail">
+                                            <color key="titleColor" name="PointColor"/>
                                         </state>
                                         <connections>
                                             <segue destination="fy9-iy-nlq" kind="show" id="mdJ-Z0-oYc"/>
@@ -149,9 +149,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="JvB-Rv-c3H"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="EliceDigitalBaeum-Bd" family="Elice DigitalBaeum" pointSize="15"/>
-                                        <inset key="imageEdgeInsets" minX="-70" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Google로 계속하기" image="logo_google">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Google로 로그인" image="logo_google">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -164,10 +164,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="4KK-JD-upc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="EliceDigitalBaeum-Bd" family="Elice DigitalBaeum" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="-80" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Apple로 계속하기" image="logo_apple">
+                                        <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Apple로 로그인" image="logo_apple">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -179,7 +179,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="jnq-7a-Co8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="EliceDigitalBaeum-Bd" family="Elice DigitalBaeum" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="로그인 건너뛰기">
                                             <color key="titleColor" systemColor="systemGrayColor"/>
@@ -215,7 +215,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wvs-iR-DhM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="18v-yo-D08" firstAttribute="centerY" secondItem="N07-fi-Mqa" secondAttribute="centerY" multiplier="3/5" id="3qj-W3-QSE"/>
                             <constraint firstAttribute="bottom" secondItem="KMA-qm-WgM" secondAttribute="bottom" id="5wp-zm-aEh"/>
@@ -484,7 +484,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dgm-8p-S6N"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Kt-Q5-ggS" firstAttribute="top" secondItem="dgm-8p-S6N" secondAttribute="top" constant="30" id="5aM-ff-855"/>
                             <constraint firstItem="0Kt-Q5-ggS" firstAttribute="centerX" secondItem="knF-QT-S8u" secondAttribute="centerX" id="FhP-yr-qOw"/>
@@ -663,7 +663,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="vAj-4q-Zo2" firstAttribute="leading" secondItem="w4e-WF-SMD" secondAttribute="leading" constant="6" id="Ceo-80-HBN"/>
                                                 <constraint firstAttribute="bottom" secondItem="vAj-4q-Zo2" secondAttribute="bottom" constant="6" id="EEH-VM-vG9"/>
@@ -771,7 +771,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="D1Q-b2-jog" firstAttribute="top" secondItem="4pg-7I-v87" secondAttribute="top" constant="6" id="In6-DD-w4v"/>
                                                 <constraint firstItem="D1Q-b2-jog" firstAttribute="leading" secondItem="4pg-7I-v87" secondAttribute="leading" constant="6" id="R9a-Mp-KLz"/>
@@ -931,7 +931,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="M8M-Tw-enQ" secondAttribute="bottom" constant="6" id="Dod-ZD-5aS"/>
                                                 <constraint firstItem="M8M-Tw-enQ" firstAttribute="top" secondItem="EDw-Mu-5sr" secondAttribute="top" constant="6" id="P6A-yg-P68"/>
@@ -1054,7 +1054,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="qk6-cV-d55" firstAttribute="top" secondItem="Ma7-sg-9qA" secondAttribute="top" constant="6" id="NnC-c9-9g9"/>
                                                 <constraint firstAttribute="bottom" secondItem="qk6-cV-d55" secondAttribute="bottom" constant="6" id="QMk-eD-5FT"/>
@@ -1115,7 +1115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="HX8-1J-jEt" secondAttribute="trailing" constant="15" id="Pik-wd-Jud"/>
                                                 <constraint firstItem="HX8-1J-jEt" firstAttribute="leading" secondItem="gdO-qn-23f" secondAttribute="leading" constant="15" id="QQ5-VU-IFD"/>
@@ -1539,7 +1539,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HGq-Wx-DdO" secondAttribute="trailing" constant="10" id="24h-Lj-0rB"/>
                                     <constraint firstItem="HGq-Wx-DdO" firstAttribute="top" secondItem="X2b-jm-jAi" secondAttribute="bottom" id="Gmk-ht-PrX"/>
@@ -1621,6 +1621,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
