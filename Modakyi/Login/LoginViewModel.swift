@@ -36,10 +36,10 @@ final class LoginViewModel: NSObject {
         let alertController = UIAlertController(
             title: "로그인 건너뛰기",
             message: "로그아웃 또는 앱 삭제 시 데이터가 삭제될 수 있습니다. 진행하시겠습니까?",
-            preferredStyle: .actionSheet
+            preferredStyle: .alert
         )
 
-        let confirmAction = UIAlertAction(title: "네", style: .default) { [weak self] _ in
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             guard let self = self else { return }
 
             // Show Indicator
@@ -55,10 +55,10 @@ final class LoginViewModel: NSObject {
             }
         }
 
-        let cancelAction = UIAlertAction(title: "아니요", style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
 
-        alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
         return alertController
     }
 

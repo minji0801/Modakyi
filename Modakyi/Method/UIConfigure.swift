@@ -5,7 +5,6 @@
 //  Created by 김민지 on 2021/11/16.
 //  UI 관련 함수
 
-//import Foundation
 import UIKit
 
 /// UserDefaults에 저장된 값으로 다크모드 확인하기

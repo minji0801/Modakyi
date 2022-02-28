@@ -6,7 +6,6 @@
 //  검색 ViewController
 
 import UIKit
-import FirebaseDatabase
 
 final class SearchViewController: UIViewController {
     let viewModel = SearchViewModel()
