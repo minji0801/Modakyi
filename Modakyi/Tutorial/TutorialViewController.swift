@@ -27,8 +27,14 @@ final class TutorialViewController: UIViewController {
 
         // 아이패드는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
-            self.label.font = UIFont(name: "EliceDigitalBaeum", size: 40.0)
+            self.label.font = UIFont(name: "EliceDigitalBaeum", size: 30.0)
         }
+    }
+
+    /// 화면 보여질 때마다: 다크모드 확인
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appearanceCheck(self)
     }
 
     @IBAction func closeButtonTapped(_ sender: UIButton) {

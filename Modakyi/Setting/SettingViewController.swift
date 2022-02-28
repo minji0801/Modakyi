@@ -35,7 +35,7 @@ final class SettingViewController: UIViewController {
         nameLabel.text = viewModel.getUserDisplayName()
         profileImage.kf.setImage(
             with: viewModel.getUserPhotoUrl(),
-            placeholder: UIImage(systemName: "person.crop.circle")
+            placeholder: UIImage(named: "person_circle")
         )
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
     }

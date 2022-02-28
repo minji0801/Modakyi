@@ -33,7 +33,9 @@ final class SettingViewModel {
 
     /// 다크모드 저장
     func setAppearance(_ viewController: SettingViewController) {
-        if viewController.overrideUserInterfaceStyle == .light {
+        let appearance = UserDefaults.standard.string(forKey: "Appearance")
+        // 처음엔 light: appearance 없음(nil)
+        if appearance == nil || appearance! == "Light" {
             UserDefaults.standard.set("Dark", forKey: "Appearance")
         } else {
             UserDefaults.standard.set("Light", forKey: "Appearance")
@@ -128,7 +130,7 @@ final class SettingViewModel {
         let alertController = UIAlertController(
             title: "로그아웃",
             message: "정말 로그아웃하시겠습니까?",
-            preferredStyle: UIAlertController.Style.actionSheet
+            preferredStyle: .alert
         )
 
         let confirmAction = UIAlertAction(title: "네", style: .default) { [weak self] _ in
@@ -142,8 +144,8 @@ final class SettingViewModel {
         }
         let cancelAction = UIAlertAction(title: "아니요", style: .destructive, handler: nil)
 
-        alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
         return alertController
     }
 
