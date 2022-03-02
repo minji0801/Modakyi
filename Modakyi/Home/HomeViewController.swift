@@ -45,12 +45,6 @@ final class HomeViewController: UIViewController {
         appearanceCheck(self)
     }
 
-    /// 화면 회전될 때: Cell 크기 재설정
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        resizeCells(collectionview)
-    }
-
     /// 추천 글귀 클릭: 상세 화면 보여주기
     @IBAction func recommendViewTapped(_ sender: UITapGestureRecognizer) {
         presentDetailViewController(self, viewModel.recommendedTextId)
