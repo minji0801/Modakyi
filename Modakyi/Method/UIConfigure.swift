@@ -74,18 +74,3 @@ func slowlyRemoveIndicator(_ indicatorView: UIActivityIndicatorView, _ collectio
         collectionView.alpha = 1
     }
 }
-
-/// CollectionView Cell의 크기를 재조정하기
-func resizeCells(_ collectionView: UICollectionView?) {
-    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-        guard (collectionView?.collectionViewLayout as? UICollectionViewFlowLayout) != nil else {
-            layout.itemSize = CGSize.zero
-            return
-        }
-
-        let width = ((collectionView?.bounds.width)! / 3) - 0.8
-        let itemSize = CGSize(width: width, height: width)
-        layout.itemSize = itemSize
-        layout.invalidateLayout()
-    }
-}

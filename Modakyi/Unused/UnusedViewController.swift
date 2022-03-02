@@ -55,12 +55,6 @@ final class UnusedViewController: UIViewController {
         appearanceCheck(self)
     }
 
-    /// 화면 회전될 때: CollectionView Cell 크기 재조정
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        resizeCells(self.collectionview)
-    }
-
     /// Notification 설정
     func setupNoti() {
         NotificationCenter.default.addObserver(
