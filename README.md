@@ -89,7 +89,7 @@
 
 <br/>
 
-<p align="center"><img alt="로그인화면" src="https://user-images.githubusercontent.com/49383370/155922369-1a86a543-4010-4552-811f-bd580be05f0d.PNG" width="200"></p>
+<p align="center"><img alt="로그인" src="https://user-images.githubusercontent.com/49383370/156298479-5fba1736-2dd3-4656-9eba-57e0a165005f.png" width="200"></p>
 
 <br/>
 
@@ -296,10 +296,10 @@ func anonymousLoginAlert(
     let alertController = UIAlertController(
         title: "로그인 건너뛰기",
         message: "로그아웃 또는 앱 삭제 시 데이터가 삭제될 수 있습니다. 진행하시겠습니까?",
-        preferredStyle: .actionSheet
+        preferredStyle: .alert
     )
 
-    let confirmAction = UIAlertAction(title: "네", style: .default) { [weak self] _ in
+    let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
         guard let self = self else { return }
 
         // Show Indicator
@@ -315,10 +315,10 @@ func anonymousLoginAlert(
         }
     }
 
-    let cancelAction = UIAlertAction(title: "아니요", style: .destructive, handler: nil)
+    let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
 
-    alertController.addAction(confirmAction)
     alertController.addAction(cancelAction)
+    alertController.addAction(confirmAction)
     return alertController
 }
 ```
@@ -358,7 +358,7 @@ struct StudyStimulateText: Codable {
 
 <br/>
 
-<p align="center"><img alt="홈" src="https://user-images.githubusercontent.com/49383370/155922506-7bb4cb9d-7f3d-4f3f-b803-1f5ac0b42448.jpeg" width="200"></p>
+<p align="center"><img alt="홈" src="https://user-images.githubusercontent.com/49383370/156298643-4127155e-d0b9-4d03-93d7-999c470a9d2e.png" width="200"></p>
 
 <br/>
 
@@ -437,7 +437,7 @@ func getClickedTextId() {
 
 <br/>
 
-<p align="center"><img alt="상세" src="https://user-images.githubusercontent.com/49383370/155937567-42aa6f01-e430-42e3-9656-4651b9cd9d83.PNG" width="200"></p>
+<p align="center"><img alt="상세" src="https://user-images.githubusercontent.com/49383370/156298736-15b4c168-5090-4e95-8c41-168807106c55.png" width="200"></p>
 
 <br/>
 
@@ -564,7 +564,7 @@ func presentToActivityVC(items: [Any]) {
 
 <br/>
 
-<p align="center"><img alt="좋아요" src="https://user-images.githubusercontent.com/49383370/155926177-8e6ae429-b83e-4c78-bb53-71d0a888a7d5.PNG" width="200"></p>
+<p align="center"><img alt="좋아요" src="https://user-images.githubusercontent.com/49383370/156298819-2e90bd94-fee7-4d1e-9f9c-06df325fe6bc.png" width="200"></p>
 
 <br/>
 
@@ -605,7 +605,7 @@ func getLikeTextIDs(completion: @escaping (Bool) -> Void) {
 
 <br/>
 
-<p align="center"><img alt="미사용" src="https://user-images.githubusercontent.com/49383370/155926414-34299529-37e9-433c-a457-3016087a8a0d.jpeg" width="200"></p>
+<p align="center"><img alt="미사용" src="https://user-images.githubusercontent.com/49383370/156298850-4d41017f-55d3-477d-8ecc-9577c8db34c2.png" width="200"></p>
 
 <br/>
 
@@ -649,7 +649,7 @@ func getUnusedTextIDs(completion: @escaping (Bool) -> Void) {
 
 <br/>
 
-<p align="center"><img alt="검색" src="https://user-images.githubusercontent.com/49383370/155936704-d986c836-5fe7-4141-8570-685d9cf8ad06.PNG" width="200"></p>
+<p align="center"><img alt="검색" src="https://user-images.githubusercontent.com/49383370/156298893-54282bdc-40a1-4cb2-b730-299dacbe71ab.png" width="200"></p>
 
 <br/>
 
@@ -725,7 +725,7 @@ func search(_ searchWord: String, completion: @escaping () -> Void) {
 
 <br/>
 
-<p align="center"><img alt="설정" src="https://user-images.githubusercontent.com/49383370/155937645-18f23a93-603d-47ed-8375-15108b96155a.jpeg" width="200"></p>
+<p align="center"><img alt="설정" src="https://user-images.githubusercontent.com/49383370/156298952-3d90e55c-942c-4867-b44b-e3d91bf9c6aa.png" width="200"></p>
 
 <br/>
 
@@ -779,7 +779,9 @@ file: SettingViewModel
 ```swift
 /// 다크모드 저장
 func setAppearance(_ viewController: SettingViewController) {
-    if viewController.overrideUserInterfaceStyle == .light {
+    let appearance = UserDefaults.standard.string(forKey: "Appearance")
+    // 처음엔 light: appearance 없음(nil)
+    if appearance == nil || appearance! == "Light" {
         UserDefaults.standard.set("Dark", forKey: "Appearance")
     } else {
         UserDefaults.standard.set("Light", forKey: "Appearance")
@@ -830,7 +832,7 @@ func appearanceCheck(_ viewController: UIViewController) {
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155937711-0e0b53ec-44d7-4e99-8d78-933e70ad6163.PNG" width="200"></p>
+<p align="center"><img alt="공지" src="https://user-images.githubusercontent.com/49383370/156299028-3922cad8-6b3d-410b-bbe7-b673cfb88858.png" width="200"></p>
 
 <br/>
 
@@ -924,7 +926,7 @@ func sendMailFailAlert() -> UIAlertController {
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155327206-a27fa9e1-d877-460c-b3ba-03df8308386b.jpeg" width="200"></p>
+<p align="center"><img alt="앱스토어" src="https://user-images.githubusercontent.com/49383370/155327206-a27fa9e1-d877-460c-b3ba-03df8308386b.jpeg" width="200"></p>
 
 <br/>
 
@@ -950,7 +952,7 @@ func goToStore() {
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155937978-4ce096ed-ef24-4021-b3fb-9268c0373e5f.jpeg" width="200"></p>
+<p align="center"><img alt="이용방법" src="https://user-images.githubusercontent.com/49383370/156299103-04fa8d6c-a319-46e2-887e-d0bc5d20924d.png" width="200"></p>
 
 <br/>
 
@@ -1075,7 +1077,7 @@ func getUpdatedVersion() -> String {
 
 <br/>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/49383370/155940280-8fb79ea2-1f7d-41cd-b38f-5a5b3fe49bfe.png"></p>
+<p align="center"><img alt="UI" src="https://user-images.githubusercontent.com/49383370/156299532-784cd383-870b-4d12-8af2-d48418d2ad66.png"></p>
 
 <br/>
 
@@ -1160,6 +1162,13 @@ Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 Messag
 > - 설정 화면 UI, 글귀 공유 아이콘 변경
 > - 튜토리얼 화면 수정
 > - 좋아하는 글귀 모음, 미사용 글귀 모음, 글귀 검색에 당겨서 새로고침 추가
+
+### v1.4.1 (2022.3.2)
+> - 애플 로그이, 익명 로그인에 로딩 단계 추가
+> - UI(아이콘 및 색상 등) 변경
+> - 다크모드 관려 오류 수정
+> - iPad 화면 회전 고정
+> - 내부 구조 변경(MVVM)
 
 <br/>
 <br/>
