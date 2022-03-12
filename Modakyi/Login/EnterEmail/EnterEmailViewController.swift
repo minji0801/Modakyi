@@ -31,6 +31,7 @@ final class EnterEmailViewController: UIViewController {
         super.viewWillAppear(animated)
         appearanceCheck(self)
         navigationController?.navigationBar.isHidden = false
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     /// 다음 버튼 클릭: 로그인 또는 회원가입 진행

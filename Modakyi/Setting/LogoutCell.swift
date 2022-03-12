@@ -11,9 +11,4 @@ class LogoutCell: UITableViewCell {
     func updateUI(_ indexPath: IndexPath) {
         self.textLabel?.text = "로그아웃"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
 }

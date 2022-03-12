@@ -52,12 +52,11 @@ func presentDetailViewController(_ viewController: UIViewController, _ textId: S
     viewController.present(detailViewController, animated: true, completion: nil)
 }
 
-/// NoticeViewController를 present하기
-func presentNoticeViewController(_ viewController: UIViewController) {
+/// NoticeViewController를 push하기
+func pushToNoticeViewController(_ viewController: UIViewController) {
     guard let noticeViewController = storyboard.instantiateViewController(withIdentifier: "NoticeViewController")
             as? NoticeViewController else { return }
-    noticeViewController.modalPresentationStyle = .fullScreen
-    viewController.present(noticeViewController, animated: false, completion: nil)
+    viewController.navigationController?.pushViewController(noticeViewController, animated: true)
 }
 
 /// TutorialViewController를 present하기
@@ -66,4 +65,18 @@ func presentTutorialViewController(_ viewController: UIViewController) {
             as? TutorialViewController else { return }
     tutorialViewController.modalPresentationStyle = .fullScreen
     viewController.present(tutorialViewController, animated: false, completion: nil)
+}
+
+/// VersionViewController를 push하기
+func pushToVersionViewController(_ viewController: UIViewController) {
+    guard let versionViewController = storyboard.instantiateViewController(withIdentifier: "VersionViewController")
+            as? VersionViewController else { return }
+    viewController.navigationController?.pushViewController(versionViewController, animated: true)
+}
+
+/// AccountViewController를 push하기
+func pushToAccountViewController(_ viewController: UIViewController) {
+    guard let accountViewController = storyboard.instantiateViewController(withIdentifier: "AccountViewController")
+            as? AccountViewController else { return }
+    viewController.navigationController?.pushViewController(accountViewController, animated: true)
 }

@@ -64,7 +64,7 @@ final class SettingViewController: UIViewController {
 
     /// 공지사항 버튼 클릭: 공지사항 화면 보여주기
     @IBAction func noticeButtonTapped(_ sender: UIButton) {
-        presentNoticeViewController(self)
+        pushToNoticeViewController(self)
     }
 
     /// 문의 및 의견 버튼 클릭: Mail 앱으로 이메일 작성
@@ -89,7 +89,7 @@ final class SettingViewController: UIViewController {
 
     // 앱 평가
     @IBAction func reviewButtonTapped(_ sender: Any) {
-        viewModel.goToStore()
+        viewModel.goToStore("모닥이")
     }
 
     // 이용방법
