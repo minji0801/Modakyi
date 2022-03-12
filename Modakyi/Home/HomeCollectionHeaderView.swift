@@ -28,6 +28,7 @@ final class HomeCollectionHeaderView: UICollectionReusableView {
 
             self.recommendLabel.text = textOnLabel(eng, kor, who)
 
+            // TODO: 폰트 설정 -  UserDefaults에 저장된 폰트 적용하기(저장된 값이 없다면 기본 폰트 보여주기)
             // 아이패드는 글자 크기 크게
             if UIDevice.current.model == "iPad" {
                 self.recommendLabel.font = UIFont(name: "EliceDigitalBaeum", size: 21.0)

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A519C12227DC751400647BD7 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12127DC751400647BD7 /* SettingTableViewController.swift */; };
+		A519C12427DC7B5B00647BD7 /* MovingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12327DC7B5B00647BD7 /* MovingCell.swift */; };
+		A519C12627DC834F00647BD7 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12527DC834F00647BD7 /* LogoutCell.swift */; };
+		A519C12827DC836000647BD7 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12727DC836000647BD7 /* AppCell.swift */; };
 		A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99A27C89E26002DC390 /* HomeViewModel.swift */; };
 		A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */; };
 		A529238927CB3C6F00DD13EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238827CB3C6F00DD13EF /* LoginViewModel.swift */; };
@@ -75,6 +79,10 @@
 		2FD333FAF9815CFB8F3F417C /* Pods-Modakyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.debug.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.debug.xcconfig"; sourceTree = "<group>"; };
 		36FE3BA783AE6AF7B3264C9F /* Pods-Modakyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Modakyi.release.xcconfig"; path = "Target Support Files/Pods-Modakyi/Pods-Modakyi.release.xcconfig"; sourceTree = "<group>"; };
 		47C009F1227421F2F4FB41CF /* Pods_Modakyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Modakyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A519C12127DC751400647BD7 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		A519C12327DC7B5B00647BD7 /* MovingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingCell.swift; sourceTree = "<group>"; };
+		A519C12527DC834F00647BD7 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		A519C12727DC836000647BD7 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		A51AA99A27C89E26002DC390 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		A529238827CB3C6F00DD13EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +212,10 @@
 				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
 				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
 				A5912D0F27CA1F7200E2E822 /* SettingViewModel.swift */,
+				A519C12127DC751400647BD7 /* SettingTableViewController.swift */,
+				A519C12327DC7B5B00647BD7 /* MovingCell.swift */,
+				A519C12527DC834F00647BD7 /* LogoutCell.swift */,
+				A519C12727DC836000647BD7 /* AppCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -425,7 +437,7 @@
 			);
 			mainGroup = A59FAF9A272D5BE7000807A5;
 			packageReferences = (
-				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A59FAFA4272D5BE7000807A5 /* Products */;
 			projectDirPath = "";
@@ -537,6 +549,7 @@
 			files = (
 				A5EFE24D272FD8370086EBAC /* LikeCollectionHeaderView.swift in Sources */,
 				A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */,
+				A519C12627DC834F00647BD7 /* LogoutCell.swift in Sources */,
 				A5912D0827C9D45C00E2E822 /* UnusedViewModel.swift in Sources */,
 				A5EFE246272FC3340086EBAC /* DetailViewController.swift in Sources */,
 				A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */,
@@ -558,11 +571,14 @@
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
 				A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */,
+				A519C12227DC751400647BD7 /* SettingTableViewController.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
 				A5C2CC9227461B3400908A4D /* ResetPasswordViewController.swift in Sources */,
 				A5912D0C27C9F9E300E2E822 /* DetailViewModel.swift in Sources */,
 				A529239327CBA01F00DD13EF /* TutorialViewModel.swift in Sources */,
+				A519C12827DC836000647BD7 /* AppCell.swift in Sources */,
 				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
+				A519C12427DC7B5B00647BD7 /* MovingCell.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */,
 				A5D4611C274B3D91008DBF4B /* TutorialViewController.swift in Sources */,
@@ -816,7 +832,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -829,7 +845,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A5335CA727AD67F200C67292 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
