@@ -37,8 +37,10 @@ func showMainVCOnNavigation(_ viewController: UIViewController) {
 
 /// SettingViewController를 NavigationController에 push하기
 func pushSettingVCOnNavigation(_ viewController: UIViewController) {
-    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
-            as? SettingViewController else { return }
+//    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
+//            as? SettingViewController else { return }
+    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingTableViewController")
+            as? SettingTableViewController else { return }
     viewController.navigationController?.pushViewController(settingViewController, animated: true)
 }
 
