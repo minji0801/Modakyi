@@ -17,8 +17,4 @@ class MovingCell: UITableViewCell {
         self.indexPath = indexPath
         self.textLabel?.text = title[indexPath.section][indexPath.row]
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 }

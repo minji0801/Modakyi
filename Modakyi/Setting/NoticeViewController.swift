@@ -12,6 +12,7 @@ final class NoticeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
 
         noticeTextView.text = """
                            안녕하세요. <모닥이> 입니다.
@@ -25,7 +26,7 @@ final class NoticeViewController: UIViewController {
                            - 애플 로그인과 익명 로그인에 로딩 단계가 추가되었습니다.
                            - UI(아이콘 이미지, 색상 등)가 변경되었습니다.
                            - 다크모드 관련 오류를 수정했습니다.
-                           - iPad에서 오류 해결을 위해 화면 회전을 고정헸습니다.
+                           - iPad에서 오류 해결을 위해 화면 회전을 고정했습니다.
                            - 유지 보수를 위해 내부 구조가 변경되었습니다.(MVVM)
 
 
@@ -34,6 +35,6 @@ final class NoticeViewController: UIViewController {
     }
 
     @IBAction func dismissButtonTapped(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }

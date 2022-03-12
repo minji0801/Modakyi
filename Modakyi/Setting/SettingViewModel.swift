@@ -13,14 +13,43 @@ final class SettingViewModel {
     private let ref: DatabaseReference! = Database.database().reference()
     private let uid = Auth.auth().currentUser?.uid
 
-    /// 사용자 닉네임 가져오기
-    func getUserDisplayName() -> String {
-        return Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
-    }
-
     /// 사용자  이미지 url 가져오기
     func getUserPhotoUrl() -> URL? {
         return Auth.auth().currentUser?.photoURL ?? URL(string: "")
+    }
+
+    /// 사용자 닉네임 가져오기
+    func getUserDisplayName() -> String {
+        return Auth.auth().currentUser?.displayName ?? ""
+    }
+
+    /// 사용자 이메일 가져오기
+    func getUserEmail() -> String {
+        return Auth.auth().currentUser?.email ?? ""
+    }
+
+    /// 사용자 로그인 방식 가져오기
+    func getUserProviderID() -> String {
+        let user = Auth.auth().currentUser
+        var providerID = ""
+        if let user = user {
+            if !user.providerData.isEmpty {
+                providerID = user.providerData[0].providerID
+            } else {
+                return "익명 로그인"
+            }
+        }
+
+        switch providerID {
+        case "google.com":
+            return "Google 로그인"
+        case "apple.com":
+            return "Apple 로그인"
+        case "password":
+            return "이메일 로그인"
+        default:
+            return ""
+        }
     }
 
     /// 설정-알림 화면으로 이동
@@ -90,9 +119,20 @@ final class SettingViewModel {
         return sendMailErrorAlert
     }
 
-    /// 모닥이 앱스토어로 이동
-    func goToStore() {
-        let store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
+    /// 앱스토어로 이동
+    func goToStore(_ appName: String) {
+        var store = ""
+        switch appName {
+        case "모닥이":
+            store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
+        case "Scoit":
+            store = "https://apps.apple.com/kr/app/scoit/id1576850548"
+        case "h:ours":
+            store = "https://apps.apple.com/kr/app/h-ours/id1605524722"
+        default:
+            break
+        }
+
         if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -103,7 +143,7 @@ final class SettingViewModel {
     }
 
     /// 익명 사용자 로그아웃
-    func anonymousLogout(_ viewController: SettingViewController) {
+    func anonymousLogout(_ viewController: UIViewController) {
         ref.child("User/\(uid!)").removeValue()
         Auth.auth().currentUser?.delete(completion: { error in
             if let error = error {
@@ -115,7 +155,7 @@ final class SettingViewModel {
     }
 
     /// 일반 사용자 로그아웃
-    func generalLogout(_ viewController: SettingViewController) {
+    func generalLogout(_ viewController: UIViewController) {
         do {
             try Auth.auth().signOut()
             viewController.navigationController?.popToRootViewController(animated: true)
@@ -125,7 +165,7 @@ final class SettingViewModel {
     }
 
     /// 로그아웃 Alert 창
-    func logoutAlert(_ viewController: SettingViewController) -> UIAlertController {
+    func logoutAlert(_ viewController: UIViewController) -> UIAlertController {
         let isAnonymous = Auth.auth().currentUser?.isAnonymous
         let alertController = UIAlertController(
             title: "로그아웃",

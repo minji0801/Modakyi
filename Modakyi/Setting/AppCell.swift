@@ -3,7 +3,7 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2022/03/12.
-//
+//  클릭해서 해당 앱으로 이동하는 셀
 
 import UIKit
 
@@ -19,11 +19,4 @@ class AppCell: UITableViewCell {
         self.textLabel?.text = title[indexPath.row]
         self.detailTextLabel?.text = subTitle[indexPath.row]
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

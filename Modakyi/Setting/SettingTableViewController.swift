@@ -6,64 +6,75 @@
 //  설정 화면
 
 import UIKit
+import MessageUI
 
-class SettingTableViewController: UITableViewController {
+final class SettingTableViewController: UITableViewController {
+    let viewModel = SettingViewModel()
+
+    @IBOutlet weak var tableview: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        tableview.addGestureRecognizer(swipeLeft)
+    }
 
-        self.navigationController?.navigationBar.isHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationItem.title = "설정"
+        self.navigationController?.navigationBar.isHidden = false
     }
 
-    // MARK: - Table view data source
+    /// 셀 선택 시 바로 선택 해제하기
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        switch indexPath {
+        case [0, 0]:    // 알림 설정
+            viewModel.goToSettings()
+        case [1, 0]:    // 공지사항
+            pushToNoticeViewController(self)
+        case [1, 1]:    // 문의 및 의견
+            self.sendMail()
+        case [1, 2]:    // 앱 평가
+            viewModel.goToStore("모닥이")
+        case [1, 3]:    // 이용방법
+            presentTutorialViewController(self)
+        case [1, 4]:    // 버전 정보
+            pushToVersionViewController(self)
+        case [2, 0]:    // 계정 정보
+            pushToAccountViewController(self)
+        case [2, 1]:    // 로그아웃
+            let alertController = viewModel.logoutAlert(self)
+            self.present(alertController, animated: true, completion: nil)
+        case [3, 0]:    // Scoit
+            viewModel.goToStore("Scoit")
+        case [3, 1]:    // h:ours
+            viewModel.goToStore("h:ours")
+        default:
+            print("Cell Clicked!", indexPath)
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    /// 메일 보내기
+    private func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeViewController = MFMailComposeViewController()
+            composeViewController.mailComposeDelegate = self
+            composeViewController.setToRecipients(["modakyi.help@gmail.com"])
+            composeViewController.setSubject("<모닥이> 문의 및 의견")
+            composeViewController.setMessageBody(viewModel.commentsBodyString(), isHTML: false)
+            self.present(composeViewController, animated: true, completion: nil)
+        } else {
+            self.presentToFailureSendMailAlert()
+        }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    /// 메일 보내기 실패 Alert 띄우기
+    private func presentToFailureSendMailAlert() {
+        let sendMailErrorAlert = viewModel.sendMailFailAlert()
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: - Configure TableView Section
@@ -120,5 +131,24 @@ extension SettingTableViewController {
             cell.updateUI(indexPath)
             return cell
         }
+    }
+}
+
+// MARK: - @objc Function
+extension SettingTableViewController {
+    @objc func swipeLeft() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - MailComposeViewController Delegate
+extension SettingTableViewController: MFMailComposeViewControllerDelegate {
+    // (피드백 보내기) 메일 보낸 후
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -11,6 +11,8 @@
 		A519C12427DC7B5B00647BD7 /* MovingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12327DC7B5B00647BD7 /* MovingCell.swift */; };
 		A519C12627DC834F00647BD7 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12527DC834F00647BD7 /* LogoutCell.swift */; };
 		A519C12827DC836000647BD7 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12727DC836000647BD7 /* AppCell.swift */; };
+		A519C12A27DCBA0D00647BD7 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12927DCBA0D00647BD7 /* VersionViewController.swift */; };
+		A519C12C27DCC2E200647BD7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519C12B27DCC2E200647BD7 /* AccountViewController.swift */; };
 		A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99A27C89E26002DC390 /* HomeViewModel.swift */; };
 		A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */; };
 		A529238927CB3C6F00DD13EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238827CB3C6F00DD13EF /* LoginViewModel.swift */; };
@@ -83,6 +85,8 @@
 		A519C12327DC7B5B00647BD7 /* MovingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingCell.swift; sourceTree = "<group>"; };
 		A519C12527DC834F00647BD7 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		A519C12727DC836000647BD7 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
+		A519C12927DCBA0D00647BD7 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
+		A519C12B27DCC2E200647BD7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A51AA99A27C89E26002DC390 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A51AA99C27C8E27D002DC390 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		A529238827CB3C6F00DD13EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				A519C12327DC7B5B00647BD7 /* MovingCell.swift */,
 				A519C12527DC834F00647BD7 /* LogoutCell.swift */,
 				A519C12727DC836000647BD7 /* AppCell.swift */,
+				A519C12927DCBA0D00647BD7 /* VersionViewController.swift */,
+				A519C12B27DCC2E200647BD7 /* AccountViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */,
 				A5EFE250272FDDE20086EBAC /* UnusedViewController.swift in Sources */,
 				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
+				A519C12C27DCC2E200647BD7 /* AccountViewController.swift in Sources */,
 				A5912D0A27C9ECC100E2E822 /* SearchViewModel.swift in Sources */,
 				A59FAFA9272D5BE7000807A5 /* SceneDelegate.swift in Sources */,
 				A5EFE24B272FD8280086EBAC /* LikeCollectionViewCell.swift in Sources */,
@@ -589,6 +596,7 @@
 				A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */,
 				A529238F27CB739500DD13EF /* ResetPasswordViewModel.swift in Sources */,
 				A51AA99B27C89E26002DC390 /* HomeViewModel.swift in Sources */,
+				A519C12A27DCBA0D00647BD7 /* VersionViewController.swift in Sources */,
 				A5EFE249272FD8180086EBAC /* LikeViewController.swift in Sources */,
 				A51AA99D27C8E27D002DC390 /* LikeViewModel.swift in Sources */,
 			);
