@@ -58,7 +58,7 @@ final class SettingViewController: UIViewController {
 
     /// 다크모드 버튼 클릭: 설정한 값 저장하고 반영하기
     @IBAction func darckModeButtonTapped(_ sender: UIButton) {
-        viewModel.setAppearance(self)
+//        viewModel.setAppearance(self)
         self.viewWillAppear(true)
     }
 

@@ -21,38 +21,27 @@ final class SettingTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        appearanceCheck(self)
         self.navigationItem.title = "설정"
         self.navigationController?.navigationBar.isHidden = false
     }
 
-    /// 셀 선택 시 바로 선택 해제하기
+    /// 셀 선택 시
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-
         switch indexPath {
-        case [0, 0]:    // 알림 설정
-            viewModel.goToSettings()
-        case [1, 0]:    // 공지사항
-            pushToNoticeViewController(self)
-        case [1, 1]:    // 문의 및 의견
-            self.sendMail()
-        case [1, 2]:    // 앱 평가
-            viewModel.goToStore("모닥이")
-        case [1, 3]:    // 이용방법
-            presentTutorialViewController(self)
-        case [1, 4]:    // 버전 정보
-            pushToVersionViewController(self)
-        case [2, 0]:    // 계정 정보
-            pushToAccountViewController(self)
-        case [2, 1]:    // 로그아웃
-            let alertController = viewModel.logoutAlert(self)
-            self.present(alertController, animated: true, completion: nil)
-        case [3, 0]:    // Scoit
-            viewModel.goToStore("Scoit")
-        case [3, 1]:    // h:ours
-            viewModel.goToStore("h:ours")
-        default:
-            print("Cell Clicked!", indexPath)
+        case [0, 0]: viewModel.goToSettings()   // 알림 설정
+        case [0, 1]: pushToThemeViewController(self)    // 테마 변경
+        case [1, 0]: pushToNoticeViewController(self)   // 공지사항
+        case [1, 1]: sendMail() // 문의 및 의견
+        case [1, 2]: viewModel.goToStore("모닥이") // 앱 평가
+        case [1, 3]: presentTutorialViewController(self)    // 이용방법
+        case [1, 4]: pushToVersionViewController(self)  // 버전 정보
+        case [2, 0]: pushToAccountViewController(self)  // 계정 정보
+        case [2, 1]: present(viewModel.logoutAlert(self), animated: true)   // 로그아웃
+        case [3, 0]: viewModel.goToStore("Scoit")   // Scoit
+        case [3, 1]: viewModel.goToStore("h:ours")  // h:ours
+        default: break
         }
     }
 
@@ -128,7 +117,7 @@ extension SettingTableViewController {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
                     as? AppCell else { return UITableViewCell() }
-            cell.updateUI(indexPath)
+            cell.updateUI(indexPath.row)
             return cell
         }
     }
@@ -137,7 +126,7 @@ extension SettingTableViewController {
 // MARK: - @objc Function
 extension SettingTableViewController {
     @objc func swipeLeft() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 

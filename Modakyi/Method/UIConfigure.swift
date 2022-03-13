@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// UserDefaults에 저장된 값으로 다크모드 확인하기
+/// UserDefaults에 저장된 Appearance 적용
 func appearanceCheck(_ viewController: UIViewController) {
     guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
     if appearance == "Dark" {

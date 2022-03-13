@@ -60,14 +60,36 @@ final class SettingViewModel {
         }
     }
 
-    /// 다크모드 저장
-    func setAppearance(_ viewController: SettingViewController) {
-        let appearance = UserDefaults.standard.string(forKey: "Appearance")
-        // 처음엔 light: appearance 없음(nil)
-        if appearance == nil || appearance! == "Light" {
-            UserDefaults.standard.set("Dark", forKey: "Appearance")
-        } else {
+    /// Appearance 저장
+    func setAppearance(_ row: Int) {
+//        let appearance = UserDefaults.standard.string(forKey: "Appearance")
+//        // 처음엔 light: appearance 없음(nil)
+//        if appearance == nil || appearance! == "Light" {
+//            UserDefaults.standard.set("Dark", forKey: "Appearance")
+//        } else {
+//            UserDefaults.standard.set("Light", forKey: "Appearance")
+//        }
+        switch row {
+        case 0, 2:
             UserDefaults.standard.set("Light", forKey: "Appearance")
+        case 1:
+            UserDefaults.standard.set("Dark", forKey: "Appearance")
+        default:
+            break
+        }
+    }
+
+    /// 테마 저장
+    func setTheme(_ row: Int) {
+        switch row {
+        case 0:
+            ThemeManager.applyTheme(theme: .white)
+        case 1:
+            ThemeManager.applyTheme(theme: .black)
+        case 2:
+            ThemeManager.applyTheme(theme: .telepathy)
+        default:
+            break
         }
     }
 

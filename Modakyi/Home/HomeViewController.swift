@@ -9,6 +9,7 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
+    private lazy var theme = ThemeManager.currentTheme()
 
     /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -39,10 +40,13 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    /// 화면 보여질 때마다: 다크모드 체크하기
+    /// 화면 보여질 때마다: Appearance, Theme 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+        theme = ThemeManager.currentTheme()
+        view.backgroundColor = theme.backgroundColor
+        reloadCollectionView()
     }
 
     /// 추천 글귀 클릭: 상세 화면 보여주기
@@ -95,6 +99,8 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
+        cell.contentView.backgroundColor = theme.secondaryColor
+
         let text = viewModel.textInfo(at: indexPath.row)
         cell.updateTextLabel(text)
         cell.updateNewImage(
@@ -120,6 +126,8 @@ extension HomeViewController: UICollectionViewDataSource {
         }
 
         header.recommendView.layer.cornerRadius = 30
+        header.recommendView.backgroundColor = theme.secondaryColor
+
         header.updateTextLabel(viewModel.recommendedTextId)
         header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)
         return header

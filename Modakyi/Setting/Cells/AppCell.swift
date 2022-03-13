@@ -8,15 +8,13 @@
 import UIKit
 
 class AppCell: UITableViewCell {
-    var indexPath: IndexPath = [0, 0]
     let image = ["scoit", "hours"]
     let title = ["Scoit", "h:ours"]
     let subTitle = ["스쿼트 챌린지 앱", "시간 & 디데이 계산 앱"]
 
-    func updateUI(_ indexPath: IndexPath) {
-        self.indexPath = indexPath
-        self.imageView?.image = UIImage(named: image[indexPath.row])
-        self.textLabel?.text = title[indexPath.row]
-        self.detailTextLabel?.text = subTitle[indexPath.row]
+    func updateUI(_ row: Int) {
+        self.imageView?.image = UIImage(named: image[row])
+        self.textLabel?.text = title[row]
+        self.detailTextLabel?.text = subTitle[row]
     }
 }

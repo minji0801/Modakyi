@@ -19,6 +19,9 @@
 		A529238B27CB654400DD13EF /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */; };
 		A529238F27CB739500DD13EF /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */; };
 		A529239327CBA01F00DD13EF /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529239227CBA01F00DD13EF /* TutorialViewModel.swift */; };
+		A529721627DDBA78005AC217 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529721527DDBA78005AC217 /* ThemeViewController.swift */; };
+		A529721827DDC310005AC217 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529721727DDC310005AC217 /* ThemeTableViewCell.swift */; };
+		A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529721A27DDFA98005AC217 /* ThemeManager.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
 		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
@@ -93,6 +96,9 @@
 		A529238A27CB654400DD13EF /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnterEmailViewModel.swift; path = Modakyi/Login/EnterEmail/EnterEmailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A529238E27CB739500DD13EF /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		A529239227CBA01F00DD13EF /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
+		A529721527DDBA78005AC217 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		A529721727DDC310005AC217 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
+		A529721A27DDFA98005AC217 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -210,18 +216,36 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		A53C6BC92730F26400066A3F /* Setting */ = {
+		A529721427DDB9EF005AC217 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
-				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
-				A5912D0F27CA1F7200E2E822 /* SettingViewModel.swift */,
-				A519C12127DC751400647BD7 /* SettingTableViewController.swift */,
 				A519C12327DC7B5B00647BD7 /* MovingCell.swift */,
 				A519C12527DC834F00647BD7 /* LogoutCell.swift */,
 				A519C12727DC836000647BD7 /* AppCell.swift */,
+				A529721727DDC310005AC217 /* ThemeTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A529721927DDFA88005AC217 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A529721A27DDFA98005AC217 /* ThemeManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A53C6BC92730F26400066A3F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A529721427DDB9EF005AC217 /* Cells */,
+				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
+				A519C12127DC751400647BD7 /* SettingTableViewController.swift */,
+				A5912D0F27CA1F7200E2E822 /* SettingViewModel.swift */,
+				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
 				A519C12927DCBA0D00647BD7 /* VersionViewController.swift */,
 				A519C12B27DCC2E200647BD7 /* AccountViewController.swift */,
+				A529721527DDBA78005AC217 /* ThemeViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -247,6 +271,7 @@
 		A59FAFA5272D5BE7000807A5 /* Modakyi */ = {
 			isa = PBXGroup;
 			children = (
+				A529721927DDFA88005AC217 /* Manager */,
 				A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */,
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
@@ -553,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A529721627DDBA78005AC217 /* ThemeViewController.swift in Sources */,
 				A5EFE24D272FD8370086EBAC /* LikeCollectionHeaderView.swift in Sources */,
 				A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */,
 				A519C12627DC834F00647BD7 /* LogoutCell.swift in Sources */,
@@ -561,9 +587,11 @@
 				A5EFE23D272FB8F00086EBAC /* HomeCollectionViewCell.swift in Sources */,
 				A59FAFBB272D5C16000807A5 /* LoginViewController.swift in Sources */,
 				A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */,
+				A529721827DDC310005AC217 /* ThemeTableViewCell.swift in Sources */,
 				A5912D1027CA1F7200E2E822 /* SettingViewModel.swift in Sources */,
 				A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
+				A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
 				A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */,

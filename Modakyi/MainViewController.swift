@@ -19,6 +19,7 @@ final class MainViewController: UITabBarController {
         super.viewWillAppear(animated)
         appearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     /// 탭 바 클릭되면 Noti 보내기(위로 스크롤해서 올라갈 수 있게)

@@ -80,3 +80,10 @@ func pushToAccountViewController(_ viewController: UIViewController) {
             as? AccountViewController else { return }
     viewController.navigationController?.pushViewController(accountViewController, animated: true)
 }
+
+/// ThemeViewController를 push하기
+func pushToThemeViewController(_ viewController: UIViewController) {
+    guard let themeViewController = storyboard.instantiateViewController(withIdentifier: "ThemeViewController")
+            as? ThemeViewController else { return }
+    viewController.navigationController?.pushViewController(themeViewController, animated: true)
+}
