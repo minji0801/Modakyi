@@ -8,13 +8,11 @@
 import UIKit
 
 class MovingCell: UITableViewCell {
-    var indexPath: IndexPath = [0, 0]
     let title = [["알림 설정", "테마 변경", "글씨체 변경"],
                  ["공지사항", "문의 및 의견", "앱 평가", "이용방법", "버전 정보"],
                  ["계정 정보"]]
 
     func updateUI(_ indexPath: IndexPath) {
-        self.indexPath = indexPath
         self.textLabel?.text = title[indexPath.section][indexPath.row]
     }
 }

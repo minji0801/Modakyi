@@ -10,13 +10,16 @@ import GoogleMobileAds
 
 final class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     let viewModel = DetailViewModel()
+    private var theme = ThemeManager.currentTheme()
 
     private var interstitial: GADInterstitialAd?    // 전면 광고 객체
 
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var textIdLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textView: UIView!
 
+    @IBOutlet weak var footerView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var bannerView: GADBannerView!
@@ -51,11 +54,14 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         }
     }
 
-    /// 화면 보여질 때마다: 다크모드 확인, 버튼 설정
+    /// 화면 보여질 때마다: Appearance, Theme 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
         setupButtons()
+
+        headerView.backgroundColor = theme.backgroundColor
+        textView.backgroundColor = theme.secondaryColor
     }
 
     /// 화면 사라지려할 때: Noti 보내기(변경된 부분을 바로 반영하기 위해서)

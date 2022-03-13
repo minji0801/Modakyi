@@ -9,6 +9,7 @@ import UIKit
 
 final class UnusedViewController: UIViewController {
     let viewModel = UnusedViewModel()
+    private lazy var theme = ThemeManager.currentTheme()
 
     /// CollectionView RefershControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -49,10 +50,13 @@ final class UnusedViewController: UIViewController {
         }
     }
 
-    /// 화면 보여질 때 마다: 다크모드 확인
+    /// 화면 보여질 때 마다: Appearance, Theme 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+        theme = ThemeManager.currentTheme()
+        view.backgroundColor = theme.backgroundColor
+        collectionview.reloadData()
     }
 
     /// Notification 설정
@@ -90,6 +94,8 @@ extension UnusedViewController: UICollectionViewDataSource {
         ) as? UnusedCollectionViewCell else {
             return UICollectionViewCell()
         }
+
+        cell.contentView.backgroundColor = theme.secondaryColor
 
         // 미사용 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
         cell.updateTextLabel(viewModel.unusedTextIDs.sorted(by: >), indexPath)
