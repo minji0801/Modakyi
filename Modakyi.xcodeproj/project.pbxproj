@@ -271,12 +271,12 @@
 		A59FAFA5272D5BE7000807A5 /* Modakyi */ = {
 			isa = PBXGroup;
 			children = (
-				A529721927DDFA88005AC217 /* Manager */,
 				A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */,
 				A59FAFA6272D5BE7000807A5 /* AppDelegate.swift */,
 				A59FAFA8272D5BE7000807A5 /* SceneDelegate.swift */,
 				A59FAFBE272D655F000807A5 /* MainViewController.swift */,
 				A55298CF2733920800DCB870 /* NetworkViewController.swift */,
+				A529721927DDFA88005AC217 /* Manager */,
 				A529238C27CB729600DD13EF /* Model */,
 				A529239127CBA00900DD13EF /* Tutorial */,
 				A59FAFC5272D6E79000807A5 /* Login */,

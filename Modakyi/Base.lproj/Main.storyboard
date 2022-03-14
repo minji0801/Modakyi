@@ -886,7 +886,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="Vuf-3a-Xzv">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="150"/>
+                                    <size key="headerReferenceSize" width="50" height="120"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
@@ -908,7 +908,7 @@
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchCollectionViewCell" id="He6-6z-klc" customClass="SearchCollectionViewCell" customModule="Modakyi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="150" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="120" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDw-Mu-5sr">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -935,7 +935,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchCollectionHeaderView" id="VJn-Gx-4Kw" customClass="SearchCollectionHeaderView" customModule="Modakyi" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWv-ys-HvL">
@@ -955,8 +955,8 @@
                                                 <constraint firstItem="PHG-BC-Jsa" firstAttribute="leading" secondItem="zWv-ys-HvL" secondAttribute="leading" constant="20" id="icX-te-gUP"/>
                                             </constraints>
                                         </view>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="검색" translatesAutoresizingMaskIntoConstraints="NO" id="h1J-yJ-NTS">
-                                            <rect key="frame" x="10" y="70" width="394" height="51"/>
+                                        <searchBar contentMode="redraw" placeholder="검색" translatesAutoresizingMaskIntoConstraints="NO" id="h1J-yJ-NTS">
+                                            <rect key="frame" x="0.0" y="60" width="414" height="60"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <scopeButtonTitles>
                                                 <string>Title</string>
@@ -968,12 +968,13 @@
                                         </searchBar>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="h1J-yJ-NTS" firstAttribute="top" secondItem="zWv-ys-HvL" secondAttribute="bottom" constant="10" id="0v4-Ou-Wkw"/>
+                                        <constraint firstItem="h1J-yJ-NTS" firstAttribute="top" secondItem="zWv-ys-HvL" secondAttribute="bottom" id="0v4-Ou-Wkw"/>
                                         <constraint firstItem="zWv-ys-HvL" firstAttribute="top" secondItem="VJn-Gx-4Kw" secondAttribute="top" id="2Cu-pA-g6G"/>
                                         <constraint firstItem="zWv-ys-HvL" firstAttribute="leading" secondItem="VJn-Gx-4Kw" secondAttribute="leading" id="Iwh-g9-eoK"/>
-                                        <constraint firstAttribute="trailing" secondItem="h1J-yJ-NTS" secondAttribute="trailing" constant="10" id="Xjp-jx-xrp"/>
+                                        <constraint firstAttribute="trailing" secondItem="h1J-yJ-NTS" secondAttribute="trailing" id="Xjp-jx-xrp"/>
                                         <constraint firstAttribute="trailing" secondItem="zWv-ys-HvL" secondAttribute="trailing" id="Y9U-7n-6OB"/>
-                                        <constraint firstItem="h1J-yJ-NTS" firstAttribute="leading" secondItem="VJn-Gx-4Kw" secondAttribute="leading" constant="10" id="iX8-WM-9A0"/>
+                                        <constraint firstAttribute="bottom" secondItem="h1J-yJ-NTS" secondAttribute="bottom" id="dF8-Vp-kJj"/>
+                                        <constraint firstItem="h1J-yJ-NTS" firstAttribute="leading" secondItem="VJn-Gx-4Kw" secondAttribute="leading" id="iX8-WM-9A0"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="searchBar" destination="h1J-yJ-NTS" id="CRU-5W-UwI"/>
@@ -1279,7 +1280,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qH-7H-us2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4022" y="-1513"/>
+            <point key="canvasLocation" x="4022" y="-839"/>
         </scene>
         <!--Theme View Controller-->
         <scene sceneID="5vP-1g-2mz">
@@ -1407,7 +1408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5O4-1W-ogr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4737.68115942029" y="-1513.3928571428571"/>
+            <point key="canvasLocation" x="4022" y="-1513"/>
         </scene>
         <!--Version View Controller-->
         <scene sceneID="ZLa-Qy-Pcs">
@@ -1498,7 +1499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XgT-9X-tLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5452" y="-839"/>
+            <point key="canvasLocation" x="5458" y="-1513"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="uHi-yM-8ZG">
@@ -1577,7 +1578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJf-yO-3xt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6168" y="-839"/>
+            <point key="canvasLocation" x="6174" y="-1513"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="BZa-fz-qXa">
@@ -1846,7 +1847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFi-Fp-5jm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4021.739130434783" y="-839.0625"/>
+            <point key="canvasLocation" x="4741" y="-839"/>
         </scene>
         <!--Notice View Controller-->
         <scene sceneID="ZBg-u7-iET">
@@ -1938,7 +1939,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRd-Kz-7SM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4739" y="-839"/>
+            <point key="canvasLocation" x="4742" y="-1513"/>
         </scene>
     </scenes>
     <designables>

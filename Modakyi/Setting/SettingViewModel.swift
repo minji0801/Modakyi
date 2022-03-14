@@ -70,24 +70,24 @@ final class SettingViewModel {
 //            UserDefaults.standard.set("Light", forKey: "Appearance")
 //        }
         switch row {
-        case 0, 2:
-            UserDefaults.standard.set("Light", forKey: "Appearance")
         case 1:
             UserDefaults.standard.set("Dark", forKey: "Appearance")
         default:
-            break
+            UserDefaults.standard.set("Light", forKey: "Appearance")
         }
     }
 
     /// 테마 저장
     func setTheme(_ row: Int) {
         switch row {
-        case 0:
-            ThemeManager.applyTheme(theme: .white)
-        case 1:
-            ThemeManager.applyTheme(theme: .black)
-        case 2:
-            ThemeManager.applyTheme(theme: .telepathy)
+        case 0: ThemeManager.applyTheme(theme: .white)
+        case 1: ThemeManager.applyTheme(theme: .black)
+        case 2: ThemeManager.applyTheme(theme: .rolling)
+        case 3: ThemeManager.applyTheme(theme: .lemon)
+        case 4: ThemeManager.applyTheme(theme: .undergrowth)
+        case 5: ThemeManager.applyTheme(theme: .lily)
+        case 6: ThemeManager.applyTheme(theme: .bubbly)
+        case 7: ThemeManager.applyTheme(theme: .meeting)
         default:
             break
         }

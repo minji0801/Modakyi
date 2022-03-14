@@ -40,7 +40,7 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 8
     }
 
     /// 셀 구성
