@@ -10,6 +10,7 @@ import UIKit
 final class LikeViewController: UIViewController {
     let viewModel = LikeViewModel()
     private lazy var theme = ThemeManager.currentTheme()
+    private lazy var font = FontManager.currentFont()
 
     /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -40,12 +41,15 @@ final class LikeViewController: UIViewController {
         }
     }
 
-    /// 화면 보여질 때마다: Appearance, Theme 확인
+    /// 화면 보여질 때마다: Appearance, Theme, Font 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+
         theme = ThemeManager.currentTheme()
         view.backgroundColor = theme.backgroundColor
+
+        font = FontManager.currentFont()
         collectionview.reloadData()
     }
 
@@ -80,6 +84,7 @@ extension LikeViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
+        cell.textLabel.font = font.iPhoneSmallFont
 
         // 좋아하는 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
         cell.updateTextLabel(viewModel.likeTextIDs, indexPath)

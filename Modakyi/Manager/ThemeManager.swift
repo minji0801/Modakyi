@@ -80,57 +80,10 @@ enum Theme: Int {
             return UIColor().colorFromHexString("F4F2FD")
         }
     }
+}
 
-//    /// 주요 색상
-//    var mainColor: UIColor {
-//        switch self {
-//        case .white:
-//            return UIColor().colorFromHexString("FFFFFF")
-//        case .black:
-//            return UIColor().colorFromHexString("000000")
-//        }
-//    }
-//
-//    /// Customizing the Navigation Bar
-//    var barStyle: UIBarStyle {
-//        switch self {
-//        case .black:
-//            return .black
-//        default:
-//            return .default
-//        }
-//    }
-
-//    var navigationBackgroundImage: UIImage? {
-//        return self == .white ? UIImage(named: "navBackground") : nil
-//    }
-//
-//    var tabBarBackgroundImage: UIImage? {
-//        return self == .white ? UIImage(named: "tabBarBackground") : nil
-//    }
-
-//    var titleTextColor: UIColor {
-//        switch self {
-//        case .white:
-//            return UIColor().colorFromHexString("ffffff")
-//        case .black:
-//            return UIColor().colorFromHexString("000000")
-//        }
-//    }
-//    var subtitleTextColor: UIColor {
-//        switch self {
-//        case .white:
-//            return UIColor().colorFromHexString("ffffff")
-//        case .black:
-//            return UIColor().colorFromHexString("000000")
-//        }
-//    }
-}   // enum Theme
-
-/// UserDefaults Key
 let selectedThemeKey = "SelectedTheme"
 
-/// This will let you use a theme in the app.
 class ThemeManager {
 
     /// 현재 테마 가져오기
@@ -138,12 +91,12 @@ class ThemeManager {
         if let storedTheme = (UserDefaults.standard.value(forKey: selectedThemeKey) as AnyObject).integerValue {
             return Theme(rawValue: storedTheme)!
         } else {
-            // nil일 때
+            // 저장된 테마가 없을 때
             return .white
         }
     }
 
-    /// 테마 적용하기
+    /// 테마 저장하기
     static func applyTheme(theme: Theme) {
         UserDefaults.standard.setValue(theme.rawValue, forKey: selectedThemeKey)
         UserDefaults.standard.synchronize()

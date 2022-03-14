@@ -62,13 +62,6 @@ final class SettingViewModel {
 
     /// Appearance 저장
     func setAppearance(_ row: Int) {
-//        let appearance = UserDefaults.standard.string(forKey: "Appearance")
-//        // 처음엔 light: appearance 없음(nil)
-//        if appearance == nil || appearance! == "Light" {
-//            UserDefaults.standard.set("Dark", forKey: "Appearance")
-//        } else {
-//            UserDefaults.standard.set("Light", forKey: "Appearance")
-//        }
         switch row {
         case 1:
             UserDefaults.standard.set("Dark", forKey: "Appearance")
@@ -88,8 +81,26 @@ final class SettingViewModel {
         case 5: ThemeManager.applyTheme(theme: .lily)
         case 6: ThemeManager.applyTheme(theme: .bubbly)
         case 7: ThemeManager.applyTheme(theme: .meeting)
-        default:
-            break
+        default: break
+        }
+    }
+
+    /// 폰트 저장
+    func setFont(_ row: Int) {
+        switch row {
+        case 0: FontManager.applyFont(font: .elice)
+        case 1: FontManager.applyFont(font: .nanumR)
+        case 2: FontManager.applyFont(font: .nanumB)
+        case 3: FontManager.applyFont(font: .nanumSquareR)
+        case 4: FontManager.applyFont(font: .nanumSquareB)
+        case 5: FontManager.applyFont(font: .gowunBatang)
+        case 6: FontManager.applyFont(font: .gowunDodum)
+        case 7: FontManager.applyFont(font: .gangwonAll)
+        case 8: FontManager.applyFont(font: .kyobo2019)
+        case 9: FontManager.applyFont(font: .kyobo2020)
+        case 10: FontManager.applyFont(font: .uhbeeZziba)
+        case 11: FontManager.applyFont(font: .leeseoyun)
+        default : break
         }
     }
 

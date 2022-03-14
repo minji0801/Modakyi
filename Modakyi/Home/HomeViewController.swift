@@ -10,6 +10,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
     private lazy var theme = ThemeManager.currentTheme()
+    private lazy var font = FontManager.currentFont()
 
     /// CollectionView RefreshControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -38,14 +39,26 @@ final class HomeViewController: UIViewController {
                 slowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
         }
+
+        // 폰트 체크 하기
+//        UIFont.familyNames.sorted().forEach { familyName in
+//            print("*** \(familyName) ***")
+//            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+//                print("\(fontName)")
+//            }
+//            print("---------------------")
+//        }
     }
 
-    /// 화면 보여질 때마다: Appearance, Theme 확인
+    /// 화면 보여질 때마다: Appearance, Theme, Font 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+
         theme = ThemeManager.currentTheme()
         view.backgroundColor = theme.backgroundColor
+
+        font = FontManager.currentFont()
         reloadCollectionView()
     }
 
@@ -100,6 +113,7 @@ extension HomeViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
+        cell.textLabel.font = font.iPhoneSmallFont
 
         let text = viewModel.textInfo(at: indexPath.row)
         cell.updateTextLabel(text)
@@ -127,6 +141,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
         header.recommendView.layer.cornerRadius = 30
         header.recommendView.backgroundColor = theme.secondaryColor
+        header.recommendLabel.font = font.iPhoneMediumFont
 
         header.updateTextLabel(viewModel.recommendedTextId)
         header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)

@@ -10,6 +10,7 @@ import UIKit
 final class SearchViewController: UIViewController {
     let viewModel = SearchViewModel()
     private lazy var theme = ThemeManager.currentTheme()
+    private lazy var font = FontManager.currentFont()
 
     /// SearchBar
     private lazy var searchBar: UISearchBar = {
@@ -37,12 +38,15 @@ final class SearchViewController: UIViewController {
         getFullText()
     }
 
-    /// 화면 보여질 때 마다: Appearance, Theme 확인
+    /// 화면 보여질 때 마다: Appearance, Theme, Font 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+
         theme = ThemeManager.currentTheme()
         view.backgroundColor = theme.backgroundColor
+
+        font = FontManager.currentFont()
         collectionview.reloadData()
     }
 
@@ -89,6 +93,7 @@ extension SearchViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
+        cell.textLabel.font = font.iPhoneSmallFont
 
         let text = viewModel.textInfo(at: indexPath.row)
         cell.updateTextLabel(text)

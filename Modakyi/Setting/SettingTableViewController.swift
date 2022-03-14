@@ -3,7 +3,7 @@
 //  Modakyi
 //
 //  Created by 김민지 on 2022/03/12.
-//  설정 화면
+//  설정 TableViewController
 
 import UIKit
 import MessageUI
@@ -32,6 +32,7 @@ final class SettingTableViewController: UITableViewController {
         switch indexPath {
         case [0, 0]: viewModel.goToSettings()   // 알림 설정
         case [0, 1]: pushToThemeViewController(self)    // 테마 변경
+        case [0, 2]: pushToFontViewController(self) // 글씨체 변경
         case [1, 0]: pushToNoticeViewController(self)   // 공지사항
         case [1, 1]: sendMail() // 문의 및 의견
         case [1, 2]: viewModel.goToStore("모닥이") // 앱 평가
