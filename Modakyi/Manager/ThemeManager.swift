@@ -35,37 +35,7 @@ extension UIColor {
 
 enum Theme: Int {
 
-    case white, black, telepathy
-
-    /// 주요 색상
-    var mainColor: UIColor {
-        switch self {
-        case .white:
-            return UIColor().colorFromHexString("FFFFFF")
-        case .black:
-            return UIColor().colorFromHexString("000000")
-        case .telepathy:
-            return UIColor().colorFromHexString("F4B64C")
-        }
-    }
-
-    /// Customizing the Navigation Bar
-    var barStyle: UIBarStyle {
-        switch self {
-        case .white, .telepathy:
-            return .default
-        case .black:
-            return .black
-        }
-    }
-
-    var navigationBackgroundImage: UIImage? {
-        return self == .white ? UIImage(named: "navBackground") : nil
-    }
-
-    var tabBarBackgroundImage: UIImage? {
-        return self == .white ? UIImage(named: "tabBarBackground") : nil
-    }
+    case white, black, rolling, lemon, undergrowth, lily, bubbly, meeting
 
     /// 배경 색상
     var backgroundColor: UIColor {
@@ -74,8 +44,18 @@ enum Theme: Int {
             return UIColor().colorFromHexString("FFFFFF")
         case .black:
             return UIColor().colorFromHexString("000000")
-        case .telepathy:
-            return UIColor().colorFromHexString("F4B64C")
+        case .rolling:
+            return UIColor().colorFromHexString("F4BBB8")
+        case .lemon:
+            return UIColor().colorFromHexString("F8D473")
+        case .undergrowth:
+            return UIColor().colorFromHexString("8FB789")
+        case .lily:
+            return UIColor().colorFromHexString("96D9E6")
+        case .bubbly:
+            return UIColor().colorFromHexString("9DABEC")
+        case .meeting:
+            return UIColor().colorFromHexString("D6CBF6")
         }
     }
 
@@ -86,33 +66,24 @@ enum Theme: Int {
             return UIColor().colorFromHexString("F2F2F7")
         case .black:
             return UIColor().colorFromHexString("1C1C1E")
-        case .telepathy:
-            return UIColor().colorFromHexString("FAE1AE")
+        case .rolling:
+            return UIColor().colorFromHexString("FAE8E7")
+        case .lemon:
+            return UIColor().colorFromHexString("FEF6E2")
+        case .undergrowth:
+            return UIColor().colorFromHexString("D6F5D9")
+        case .lily:
+            return UIColor().colorFromHexString("D7F1F8")
+        case .bubbly:
+            return UIColor().colorFromHexString("DBE1F7")
+        case .meeting:
+            return UIColor().colorFromHexString("F4F2FD")
         }
     }
+}
 
-//    var titleTextColor: UIColor {
-//        switch self {
-//        case .white, .telepathy:
-//            return UIColor().colorFromHexString("ffffff")
-//        case .black:
-//            return UIColor().colorFromHexString("000000")
-//        }
-//    }
-//    var subtitleTextColor: UIColor {
-//        switch self {
-//        case .white, .telepathy:
-//            return UIColor().colorFromHexString("ffffff")
-//        case .black:
-//            return UIColor().colorFromHexString("000000")
-//        }
-//    }
-}   // enum Theme
-
-/// UserDefaults Key
 let selectedThemeKey = "SelectedTheme"
 
-/// This will let you use a theme in the app.
 class ThemeManager {
 
     /// 현재 테마 가져오기
@@ -120,14 +91,13 @@ class ThemeManager {
         if let storedTheme = (UserDefaults.standard.value(forKey: selectedThemeKey) as AnyObject).integerValue {
             return Theme(rawValue: storedTheme)!
         } else {
-            // nil일 때
+            // 저장된 테마가 없을 때
             return .white
         }
     }
 
-    /// 테마 적용하기
+    /// 테마 저장하기
     static func applyTheme(theme: Theme) {
-        // First persist the selected theme using NSUserDefaults.
         UserDefaults.standard.setValue(theme.rawValue, forKey: selectedThemeKey)
         UserDefaults.standard.synchronize()
     }

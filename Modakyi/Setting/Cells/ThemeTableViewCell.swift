@@ -9,15 +9,25 @@ import UIKit
 
 class ThemeTableViewCell: UITableViewCell {
     let color = [
-        [255.0, 255.0, 255.0],
-        [0.0, 0.0, 0.0],
-        [244.0, 182.0, 76.0]
+        "FFFFFF",
+        "000000",
+        "F4BBB8",
+        "F8D473",
+        "8FB789",
+        "96D9E6",
+        "9DABEC",
+        "D6CBF6"
     ]
 
     let title = [
         "White",
         "Black",
-        "Telepathy"
+        "Rolling",
+        "Lemon",
+        "Undergrowth",
+        "Lily",
+        "Bubbly",
+        "Meeting"
     ]
 
     func updateUI(_ row: Int) {
@@ -25,11 +35,6 @@ class ThemeTableViewCell: UITableViewCell {
         self.imageView?.layer.cornerRadius = 5
         self.imageView?.layer.borderWidth = 0.5
         self.imageView?.layer.borderColor = UIColor.systemGray.cgColor
-        self.imageView?.backgroundColor = UIColor(
-            red: CGFloat(color[row][0] / 255.0),
-            green: CGFloat(color[row][1] / 255.0),
-            blue: CGFloat(color[row][2] / 255.0),
-            alpha: CGFloat(1.0)
-        )
+        self.imageView?.backgroundColor = UIColor().colorFromHexString(color[row])
     }
 }

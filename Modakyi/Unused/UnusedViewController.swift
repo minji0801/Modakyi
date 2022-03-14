@@ -10,6 +10,7 @@ import UIKit
 final class UnusedViewController: UIViewController {
     let viewModel = UnusedViewModel()
     private lazy var theme = ThemeManager.currentTheme()
+    private lazy var font = FontManager.currentFont()
 
     /// CollectionView RefershControl
     private lazy var refreshControl: UIRefreshControl = {
@@ -50,12 +51,15 @@ final class UnusedViewController: UIViewController {
         }
     }
 
-    /// 화면 보여질 때 마다: Appearance, Theme 확인
+    /// 화면 보여질 때 마다: Appearance, Theme, Font 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
+
         theme = ThemeManager.currentTheme()
         view.backgroundColor = theme.backgroundColor
+
+        font = FontManager.currentFont()
         collectionview.reloadData()
     }
 
@@ -96,6 +100,7 @@ extension UnusedViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
+        cell.textLabel.font = font.iPhoneSmallFont
 
         // 미사용 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
         cell.updateTextLabel(viewModel.unusedTextIDs.sorted(by: >), indexPath)

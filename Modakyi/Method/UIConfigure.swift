@@ -10,20 +10,27 @@ import UIKit
 /// UserDefaults에 저장된 Appearance 적용
 func appearanceCheck(_ viewController: UIViewController) {
     guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+
     if appearance == "Dark" {
         viewController.overrideUserInterfaceStyle = .dark
-        if #available(iOS 13.0, *) {
-            UIApplication.shared.statusBarStyle = .lightContent
-        } else {
-            UIApplication.shared.statusBarStyle = .default
-        }
+        viewController.navigationController?.navigationBar.barStyle = .black
+        viewController.navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.white]
     } else {
         viewController.overrideUserInterfaceStyle = .light
-        if #available(iOS 13.0, *) {
-            UIApplication.shared.statusBarStyle = .darkContent
+        viewController.navigationController?.navigationBar.barStyle = .default
+        viewController.navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+
+    if #available(iOS 13.0, *) {
+        if appearance == "Dark" {
+            UIApplication.shared.statusBarStyle = .lightContent
         } else {
-            UIApplication.shared.statusBarStyle = .default
+            UIApplication.shared.statusBarStyle = .darkContent
         }
+    } else {
+        UIApplication.shared.statusBarStyle = .default
     }
 }
 

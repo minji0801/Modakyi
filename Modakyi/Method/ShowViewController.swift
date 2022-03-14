@@ -87,3 +87,10 @@ func pushToThemeViewController(_ viewController: UIViewController) {
             as? ThemeViewController else { return }
     viewController.navigationController?.pushViewController(themeViewController, animated: true)
 }
+
+/// FontViewController를 push하기
+func pushToFontViewController(_ viewController: UIViewController) {
+    guard let fontViewController = storyboard.instantiateViewController(withIdentifier: "FontViewController")
+            as? FontViewController else { return }
+    viewController.navigationController?.pushViewController(fontViewController, animated: true)
+}

@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ThemeViewController: UIViewController {
+final class ThemeViewController: UIViewController {
     let viewModel = SettingViewModel()
+    private lazy var theme = ThemeManager.currentTheme()
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var recommendView: UIView!
+    @IBOutlet weak var recommendLabel: UILabel!
+    @IBOutlet weak var tableview: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +25,20 @@ class ThemeViewController: UIViewController {
         view.addGestureRecognizer(swipeLeft)
 
         recommendView.layer.cornerRadius = 30
+
+        let font = FontManager.currentFont()
+        recommendLabel.font = font.iPhoneMediumFont
     }
 
-    /// Appearance, Theme 확인
+    /// Appearance, Theme, Font 확인
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
 
-        let theme = ThemeManager.currentTheme()
+        theme = ThemeManager.currentTheme()
         backgroundView.backgroundColor = theme.backgroundColor
         recommendView.backgroundColor = theme.secondaryColor
+        tableview.reloadData()
     }
 }
 
@@ -40,13 +47,20 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 8
     }
 
     /// 셀 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeTableViewCell")
                 as? ThemeTableViewCell else { return UITableViewCell() }
+
+        if indexPath.row == theme.rawValue {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+
         cell.updateUI(indexPath.row)
         return cell
     }

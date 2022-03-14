@@ -11,6 +11,7 @@ import GoogleMobileAds
 final class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     let viewModel = DetailViewModel()
     private var theme = ThemeManager.currentTheme()
+    private var font = FontManager.currentFont()
 
     private var interstitial: GADInterstitialAd?    // 전면 광고 객체
 
@@ -62,6 +63,8 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
 
         headerView.backgroundColor = theme.backgroundColor
         textView.backgroundColor = theme.secondaryColor
+        
+        textLabel.font = font.iPhoneLargeFont
     }
 
     /// 화면 사라지려할 때: Noti 보내기(변경된 부분을 바로 반영하기 위해서)
