@@ -24,6 +24,8 @@
 		A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529721A27DDFA98005AC217 /* ThemeManager.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
+		A538F5FE27E07D7700996446 /* ThanksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538F5FD27E07D7700996446 /* ThanksTableViewController.swift */; };
+		A538F60027E083C300996446 /* ThanksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538F5FF27E083C300996446 /* ThanksTableViewCell.swift */; };
 		A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F36B62765C32F008EE7A4 /* ShareViewController.swift */; };
 		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
 		A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B55E7273F884300A3A814 /* NetworkCheck.swift */; };
@@ -112,6 +114,8 @@
 		A529721727DDC310005AC217 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		A529721A27DDFA98005AC217 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		A538F5FD27E07D7700996446 /* ThanksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksTableViewController.swift; sourceTree = "<group>"; };
+		A538F5FF27E083C300996446 /* ThanksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksTableViewCell.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A55298CF2733920800DCB870 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		A55B5573273F6E5E00A3A814 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -248,6 +252,7 @@
 				A519C12727DC836000647BD7 /* AppCell.swift */,
 				A529721727DDC310005AC217 /* ThemeTableViewCell.swift */,
 				A55B811227DF116000C254BE /* FontTableViewCell.swift */,
+				A538F5FF27E083C300996446 /* ThanksTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -261,16 +266,25 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		A538F5FC27E0782C00996446 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				A529721527DDBA78005AC217 /* ThemeViewController.swift */,
+				A55B811027DF10B000C254BE /* FontViewController.swift */,
+				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
+				A519C12927DCBA0D00647BD7 /* VersionViewController.swift */,
+				A519C12B27DCC2E200647BD7 /* AccountViewController.swift */,
+				A538F5FD27E07D7700996446 /* ThanksTableViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		A53C6BC92730F26400066A3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				A519C12127DC751400647BD7 /* SettingTableViewController.swift */,
 				A5912D0F27CA1F7200E2E822 /* SettingViewModel.swift */,
-				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
-				A519C12927DCBA0D00647BD7 /* VersionViewController.swift */,
-				A519C12B27DCC2E200647BD7 /* AccountViewController.swift */,
-				A529721527DDBA78005AC217 /* ThemeViewController.swift */,
-				A55B811027DF10B000C254BE /* FontViewController.swift */,
+				A538F5FC27E0782C00996446 /* VC */,
 				A529721427DDB9EF005AC217 /* Cells */,
 			);
 			path = Setting;
@@ -614,6 +628,7 @@
 				A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
 				A59FAFA7272D5BE7000807A5 /* AppDelegate.swift in Sources */,
+				A538F5FE27E07D7700996446 /* ThanksTableViewController.swift in Sources */,
 				A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */,
 				A5EFE250272FDDE20086EBAC /* UnusedViewController.swift in Sources */,
 				A59FAFBD272D624B000807A5 /* EnterEmailViewController.swift in Sources */,
@@ -626,6 +641,7 @@
 				A55B811127DF10B000C254BE /* FontViewController.swift in Sources */,
 				A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */,
 				A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */,
+				A538F60027E083C300996446 /* ThanksTableViewCell.swift in Sources */,
 				A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */,
 				A519C12227DC751400647BD7 /* SettingTableViewController.swift in Sources */,
 				A5EFE241272FBC400086EBAC /* StudyStimulateText.swift in Sources */,
