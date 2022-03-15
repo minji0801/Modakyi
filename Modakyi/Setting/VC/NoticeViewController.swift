@@ -13,6 +13,7 @@ final class NoticeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
 
         // 아이패드는 글자 크기 크게
@@ -38,7 +39,6 @@ final class NoticeViewController: UIViewController {
                            - [설정 - 테마 변경]을 통해 앱의 테마를 변경할 수 있습니다.
                            - [설정 - 글씨체 변경]을 통해 글귀의 글씨체를 변경할 수 있습니다.
                            - 최신 글귀는 업로드 시간 기준 이튿날까지 빨간 점이 표시됩니다.
-
 
 
                            모닥이를 사용해주셔서 감사합니다 :)

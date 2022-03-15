@@ -58,7 +58,7 @@ extension ThanksTableViewController {
 
     /// 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRow = [8, 8, 3, 4]
+        let numRow = [8, 8, 3, 3]
         return numRow[section]
     }
 

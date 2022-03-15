@@ -21,6 +21,7 @@ final class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
 
         profileImage.kf.setImage(
