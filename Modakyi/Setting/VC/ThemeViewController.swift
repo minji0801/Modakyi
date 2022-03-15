@@ -1,15 +1,15 @@
 //
-//  FontViewController.swift
+//  ThemeViewController.swift
 //  Modakyi
 //
-//  Created by 김민지 on 2022/03/14.
-//  글씨체 변경 ViewController
+//  Created by 김민지 on 2022/03/13.
+//  테마 변경 ViewController
 
 import UIKit
 
-final class FontViewController: UIViewController {
+final class ThemeViewController: UIViewController {
     let viewModel = SettingViewModel()
-    private lazy var font = FontManager.currentFont()
+    private lazy var theme = ThemeManager.currentTheme()
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var recommendView: UIView!
@@ -18,17 +18,15 @@ final class FontViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "글씨체 변경"
-        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "테마 변경"
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         view.addGestureRecognizer(swipeLeft)
 
         recommendView.layer.cornerRadius = 30
 
-        let theme = ThemeManager.currentTheme()
-        backgroundView.backgroundColor = theme.backgroundColor
-        recommendView.backgroundColor = theme.secondaryColor
+        let font = FontManager.currentFont()
+        recommendLabel.font = font.iPhoneMediumFont
     }
 
     /// Appearance, Theme, Font 확인
@@ -36,26 +34,27 @@ final class FontViewController: UIViewController {
         super.viewWillAppear(animated)
         appearanceCheck(self)
 
-        font = FontManager.currentFont()
-        recommendLabel.font = font.iPhoneMediumFont
+        theme = ThemeManager.currentTheme()
+        backgroundView.backgroundColor = theme.backgroundColor
+        recommendView.backgroundColor = theme.secondaryColor
         tableview.reloadData()
     }
 }
 
 // MARK: - TableView DataSoure & Delegate
-extension FontViewController: UITableViewDataSource, UITableViewDelegate {
+extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 8
     }
 
     /// 셀 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FontTableViewCell")
-                as? FontTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeTableViewCell")
+                as? ThemeTableViewCell else { return UITableViewCell() }
 
-        if indexPath.row == font.rawValue {
+        if indexPath.row == theme.rawValue {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -68,13 +67,14 @@ extension FontViewController: UITableViewDataSource, UITableViewDelegate {
     /// 셀 선택 시 (Appearance랑 Theme 따로 저장)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        viewModel.setFont(indexPath.row)
+        viewModel.setAppearance(indexPath.row)
+        viewModel.setTheme(indexPath.row)
         viewWillAppear(true)
     }
 }
 
 // MARK: - @objc Function
-extension FontViewController {
+extension ThemeViewController {
     @objc func swipeLeft() {
         navigationController?.popViewController(animated: true)
     }

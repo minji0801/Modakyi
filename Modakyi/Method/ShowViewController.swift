@@ -94,3 +94,10 @@ func pushToFontViewController(_ viewController: UIViewController) {
             as? FontViewController else { return }
     viewController.navigationController?.pushViewController(fontViewController, animated: true)
 }
+
+/// ThanksTableViewController를 push하기
+func pushToThanksTableViewController(_ viewController: UIViewController) {
+    guard let thanksTableViewController = storyboard.instantiateViewController(withIdentifier: "ThanksTableViewController")
+            as? ThanksTableViewController else { return }
+    viewController.navigationController?.pushViewController(thanksTableViewController, animated: true)
+}

@@ -42,6 +42,7 @@ final class SettingTableViewController: UITableViewController {
         case [2, 1]: present(viewModel.logoutAlert(self), animated: true)   // 로그아웃
         case [3, 0]: viewModel.goToStore("Scoit")   // Scoit
         case [3, 1]: viewModel.goToStore("h:ours")  // h:ours
+        case [4, 0]: pushToThanksTableViewController(self)  // Thanks
         default: break
         }
     }
@@ -72,12 +73,12 @@ extension SettingTableViewController {
 
     /// 섹션 수
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     /// 섹션 타이틀
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionHeader = ["설정", "지원", "계정", "ⓒ Minji Kim"]
+        let sectionHeader = ["설정", "지원", "계정", "ⓒ Minji Kim", ""]
         return sectionHeader[section]
     }
 
@@ -100,25 +101,28 @@ extension SettingTableViewController {
 
     /// 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRow = [3, 5, 2, 2]
+        let numRow = [3, 5, 2, 2, 1]
         return numRow[section]
     }
 
     /// 셀 구성
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 || indexPath.section == 1 || indexPath == [2, 0] {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovigCell", for: indexPath)
-                    as? MovingCell else { return UITableViewCell() }
-            cell.updateUI(indexPath)
+        if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
+                    as? AppCell else { return UITableViewCell() }
+
+            cell.updateUI(indexPath.row)
             return cell
         } else if indexPath == [2, 1] {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "LogoutCell", for: indexPath)
                     as? LogoutCell else { return UITableViewCell() }
+
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath)
-                    as? AppCell else { return UITableViewCell() }
-            cell.updateUI(indexPath.row)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovigCell", for: indexPath)
+                    as? MovingCell else { return UITableViewCell() }
+
+            cell.updateUI(indexPath)
             return cell
         }
     }
