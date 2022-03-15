@@ -19,7 +19,6 @@ final class DetailViewModel {
 
     // 글귀 가져오기
     func getText(completion: @escaping (String, String, String) -> Void) {
-        print("ViewModel 글귀 아이디: \(id)")
 
         ref.child("Text/Text\(id)").observe(.value) { snapshot in
             guard let value = snapshot.value as? [String: String] else { return }

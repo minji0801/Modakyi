@@ -35,7 +35,7 @@ final class SettingTableViewController: UITableViewController {
         case [0, 2]: pushToFontViewController(self) // 글씨체 변경
         case [1, 0]: pushToNoticeViewController(self)   // 공지사항
         case [1, 1]: sendMail() // 문의 및 의견
-        case [1, 2]: viewModel.goToStore("모닥이") // 앱 평가
+        case [1, 2]: viewModel.goToAppRating()  // 앱 평가
         case [1, 3]: presentTutorialViewController(self)    // 이용방법
         case [1, 4]: pushToVersionViewController(self)  // 버전 정보
         case [2, 0]: pushToAccountViewController(self)  // 계정 정보

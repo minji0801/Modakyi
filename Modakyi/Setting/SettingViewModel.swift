@@ -107,9 +107,7 @@ final class SettingViewModel {
     /// 문의 및 의견 내용
     func commentsBodyString() -> String {
         return """
-                이곳에 내용을 작성해주세요.
-
-                오타 발견 문의 시 아래 양식에 맞춰 작성해주세요.
+                이곳에 내용을 작성해주세요. 오타 발견 문의는 아래 양식에 맞춰 작성해주세요.
 
                 <예시>
                 글귀 ID : 글귀 4 (글귀 클릭 시 상단에 표시)
@@ -171,6 +169,23 @@ final class SettingViewModel {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
                 UIApplication.shared.openURL(url)
+            }
+        }
+    }
+
+    /// 앱스토어 리뷰 화면으로 이동
+    func goToAppRating() {
+        let store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
+        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            components?.queryItems =  [URLQueryItem(name: "action", value: "write-review")]
+
+            guard let writeReviewURL = components?.url else { return }
+
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(writeReviewURL)
             }
         }
     }

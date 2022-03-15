@@ -14,9 +14,6 @@
         <array key="EliceDigitalBaeumOTF_Regular.otf">
             <string>EliceDigitalBaeumOTF</string>
         </array>
-        <array key="EliceDigitalBaeum_Regular.ttf">
-            <string>EliceDigitalBaeum</string>
-        </array>
         <array key="HS새마을체.ttf">
             <string>HSSaemaul-Regular</string>
         </array>
@@ -27,7 +24,6 @@
             <objects>
                 <navigationController id="S07-EP-wss" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" largeTitles="YES" id="iQi-ui-lna">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -513,7 +509,7 @@
             <objects>
                 <viewController storyboardIdentifier="ResetPasswordViewController" id="1du-14-UCU" customClass="ResetPasswordViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ABA-1o-iXi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lao-ic-YGI">
@@ -813,7 +809,7 @@
             <objects>
                 <viewController storyboardIdentifier="PopoverContentController" id="lWi-jV-bLp" customClass="ShareViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xQD-A0-8eP">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zwn-7j-ph8">
@@ -1688,275 +1684,6 @@
             </objects>
             <point key="canvasLocation" x="6891" y="-1513"/>
         </scene>
-        <!--Setting View Controller-->
-        <scene sceneID="BZa-fz-qXa">
-            <objects>
-                <viewController storyboardIdentifier="SettingViewController" id="7cR-I9-cjb" customClass="SettingViewController" customModule="Modakyi" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DLc-Zm-JdN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFU-GL-Eyh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-su-CQj">
-                                        <rect key="frame" x="192.5" y="9" width="29" height="26.5"/>
-                                        <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3i-gE-YKF">
-                                        <rect key="frame" x="8" y="-3" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Sz7-Xd-aie"/>
-                                            <constraint firstAttribute="height" constant="50" id="saG-Mi-M3P"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="left">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="backButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="qbt-Pa-czS"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="h5I-su-CQj" firstAttribute="centerY" secondItem="JFU-GL-Eyh" secondAttribute="centerY" id="BUY-wA-qQs"/>
-                                    <constraint firstAttribute="height" constant="44" id="EWs-qH-b62"/>
-                                    <constraint firstItem="F3i-gE-YKF" firstAttribute="centerY" secondItem="JFU-GL-Eyh" secondAttribute="centerY" id="EnG-V2-elE"/>
-                                    <constraint firstItem="h5I-su-CQj" firstAttribute="centerX" secondItem="JFU-GL-Eyh" secondAttribute="centerX" id="M1g-Bf-pwJ"/>
-                                    <constraint firstItem="F3i-gE-YKF" firstAttribute="leading" secondItem="JFU-GL-Eyh" secondAttribute="leading" constant="8" id="m0D-Ur-HOi"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-DK-Pvl">
-                                <rect key="frame" x="20" y="118" width="374" height="130"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-p7-QYB">
-                                        <rect key="frame" x="147" y="0.0" width="80" height="80"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="KLc-wD-tlg"/>
-                                            <constraint firstAttribute="width" constant="80" id="WcG-0y-1AD"/>
-                                        </constraints>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자이름" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wg-xY-H11">
-                                        <rect key="frame" x="150" y="110" width="74" height="20"/>
-                                        <fontDescription key="fontDescription" name="EliceDigitalBaeum" family="Elice DigitalBaeum" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xn-o8-Y1M">
-                                <rect key="frame" x="0.0" y="278" width="414" height="484"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-i6-nJa">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="484"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-9Z-kIH">
-                                                <rect key="frame" x="79.5" y="20" width="255" height="285"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-su-Bh7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="255" height="45"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vU-TI-8lz" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="45"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="45" id="4kw-71-041"/>
-                                                                    <constraint firstAttribute="width" constant="120" id="E9F-rn-j4a"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="알림설정">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="notificationSettingButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="YrY-j3-e8d"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQY-Dv-NWh" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="135" y="0.0" width="120" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="다크모드">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="darckModeButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="mvJ-SA-ln8"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-TQ-Jqt">
-                                                        <rect key="frame" x="0.0" y="60" width="255" height="45"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lD-Ce-uHf" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="공지사항">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="noticeButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="gHm-Qv-bbO"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8r-Kv-rmR" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="135" y="0.0" width="120" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="문의 및 의견">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="commentsButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="gik-Nv-zrb"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="06q-xk-03f">
-                                                        <rect key="frame" x="0.0" y="120" width="255" height="45"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioc-Cx-af7" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="앱 평가">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="reviewButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="c6V-dD-GI2"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eQ-ql-bW9" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="135" y="0.0" width="120" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="이용방법">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="usewayButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="v4w-dw-4CQ"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r8E-3V-EQq">
-                                                        <rect key="frame" x="0.0" y="180" width="255" height="45"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-UD-bJh" customClass="RoundButton" customModule="Modakyi" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="255" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="로그아웃">
-                                                                    <color key="titleColor" systemColor="systemRedColor"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRound" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="logoutButtonTapped:" destination="7cR-I9-cjb" eventType="touchUpInside" id="Rtr-Ul-vyV"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="isd-BY-ScU">
-                                                        <rect key="frame" x="0.0" y="240" width="255" height="45"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMA-QI-QLR">
-                                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QU-8D-6DK">
-                                                                <rect key="frame" x="127.5" y="0.0" width="127.5" height="45"/>
-                                                                <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="cNV-9Z-kIH" firstAttribute="centerX" secondItem="t4d-i6-nJa" secondAttribute="centerX" id="GVp-U9-rQc"/>
-                                            <constraint firstItem="cNV-9Z-kIH" firstAttribute="top" secondItem="t4d-i6-nJa" secondAttribute="top" constant="20" id="Mxs-dt-DWg"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="t4d-i6-nJa" firstAttribute="leading" secondItem="smY-s7-cLz" secondAttribute="leading" id="Lof-SS-Dpl"/>
-                                    <constraint firstItem="t4d-i6-nJa" firstAttribute="bottom" secondItem="Jz2-Us-KSD" secondAttribute="bottom" id="ONh-eV-bjc"/>
-                                    <constraint firstItem="t4d-i6-nJa" firstAttribute="bottom" secondItem="smY-s7-cLz" secondAttribute="bottom" id="atk-37-IdU"/>
-                                    <constraint firstItem="t4d-i6-nJa" firstAttribute="top" secondItem="smY-s7-cLz" secondAttribute="top" id="k6U-P4-C4k"/>
-                                    <constraint firstItem="t4d-i6-nJa" firstAttribute="trailing" secondItem="smY-s7-cLz" secondAttribute="trailing" id="yVG-d1-tm8"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="smY-s7-cLz"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="Jz2-Us-KSD"/>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW9-fK-Q8y" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="f6N-n9-3VV"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Pag-Xf-T06"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="NgP-DK-Pvl" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" constant="20" id="2mv-Mi-ffk"/>
-                            <constraint firstItem="JFU-GL-Eyh" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="2yK-hd-GG3"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="bottom" secondItem="qW9-fK-Q8y" secondAttribute="bottom" id="3Nl-uP-HSY"/>
-                            <constraint firstItem="Jz2-Us-KSD" firstAttribute="width" secondItem="JFU-GL-Eyh" secondAttribute="width" id="4By-cu-HH7"/>
-                            <constraint firstItem="t4d-i6-nJa" firstAttribute="width" secondItem="DLc-Zm-JdN" secondAttribute="width" id="5TK-mo-BEl"/>
-                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="top" secondItem="0Xn-o8-Y1M" secondAttribute="bottom" id="5qH-eu-T78"/>
-                            <constraint firstItem="0Xn-o8-Y1M" firstAttribute="top" secondItem="NgP-DK-Pvl" secondAttribute="bottom" constant="30" id="6Kj-bm-fGD"/>
-                            <constraint firstItem="0Xn-o8-Y1M" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="Cua-Bd-z0Z"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="top" secondItem="JFU-GL-Eyh" secondAttribute="top" id="D97-6s-yvb"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="0Xn-o8-Y1M" secondAttribute="trailing" id="NuU-CC-uGo"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="JFU-GL-Eyh" secondAttribute="trailing" id="Uap-Hb-Z1p"/>
-                            <constraint firstItem="NgP-DK-Pvl" firstAttribute="top" secondItem="JFU-GL-Eyh" secondAttribute="bottom" constant="30" id="VEG-cf-qVb"/>
-                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="trailing" secondItem="Pag-Xf-T06" secondAttribute="trailing" id="Vcb-a3-BC3"/>
-                            <constraint firstItem="Pag-Xf-T06" firstAttribute="trailing" secondItem="NgP-DK-Pvl" secondAttribute="trailing" constant="20" id="a5A-H3-nBB"/>
-                            <constraint firstItem="qW9-fK-Q8y" firstAttribute="leading" secondItem="Pag-Xf-T06" secondAttribute="leading" id="oLs-hk-DhS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="bannerView" destination="qW9-fK-Q8y" id="GSY-ql-4PY"/>
-                        <outlet property="currentVersionLabel" destination="xMA-QI-QLR" id="rgR-wl-cXb"/>
-                        <outlet property="nameLabel" destination="0wg-xY-H11" id="gFD-aC-9fk"/>
-                        <outlet property="profileImage" destination="Qyl-p7-QYB" id="2pG-cE-8Hr"/>
-                        <outlet property="updatedVersionLabel" destination="6QU-8D-6DK" id="rK2-RB-sWt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KFi-Fp-5jm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4741" y="-839"/>
-        </scene>
         <!--Notice View Controller-->
         <scene sceneID="ZBg-u7-iET">
             <objects>
@@ -2050,29 +1777,6 @@
             <point key="canvasLocation" x="5458" y="-1513"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="0vU-TI-8lz">
-            <size key="intrinsicContentSize" width="53" height="36"/>
-        </designable>
-        <designable name="3eQ-ql-bW9">
-            <size key="intrinsicContentSize" width="53" height="36"/>
-        </designable>
-        <designable name="3lD-Ce-uHf">
-            <size key="intrinsicContentSize" width="56" height="36"/>
-        </designable>
-        <designable name="Bb7-UD-bJh">
-            <size key="intrinsicContentSize" width="54" height="36"/>
-        </designable>
-        <designable name="Ioc-Cx-af7">
-            <size key="intrinsicContentSize" width="48" height="36"/>
-        </designable>
-        <designable name="sQY-Dv-NWh">
-            <size key="intrinsicContentSize" width="53" height="36"/>
-        </designable>
-        <designable name="x8r-Kv-rmR">
-            <size key="intrinsicContentSize" width="78" height="36"/>
-        </designable>
-    </designables>
     <resources>
         <image name="checkmark_circle" width="24" height="24"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
@@ -2084,7 +1788,6 @@
         <image name="home_c" width="17" height="17"/>
         <image name="home_r" width="23" height="23"/>
         <image name="image" width="24" height="24"/>
-        <image name="left" width="24" height="24"/>
         <image name="logo_apple" width="24" height="24"/>
         <image name="logo_google" width="24" height="24"/>
         <image name="logo_modakyi" width="128" height="128"/>

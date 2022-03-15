@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 final class AccountViewController: UIViewController {
     private let viewModel = SettingViewModel()

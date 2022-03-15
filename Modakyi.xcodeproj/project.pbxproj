@@ -24,7 +24,6 @@
 		A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529721A27DDFA98005AC217 /* ThemeManager.swift */; };
 		A5335CA827AD67F200C67292 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5335CA727AD67F200C67292 /* Kingfisher */; };
 		A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53507B52745F9EA003C7841 /* NoticeViewController.swift */; };
-		A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C6BCA2730F27900066A3F /* SettingViewController.swift */; };
 		A54F36B72765C32F008EE7A4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F36B62765C32F008EE7A4 /* ShareViewController.swift */; };
 		A55298D02733920800DCB870 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55298CF2733920800DCB870 /* NetworkViewController.swift */; };
 		A55B55E8273F884300A3A814 /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B55E7273F884300A3A814 /* NetworkCheck.swift */; };
@@ -60,7 +59,6 @@
 		A59FAFBF272D655F000807A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFBE272D655F000807A5 /* MainViewController.swift */; };
 		A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FAFC0272D6659000807A5 /* HomeViewController.swift */; };
 		A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A69B6F2742416B009F26CC /* ShowViewController.swift */; };
-		A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BCF1FC27912A7700C851F4 /* RoundButton.swift */; };
 		A5BF517C274365C90006EFBC /* HS새마을체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5BF516C274365C90006EFBC /* HS새마을체.ttf */; };
 		A5BF517F274381A70006EFBC /* UIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF517E274381A70006EFBC /* UIConfigure.swift */; };
 		A5BF5181274384660006EFBC /* SetValueCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */; };
@@ -114,7 +112,6 @@
 		A529721727DDC310005AC217 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		A529721A27DDFA98005AC217 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		A53507B52745F9EA003C7841 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		A53C6BCA2730F27900066A3F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A54F36B62765C32F008EE7A4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A55298CF2733920800DCB870 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		A55B5573273F6E5E00A3A814 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -167,7 +164,6 @@
 		A59FAFC0272D6659000807A5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A59FAFC4272D6CA8000807A5 /* Modakyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Modakyi.entitlements; sourceTree = "<group>"; };
 		A5A69B6F2742416B009F26CC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
-		A5BCF1FC27912A7700C851F4 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		A5BF516C274365C90006EFBC /* HS새마을체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HS새마을체.ttf"; sourceTree = "<group>"; };
 		A5BF517E274381A70006EFBC /* UIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigure.swift; sourceTree = "<group>"; };
 		A5BF5180274384660006EFBC /* SetValueCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueCurrentUser.swift; sourceTree = "<group>"; };
@@ -268,7 +264,6 @@
 		A53C6BC92730F26400066A3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				A53C6BCA2730F27900066A3F /* SettingViewController.swift */,
 				A519C12127DC751400647BD7 /* SettingTableViewController.swift */,
 				A5912D0F27CA1F7200E2E822 /* SettingViewModel.swift */,
 				A53507B52745F9EA003C7841 /* NoticeViewController.swift */,
@@ -318,7 +313,6 @@
 				A5EFE244272FC3130086EBAC /* Detail */,
 				A53C6BC92730F26400066A3F /* Setting */,
 				A5A69B7127424171009F26CC /* Method */,
-				A5BCF1F92791294A00C851F4 /* Button */,
 				A5BF515D274365A30006EFBC /* Font */,
 				A59FAFA4272D5BE7000807A5 /* Products */,
 				A59FAFAC272D5BE7000807A5 /* Main.storyboard */,
@@ -361,14 +355,6 @@
 				A5BF517E274381A70006EFBC /* UIConfigure.swift */,
 			);
 			path = Method;
-			sourceTree = "<group>";
-		};
-		A5BCF1F92791294A00C851F4 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				A5BCF1FC27912A7700C851F4 /* RoundButton.swift */,
-			);
-			path = Button;
 			sourceTree = "<group>";
 		};
 		A5BF515D274365A30006EFBC /* Font */ = {
@@ -509,7 +495,7 @@
 			);
 			mainGroup = A59FAF9A272D5BE7000807A5;
 			packageReferences = (
-				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A59FAFA4272D5BE7000807A5 /* Products */;
 			projectDirPath = "";
@@ -624,7 +610,6 @@
 				A5A69B702742416B009F26CC /* ShowViewController.swift in Sources */,
 				A529721827DDC310005AC217 /* ThemeTableViewCell.swift in Sources */,
 				A5912D1027CA1F7200E2E822 /* SettingViewModel.swift in Sources */,
-				A5BCF1FD27912A7700C851F4 /* RoundButton.swift in Sources */,
 				A5EFE252272FDDF20086EBAC /* UnusedCollectionViewCell.swift in Sources */,
 				A529721B27DDFA98005AC217 /* ThemeManager.swift in Sources */,
 				A5EFE23F272FB9050086EBAC /* HomeCollectionHeaderView.swift in Sources */,
@@ -649,7 +634,6 @@
 				A5912D0C27C9F9E300E2E822 /* DetailViewModel.swift in Sources */,
 				A529239327CBA01F00DD13EF /* TutorialViewModel.swift in Sources */,
 				A519C12827DC836000647BD7 /* AppCell.swift in Sources */,
-				A53C6BCB2730F27900066A3F /* SettingViewController.swift in Sources */,
 				A519C12427DC7B5B00647BD7 /* MovingCell.swift in Sources */,
 				A59FAFC1272D6659000807A5 /* HomeViewController.swift in Sources */,
 				A53507B62745F9EA003C7841 /* NoticeViewController.swift in Sources */,
@@ -906,7 +890,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -919,7 +903,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A5335CA727AD67F200C67292 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
