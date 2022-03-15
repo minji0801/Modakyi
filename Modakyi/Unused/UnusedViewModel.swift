@@ -56,7 +56,6 @@ final class UnusedViewModel {
             }
 
             self.unusedTextIDs = self.fullText.indices.filter { !(value.contains($0)) }.sorted(by: >)
-            print("ViewModel 미사용 글귀 id: \(self.unusedTextIDs)")
             completion(true)
         }
     }

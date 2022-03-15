@@ -61,7 +61,7 @@ final class HomeViewModel {
         guard let startTime = formatter.date(from: time) else { return false }
         guard let endTime = formatter.date(from: current) else { return false }
 
-        return Int(endTime.timeIntervalSince(startTime)) < 86400 ? true : false
+        return Int(endTime.timeIntervalSince(startTime)) < 172800 ? true : false
     }
 
     /// 사용자가 클릭한 글귀 아이디 가져오기
@@ -80,7 +80,7 @@ final class HomeViewModel {
         // 글귀 클릭한 적 없으면 클릭한 글귀에 추가하기: 빨간 점 있을 때 없애기 위해서
         if !clickedTextIDs.contains(textInfo(at: index).id) {
             clickedTextIDs.append(textInfo(at: index).id)
-            self.ref.child("User/\(self.uid!)").updateChildValues(["clicked": clickedTextIDs])
+            ref.child("User/\(self.uid!)").updateChildValues(["clicked": clickedTextIDs])
         }
     }
 }
