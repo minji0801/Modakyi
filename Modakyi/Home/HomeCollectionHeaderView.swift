@@ -17,8 +17,8 @@ final class HomeCollectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var settingButton: UIButton!
 
     /// 글귀 업데이트
-    func updateTextLabel(_ recommendTextId: String) {
-        self.ref.child("Text/Text\(recommendTextId)").observe(.value) { [weak self] snapshot in
+    func updateTextLabel(_ recommendTextId: String, _ font: Font) {
+        ref.child("Text/Text\(recommendTextId)").observe(.value) { [weak self] snapshot in
             guard let self = self,
                   let value = snapshot.value as? [String: String] else { return }
 
@@ -28,10 +28,11 @@ final class HomeCollectionHeaderView: UICollectionReusableView {
 
             self.recommendLabel.text = textOnLabel(eng, kor, who)
 
-            // TODO: 폰트 설정 -  UserDefaults에 저장된 폰트 적용하기(저장된 값이 없다면 기본 폰트 보여주기)
             // 아이패드는 글자 크기 크게
             if UIDevice.current.model == "iPad" {
-                self.recommendLabel.font = UIFont(name: "EliceDigitalBaeum", size: 21.0)
+                self.recommendLabel.font = font.iPadMediumFont
+            } else {
+                self.recommendLabel.font = font.iPhoneMediumFont
             }
         }
     }

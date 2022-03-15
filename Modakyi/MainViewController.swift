@@ -24,7 +24,7 @@ final class MainViewController: UITabBarController {
 
     /// 탭 바 클릭되면 Noti 보내기(위로 스크롤해서 올라갈 수 있게)
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if self.selectedIndex == item.tag {
+        if selectedIndex == item.tag {
             switch item.tag {
             case 0:
                 NotificationCenter.default.post(

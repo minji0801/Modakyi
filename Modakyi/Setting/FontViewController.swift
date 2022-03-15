@@ -69,7 +69,7 @@ extension FontViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         viewModel.setFont(indexPath.row)
-        self.viewWillAppear(true)
+        viewWillAppear(true)
     }
 }
 

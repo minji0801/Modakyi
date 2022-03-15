@@ -70,7 +70,7 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         viewModel.setAppearance(indexPath.row)
         viewModel.setTheme(indexPath.row)
-        self.viewWillAppear(true)
+        viewWillAppear(true)
     }
 }
 

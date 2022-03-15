@@ -15,7 +15,7 @@ final class UnusedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
 
     /// 글귀 업데이트
-    func updateTextLabel(_ unusedTexts: [Int], _ indexPath: IndexPath) {
+    func updateTextLabel(_ unusedTexts: [Int], _ indexPath: IndexPath, _ font: Font) {
         let id = unusedTexts[indexPath.row]
         ref.child("Text/Text\(id)").observe(.value) { [weak self] snapshot in
             guard let self = self,
@@ -29,7 +29,9 @@ final class UnusedCollectionViewCell: UICollectionViewCell {
 
             /// 아이패드는 글자 크기 크게
             if UIDevice.current.model == "iPad" {
-                self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 13.0)
+                self.textLabel.font = font.iPadSmallFont
+            } else {
+                self.textLabel.font = font.iPhoneSmallFont
             }
         }
     }

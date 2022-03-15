@@ -12,16 +12,18 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
 
     /// 글귀 업데이트
-    func updateTextLabel(_ text: StudyStimulateText) {
+    func updateTextLabel(_ text: StudyStimulateText, _ font: Font) {
         let eng = text.eng
         let kor = text.kor
         let who = text.who
 
-        self.textLabel.text = textOnLabel(eng, kor, who)
+        textLabel.text = textOnLabel(eng, kor, who)
 
         // 아이패트는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
-            self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 13.0)
+            textLabel.font = font.iPadSmallFont
+        } else {
+            textLabel.font = font.iPhoneSmallFont
         }
     }
 }

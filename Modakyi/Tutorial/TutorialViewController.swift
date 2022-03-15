@@ -9,6 +9,7 @@ import UIKit
 
 final class TutorialViewController: UIViewController {
     let viewModel = TutorialViewModel()
+    private let font = FontManager.currentFont()
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
@@ -27,7 +28,9 @@ final class TutorialViewController: UIViewController {
 
         // 아이패드는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
-            self.label.font = UIFont(name: "EliceDigitalBaeum", size: 30.0)
+            label.font = font.iPadLargeFont
+        } else {
+            label.font = font.iPhoneLargeFont
         }
     }
 
@@ -40,18 +43,18 @@ final class TutorialViewController: UIViewController {
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         // UserDefault 값 바꾸고 Dismiss
         UserDefaults.standard.set(true, forKey: "Tutorial")
-        self.dismiss(animated: false, completion: nil)
+        dismiss(animated: false)
     }
 
     /// 스와이프 제스처 설정
     func setupSwipeGesture() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
+        view.addGestureRecognizer(swipeLeft)
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+        view.addGestureRecognizer(swipeRight)
     }
 
     /// 페이지 바뀔 때: 해당 이미지와 텍스트로 변경
@@ -71,12 +74,12 @@ extension TutorialViewController {
                 if pageControl.currentPage != 5 {
                     pageControl.currentPage += 1
                 }
-                self.pageChange()
+                pageChange()
             case UISwipeGestureRecognizer.Direction.right :
                 if pageControl.currentPage != 0 {
                     pageControl.currentPage -= 1
                 }
-                self.pageChange()
+                pageChange()
             default:
                 break
             }

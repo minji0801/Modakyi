@@ -8,11 +8,19 @@
 import UIKit
 
 final class NoticeViewController: UIViewController {
+    private let font = FontManager.currentFont()
     @IBOutlet weak var noticeTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
+
+        // 아이패드는 글자 크기 크게
+        if UIDevice.current.model == "iPad" {
+            noticeTextView.font = font.iPadMediumFont
+        } else {
+            noticeTextView.font = font.iPhoneMediumFont
+        }
 
         noticeTextView.text = """
                            안녕하세요. <모닥이> 입니다.
@@ -35,6 +43,6 @@ final class NoticeViewController: UIViewController {
     }
 
     @IBAction func dismissButtonTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

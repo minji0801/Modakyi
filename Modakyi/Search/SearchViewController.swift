@@ -29,7 +29,7 @@ final class SearchViewController: UIViewController {
     }()
 
     @IBOutlet weak var collectionview: UICollectionView!
-    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var notextLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +93,9 @@ extension SearchViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
-        cell.textLabel.font = font.iPhoneSmallFont
 
         let text = viewModel.textInfo(at: indexPath.row)
-        cell.updateTextLabel(text)
+        cell.updateTextLabel(text, font)
         return cell
     }
 
@@ -129,8 +128,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
     /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
         }
     }
 
@@ -155,8 +154,8 @@ extension SearchViewController: UISearchBarDelegate {
 
     /// 취소버튼 눌렀을 때
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if !self.labelView.isHidden {
-            self.labelView.isHidden = true
+        if !notextLabel.isHidden {
+            notextLabel.isHidden = true
         }
 
         searchBar.showsCancelButton = false
@@ -182,9 +181,9 @@ extension SearchViewController: UISearchBarDelegate {
                 guard let self = self else { return }
 
                 if self.viewModel.fullText.isEmpty {
-                    self.labelView.isHidden = false
+                    self.notextLabel.isHidden = false
                 } else {
-                    self.labelView.isHidden = true
+                    self.notextLabel.isHidden = true
                 }
                 self.collectionview.reloadData()
             }
@@ -206,7 +205,7 @@ extension SearchViewController {
 
     /// 새로고침
     @objc func refresh() {
-        self.searchBar.text = ""
-        self.viewDidLoad()
+        searchBar.text = ""
+        viewDidLoad()
     }
 }

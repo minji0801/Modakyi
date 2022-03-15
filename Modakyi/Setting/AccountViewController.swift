@@ -11,6 +11,7 @@ import FirebaseAuth
 final class AccountViewController: UIViewController {
     private let viewModel = SettingViewModel()
     private let uid = Auth.auth().currentUser?.uid
+    private let font = FontManager.currentFont()
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,6 +30,17 @@ final class AccountViewController: UIViewController {
         nameTextField.text = viewModel.getUserDisplayName()
         emailTextField.text = viewModel.getUserEmail()
         loginTextField.text = viewModel.getUserProviderID()
+
+        // 아이패드는 글자 크기 크게
+        if UIDevice.current.model == "iPad" {
+            nameTextField.font = font.iPadLargeFont
+            emailTextField.font = font.iPadLargeFont
+            loginTextField.font = font.iPadLargeFont
+        } else {
+            nameTextField.font = font.iPhoneLargeFont
+            emailTextField.font = font.iPhoneLargeFont
+            loginTextField.font = font.iPhoneLargeFont
+        }
     }
 
     @IBAction func dismissButtonTapped(_ sender: UIButton) {

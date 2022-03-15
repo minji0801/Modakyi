@@ -49,7 +49,7 @@ func presentDetailViewController(_ viewController: UIViewController, _ textId: S
     guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
             as? DetailViewController else { return }
     detailViewController.viewModel.id = textId  // 글귀 아이디 넘겨주기
-    viewController.present(detailViewController, animated: true, completion: nil)
+    viewController.present(detailViewController, animated: true)
 }
 
 /// NoticeViewController를 push하기
@@ -64,7 +64,7 @@ func presentTutorialViewController(_ viewController: UIViewController) {
     guard let tutorialViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
             as? TutorialViewController else { return }
     tutorialViewController.modalPresentationStyle = .fullScreen
-    viewController.present(tutorialViewController, animated: false, completion: nil)
+    viewController.present(tutorialViewController, animated: false)
 }
 
 /// VersionViewController를 push하기
