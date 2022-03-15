@@ -10,7 +10,7 @@ target 'Modakyi' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
-  pod 'GoogleSignIn', '5.0.2'
+  # pod 'GoogleSignIn', '5.0.2'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
 end

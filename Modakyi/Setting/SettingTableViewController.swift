@@ -22,8 +22,8 @@ final class SettingTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
-        self.navigationItem.title = "설정"
-        self.navigationController?.navigationBar.isHidden = false
+        navigationItem.title = "설정"
+        navigationController?.navigationBar.isHidden = false
     }
 
     /// 셀 선택 시
@@ -54,16 +54,16 @@ final class SettingTableViewController: UITableViewController {
             composeViewController.setToRecipients(["modakyi.help@gmail.com"])
             composeViewController.setSubject("<모닥이> 문의 및 의견")
             composeViewController.setMessageBody(viewModel.commentsBodyString(), isHTML: false)
-            self.present(composeViewController, animated: true, completion: nil)
+            present(composeViewController, animated: true)
         } else {
-            self.presentToFailureSendMailAlert()
+            presentToFailureSendMailAlert()
         }
     }
 
     /// 메일 보내기 실패 Alert 띄우기
     private func presentToFailureSendMailAlert() {
         let sendMailErrorAlert = viewModel.sendMailFailAlert()
-        self.present(sendMailErrorAlert, animated: true, completion: nil)
+        present(sendMailErrorAlert, animated: true)
     }
 }
 
@@ -139,6 +139,6 @@ extension SettingTableViewController: MFMailComposeViewControllerDelegate {
         didFinishWith result: MFMailComposeResult,
         error: Error?
     ) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }

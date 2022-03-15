@@ -7,16 +7,16 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
+//import GoogleSignIn
 import FirebaseDatabase
 import UserNotifications
 import FirebaseMessaging
 import GoogleMobileAds
 import AdSupport
 import AppTrackingTransparency
-
+// , GIDSignInDelegate
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(
         _ application: UIApplication,
@@ -57,8 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         setNotification()
 
         // Google 로그인 Delgate
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().delegate = self
 
         // 네트워크 연결 확인
         NetworkCheck.shared.startMonitoring()
@@ -68,14 +68,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return true
     }
 
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-    ) -> Bool {
-        // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
-        return GIDSignIn.sharedInstance().handle(url)
-    }
+//    func application(
+//        _ app: UIApplication,
+//        open url: URL,
+//        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+//    ) -> Bool {
+//        // 구글의 인증 프로세스가 끝날 때 앱이 수신하는 url 처리
+//        return GIDSignIn.sharedInstance().handle(url)
+//    }
 
     // MARK: UISceneSession Lifecycle
 
@@ -99,25 +99,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         exit(0)
     }
 
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        // Google 로그인 인증 후 전달된 값을 처리하는 부분
-        if let error = error {
-            print("ERROR Google Sign In \(error.localizedDescription)")
-            return
-        }
-
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(
-            withIDToken: authentication.idToken,
-            accessToken: authentication.accessToken
-        )
-
-        Auth.auth().signIn(with: credential) { _, _ in
-            // Google Login User 데이터 만들기
-            setValueCurrentUser()
-            showMainVCOnRoot()
-        }
-    }
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        // Google 로그인 인증 후 전달된 값을 처리하는 부분
+//        if let error = error {
+//            print("ERROR Google Sign In \(error.localizedDescription)")
+//            return
+//        }
+//
+//        guard let authentication = user.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(
+//            withIDToken: authentication.idToken,
+//            accessToken: authentication.accessToken
+//        )
+//
+//        Auth.auth().signIn(with: credential) { _, _ in
+//            // Google Login User 데이터 만들기
+//            setValueCurrentUser()
+//            showMainVCOnRoot()
+//        }
+//    }
 
     // 앱 추적 권한
     func setNotification() {

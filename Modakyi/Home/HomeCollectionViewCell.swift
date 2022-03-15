@@ -14,7 +14,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var newImage: UIImageView!
 
     /// 글귀 라벨 업데이트
-    func updateTextLabel(_ text: StudyStimulateText) {
+    func updateTextLabel(_ text: StudyStimulateText, _ font: Font) {
         let eng = text.eng
         let kor = text.kor
         let who = text.who
@@ -23,7 +23,9 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 
         // 아이패드는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
-            textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 13.0)
+            textLabel.font = font.iPadSmallFont
+        } else {
+            textLabel.font = font.iPhoneSmallFont
         }
     }
 
@@ -34,9 +36,9 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         textId index: Int
     ) {
         if newText.contains(String(index)) && !clickedText.contains(String(index)) {
-            self.newImage.isHidden = false
+            newImage.isHidden = false
         } else {
-            self.newImage.isHidden = true
+            newImage.isHidden = true
         }
     }
 }

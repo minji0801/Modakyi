@@ -38,7 +38,9 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
 
             // 아이패드는 글자 크기 크게
             if UIDevice.current.model == "iPad" {
-                self.textLabel.font = UIFont(name: "EliceDigitalBaeum", size: 23.0)
+                self.textLabel.font = self.font.iPadLargeFont
+            } else {
+                self.textLabel.font = self.font.iPhoneLargeFont
             }
         }
 
@@ -63,8 +65,6 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
 
         headerView.backgroundColor = theme.backgroundColor
         textView.backgroundColor = theme.secondaryColor
-        
-        textLabel.font = font.iPhoneLargeFont
     }
 
     /// 화면 사라지려할 때: Noti 보내기(변경된 부분을 바로 반영하기 위해서)
@@ -90,7 +90,7 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         } else {
             viewModel.updateLikeTextIDs(false, sender)
         }
-        self.viewDidAppear(true)
+        viewDidAppear(true)
     }
 
     /// 체크 버튼 클릭: 사용한 글귀 업데이트 & 버튼 다시 보여주기
@@ -100,7 +100,7 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         } else {
             viewModel.updateUsedTextIDs(false, sender)
         }
-        self.viewDidAppear(true)
+        viewDidAppear(true)
     }
 
     /// Notification 설정
@@ -165,11 +165,11 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
 
     /// 전면 광고 띄우기
     func presentToAd() {
-        if self.interstitial != nil {   // 광고 있으면 보여주기
-            self.interstitial!.present(fromRootViewController: self)
+        if interstitial != nil {   // 광고 있으면 보여주기
+            interstitial!.present(fromRootViewController: self)
         } else {    // 광고 없으면 화면 닫기
             print("Ad wasn't ready")
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
     }
 
@@ -182,7 +182,7 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         DispatchQueue.main.async { [weak self ] in
             guard let self = self else { return }
 
-            self.present(activityVC, animated: true, completion: nil)
+            self.present(activityVC, animated: true)
         }
     }
 
@@ -220,7 +220,7 @@ extension DetailViewController: GADFullScreenContentDelegate {
     /// 전면 광고 dismiss: 상세화면도 닫기
     func adDidDismissFullScreenContent(_ ads: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }
 
@@ -230,7 +230,7 @@ extension DetailViewController {
     /// 텍스트 공유하기 버튼 클릭된 후 Noti
     @objc func textShareNotification(_ notification: Notification) {
         var objectsToShare = [String]()
-        if let text = self.textLabel.text {
+        if let text = textLabel.text {
             objectsToShare.append(text)
         }
         presentToActivityVC(items: objectsToShare)
@@ -238,7 +238,7 @@ extension DetailViewController {
 
     /// 이미지 공유하기 버튼 클릭된 후 Noti
     @objc func imageShareNotification(_ notification: Notification) {
-        guard let image = self.textView.transfromToImage() else { return }
+        guard let image = textView.transfromToImage() else { return }
         presentToActivityVC(items: [image])
     }
 }

@@ -21,7 +21,7 @@ final class UnusedViewController: UIViewController {
     }()
 
     @IBOutlet weak var collectionview: UICollectionView!
-    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var notextLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
 
     override func viewDidLoad() {
@@ -37,9 +37,9 @@ final class UnusedViewController: UIViewController {
             if bool {   // 미사용 글귀 있음
                 DispatchQueue.main.async {
                     if self.viewModel.unusedTextIDs.isEmpty {
-                        self.labelView.isHidden = false
+                        self.notextLabel.isHidden = false
                     } else {
-                        self.labelView.isHidden = true
+                        self.notextLabel.isHidden = true
                     }
                     self.reloadCollectionView()
                 }
@@ -100,10 +100,9 @@ extension UnusedViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
-        cell.textLabel.font = font.iPhoneSmallFont
 
         // 미사용 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
-        cell.updateTextLabel(viewModel.unusedTextIDs.sorted(by: >), indexPath)
+        cell.updateTextLabel(viewModel.unusedTextIDs.sorted(by: >), indexPath, font)
         return cell
     }
 
@@ -134,8 +133,8 @@ extension UnusedViewController: UICollectionViewDelegateFlowLayout {
 
     /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
         }
     }
 
@@ -163,6 +162,6 @@ extension UnusedViewController {
 
     /// 새로고침
     @objc func refresh() {
-        self.viewDidLoad()
+        viewDidLoad()
     }
 }

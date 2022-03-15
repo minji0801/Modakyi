@@ -21,7 +21,7 @@ final class LikeViewController: UIViewController {
     }()
 
     @IBOutlet weak var collectionview: UICollectionView!
-    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var notextLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
 
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ final class LikeViewController: UIViewController {
             guard let self = self else { return }
 
             DispatchQueue.main.async {
-                self.labelView.isHidden = bool
+                self.notextLabel.isHidden = bool
                 self.collectionview.reloadData()
                 slowlyRemoveIndicator(self.indicatorView, self.collectionview)
             }
@@ -50,6 +50,12 @@ final class LikeViewController: UIViewController {
         view.backgroundColor = theme.backgroundColor
 
         font = FontManager.currentFont()
+        // 아이패드는 글자 크기 크게
+        if UIDevice.current.model == "iPad" {
+            notextLabel.font = font.iPadMediumFont
+        } else {
+            notextLabel.font = font.iPhoneMediumFont
+        }
         collectionview.reloadData()
     }
 
@@ -84,10 +90,9 @@ extension LikeViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
-        cell.textLabel.font = font.iPhoneSmallFont
 
         // 좋아하는 글귀 아이디 넘겨줘서 각 셀 textLabel에 글귀 뿌려주기
-        cell.updateTextLabel(viewModel.likeTextIDs, indexPath)
+        cell.updateTextLabel(viewModel.likeTextIDs, indexPath, font)
         return cell
     }
 
@@ -118,8 +123,8 @@ extension LikeViewController: UICollectionViewDelegateFlowLayout {
 
     /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
         }
     }
 
@@ -147,6 +152,6 @@ extension LikeViewController {
 
     /// 새로고침
     @objc func refresh() {
-        self.viewDidLoad()
+        viewDidLoad()
     }
 }

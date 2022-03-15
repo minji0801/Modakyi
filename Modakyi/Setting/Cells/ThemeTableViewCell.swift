@@ -20,14 +20,14 @@ class ThemeTableViewCell: UITableViewCell {
     ]
 
     let title = [
-        "White",
-        "Black",
-        "Rolling",
-        "Lemon",
-        "Undergrowth",
-        "Lily",
-        "Bubbly",
-        "Meeting"
+        "백설기",
+        "검은콩",
+        "꿀떡",
+        "망고",
+        "쑥떡",
+        "구름",
+        "가지",
+        "블루베리스무디"
     ]
 
     func updateUI(_ row: Int) {

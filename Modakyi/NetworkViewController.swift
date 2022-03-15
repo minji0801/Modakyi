@@ -27,7 +27,7 @@ final class NetworkViewController: UIViewController {
         }
 
         alertController.addAction(endAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
 
     /// 화면 보여질 때마다: 다크모드 체크하기

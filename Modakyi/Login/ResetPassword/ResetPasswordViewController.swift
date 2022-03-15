@@ -24,12 +24,12 @@ final class ResetPasswordViewController: UIViewController {
 
     /// 화면 터치: 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
     /// X 버튼 클릭: 화면 닫기
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     /// 비밀번호 재설정 버튼 클릭
@@ -38,7 +38,7 @@ final class ResetPasswordViewController: UIViewController {
         viewModel.sendPasswordReset(email) { [weak self] alert in
             guard let self = self else { return }
 
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true)
         }
     }
 }

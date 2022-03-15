@@ -113,10 +113,9 @@ extension HomeViewController: UICollectionViewDataSource {
         }
 
         cell.contentView.backgroundColor = theme.secondaryColor
-        cell.textLabel.font = font.iPhoneSmallFont
 
         let text = viewModel.textInfo(at: indexPath.row)
-        cell.updateTextLabel(text)
+        cell.updateTextLabel(text, font)
         cell.updateNewImage(
             newTextIds: viewModel.newTextIDs,
             clicekdTextIds: viewModel.clickedTextIDs,
@@ -141,9 +140,8 @@ extension HomeViewController: UICollectionViewDataSource {
 
         header.recommendView.layer.cornerRadius = 30
         header.recommendView.backgroundColor = theme.secondaryColor
-        header.recommendLabel.font = font.iPhoneMediumFont
 
-        header.updateTextLabel(viewModel.recommendedTextId)
+        header.updateTextLabel(viewModel.recommendedTextId, font)
         header.settingButton.addTarget(self, action: #selector(settingButtonTapped(_:)), for: .touchUpInside)
         return header
     }
@@ -159,8 +157,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     /// 스크롤 당기기: 새로고침
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.refreshControl.isRefreshing {
-            self.refreshControl.endRefreshing()
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
         }
     }
 
