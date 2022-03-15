@@ -17,6 +17,7 @@ class VersionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appearanceCheck(self)
         navigationController?.navigationBar.isHidden = true
 
         currentVersionLabel.text = "현재 버전 : \(viewModel.getCurrentVersion())"

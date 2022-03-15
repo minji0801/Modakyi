@@ -37,7 +37,6 @@ final class ThanksTableViewCell: UITableViewCell {
         [   // Others
             "Minsun Hwang",
             "Habin Park",
-            "lovelove2915",
             "Aengja Shin"
         ]
     ]
