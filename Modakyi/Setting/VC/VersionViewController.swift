@@ -25,13 +25,9 @@ class VersionViewController: UIViewController {
 
         // 아이패드는 글자 크기 크게
         if UIDevice.current.model == "iPad" {
-            currentVersionLabel.font = font.iPadMediumFont
-            updatedVersionLabel.font = font.iPadMediumFont
-            updateButton.titleLabel?.font = font.iPadMediumFont
-        } else {
-            currentVersionLabel.font = font.iPhoneMediumFont
-            updatedVersionLabel.font = font.iPhoneMediumFont
-            updateButton.titleLabel?.font = font.iPhoneMediumFont
+            currentVersionLabel.font = UIFont.systemFont(ofSize: 20.0)
+            updatedVersionLabel.font = UIFont.systemFont(ofSize: 20.0)
+            updateButton.titleLabel?.font = updateButton.titleLabel?.font.withSize(25.0)
         }
     }
 

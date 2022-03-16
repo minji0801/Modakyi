@@ -21,8 +21,8 @@ extension UIColor {
             return UIColor.gray
         }
 
-        var rgbValue: UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
+        var rgbValue: UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
 
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -91,8 +91,14 @@ class ThemeManager {
         if let storedTheme = (UserDefaults.standard.value(forKey: selectedThemeKey) as AnyObject).integerValue {
             return Theme(rawValue: storedTheme)!
         } else {
-            // 저장된 테마가 없을 때
-            return .white
+            // 저장된 테마가 없을 때 Appearance 저장된 값있는지 확인
+            guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return .white }
+
+            if appearance == "Dark" {
+                return .black
+            } else {
+                return .white
+            }
         }
     }
 
