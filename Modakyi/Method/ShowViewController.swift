@@ -37,8 +37,6 @@ func showMainVCOnNavigation(_ viewController: UIViewController) {
 
 /// SettingViewController를 NavigationController에 push하기
 func pushSettingVCOnNavigation(_ viewController: UIViewController) {
-//    guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
-//            as? SettingViewController else { return }
     guard let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingTableViewController")
             as? SettingTableViewController else { return }
     viewController.navigationController?.pushViewController(settingViewController, animated: true)
@@ -97,7 +95,7 @@ func pushToFontViewController(_ viewController: UIViewController) {
 
 /// ThanksTableViewController를 push하기
 func pushToThanksTableViewController(_ viewController: UIViewController) {
-    guard let thanksTableViewController = storyboard.instantiateViewController(withIdentifier: "ThanksTableViewController")
-            as? ThanksTableViewController else { return }
+    guard let thanksTableViewController = storyboard.instantiateViewController(
+        withIdentifier: "ThanksTableViewController") as? ThanksTableViewController else { return }
     viewController.navigationController?.pushViewController(thanksTableViewController, animated: true)
 }

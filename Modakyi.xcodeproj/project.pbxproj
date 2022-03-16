@@ -471,6 +471,7 @@
 				C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */,
 				A55B5583273F6E5F00A3A814 /* Embed App Extensions */,
 				A57BA8B527B0F79B00BB647A /* SwiftLint */,
+				BF62A834AC0E4D3A03519E73 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -509,7 +510,7 @@
 			);
 			mainGroup = A59FAF9A272D5BE7000807A5;
 			packageReferences = (
-				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
 			);
 			productRefGroup = A59FAFA4272D5BE7000807A5 /* Products */;
 			projectDirPath = "";
@@ -588,6 +589,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		BF62A834AC0E4D3A03519E73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Modakyi/Pods-Modakyi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		C02A572AD2756A7B6C849832 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -906,7 +924,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -919,7 +937,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A5335CA727AD67F200C67292 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -6,14 +6,14 @@
 //  로그인 ViewController
 
 import UIKit
-//import GoogleSignIn
+import GoogleSignIn
 import AuthenticationServices
 
 final class LoginViewController: UIViewController {
     let viewModel = LoginViewModel()
 
     @IBOutlet weak var emailLoginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     @IBOutlet weak var indicatorView: UIView!
 
@@ -39,13 +39,13 @@ final class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearanceCheck(self)
-//        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
+        GIDSignIn.sharedInstance().presentingViewController = self  // Google Sign In
         navigationController?.navigationBar.isHidden = true
     }
 
     /// 구글 로그인 버튼 클릭
     @IBAction func googleLoginButtonTapped(_ sender: UIButton) {
-//        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().signIn()
     }
 
     /// 애플 로그인 버튼 클릭

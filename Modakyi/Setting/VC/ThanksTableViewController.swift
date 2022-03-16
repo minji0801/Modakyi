@@ -27,7 +27,7 @@ final class ThanksTableViewController: UITableViewController {
 
 // MARK: - Configure TableView Section
 extension ThanksTableViewController {
-    
+
     /// 섹션 수
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4

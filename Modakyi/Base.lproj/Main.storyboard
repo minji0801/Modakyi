@@ -60,12 +60,12 @@
                                 <rect key="frame" x="0.0" y="124" width="414" height="618"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="홈에서 추천 글귀와 전체 글귀를 만날 수 있어요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atc-Mv-ec5">
-                                        <rect key="frame" x="100.5" y="0.0" width="213" height="47"/>
+                                        <rect key="frame" x="98" y="0.0" width="218.5" height="58"/>
                                         <fontDescription key="fontDescription" name="EliceDigitalBaeumOTF" family="Elice DigitalBaeum OTF" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="page0" translatesAutoresizingMaskIntoConstraints="NO" id="vg7-3A-yfd">
-                                        <rect key="frame" x="0.0" y="97" width="414" height="521"/>
+                                        <rect key="frame" x="0.0" y="108" width="414" height="510"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -110,17 +110,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="18v-yo-D08">
-                                <rect key="frame" x="87.5" y="193.5" width="239.5" height="151"/>
+                                <rect key="frame" x="108.5" y="192.5" width="197" height="152.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_modakyi" translatesAutoresizingMaskIntoConstraints="NO" id="XPr-Ui-os2">
-                                        <rect key="frame" x="79.5" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="58.5" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="0UI-zD-DdW"/>
                                             <constraint firstAttribute="width" constant="80" id="XyG-AB-AdL"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마음을 따뜻하게 해주는 글귀들을 만나보세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdY-tX-JVE">
-                                        <rect key="frame" x="0.0" y="90" width="239.5" height="61"/>
+                                        <rect key="frame" x="0.0" y="90" width="197" height="62.5"/>
                                         <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -128,7 +128,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-33-NJY">
-                                <rect key="frame" x="57" y="394.5" width="300" height="250"/>
+                                <rect key="frame" x="57" y="395" width="300" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tf-n8-Qhj">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="55"/>
@@ -264,7 +264,7 @@
                                 <rect key="frame" x="0.0" y="298" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSG-kZ-SHD">
-                                        <rect key="frame" x="189.5" y="13.5" width="35" height="23.5"/>
+                                        <rect key="frame" x="193.5" y="13" width="27" height="24"/>
                                         <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -273,7 +273,7 @@
                                         <rect key="frame" x="356" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4qQ-uv-xev"/>
-                                            <constraint firstAttribute="width" constant="50" id="kY3-b4-fkg"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="kY3-b4-fkg"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
@@ -522,7 +522,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6m-vn-0Mk">
                                                 <rect key="frame" x="250" y="-3" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="cqV-np-O93"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="cqV-np-O93"/>
                                                     <constraint firstAttribute="height" constant="50" id="j6V-tr-9ZB"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
@@ -664,7 +664,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아하는 글귀모음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIi-PQ-iGm">
-                                            <rect key="frame" x="20" y="14.5" width="187.5" height="31"/>
+                                            <rect key="frame" x="20" y="14.5" width="147.5" height="31"/>
                                             <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -763,7 +763,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미사용 글귀모음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVg-M9-qKD">
-                                            <rect key="frame" x="20" y="14.5" width="165" height="31"/>
+                                            <rect key="frame" x="20" y="14.5" width="129.5" height="31"/>
                                             <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -917,7 +917,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글귀 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-BC-Jsa">
-                                                    <rect key="frame" x="20" y="14.5" width="97.5" height="31"/>
+                                                    <rect key="frame" x="20" y="14.5" width="78.5" height="31"/>
                                                     <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1043,7 +1043,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-E9-Y4R">
-                                                    <rect key="frame" x="20" y="14.5" width="90" height="31"/>
+                                                    <rect key="frame" x="20" y="14.5" width="71" height="31"/>
                                                     <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1052,7 +1052,7 @@
                                                     <rect key="frame" x="354" y="5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="AJs-DS-RbG"/>
-                                                        <constraint firstAttribute="width" constant="50" id="USG-wZ-1Wr"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="USG-wZ-1Wr"/>
                                                     </constraints>
                                                     <color key="tintColor" systemColor="systemGrayColor"/>
                                                     <state key="normal" title="Button"/>
@@ -1093,7 +1093,7 @@
                                             </connections>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 글귀모음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoy-ep-7z9">
-                                            <rect key="frame" x="20" y="284.5" width="142.5" height="30.5"/>
+                                            <rect key="frame" x="20" y="283.5" width="112.5" height="31.5"/>
                                             <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1271,7 +1271,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8q-xg-jHs">
-                                                <rect key="frame" x="20" y="14.5" width="90" height="31"/>
+                                                <rect key="frame" x="20" y="14.5" width="71" height="31"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1279,7 +1279,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGL-Oe-Dte">
                                                 <rect key="frame" x="354" y="5" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="LV4-AH-erN"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="LV4-AH-erN"/>
                                                     <constraint firstAttribute="height" constant="50" id="cSy-je-7dz"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
@@ -1401,7 +1401,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천해요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRD-Dv-6c4">
-                                                <rect key="frame" x="20" y="14.5" width="90" height="31"/>
+                                                <rect key="frame" x="20" y="14.5" width="71" height="31"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1410,7 +1410,7 @@
                                                 <rect key="frame" x="354" y="5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="FhG-6x-WNk"/>
-                                                    <constraint firstAttribute="width" constant="50" id="RfY-c3-QIV"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="RfY-c3-QIV"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <state key="normal" title="Button"/>
@@ -1518,7 +1518,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yb0-Ji-UYj">
-                                <rect key="frame" x="97" y="345.5" width="220" height="165"/>
+                                <rect key="frame" x="97" y="345" width="220" height="166"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_modakyi" translatesAutoresizingMaskIntoConstraints="NO" id="UY2-kZ-Qpq">
                                         <rect key="frame" x="80" y="0.0" width="60" height="60"/>
@@ -1528,13 +1528,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모닥이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfV-GU-o1Z">
-                                        <rect key="frame" x="58" y="80" width="104" height="47"/>
+                                        <rect key="frame" x="70.5" y="80" width="79.5" height="48"/>
                                         <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g20-T6-sdG">
-                                        <rect key="frame" x="0.0" y="147" width="220" height="18"/>
+                                        <rect key="frame" x="0.0" y="148" width="220" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 버전 : 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-Pz-Ee9">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
@@ -1567,15 +1567,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjr-UD-6WV">
-                                <rect key="frame" x="107" y="718.5" width="200" height="43.5"/>
+                                <rect key="frame" x="82" y="712" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="vvQ-dD-a1w"/>
+                                    <constraint firstAttribute="height" constant="50" id="qDW-GX-O1j"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="vvQ-dD-a1w"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Go to update">
-                                    <fontDescription key="titleFontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="25"/>
+                                <buttonConfiguration key="configuration" style="plain" title="업데이트하러 가기">
+                                    <fontDescription key="titleFontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="updateButtonTapped:" destination="efw-te-LIT" eventType="touchUpInside" id="eaq-Wh-XIW"/>
@@ -1629,7 +1630,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vVl-hN-b5x">
-                                <rect key="frame" x="10" y="345.5" width="394" height="215"/>
+                                <rect key="frame" x="10" y="345" width="394" height="216.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_circle" translatesAutoresizingMaskIntoConstraints="NO" id="vup-3j-T21">
                                         <rect key="frame" x="157" y="0.0" width="80" height="80"/>
@@ -1641,20 +1642,20 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="thin"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eKx-3b-iOf">
-                                        <rect key="frame" x="151" y="100" width="92.5" height="115"/>
+                                        <rect key="frame" x="160.5" y="100" width="73" height="116.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="사용자 이름" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ok7-o1-15z">
-                                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7nI-hs-H7h">
-                                                <rect key="frame" x="0.0" y="45" width="92.5" height="25"/>
+                                                <rect key="frame" x="0.0" y="45.5" width="73" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="익명 로그인" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bC5-UB-oa6">
-                                                <rect key="frame" x="0.0" y="90" width="92.5" height="25"/>
+                                                <rect key="frame" x="1.5" y="91" width="70" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1751,7 +1752,7 @@
                                 <rect key="frame" x="354" y="44" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yD8-Mu-75D" secondAttribute="height" multiplier="1:1" id="BSe-ey-pFN"/>
-                                    <constraint firstAttribute="width" constant="60" id="dus-UD-0VD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="dus-UD-0VD"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
@@ -1769,7 +1770,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn9-lg-zTu">
-                                                <rect key="frame" x="152" y="10" width="90" height="30.5"/>
+                                                <rect key="frame" x="161" y="9.5" width="72" height="31.5"/>
                                                 <fontDescription key="fontDescription" name="HSSaemaul-Regular" family="HSSaemaul" pointSize="26"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
