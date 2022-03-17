@@ -1,17 +1,19 @@
 <div align="center">
   
   <!-- Header -->
-  ![header](https://capsule-render.vercel.app/api?type=waving&color=E76140&height=300&section=header&text=모닥이&desc=글귀%20%2F%20명언%20모음%20앱&descAlignY=60&fontSize=85&fontAlignY=40&fontColor=FFFFFF)
+  ![header](https://capsule-render.vercel.app/api?type=waving&color=E76140&height=250&section=header&text=모닥이&desc=글귀%20%2F%20명언%20모음%20앱&descAlignY=55&fontSize=70&fontAlignY=35&fontColor=FFFFFF)
+  
+  모닥불 앞에 있으면 몸이 따뜻해지듯이, 모닥이가 당신의 마음을 따뜻하게 어루만져 주길.
   
   <br/>
+  
+  ### Modakyi : Sayings Collection App
+  Like getting warm in front of a bonfire, Hope Modakyi warms your heart.
+  
   <br/>
   
   <!-- Badge -->
-  ![version](https://img.shields.io/badge/v-1.4.0-brightgreen?style=flat-square)
-  
-  <br/>
-  <br/>
-  
+  ![version](https://img.shields.io/badge/v-1.5.0-brightgreen?style=flat-square)
   ![iOS](https://img.shields.io/badge/iOS-000000?style=flat-square&logo=iOS&logoColor=white)
   ![Swift](https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=Swift&logoColor=white)
   ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=black)
@@ -21,317 +23,55 @@
   [![App Store](https://img.shields.io/badge/App%20Store-0D96F6?style=flat-square&logo=App%20Store&logoColor=white)](https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726)
   [![Notion](https://img.shields.io/badge/Notion-181717?style=flat-square&logo=Notion&logoColor=white)](https://www.notion.so/4bd9c3e1fe5d46648565a364523ce7b7)
   [![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=Gmail&logoColor=white)](https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=modakyi.help@gmail.com)
-
-  <br/>
-  <br/>
-  <br/>
-
-  #### 모닥불 앞에 있으면 몸이 따뜻해지듯이,
-
-  #### 모닥이가 당신의 마음을 따뜻하게 어루만져 주길.
+  
 </div>
 
-<br/>
-<br/>
-<br/>
-
 <!-- Navigation -->
-# 목차
-1. [개발 동기](#-개발-동기)
-2. [개발 목표](#-개발-목표)
-3. [로그인](#-로그인)
-4. [글귀 관리](#-글귀-관리)
-5. [추천 글귀와 전체 글귀](#-추천-글귀와-전체-글귀)
-6. [글귀 상세 보기](#-글귀-상세-보기)
-7. [좋아하는 글귀와 미사용 글귀](#-좋아하는-글귀와-미사용-글귀)
-8. [글귀 검색](#-글귀-검색)
-9. [설정](#-설정)
-10. [화면 및 디자인](#-화면-및-디자인)
-11. [이번에 처음 다룬 것](#-이번에-처음-다룬-것)
-12. [만나러 가기](#-만나러-가기)
-13. [버전 기록](#-버전-기록)
+## Navigation
+1. [Motive](#Motive)
+2. [Goals](#Goals)
+3. [Login](#Login)
+4. [Text Management](#Text-Management)
+5. [Home](#Home)
+6. [Detail](#-글귀-상세-보기)
+7. [Favorite and Unused](#-좋아하는-글귀와-미사용-글귀)
+8. [Search](#-글귀-검색)
+9. [Settings](#-설정)
+10. [Design](#Design)
+11. [First Time](#First-Time)
+12. [Meet](#Meet)
+13. [History](#History)
 
 <br/>
 
-<!-- 1. 개발 동기 -->
-## 🔥 개발 동기
-- **매번 공부 자극 글귀를 찾아보기 귀찮다.**
-  - 매일 플래너에 공부 자극 글귀나 명언을 작성하는 데에 불편함이 있다.
-  - SNS에 저장해 둔 공부 자극 글귀를 매번 찾아서 확인해야 한다.
-
-- **공부 자극 글귀의 사용 여부를 기억하기 힘들다.**
-  - 해당 공부 자극 글귀를 사용한 적 있는지 의문이 들 때가 종종 있다.
-  - 글귀 사용 여부를 체크할 수 있다면 편리할 것이다.
+<!-- 1. Motive -->
+## Motive
+I find sayings on social media every day and write them down on my planner. It is cumbersome to look up every time, and there is a limit to remembering whether or not to use it. So I made a collection of sayings app, Modakyi.
 
 <br/>
 
-<!-- 2. 개발 목표 -->
-## 🎯 개발 목표
-- **글귀 확인**
-  - 공부 자극 글귀나 명언들을 한 화면에서 편리하게 확인할 수 있다.
-  - 특정 모음으로 모아서 한곳에서 볼 수 있도록 한다.
-
-- **사용 여부 표시**
-  - 사용자가 글귀를 사용했는지의 여부를 표시한다.
-  - 사용하지 않은 순으로 정렬하거나 따로 모아볼 수 있도록 한다.
-
-- **좋아하는 글귀 표시**
-  - 사용자가 글귀에 좋아요를 표시하고 따로 모아서 확인할 수 있다.
-
-- **글귀 추천**
-  - 사용자가 앱에 접속할 때마다 랜덤한 글귀를 추천하는 공간을 제공한다.
+<!-- 2. Goals -->
+## Goals
+- Users can easily see the sayings in one space.
+- Users can indicate whether they like or used the sayings, and view them separately.
+- Every time the user accesses the app, recommend a random saying.
 
 <br/>
 
-<!-- 3. 로그인 -->
-## 📲 로그인
-앱에 접속했을 때 처음 접하는 화면이 로그인 화면이다. 현재 사용자가 있는지를 체크하고 없으면 그대로 로그인 화면을 보여주고, 현재 사용자가 있으면 메인 화면으로 이동한다. 로그인은 총 4종류로 모두 FirebaseAuth를 이용해서 구현했다.
+<!-- 3. Login -->
+## Login
+When you access the app, the first screen you see is the login screen. If there is a currently logged in user, it moves to the main screen (home). There are 4 types of login, all using ```FirebaseAuth```. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Login)
+
+<p align="left"><img alt="Login" width="200" src="https://user-images.githubusercontent.com/49383370/158805754-418696d8-d449-4df6-b2ae-d0fcb17c1d2a.png"></p>
+
+> At first, only email, Google, and Apple logins were implemented, but Apple rejected the application saying that it should be possible to use the app without login. This is described in [App Store Review Guidelines 5.1.1(v)](https://developer.apple.com/kr/app-store/review/guidelines/#data-collection-and-storage).
 
 <br/>
 
-<p align="center"><img alt="로그인" src="https://user-images.githubusercontent.com/49383370/156298479-5fba1736-2dd3-4656-9eba-57e0a165005f.png" width="200"></p>
+<!-- 4. Text Management -->
+## Text Management
+The text is stored and used in the following format. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Model)
 
-<br/>
-
-### 1. 이메일 로그인
-FirebaseAuth의 **createUser** 메서드를 이용해서 사용자로부터 입력받은 이메일과 비밀번호로 **새로운 유저정보를 생성**한다. 이미 가입한 계정이라면 **signIn** 메서드로 **로그인을 진행**한다.
-
-<br/>
-
-file: EnterEmailViewModel
-```swift
-import FirebaseAuth
-
-/// 신규 사용자 생성
-func createUser(_ email: String, _ password: String, completion: @escaping (String, Error?) -> Void) {
-    Auth.auth().createUser(withEmail: email, password: password) { _, error in
-        if let error = error {
-            let code = (error as NSError).code
-            switch code {
-            case 17007: // 이미 가입한 계정일 때 로그인하기
-                completion("signin", error)
-            default:
-                completion("error", error)
-            }
-        } else {
-            completion("signup", error)
-        }
-    }
-}
-
-/// 이메일 로그인
-func loginUser(withEmail email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-    Auth.auth().signIn(withEmail: email, password: password) { _, error in
-        if let error = error {
-            completion(false, error)
-        } else {
-            completion(true, error)
-        }
-    }
-}
-```
-
-<br/>
-
-### 2. 구글 로그인
-**GoogleSignIn**을 이용해서 구글 로그인을 구현했다. 구글 로그인 인증이 완료되면 **FirebaseAuth**의 **signIn** 메서드로 로그인을 진행한다. 처음 가입한 사용자의 경우 닉네임과 프로필 이미지를 데이터베이스에 저장하기 위해서  **setValueCurrentUser** 사용자 정의 함수를 호출한 후 메인화면으로 이동한다. 
-
-<br/>
-
-file: LoginViewController
-```swift
-import GoogleSignIn
-
-/// 구글 로그인 버튼 클릭
-@IBAction func googleLoginButtonTapped(_ sender: UIButton) {
-    GIDSignIn.sharedInstance().signIn()
-}
-```
-
-<br/>
-
-file: AppDelegate
-```swift
-import GoogleSignIn
-
-func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    // Google 로그인 인증 후 전달된 값을 처리하는 부분
-    if let error = error {
-        print("ERROR Google Sign In \(error.localizedDescription)")
-        return
-    }
-
-    guard let authentication = user.authentication else { return }
-    let credential = GoogleAuthProvider.credential(
-        withIDToken: authentication.idToken,
-        accessToken: authentication.accessToken
-    )
-
-    Auth.auth().signIn(with: credential) { _, _ in
-        // Google Login User 데이터 만들기
-        setValueCurrentUser()
-        showMainVCOnRoot()
-    }
-}
-```
-
-
-<br/>
-
-### 3. 애플 로그인
-애플 계정을 이용한 로그인에는 **AuthenticationServices**와 **CryptoKit** 프레임워크를 사용했다. 애플 로그인 시 이메일을 가릴지 보여줄 지 선택할 수 있는 부분이 있다. 이메일을 가리면 랜덤한 이메일이 부여가되는데, CryptoKit으로 안전하게 암호화된 랜덤한 난수를 만든다.
-
-<br/>
-
-file: LoginViewModel
-```swift    
-import AuthenticationServices
-import CryptoKit
-
-/// 애플 로그인 시작
-func startSignInWithAppleFlow(_ viewController: LoginViewController) {
-    let nonce = randomNonceString()
-    currentNonce = nonce
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-    let request = appleIDProvider.createRequest()
-    request.requestedScopes = [.fullName, .email]
-    request.nonce = sha256(nonce)
-
-    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-    authorizationController.delegate = viewController
-    authorizationController.presentationContextProvider = viewController
-    authorizationController.performRequests()
-}
-
-/// 애플 계정으로 로그인하기
-func signInAppleUser(_ idTokenString: String, _ nonce: String, completion: @escaping () -> Void) {
-    let credential = OAuthProvider.credential(
-        withProviderID: "apple.com",
-        idToken: idTokenString, rawNonce: nonce
-    )
-
-    Auth.auth().signIn(with: credential) { _, error in
-        if let error = error {
-            print("Error Apple sign in: %@", error)
-            return
-        }
-        completion()
-    }
-}
-```
-
-<br/>
-
-그리고 LoginViewController에 상속되어 있는 **ASAuthorizationControllerDelegate**에서 아이디 토큰과 난수를 가지고 **credential**을 만든다. 이 credential 값으로 FirebaseAuth의 **signIn** 메서드를 통해 로그인한다.
-
-<br/>
-
-file: LoginViewController
-```swift
-// MARK: - Apple Login Configure
-extension LoginViewController: ASAuthorizationControllerDelegate {
-    func authorizationController(
-        controller: ASAuthorizationController,
-        didCompleteWithAuthorization authorization: ASAuthorization
-    ) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            /*
-             Nonce 란?
-             - 암호화된 임의의 난수
-             - 단 한번만 사용할 수 있는 값
-             - 주로 암호화 통신을 할 때 활용
-             - 동일한 요청을 짧은 시간에 여러번 보내는 릴레이 공격 방지
-             - 정보 탈취 없이 안전하게 인증 정보 전달을 위한 안전장치
-             */
-            guard let nonce = viewModel.currentNonce else {
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-            }
-            guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
-                return
-            }
-            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-                return
-            }
-
-            // Show Indicator
-            viewModel.showIndicator(self)
-
-            viewModel.signInAppleUser(idTokenString, nonce) { [weak self] in
-                guard let self = self else { return }
-
-                // Apple Login User 데이터 만들고 메인으로 이동
-                setValueCurrentUser()
-                showMainVCOnNavigation(self)
-
-                // Hide Indicator
-                self.viewModel.hideIndicator(self)
-            }
-        }
-    }
-}
-```
-
-<br/>
-
-### 4. 익명 로그인
-익명 로그인은 처음에 구현하지 않았는데, 로그인이 필요한 앱은 **로그인 없이도 사용할 수 있어야한다**는 애플의 지침에 맞추기 위해서 추가했다. **FirebaseAuth**에서 익명 로그인을 지원한다. 다만, **로그아웃하면 데이터가 삭제**되기 때문에 관련 로그아웃 Alert 창을 띄우도록 구현했다.
-
-<br/>
-
-Alert 창에서 '네'를 선택하면 FirebaseAuth의 **signInAnonymously** 메서드로 익명 로그인을 진행한다. 
-
-<br/>
-
-file: LoginViewModel
-```swift
-import FirebaseAuth
-
-/// 익명 로그인 Alert 창
-func anonymousLoginAlert(
-    _ viewController: LoginViewController,
-    completion: @escaping () -> Void
-) -> UIAlertController {
-    let alertController = UIAlertController(
-        title: "로그인 건너뛰기",
-        message: "로그아웃 또는 앱 삭제 시 데이터가 삭제될 수 있습니다. 진행하시겠습니까?",
-        preferredStyle: .alert
-    )
-
-    let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-        guard let self = self else { return }
-
-        // Show Indicator
-        self.showIndicator(viewController)
-
-        // 익명 데이터 생성
-        Auth.auth().signInAnonymously { _, error in
-            if let error = error {
-                print("Error Anonymously sign in: %@", error)
-                return
-            }
-            completion()
-        }
-    }
-
-    let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-
-    alertController.addAction(cancelAction)
-    alertController.addAction(confirmAction)
-    return alertController
-}
-```
-
-<br/>
-
-<!-- 4. 글귀 관리 -->
-## 📝 글귀 관리
-글귀는 StudyStimulateText 구조체 형태로 저장되어 사용된다.
-
-<br/>
-
-file: StudyStimulateText
 ```swift
 struct StudyStimulateText: Codable {
     let id: String      // 글귀 아이디
@@ -344,90 +84,21 @@ struct StudyStimulateText: Codable {
 
 <br/>
 
-실제로 Firebase RealtimeDatabase에 아래와 같은 모습으로 글귀가 저장된다. (Text+글귀 아이디)를 해당 데이터의 고유 아이디로 사용한다. 새로운 글귀는 매일 1개씩 데이터베이스에 추가하여 관리하고 있다.
+In fact, the text is stored in the Firebase ```RealtimeDatabase``` as follows. ```('Text' + textID)``` is used as a unique ID. One new text is added and managed every day.
+
+<p align="left"><img alt="data" width="400" src="https://user-images.githubusercontent.com/49383370/155842262-955d605e-67d1-4357-8c71-5fbb3aaf8d47.png"></p>
 
 <br/>
 
-<p align="center"><img alt="데이터" src="https://user-images.githubusercontent.com/49383370/155842262-955d605e-67d1-4357-8c71-5fbb3aaf8d47.png" width="400"></p>
+<!-- 5. Home -->
+## Home
+On the home screen, ```recommended text and all texts``` are displayed. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Home)
 
-<br/>
+By accessing the Text path of Firebase RealitimeDatabase, the entire text is fetched, and a random value from the entire text is fetched as the recommended text ID. And if it is ```within two days``` from the upload time to today, it is classified as a new text.
 
-<!-- 5. 추천 글귀와 전체 글귀 -->
-## 🏠 추천 글귀와 전체 글귀
-모닥이의 홈 화면에서 추천 글귀와 전체 글귀를 보여준다.
+```A red dot``` is displayed in the cell of the new text. If the user has already clicked, the red dot is not displayed.
 
-<br/>
-
-<p align="center"><img alt="홈" src="https://user-images.githubusercontent.com/49383370/156298643-4127155e-d0b9-4d03-93d7-999c470a9d2e.png" width="200"></p>
-
-<br/>
-
-Firebase **RealitimeDatabase의 Text 경로**로 접근하여 전체 글귀를 가져오고, 전체 글귀에서 **랜덤한 값을 추천 글귀 아이디로** 가져온다. 그리고 업로드 시간부터 금일까지 하루가 안지났으면 **새로운 글귀**로 분류하여 가져온다.
-
-<br/>
-
-file: HomeViewModel
-```swift
-import FirebaseAuth
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid: String? = Auth.auth().currentUser?.uid
-
-lazy var fullText: [StudyStimulateText] = [] // 전체 글귀
-lazy var recommendedTextId = ""             // 추천 글귀 id
-lazy var newTextIDs: [String] = []          // 새 글귀 id
-
-/// 전체 글귀, 추천 글귀 아이디, 새로운 글귀 아이디 가져오기
-func getFullText(completion: @escaping () -> Void) {
-    ref.child("Text").observe(.value) { [weak self] snapshot in
-        guard let self = self,
-              let value = snapshot.value as? [String: [String: String]] else { return }
-
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: value)
-            let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-            let texts = Array(textData.values)
-
-            self.fullText = texts.sorted { Int($0.id)! > Int($1.id)! }
-            self.recommendedTextId = self.fullText.randomElement()!.id
-            self.newTextIDs = self.fullText.filter { self.timeDifference(uploadTime: $0.time) }.map { $0.id }
-            completion()
-
-        } catch let error {
-            print("ERROR JSON Parsing \(error.localizedDescription)")
-        }
-    }
-}
-```
-
-<br/>
-
-새로운 글귀의 셀에 **빨간 점**을 표시할건데, 만약 사용자가 **이미 클릭한적이 있다면 빨간 점을 보여주지 않을 것**이다. 그래서 **User의 clicked 경로**로 접근하여 현재 사용자가 클릭한 글귀의 아이디를 가져온다.
-
-<br/>
-
-file: HomeViewModel
-```swift
-import FirebaseAuth
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid: String? = Auth.auth().currentUser?.uid
-
-lazy var clickedTextIDs: [String] = []      // 클릭한 글귀 id
-    
-/// 사용자가 클릭한 글귀 아이디 가져오기
-func getClickedTextId() {
-    ref.child("User/\(uid!)/clicked").observe(.value) { [weak self] snapshot in
-        guard let self = self else { return }
-
-        if let value = snapshot.value as? [String] {
-            self.clickedTextIDs = value
-        }
-    }
-}
-```
+<p align="left"><img alt="home" width="200" src="https://user-images.githubusercontent.com/49383370/158813134-1837fced-5410-47c6-8da0-608f631aba7d.png"></p>
 
 <br/>
 
@@ -1051,38 +722,23 @@ func getUpdatedVersion() -> String {
 
 <br/>
 
-<!-- 10. 화면 및 디자인 -->
-## 🌈 화면 및 디자인
+<!-- 10. Design -->
+## Design
 ### Point Color
-
-모닥이의 상징인 모닥불이 연상되는 '다홍색'을 포인트 색상으로 넣었다.
-
-<br/>
-
-<p align="left"><img src="https://user-images.githubusercontent.com/49383370/155312772-f11a795b-02f3-41b7-a48c-8bf855998449.png"></p>
-
-<br/>
+The color is reminiscent of the bonfire, the symbol of Modakyi.
+<p align="left"><img alt="color" width="100" src="https://user-images.githubusercontent.com/49383370/155312772-f11a795b-02f3-41b7-a48c-8bf855998449.png"></p>
 
 ### App Icon
-
-아이콘 이미지도 모닥불을 표현하기 위해서 포인트 색상으로 불 이미지로 구성했다. 모닥이를 통해서 모두의 마음이 따뜻해지길 바람을 표현한 것이다.
-
-<br/>
-
-<p align="left"><img src="https://user-images.githubusercontent.com/49383370/155313186-0e16889a-f425-4434-a019-8c734ef2ec19.png" width="100"></p>
-
-<br/>
+To express the bonfire, it is composed of a fire image with a point color.
+<p align="left"><img alt="icon" width="100" src="https://user-images.githubusercontent.com/49383370/155313186-0e16889a-f425-4434-a019-8c734ef2ec19.png"></p>
 
 ### UI/UX
+<p align="center"><img alt="UI" src="https://user-images.githubusercontent.com/49383370/158762919-2e181fb7-4874-477c-9f2a-86107146ae7a.png"></p>
 
 <br/>
 
-<p align="center"><img alt="UI" src="https://user-images.githubusercontent.com/49383370/156299532-784cd383-870b-4d12-8af2-d48418d2ad66.png"></p>
-
-<br/>
-
-<!-- 11. 이번에 처음 다룬 것 -->
-## 🐥 이번에 처음 다룬 것
+<!-- 11. First Time -->
+## First Time
 ### 1. Firebase(Realtime Database, FCM, Authentication)
 여태까지 UserDefaults를 활용해 기기 로컬에 데이터를 저장했는데, 이번에는 클라우드 서비스인 Firebase의 Realtime Database에 데이터가 저장되도록 구현했다. 그리고 FCM(Firebase Cloud Messaging)으로 매일 새로운 글귀 업로드 알림을 사용자 기기로 보낸다. 또, 인증 서비스를 이용해서 이메일 로그인, 소셜(구글, 애플) 로그인, 익명 로그인도 구현했다.
 
@@ -1119,8 +775,8 @@ Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 Messag
 
 <br/>
 
-<!-- 12. 만나러 가기 -->
-## 👀 만나러 가기
+<!-- 12. Meet -->
+## Meet
 ### App Store
 > https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726
 
@@ -1132,43 +788,49 @@ Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 Messag
 
 <br/>
 
-<!-- 13. 버전 기록 -->
-## 🚀 버전 기록
-### v1.0.0 (2021. 11. 25)
-> - 기본 기능 제공 (추천・전체 글귀 확인, 좋아하는 글귀・사용한 글귀 표시, 글귀 검색 등)
-> - 한 번 거절 (사유: 익명 로그인 불포함)
+<!-- 13. History -->
+## History
+### v1.0.0 (2021.11.25)
+> - Provides basic functions
+> - Reject once (Reason: No anonymous login)
 
-### v1.0.1 (2021. 11. 26)
-> - 로그아웃 오류 수정(익명 유저가 아닐 때 로그아웃을 진행하도록 더 명확한 코드 작성)
+### v1.0.1 (2021.11.26)
+> - Fix logout error (write clearer code to proceed with logout when not an anonymous user)
 
-### v1.0.2 (2021. 12. 3)
-> - 이메일 로그인 로딩(Indicator) 추가
-> - 앱 업데이트 알림(Siren) 기능 삭제
+### v1.0.2 (2021.12.3)
+> - Add email login loading step
+> - Delete app update notification (Siren)
 
-### v1.1.0 (2021. 12. 5)
-> - 글귀 하단 배너 광고 추가
-> - 앱 최신 버전 가져오기 수정
+### v1.1.0 (2021.12.5)
+> - Add banner ad at the bottom of the text
+> - Fix getting the latest version
 
-### v1.2.0 (2021. 12. 13)
-> - 글귀 공유하기 기능 추가
-> - 한 번 거절 (사유: Popover로 띄워지는 공유하기 화면이 iPad에서 보이지 않음) 
+### v1.2.0 (2021.12.13)
+> - Add text sharing
+> - Reject 1 time (Reason: Shared screen marked with Popover is not visible on iPad)
 
 ### v1.3.0 (2022.1.13)
-> - 앱 추적 권한 추가
-> - 전면 광고 추가
+> - Add app tracking permission
+> - Add interstitial ads
 
 ### v1.4.0 (2022.2.6)
-> - 앱 평가 기능 추가
-> - 설정 화면 UI, 글귀 공유 아이콘 변경
-> - 튜토리얼 화면 수정
-> - 좋아하는 글귀 모음, 미사용 글귀 모음, 글귀 검색에 당겨서 새로고침 추가
+> - Add app rating
+> - Settings screen UI, text sharing icon change
+> - Edit tutorial screen
+> - Add pull-to-refresh to Favorite Phrases, Unused Phrases, and Phrases Search
 
 ### v1.4.1 (2022.3.2)
-> - 애플 로그이, 익명 로그인에 로딩 단계 추가
-> - UI(아이콘 및 색상 등) 변경
-> - 다크모드 관려 오류 수정
-> - iPad 화면 회전 고정
-> - 내부 구조 변경(MVVM)
+> - Add loading step to Apple login, anonymous login
+> - UI change (icons and colors, etc.)
+> - Fix dark mode error
+> - Freeze iPad screen (no rotation)
+> - Architecture change (MVVM)
+
+### v1.5.0 (2022.3.17)
+> - Settings screen change (TableView)
+> - Add themes and fonts
+> - Correct the time of the latest text (2 days)
+> - Correction of errors in inquiries and comments
 
 <br/>
 <br/>
