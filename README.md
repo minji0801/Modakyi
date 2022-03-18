@@ -33,10 +33,10 @@
 3. [Login](#Login)
 4. [Text Management](#Text-Management)
 5. [Home](#Home)
-6. [Detail](#-글귀-상세-보기)
-7. [Favorite and Unused](#-좋아하는-글귀와-미사용-글귀)
-8. [Search](#-글귀-검색)
-9. [Settings](#-설정)
+6. [Detail](#Detail)
+7. [Favorite and Unused](#Favorite-and-Unused)
+8. [Search](#Search)
+9. [Settings](#Settings)
 10. [Design](#Design)
 11. [First Time](#First-Time)
 12. [Meet](#Meet)
@@ -102,399 +102,63 @@ By accessing the Text path of Firebase RealitimeDatabase, the entire text is fet
 
 <br/>
 
-<!-- 6. 글귀 상세 보기 -->
-## 👀 글귀 상세 보기
-글귀를 클릭하면 내용을 크게 볼 수 있다. 그리고 해당 글귀의 좋아요, 사용 여부를 체크할 수 있고 텍스트나 이미지로 공유할 수 있다.
+<!-- 6. Detail -->
+## Detail
+This is the screen that appears when you click a cell. You can check whether you like or used the phrase, and you can share it as text or an image. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Detail)
+
+<p align="left"><img alt="detail" width="200" src="https://user-images.githubusercontent.com/49383370/158944623-f1bfe149-fb7a-47b1-a0d5-3adf373dce8f.png"></p>
 
 <br/>
 
-<p align="center"><img alt="상세" src="https://user-images.githubusercontent.com/49383370/156298736-15b4c168-5090-4e95-8c41-168807106c55.png" width="200"></p>
+When this screen is displayed, the ```text ID``` is passed, and text information is retrieved with this id.
+
+Like and used is checked every time the screen is shown (viewWillAppear). Access the ```User/(user uid)/like``` and ```User/(user uid)/used``` paths to get the favorite texts IDs (likeTextIDs) and used texts IDs (usedTextIDs), respectively. If the id of the current text is included here, the button is displayed as selected.
+
+When the text or image sharing button is clicked, a notification is received from the ```NotificationCenter``` and the sharing screen is displayed.
+
 
 <br/>
 
-글귀 상세 화면을 보여줄 때 해당 글귀의 아이디를 넘겨주도록 구현했다.
+<!-- 7. Favorite and Unused -->
+## Favorite and Unused
+This is a screen where user can see only the texts that user like. Access the ```User/(useruid)/like``` path to get the ID of the text that the user likes. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Like)
+
+<p align="left"><img alt="favorite" width="200" src="https://user-images.githubusercontent.com/49383370/158946521-fefeb400-455a-48aa-8a36-146e18701880.png"></p>
 
 <br/>
 
-file: ShowViewController
-```swift
-import FirebaseAuth
-import FirebaseDatabase
+This is a screen where the user can see only the texts that have not been used yet. Access the ```User/(useruid)/used``` path and get the opposite value of the ID of the text used by the user. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Unused)
 
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid = Auth.auth().currentUser?.uid
-
-lazy var id = ""                // 글귀 아이디
-
-/// DetailViewController를 present하기
-func presentDetailViewController(_ viewController: UIViewController, _ textId: String) {
-    guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
-            as? DetailViewController else { return }
-    detailViewController.viewModel.id = textId  // 글귀 아이디 넘겨주기
-    viewController.present(detailViewController, animated: true, completion: nil)
-}
-```
+<p align="left"><img alt="미사용" width="200" src="https://user-images.githubusercontent.com/49383370/158947865-cab3a02a-dea9-4d65-a0a3-d60c9f6fe496.png"></p>
 
 <br/>
 
-그래서 이렇게 넘겨받은 id 값으로 글귀 정보를 가져온다.
+<!-- 8. Search -->
+## Search
+You can find texts that contain search values. Implemented the SearchBar action by inheriting ```UISearchBarDelegate```. If you enter a search term and click the search button, the search result is derived through the filter statement and displayed in CollectionView. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Search)
+
+<p align="left"><img alt="search" width="200" src="https://user-images.githubusercontent.com/49383370/158949136-208c9b5f-de55-4410-9ced-c057bf525a7d.png"></p>
 
 <br/>
 
-file DetailViewModel
-```swift
-// 글귀 가져오기
-func getText(completion: @escaping (String, String, String) -> Void) {
-    print("ViewModel 글귀 아이디: \(id)")
+<!-- 9. Settings -->
+## Settings
+Various functions such as notification setting, theme change, font change, notice, inquiry and opinion, app evaluation, usage method, version information, account information, and logout are provided on the setting screen. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Setting)
 
-    ref.child("Text/Text\(id)").observe(.value) { snapshot in
-        guard let value = snapshot.value as? [String: String] else { return }
-
-        let eng = value["eng"]!
-        let kor = value["kor"]!
-        let who = value["who"]!
-        completion(eng, kor, who)
-    }
-}
-```
+<p align="left"><img alt="settings" width="200" src="https://user-images.githubusercontent.com/49383370/158952311-e1fa74d3-a034-44aa-8eeb-0e9eeb245b9e.png"></p>
 
 <br/>
 
-좋아요와 사용 여부는 화면이 보여질 때마다(viewWillAppear) 체크한다. **User/(사용자uid)/like** 와 **User/(사용자uid)/used** 경로에 접근하여 각각 좋아하는 글귀의 아이디(likeTextIDs)와 사용한 글귀의 아이디(usedTextIDs)를 가져온다. 현재 글귀의 id가 여기에 포함되어있다면 버튼이 선택된 것으로 표현한다.
-
-<br/>
-
-file: DetailViewController
-```swift
-/// 버튼 설정
-func setupButtons() {
-    let id = viewModel.id
-    likeButton.tag = Int(id)!
-    checkButton.tag = Int(id)!
-
-    if viewModel.likeTextIDs.contains(Int(id)!) {
-        likeButton.isSelected = true
-        likeButton.tintColor = .systemPink
-    } else {
-        likeButton.isSelected = false
-        likeButton.tintColor = .label
-    }
-
-    if viewModel.usedTextIDs.contains(Int(id)!) {
-        checkButton.isSelected = true
-        checkButton.tintColor = .systemGreen
-    } else {
-        checkButton.isSelected = false
-        checkButton.tintColor = .label
-    }
-}
-```
-
-<br/>
-
-공유하기 화면은 텍스트 또는 이미지 버튼이 클릭되면 Noti를 받아와 해당 공유하기 화면을 보여주도록 구현했다.
-
-<br/>
-
-file: DetailViewController
-```swift
-/// 공유하기 화면 띄우기
-func presentToActivityVC(items: [Any]) {
-    let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    activityVC.popoverPresentationController?.sourceView = self.view
-    activityVC.popoverPresentationController?.sourceRect = self.textView.bounds
-    activityVC.popoverPresentationController?.permittedArrowDirections = .left
-    DispatchQueue.main.async { [weak self ] in
-        guard let self = self else { return }
-
-        self.present(activityVC, animated: true, completion: nil)
-    }
-}
-
-/// 텍스트 공유하기 버튼 클릭된 후 Noti
-@objc func textShareNotification(_ notification: Notification) {
-    var objectsToShare = [String]()
-    if let text = self.textLabel.text {
-        objectsToShare.append(text)
-    }
-    presentToActivityVC(items: objectsToShare)
-}
-
-/// 이미지 공유하기 버튼 클릭된 후 Noti
-@objc func imageShareNotification(_ notification: Notification) {
-    guard let image = self.textView.transfromToImage() else { return }
-    presentToActivityVC(items: [image])
-}
-```
-
-<br/>
-
-<!-- 7. 좋아하는 글귀와 미사용 글귀 -->
-## 📌 좋아하는 글귀와 미사용 글귀
-아래 화면은 좋아하는 글귀모음이다. 사용자가 좋아요를 표시한 글귀만 모아볼 수 있는 공간이다. 
-
-<br/>
-
-<p align="center"><img alt="좋아요" src="https://user-images.githubusercontent.com/49383370/156298819-2e90bd94-fee7-4d1e-9f9c-06df325fe6bc.png" width="200"></p>
-
-<br/>
-
-**User/(사용자uid)/like** 경로에 접근하여 사용자가 좋아하는 글귀의 아이디를 가져온 후 CollectionView Cell에 뿌려준다.
-
-<br/>
-
-file: LikeViewModel
-```swift
-import FirebaseAuth
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid = Auth.auth().currentUser?.uid
-
-lazy var likeTextIDs: [Int] = [] // 좋아하는 글귀 id
-
-/// 좋아하는 글귀 아이디 가져오기
-func getLikeTextIDs(completion: @escaping (Bool) -> Void) {
-    ref.child("User/\(uid!)/like").observe(.value) { [weak self] snapshot in
-        guard let self = self else { return }
-        guard let value = snapshot.value as? [Int] else {
-            // 좋아하는 글귀가 없음
-            self.likeTextIDs = []
-            completion(false)
-            return
-        }
-
-        self.likeTextIDs = value.reversed()
-        completion(true)
-    }
-}
-```
-
-<br/>
-
-사용자가 아직 사용하지 않은 글귀만 모아볼 수 있는 미사용 글귀모음이다.
-
-<br/>
-
-<p align="center"><img alt="미사용" src="https://user-images.githubusercontent.com/49383370/156298850-4d41017f-55d3-477d-8ecc-9577c8db34c2.png" width="200"></p>
-
-<br/>
-
-**User/(사용자uid)/used** 경로에 접근하여 사용자가 사용한 글귀의 아이디와 반대된 값을 가져온 후 CollectionView Cell에 뿌려준다.
-
-<br/>
-
-file: UnusedViewModel
-```swift
-import FirebaseAuth
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid = Auth.auth().currentUser?.uid
-
-lazy var unusedTextIDs = [Int]()  // 미사용 글귀 아이디
-    
-/// 사용자가 사용한 글귀 아이디 가져오기
-func getUnusedTextIDs(completion: @escaping (Bool) -> Void) {
-    ref.child("User/\(uid!)/used").observe(.value) { [weak self] snapshot in
-        guard let self = self else { return }
-        guard let value = snapshot.value as? [Int] else {
-            // 사용한 글귀가 없음 -> 미사용 글귀 아이디 = 전체 글귀 아이디
-            self.unusedTextIDs = self.fullText.map { Int($0.id)! }
-            completion(false)
-            return
-        }
-
-        self.unusedTextIDs = self.fullText.indices.filter { !(value.contains($0)) }.sorted(by: >)
-        print("ViewModel 미사용 글귀 id: \(self.unusedTextIDs)")
-        completion(true)
-    }
-}
-```
-
-<br/>
-
-<!-- 8. 글귀 검색 -->
-## 🔍 글귀 검색
-글귀 검색화면에서 텍스트 값을 포함한 글귀를 찾을 수 있다. UISearchBarDelegate를 상속하여 SearchBar에 대한 작업을 구현했다.
-
-<br/>
-
-<p align="center"><img alt="검색" src="https://user-images.githubusercontent.com/49383370/156298893-54282bdc-40a1-4cb2-b730-299dacbe71ab.png" width="200"></p>
-
-<br/>
-
-검색어를 입력하고 검색 버튼을 클릭하면 **해당 검색어를 포함한 글귀를 filter 문을 통해 걸러내고** 검색 결과를 CollectionView에 보여준다.
-
-<br/>
-
-file: SearchViewController
-```swift
-/// 검색버튼 눌렀을 때
-func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    dismissKeyboard()
-
-    guard let searchWord = searchBar.text, searchWord.isEmpty == false else { return }
-    print("검색어: \(searchWord)")
-
-    viewModel.search(searchWord) {
-        DispatchQueue.main.async { [weak self ] in
-            guard let self = self else { return }
-
-            if self.viewModel.fullText.isEmpty {
-                self.labelView.isHidden = false
-            } else {
-                self.labelView.isHidden = true
-            }
-            self.collectionview.reloadData()
-        }
-    }
-}
-```
-
-<br/>
-
-file: SearchViewModel
-```swift
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-
-lazy var fullText: [StudyStimulateText] = [] // 전체 글귀
-    
-/// 검색
-func search(_ searchWord: String, completion: @escaping () -> Void) {
-    ref.child("Text").observe(.value) { [weak self] snapshot in
-        guard let self = self,
-              let value = snapshot.value as? [String: [String: String]] else { return }
-
-        let searchResult = value.filter {
-            $0.value.contains {
-                $0.value.contains(searchWord)
-            }
-        }
-
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: searchResult)
-            let textData = try JSONDecoder().decode([String: StudyStimulateText].self, from: jsonData)
-            let texts = Array(textData.values)
-
-            self.fullText = texts.sorted { Int($0.id)! > Int($1.id)! }
-            print("ViewModel 검색결과: \(self.fullText)")
-            completion()
-        } catch let error {
-            print("ERROR JSON Parsing \(error.localizedDescription)")
-        }
-    }
-}
-```
-
-<br/>
-
-<!-- 9. 설정 -->
-## 🛠 설정
-
-<br/>
-
-<p align="center"><img alt="설정" src="https://user-images.githubusercontent.com/49383370/156298952-3d90e55c-942c-4867-b44b-e3d91bf9c6aa.png" width="200"></p>
-
-<br/>
+- ### Notification settings
+  The goal was to control it with a switch button, but I couldn't achieve it. Therefore, it was implemented by moving to the basic setting screen.
 
 ### 사용자 정보 가져오기
 모닥이의 설정화면에서는 현재 로그인한 유저의 프로필 이미지와 닉네임을 확인할 수 있다. **FirebaseAuth**를 이용해서 현재 로그인한 사용자의 정보를 가져와 UI Component에 뿌려준다.
 
 <br/>
 
-file: SettingViewModel
-```swift
-import FirebaseAuth
-private let uid = Auth.auth().currentUser?.uid
-
-/// 사용자 닉네임 가져오기
-func getUserDisplayName() -> String {
-    return Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? "User"
-}
-
-/// 사용자  이미지 url 가져오기
-func getUserPhotoUrl() -> URL? {
-    return Auth.auth().currentUser?.photoURL ?? URL(string: "")
-}
-```
-
-<br/>
-
-### 알림 설정
-알림 설정의 경우 원래 다른 앱과 비슷하게 스위치 버튼을 통해 켜고 끄고가 가능하도록 구현하는 게 목표였지만 앱 내에서 설정의 값을 변경시키는 게 적용되지 않았고, 우선 설정화면으로 이동하는 것으로 구현했다. 
-
-<br/>
-
-file: SettingViewModel
-```swift
-/// 설정-알림 화면으로 이동
-func goToSettings() {
-    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-    if UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url)
-    }
-}
-```
-
-<br/>
-
 ### 다크 모드
 UserDefaults를 이용해서 키가 **'Appearance'인 곳에 다크 모드를 저장**시켜놓고, ViewController의 viewWillAppear에서 호출되는 appearanceCheck() 함수를 통해서 현재 앱에 설정되어 있는 모드를 적용시키도록 구현했다.
-
-<br/>
-
-file: SettingViewModel
-```swift
-/// 다크모드 저장
-func setAppearance(_ viewController: SettingViewController) {
-    let appearance = UserDefaults.standard.string(forKey: "Appearance")
-    // 처음엔 light: appearance 없음(nil)
-    if appearance == nil || appearance! == "Light" {
-        UserDefaults.standard.set("Dark", forKey: "Appearance")
-    } else {
-        UserDefaults.standard.set("Light", forKey: "Appearance")
-    }
-}
-```
-
-<br/>
-
-file: SettingViewController
-```swift
-/// 화면 보여질 때마다: 다크모드 확인
-override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    appearanceCheck(self)
-}
-```
-
-<br/>
-
-file: UIConfigure
-```swift
-/// UserDefaults에 저장된 값으로 다크모드 확인하기
-func appearanceCheck(_ viewController: UIViewController) {
-    guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-    if appearance == "Dark" {
-        viewController.overrideUserInterfaceStyle = .dark
-        if #available(iOS 13.0, *) {
-            UIApplication.shared.statusBarStyle = .lightContent
-        } else {
-            UIApplication.shared.statusBarStyle = .default
-        }
-    } else {
-        viewController.overrideUserInterfaceStyle = .light
-        if #available(iOS 13.0, *) {
-            UIApplication.shared.statusBarStyle = .darkContent
-        } else {
-            UIApplication.shared.statusBarStyle = .default
-        }
-    }
-}
-```
 
 <br/>
 
@@ -512,109 +176,8 @@ MessageUI 프레임워크를 이용하여 Mail 앱을 통해 이메일을 작성
 
 <br/>
 
-file: SettingViewController
-```swift
-import MessageUI
-
-    /// 문의 및 의견 버튼 클릭: Mail 앱으로 이메일 작성
-    @IBAction func commentsButtonTapped(_ sender: UIButton) {
-        if MFMailComposeViewController.canSendMail() {
-            let composeViewController = MFMailComposeViewController()
-            composeViewController.mailComposeDelegate = self
-            composeViewController.setToRecipients(["modakyi.help@gmail.com"])
-            composeViewController.setSubject("<모닥이> 문의 및 의견")
-            composeViewController.setMessageBody(viewModel.commentsBodyString(), isHTML: false)
-            self.present(composeViewController, animated: true, completion: nil)
-        } else {
-            self.presentToFailureSendMailAlert()
-        }
-    }
-
-    /// 메일 보내기 실패 Alert 띄우기
-    func presentToFailureSendMailAlert() {
-        let sendMailErrorAlert = viewModel.sendMailFailAlert()
-        self.present(sendMailErrorAlert, animated: true, completion: nil)
-    }
-```
-
-<br/>
-
-file: SettingViewModel
-```swift
-/// 문의 및 의견 내용
-func commentsBodyString() -> String {
-    return """
-            이곳에 내용을 작성해주세요.
-
-            오타 발견 문의 시 아래 양식에 맞춰 작성해주세요.
-
-            <예시>
-            글귀 ID : 글귀 4 (글귀 클릭 시 상단에 표시)
-            수정 전 : 실수해도 되.
-            수정 후 : 실수해도 돼.
-
-            -------------------
-
-            Device Model : \(getDeviceIdentifier())
-            Device OS : \(UIDevice.current.systemVersion)
-            App Version : \(getCurrentVersion())
-
-            -------------------
-            """
-}
-
-/// 메일 전송 실패 Alert
-func sendMailFailAlert() -> UIAlertController {
-    let sendMailErrorAlert = UIAlertController(
-        title: "메일 전송 실패",
-        message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.",
-        preferredStyle: .actionSheet
-    )
-
-    let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
-        // 앱스토어로 이동하기(Mail)
-        let store = "https://apps.apple.com/kr/app/mail/id1108187098"
-        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
-    }
-    let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-
-    sendMailErrorAlert.addAction(goAppStoreAction)
-    sendMailErrorAlert.addAction(cancleAction)
-    return sendMailErrorAlert
-}
-```
-
-<br/>
-
 ### 앱 평가
 '앱 평가' 버튼을 클릭하면 App Store 모닥이 앱 페이지로 이동하여 사용자가 앱을 평가할 수 있도록 구현했다.
-
-<br/>
-
-<p align="center"><img alt="앱스토어" src="https://user-images.githubusercontent.com/49383370/155327206-a27fa9e1-d877-460c-b3ba-03df8308386b.jpeg" width="200"></p>
-
-<br/>
-
-file: SettingViewModel
-```swift
-/// 모닥이 앱스토어로 이동
-func goToStore() {
-    let store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
-    if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
-}
-```
 
 <br/>
 
@@ -636,89 +199,8 @@ func goToStore() {
 
 <br/>
 
-file: SettingViewModel
-```swift
-import FirebaseAuth
-import FirebaseDatabase
-
-private let ref: DatabaseReference! = Database.database().reference()
-private let uid = Auth.auth().currentUser?.uid
-
-/// 로그아웃 Alert 창
-func logoutAlert(_ viewController: SettingViewController) -> UIAlertController {
-    let isAnonymous = Auth.auth().currentUser?.isAnonymous
-    let alertController = UIAlertController(
-        title: "로그아웃",
-        message: "정말 로그아웃하시겠습니까?",
-        preferredStyle: UIAlertController.Style.actionSheet
-    )
-
-    let confirmAction = UIAlertAction(title: "네", style: .default) { [weak self] _ in
-        guard let self = self else { return }
-
-        if isAnonymous! {    // 익명 사용자 로그아웃
-            self.anonymousLogout(viewController)
-        } else {    // 일반 사용자 로그아웃
-            self.generalLogout(viewController)
-        }
-    }
-    let cancelAction = UIAlertAction(title: "아니요", style: .destructive, handler: nil)
-
-    alertController.addAction(confirmAction)
-    alertController.addAction(cancelAction)
-    return alertController
-}
-
-/// 익명 사용자 로그아웃
-func anonymousLogout(_ viewController: SettingViewController) {
-    ref.child("User/\(uid!)").removeValue()
-    Auth.auth().currentUser?.delete(completion: { error in
-        if let error = error {
-            print("ERROR: CurrentUser Delete\(error.localizedDescription) ")
-        } else {
-            viewController.navigationController?.popToRootViewController(animated: true)
-        }
-    })
-}
-
-/// 일반 사용자 로그아웃
-func generalLogout(_ viewController: SettingViewController) {
-    do {
-        try Auth.auth().signOut()
-        viewController.navigationController?.popToRootViewController(animated: true)
-    } catch let signOutError as NSError {
-        print("ERROR: signout \(signOutError.localizedDescription)")
-    }
-}
-```
-
-<br/>
-
 ### 앱 버전 가져오기
 설정화면에 현재 앱의 버전과 앱스토어에 출시된 최신 버전을 표시하도록 구현했다. 현재 버전은 infoDictionary에 키값으로 접근하여 가져왔고, 최신 버전은 '모닥이' 앱의 번들 아이디를 포함한 URL을 통해 앱스토어에 출시된 '모닥이'의 정보를 JSON 형식으로 읽어온 후 가져왔다.
-
-<br/>
-
-file: SettingViewModel
-```swift
-/// 현재 버전 가져오기
-func getCurrentVersion() -> String {
-    guard let dictionary = Bundle.main.infoDictionary,
-          let version = dictionary["CFBundleShortVersionString"] as? String else { return "" }
-    return version
-}
-
-/// 최신 버전 가져오기
-func getUpdatedVersion() -> String {
-    guard let url = URL(string: "http://itunes.apple.com/lookup?bundleId=com.alswl.Modakyi"),
-          let data = try? Data(contentsOf: url),
-          let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-          let results = json["results"] as? [[String: Any]],
-              results.count > 0,
-        let appStoreVersion = results[0]["version"] as? String else { return "" }
-    return appStoreVersion
-}
-```
 
 <br/>
 
