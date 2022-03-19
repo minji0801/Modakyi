@@ -38,9 +38,9 @@
 8. [Search](#Search)
 9. [Settings](#Settings)
 10. [Design](#Design)
-11. [First Time](#First-Time)
-12. [Meet](#Meet)
-13. [History](#History)
+11. [First time dealing with thise](#First-time-dealing-with-this)
+12. [Contact](#Contact)
+13. [Version History](#Version-History)
 
 <br/>
 
@@ -74,11 +74,11 @@ The text is stored and used in the following format. Code is [here](https://gith
 
 ```swift
 struct StudyStimulateText: Codable {
-    let id: String      // 글귀 아이디
-    let kor: String     // 한글
-    let eng: String     // 영어
-    let who: String     // 글귀말한 사람(출처)
-    let time: String    // 업로드 시간
+    let id: String      // Text id
+    let kor: String     // Korean
+    let eng: String     // English
+    let who: String     // The person who spoke the text
+    let time: String    // Upload time
 }
 ```
 
@@ -112,22 +112,21 @@ This is the screen that appears when you click a cell. You can check whether you
 
 When this screen is displayed, the ```text ID``` is passed, and text information is retrieved with this id.
 
-Like and used is checked every time the screen is shown (viewWillAppear). Access the ```User/(user uid)/like``` and ```User/(user uid)/used``` paths to get the favorite texts IDs (likeTextIDs) and used texts IDs (usedTextIDs), respectively. If the id of the current text is included here, the button is displayed as selected.
+Like and used is checked every time the screen is shown (viewWillAppear). Access the ```User/(userUid)/like``` and ```User/(userUid)/used``` paths to get the favorite texts IDs (likeTextIDs) and used texts IDs (usedTextIDs), respectively. If the id of the current text is included here, the button is displayed as selected.
 
 When the text or image sharing button is clicked, a notification is received from the ```NotificationCenter``` and the sharing screen is displayed.
-
 
 <br/>
 
 <!-- 7. Favorite and Unused -->
 ## Favorite and Unused
-This is a screen where user can see only the texts that user like. Access the ```User/(useruid)/like``` path to get the ID of the text that the user likes. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Like)
+This is a screen where user can see only the texts that user like. Access the ```User/(userUid)/like``` path to get the ID of the text that the user likes. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Like)
 
 <p align="left"><img alt="favorite" width="200" src="https://user-images.githubusercontent.com/49383370/158946521-fefeb400-455a-48aa-8a36-146e18701880.png"></p>
 
 <br/>
 
-This is a screen where the user can see only the texts that have not been used yet. Access the ```User/(useruid)/used``` path and get the opposite value of the ID of the text used by the user. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Unused)
+This is a screen where the user can see only the texts that have not been used yet. Access the ```User/(userUid)/used``` path and get the opposite value of the ID of the text used by the user. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Unused)
 
 <p align="left"><img alt="미사용" width="200" src="https://user-images.githubusercontent.com/49383370/158947865-cab3a02a-dea9-4d65-a0a3-d60c9f6fe496.png"></p>
 
@@ -143,7 +142,7 @@ You can find texts that contain search values. Implemented the SearchBar action 
 
 <!-- 9. Settings -->
 ## Settings
-Various functions such as notification setting, theme change, font change, notice, inquiry and opinion, app evaluation, usage method, version information, account information, and logout are provided on the setting screen. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Setting)
+Various functions such as notification setting, theme change, font change, notice, inquiry and opinion, app rating, how to use, version information, account information, and logout are provided on the setting screen. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Setting)
 
 <p align="left"><img alt="settings" width="200" src="https://user-images.githubusercontent.com/49383370/158952311-e1fa74d3-a034-44aa-8eeb-0e9eeb245b9e.png"></p>
 
@@ -152,55 +151,33 @@ Various functions such as notification setting, theme change, font change, notic
 - ### Notification settings
   The goal was to control it with a switch button, but I couldn't achieve it. Therefore, it was implemented by moving to the basic setting screen.
 
-### 사용자 정보 가져오기
-모닥이의 설정화면에서는 현재 로그인한 유저의 프로필 이미지와 닉네임을 확인할 수 있다. **FirebaseAuth**를 이용해서 현재 로그인한 사용자의 정보를 가져와 UI Component에 뿌려준다.
+- ### Change themes and fonts
+  You can change the theme and font of the app. By using ```ThemeManager``` and ```FontManager```, values are stored in ```UserDefaults```, loaded and applied. Code is [here](https://github.com/minji0801/Modakyi/tree/main/Modakyi/Manager)
+  
+- ### Notice
+  It is a screen to notify simple announcements or updated contents.
 
-<br/>
+- ### Inquiries and comments
+  It shows the email composing screen using the ```MessageUI``` framework. You can write an email and send it to the developer. If sending mail fails, an Alert window is displayed to notify the user to install the Mail app or check the email settings.
 
-### 다크 모드
-UserDefaults를 이용해서 키가 **'Appearance'인 곳에 다크 모드를 저장**시켜놓고, ViewController의 viewWillAppear에서 호출되는 appearanceCheck() 함수를 통해서 현재 앱에 설정되어 있는 모드를 적용시키도록 구현했다.
+- ### App rating
+  Go to the App Store review writing screen. By sending ```"write-review"``` to the ```URLQueryItem```, it immediately brings up the review writing screen.
 
-<br/>
+- ### How to use
+  Shows the tutorial screen that appears when you first install and access the app.
 
-### 공지사항
-공지사항은 말 그대로 사용자에게 간단한 공지나 앱 버전 업데이트 관련 내용을 보여주기 위한 화면이다.
+- ### Version information
+  This screen shows the current version and the latest version. The current version was retrieved by accessing ```Bundel.main.infoDictionary``` as a key value, and the latest version was retrieved after reading the information of 'Modaki' released in the App Store in JSON format.
 
-<br/>
+- ### Account information
+  You can check the profile image, nickname, email, and login method of the currently logged in user. Get the information of the currently logged in user using ```FirebaseAuth```.
 
-<p align="center"><img alt="공지" src="https://user-images.githubusercontent.com/49383370/156299028-3922cad8-6b3d-410b-bbe7-b673cfb88858.png" width="200"></p>
+- ### Log out
+  Logs out the currently logged in user. If the user is anonymous, the account will be deleted upon logout, so user data must also be deleted.
 
-<br/>
+  It checks whether the current user is anonymous through ```isAnonymous``` of ```FirebaseAuth```. If it is an anonymous user, delete the data in the User/(userUid) path and go to the login screen.
 
-### 문의 및 의견
-MessageUI 프레임워크를 이용하여 Mail 앱을 통해 이메일을 작성하는 화면을 보여주고, 메일을 작성하여 개발자에게 보낼 수 있다. 메일 보내기에 실패한 경우 Alert 창을 띄워 사용자가 Mail 앱을 설치하거나 이메일 설정을 확인할 수 있도록 구현했다.
-
-<br/>
-
-### 앱 평가
-'앱 평가' 버튼을 클릭하면 App Store 모닥이 앱 페이지로 이동하여 사용자가 앱을 평가할 수 있도록 구현했다.
-
-<br/>
-
-### 이용방법
-설정의 '이용방법' 버튼을 클릭하면 앱을 처음 설치하고 접속했을 때 보여줬던 **튜토리얼을 다시 볼 수 있다.** 처음에 튜토리얼을 스킵 해서 어떻게 앱을 사용해야 할지 모르는 사용자를 위해서 구현했다.
-
-<br/>
-
-<p align="center"><img alt="이용방법" src="https://user-images.githubusercontent.com/49383370/156299103-04fa8d6c-a319-46e2-887e-d0bc5d20924d.png" width="200"></p>
-
-<br/>
-
-### 로그아웃
-사용자가 익명인 경우에는 로그아웃 후 다시 익명으로 로그인하게 되면 이전과 다른 아이디로 가입되기 때문에 사용자가 익명인 경우를 다뤄줘야 한다. 
-
-그래서 우선 **FirebaseAuth**의 **isAnonymous**으로 현재 사용자가 익명인지 확인한다. 익명이라면 **User/(사용자 uid)** 경로에 있는 데이터를 삭제하고 로그인 화면으로 이동한다.
-
-익명이 아니라면 로그아웃 처리만 하고 로그인 화면으로 이동한다. 다시 앱에 접속하면 이전에 로그아웃 처리되었기 때문에 로그인화면이 보여진다.
-
-<br/>
-
-### 앱 버전 가져오기
-설정화면에 현재 앱의 버전과 앱스토어에 출시된 최신 버전을 표시하도록 구현했다. 현재 버전은 infoDictionary에 키값으로 접근하여 가져왔고, 최신 버전은 '모닥이' 앱의 번들 아이디를 포함한 URL을 통해 앱스토어에 출시된 '모닥이'의 정보를 JSON 형식으로 읽어온 후 가져왔다.
+  If it is not, it only handles logout and moves to the login screen. When you access the app again, the login screen is displayed because user have previously logged out.
 
 <br/>
 
@@ -219,46 +196,38 @@ To express the bonfire, it is composed of a fire image with a point color.
 
 <br/>
 
-<!-- 11. First Time -->
-## First Time
-### 1. Firebase(Realtime Database, FCM, Authentication)
-여태까지 UserDefaults를 활용해 기기 로컬에 데이터를 저장했는데, 이번에는 클라우드 서비스인 Firebase의 Realtime Database에 데이터가 저장되도록 구현했다. 그리고 FCM(Firebase Cloud Messaging)으로 매일 새로운 글귀 업로드 알림을 사용자 기기로 보낸다. 또, 인증 서비스를 이용해서 이메일 로그인, 소셜(구글, 애플) 로그인, 익명 로그인도 구현했다.
+<!-- 11. First time dealing with thise -->
+## First time dealing with this
+- ### Firebase(RealtimeDatabase, FCM, Authentication)
+  Previously, data was stored locally on the device using UserDefaults, but this time the data is stored in Firebase's Realtime Database, a cloud service.
+
+  In addition, FCM (Firebase Cloud Messaging) was used to send a daily new text upload notification to the user's device, and using an authentication service, email login, social (Google, Apple) login, and anonymous login were also implemented.
+
+- ### AdMob interstitial
+  An interstitial advertisement was added along with the AdMob banner advertisement that was dealt with during the development of 'Scoit'. An interstitial ad is displayed whenever the detailed screen that appears when a text is clicked is dismissed. I made the interstitial ad object into a variable and set the root view of the object as the current screen and opened it.
+
+- ### Get version information
+  I wanted to show the current version of the app on the settings screen and the latest version released on the app store, so I tried this for the first time. I think it's a very useful feature because it's actually used for setting up quite a few apps.
+
+  > Blog: https://velog.io/@minji0801/iOS-현재-버전-최신-버전-확인하는-방법
+
+- ### Share function
+  This is my first time using UIActivityViewController to share text as text or image. In order to display this view in a PopOver format, the position had to be determined. It was rejected once because of the problem that an error occurred on the iPad because the location was not specified, but it was resolved.
+
+  > Blog: https://velog.io/@minji0801/iOS-Swift-텍스트-또는-이미지-공유하기
+
+- ### MessageUI
+  This is my first time working with MessageUI to send feedback to developers using the Mail app. Since the Mail app does not run in the simulator, we tested it with a real device. And when the mail transmission failed, an Alert window open and the user was prompted to install the Mail app or check the email settings.
+
+  > Blog: https://velog.io/@minji0801/iOS-Swift-iOS-기기에서-Mail-앱-이용해서-이메일-보내는-방법
+
+- ### MVVM refactoring
+  Changed from the existing MVC structure to the MVVM structure. There was a lot of confusion about where to write code between ViewController and ViewModel. But I keep thinking that ViewController cannot be directly connected to the Model and is connected through the ViewModel, and I gave the ViewController the things it had to the ViewModel.
 
 <br/>
 
-### 2. AdMob 전면광고
-'Scoit' 개발 때 다뤄본 AdMob 배너 광고를 이번에도 넣었지만 수입이 생각보다 적어서 전면광고도 추가했다. 글귀를 클릭하면 나타나는 상세 화면이 dismiss될 때마다 전면 광고를 띄우도록 했다. 엄청 복잡할 줄 알았는데, 생각보다 간단하다. 전면 광고 객체를 변수로 만들고 객체의 루트 뷰를 현재 화면으로 설정해서 띄워주면 된다.
-
-<br/>
-
-### 3. 버전 정보 가져오기
-설정 화면에 앱의 현재 버전과 앱 스토어에 출시된 최신 버전을 표시하고 싶어서 이번에 처음 다뤄보았다. 실제 꽤 많은 앱의 설정에 사용되기 때문에 매우 유용한 기능이라 생각한다.
-
-> 내용 정리: https://velog.io/@minji0801/iOS-현재-버전-최신-버전-확인하는-방법
-
-<br/>
-
-### 4. 공유하기 기능
-글귀를 텍스트 또는 이미지로 공유하기 위해서 UIActivityViewController를 처음 사용해 봤다. 이 뷰를 PopOver 형식으로 띄우기 위해서는 위치를 정해줘야 했다. 위치를 정해주지 않아 iPad에서 에러가 발생하는 이 문제 때문에 리젝됬었지만 해결했다.
-
-> 내용 정리: https://velog.io/@minji0801/iOS-Swift-텍스트-또는-이미지-공유하기
-
-<br/>
-
-### 5. MessageUI
-Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 MessageUI를 처음 다뤄보았다. 시뮬레이터에서는 Mail 앱이 실행되지 않기 때문에 실기기로 테스트했다. 그리고 메일 전송을 실패했을 때 Alert 창을 띄우고 사용자가 Mail 앱을 설치하거나 이메일 설정을 확인하도록 유도했다.
-
-> 내용 정리: https://velog.io/@minji0801/iOS-Swift-iOS-기기에서-Mail-앱-이용해서-이메일-보내는-방법
-
-<br/>
-
-### 6. MVVM 리팩토링
-기존 MVC 구조에서 MVVM 구조로 리팩토링을 진행했다. 리팩토링하는 중에 이 부분은 ViewController에 둬야할지 ViewModel에 둬야할지 헷갈린 부분이 많았지만, ViewController이 직접 Model과 연결될 수 없고 ViewModel을 통해서 연결됨을 계속 생각했고 최대한 ViewController이 가지고 있던 일들을 ViewModel에게 나누어주도록 리팩토링했다.
-
-<br/>
-
-<!-- 12. Meet -->
-## Meet
+<!-- 12. Contact -->
+## Contact
 ### App Store
 > https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726
 
@@ -270,8 +239,8 @@ Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 Messag
 
 <br/>
 
-<!-- 13. History -->
-## History
+<!-- 13. Version History -->
+## Version History
 ### v1.0.0 (2021.11.25)
 > - Provides basic functions
 > - Reject once (Reason: No anonymous login)
@@ -319,7 +288,6 @@ Mail 앱을 이용해서 개발자에게 피드백을 보내기 위해서 Messag
 
 ---
 
-<br/>
 <br/>
 <br/>
 
