@@ -13,8 +13,6 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
     private var theme = ThemeManager.currentTheme()
     private var font = FontManager.currentFont()
 
-    private var interstitial: GADInterstitialAd?    // 전면 광고 객체
-
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var textIdLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
@@ -73,14 +71,14 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
         NotificationCenter.default.post(name: NSNotification.Name("DismissDetailView"), object: nil, userInfo: nil)
     }
 
-    /// 뒷배경 클릭: 전면 광고 보여주기
+    /// 뒷배경 클릭
     @IBAction func backgroundViewTapped(_ sender: UITapGestureRecognizer) {
-        presentToAd()
+        dismiss(animated: true)
     }
 
-    /// x 버튼 클릭: 전면 광고 보여주기
+    /// x 버튼 클릭
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        presentToAd()
+        dismiss(animated: true)
     }
 
     /// 좋아요 버튼 클릭: 좋아하는 글귀 업데이트 & 버튼 다시 보여주기
@@ -144,33 +142,10 @@ final class DetailViewController: UIViewController, UIPopoverPresentationControl
 
     /// AdMob 광고 설정
     func setupAdMobAds() {
-
         // 배너 광고
         bannerView.adUnitID = "ca-app-pub-7980627220900140/4042418339"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-
-        // 전면 광고
-        let request = GADRequest()
-        let adUnitID = "ca-app-pub-7980627220900140/4153256056"
-        GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [self] ads, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ads
-            interstitial?.fullScreenContentDelegate = self
-        }
-    }
-
-    /// 전면 광고 띄우기
-    func presentToAd() {
-        if interstitial != nil {   // 광고 있으면 보여주기
-            interstitial!.present(fromRootViewController: self)
-        } else {    // 광고 없으면 화면 닫기
-            print("Ad wasn't ready")
-            dismiss(animated: true)
-        }
     }
 
     /// 공유하기 화면 띄우기
