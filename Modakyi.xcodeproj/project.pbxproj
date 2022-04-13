@@ -510,7 +510,7 @@
 			);
 			mainGroup = A59FAF9A272D5BE7000807A5;
 			packageReferences = (
-				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A59FAFA4272D5BE7000807A5 /* Products */;
 			projectDirPath = "";
@@ -833,7 +833,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -853,7 +853,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -871,7 +871,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Modakyi/Modakyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = MZ4WUT4W35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Modakyi/Info.plist;
@@ -891,7 +891,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alswl.Modakyi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -924,7 +924,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -937,7 +937,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A5335CA727AD67F200C67292 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = A5335CA627AD67F200C67292 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
